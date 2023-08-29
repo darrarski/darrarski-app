@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "4FECB499-262B-4CDA-B351-C3C4B1086632",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FeedFeatureTests",
+        "name" : "FeedFeatureTests"
+      }
+    }
+  ],
+  "version" : 1
+}

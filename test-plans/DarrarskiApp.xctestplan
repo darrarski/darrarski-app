@@ -23,6 +23,30 @@
         "identifier" : "AppFeatureTests",
         "name" : "AppFeatureTests"
       }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "ContactFeatureTests",
+        "name" : "ContactFeatureTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "FeedFeatureTests",
+        "name" : "FeedFeatureTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "ProjectsFeatureTests",
+        "name" : "ProjectsFeatureTests"
+      }
     }
   ],
   "version" : 1
