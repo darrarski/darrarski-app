@@ -1,0 +1,5 @@
+.DS_Store
+xcuserdata/
+
+# Ignore individual Package.resolved files. The main Package.resolved is already contained in the workspace. Use the workspace for development, instead of opening Package.swift directly in Xcode.
+/app/Package.resolved

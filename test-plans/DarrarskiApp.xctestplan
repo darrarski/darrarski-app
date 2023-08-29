@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "AC074406-23FF-4171-9DF6-7AE216DCC4ED",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DarrarskiApp.xcodeproj",
+      "identifier" : "310E44772A9E3999009A5B62",
+      "name" : "DarrarskiApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
+      }
+    }
+  ],
+  "version" : 1
+}
