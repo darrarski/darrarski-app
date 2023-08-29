@@ -39,6 +39,14 @@
         "identifier" : "FeedFeatureTests",
         "name" : "FeedFeatureTests"
       }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "ProjectsFeatureTests",
+        "name" : "ProjectsFeatureTests"
+      }
     }
   ],
   "version" : 1
