@@ -10,11 +10,14 @@ public struct ProjectsView: View {
 
   public var body: some View {
     Text("ProjectsView")
+      .navigationTitle("Projects")
   }
 }
 
 #Preview {
-  ProjectsView(store: Store(initialState: ProjectsReducer.State()) {
-    ProjectsReducer()
-  })
+  NavigationStack {
+    ProjectsView(store: Store(initialState: ProjectsReducer.State()) {
+      ProjectsReducer()
+    })
+  }
 }

@@ -10,11 +10,14 @@ public struct ContactView: View {
 
   public var body: some View {
     Text("ContactView")
+      .navigationTitle("Darrarski")
   }
 }
 
 #Preview {
-  ContactView(store: Store(initialState: ContactReducer.State()) {
-    ContactReducer()
-  })
+  NavigationStack {
+    ContactView(store: Store(initialState: ContactReducer.State()) {
+      ContactReducer()
+    })
+  }
 }

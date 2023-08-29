@@ -10,11 +10,14 @@ public struct FeedView: View {
 
   public var body: some View {
     Text("FeedView")
+      .navigationTitle("Feed")
   }
 }
 
 #Preview {
-  FeedView(store: Store(initialState: FeedReducer.State()) {
-    FeedReducer()
-  })
+  NavigationStack {
+    FeedView(store: Store(initialState: FeedReducer.State()) {
+      FeedReducer()
+    })
+  }
 }

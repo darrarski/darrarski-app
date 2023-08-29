@@ -20,6 +20,9 @@ let package = Package(
     .target(
       name: "AppFeature",
       dependencies: [
+        .target(name: "ContactFeature"),
+        .target(name: "FeedFeature"),
+        .target(name: "ProjectsFeature"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),

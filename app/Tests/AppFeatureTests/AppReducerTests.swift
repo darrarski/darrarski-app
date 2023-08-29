@@ -4,11 +4,16 @@ import XCTest
 
 @MainActor
 final class AppReducerTests: XCTestCase {
-  func testTask() async {
+  func testSelectingSections() async {
     let store = TestStore(initialState: AppReducer.State()) {
       AppReducer()
     }
 
-    await store.finish()
+    await store.send(.view(.sectionSelected(.feed))) {
+      $0.selectedSection = .feed
+    }
+    await store.send(.view(.sectionSelected(nil))) {
+      $0.selectedSection = .contact
+    }
   }
 }
