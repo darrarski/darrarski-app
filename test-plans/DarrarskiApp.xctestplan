@@ -23,6 +23,14 @@
         "identifier" : "AppFeatureTests",
         "name" : "AppFeatureTests"
       }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "ContactFeatureTests",
+        "name" : "ContactFeatureTests"
+      }
     }
   ],
   "version" : 1
