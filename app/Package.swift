@@ -36,9 +36,6 @@ let package = Package(
       name: "ContactFeature",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-      ],
-      resources: [
-        .copy("gravatar_preview.json"),
       ]
     ),
     .testTarget(
