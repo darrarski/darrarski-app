@@ -21,6 +21,7 @@ public struct ContactReducer: Reducer, Sendable {
     case view(View)
 
     public enum View: Equatable, Sendable {
+      case linkButtonTapped(Contact.Link)
       case refreshButtonTapped
       case refreshTask
       case task
@@ -30,6 +31,7 @@ public struct ContactReducer: Reducer, Sendable {
   public init() {}
 
   @Dependency(\.contactProvider) var contactProvider
+  @Dependency(\.openURL) var openURL
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
@@ -56,6 +58,14 @@ public struct ContactReducer: Reducer, Sendable {
           break
         }
         return .none
+
+      case .view(.linkButtonTapped(let link)):
+        return .run { _ in
+          switch link.target {
+          case .system:
+            await openURL(link.url)
+          }
+        }
 
       case .view(.refreshButtonTapped):
         return .send(.fetchContact)

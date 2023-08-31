@@ -134,7 +134,7 @@ public struct ContactView: View {
   func linkButton(link: Contact.Link) -> some View {
     BackgroundGeometryReader(geometry: \.size.width) { width in
       Button {
-        // TODO:
+        store.send(.view(.linkButtonTapped(link)))
       } label: {
         Label {
           Text(link.title)
@@ -156,6 +156,7 @@ public struct ContactView: View {
                   .renderingMode(.template)
                   .resizable()
                   .scaledToFit()
+
               } placeholder: {
                 Image(systemName: "link")
                   .resizable()

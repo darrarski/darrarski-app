@@ -72,4 +72,28 @@ final class ContactReducerTests: XCTestCase {
     await store.send(.view(.refreshButtonTapped))
     await store.receive(.fetchContact)
   }
+
+  func testViewLinkButtonTapped() async {
+    let link = Contact.Link(
+      id: "",
+      title: "",
+      url: URL(filePath: "test"),
+      iconURL: nil,
+      target: .system
+    )
+    let didOpenURL = ActorIsolated<[URL]>([])
+    let store = TestStore(initialState: ContactReducer.State()) {
+      ContactReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.linkButtonTapped(link)))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [link.url])
+    }
+  }
 }
