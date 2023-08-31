@@ -49,7 +49,9 @@ public struct ContactView: View {
       let avatarSize = width.map { $0 / 3 }
 
       HStack(alignment: .top) {
-        avatar
+        WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
+          AvatarView(url: viewStore.state)
+        }
           .frame(width: avatarSize, height: avatarSize)
           .padding(.bottom)
 
@@ -58,25 +60,6 @@ public struct ContactView: View {
           .padding([.leading, .vertical])
       }
     }
-  }
-
-  @MainActor
-  var avatar: some View {
-    WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
-      AsyncImage(url: viewStore.state) { image in
-        image.resizable()
-      } placeholder: {
-          Image(systemName: "person")
-            .resizable()
-            .bold()
-            .scaleEffect(CGSize(width: 0.5, height: 0.5), anchor: .center)
-            .padding(-10)
-        }
-    }
-    .aspectRatio(contentMode: .fit)
-    .background(Color.secondary)
-    .clipShape(Circle())
-    .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
   }
 
   @MainActor
