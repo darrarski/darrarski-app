@@ -52,8 +52,8 @@ public struct ContactView: View {
         WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
           AvatarView(url: viewStore.state)
         }
-          .frame(width: avatarSize, height: avatarSize)
-          .padding(.bottom)
+        .frame(width: avatarSize, height: avatarSize)
+        .padding(.bottom)
 
         details
           .frame(maxWidth: .infinity, alignment: .leading)
