@@ -87,17 +87,25 @@ public struct ContactView: View {
   @MainActor
   var details: some View {
     VStack(alignment: .leading) {
-      Text("Dariusz Rybicki")
-        .font(.title)
+      WithViewStore(store, observe: \.gravatar?.entry.first?.name.formatted) { viewStore in
+        let value = viewStore.state
+        let placeholder = "Dariusz Rybicki"
+        let text = value ?? placeholder
+
+        Text(text)
+          .font(.title)
+          .redacted(reason: value == nil ? .placeholder : [])
+          .animation(.easeInOut, value: text)
+      }
 
       WithViewStore(store, observe: \.gravatar?.entry.first?.aboutMe) { viewStore in
-        let aboutMe = viewStore.state
+        let value = viewStore.state
         let placeholder = "Redacted Placeholder\nLorem ipsum\nPariatur ex aliqua ut"
-        let text = aboutMe ?? placeholder
+        let text = value ?? placeholder
 
         Text(text)
           .font(.headline)
-          .redacted(reason: aboutMe == nil ? .placeholder : [])
+          .redacted(reason: value == nil ? .placeholder : [])
           .animation(.easeInOut, value: text)
       }
     }
