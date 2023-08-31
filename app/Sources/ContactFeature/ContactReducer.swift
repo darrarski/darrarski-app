@@ -4,20 +4,20 @@ import Foundation
 public struct ContactReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
-      gravatar: GravatarJSON? = nil,
+      contact: Contact? = nil,
       isLoading: Bool = false
     ) {
-      self.gravatar = gravatar
+      self.contact = contact
       self.isLoading = isLoading
     }
 
-    var gravatar: GravatarJSON?
+    var contact: Contact?
     var isLoading: Bool
   }
 
   public enum Action: Equatable, Sendable {
-    case fetchGravatar
-    case fetchGravatarResult(TaskResult<GravatarJSON>)
+    case fetchContact
+    case fetchContactResult(TaskResult<Contact>)
     case view(View)
 
     public enum View: Equatable, Sendable {
@@ -29,30 +29,28 @@ public struct ContactReducer: Reducer, Sendable {
 
   public init() {}
 
-  @Dependency(\.gravatar) var gravatar
+  @Dependency(\.contactProvider) var contactProvider
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       enum CancelId { case fetchGravatar }
 
       switch action {
-      case .fetchGravatar:
+      case .fetchContact:
         state.isLoading = true
         return .run { send in
           let result = await TaskResult {
-            try await gravatar.fetch(
-              email: "dariusz@darrarski.pl"
-            )
+            try await contactProvider.fetch()
           }
-          await send(.fetchGravatarResult(result))
+          await send(.fetchContactResult(result))
         }
         .cancellable(id: CancelId.fetchGravatar, cancelInFlight: true)
 
-      case .fetchGravatarResult(let result):
+      case .fetchContactResult(let result):
         state.isLoading = false
         switch result {
-        case .success(let json):
-          state.gravatar = json
+        case .success(let contact):
+          state.contact = contact
 
         case .failure(_):
           break
@@ -60,13 +58,13 @@ public struct ContactReducer: Reducer, Sendable {
         return .none
 
       case .view(.refreshButtonTapped):
-        return .send(.fetchGravatar)
+        return .send(.fetchContact)
 
       case .view(.refreshTask):
-        return .send(.fetchGravatar)
+        return .send(.fetchContact)
 
       case .view(.task):
-        return .send(.fetchGravatar)
+        return .send(.fetchContact)
       }
     }
   }

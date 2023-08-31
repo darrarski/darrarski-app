@@ -62,12 +62,8 @@ public struct ContactView: View {
 
   @MainActor
   var avatar: some View {
-    WithViewStore(store, observe: \.gravatar?.entry.first?.thumbnailUrl) { viewStore in
-      let imageURL = viewStore.state?.appending(queryItems: [
-        .init(name: "s", value: "450")
-      ])
-
-      AsyncImage(url: imageURL) { image in
+    WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
+      AsyncImage(url: viewStore.state) { image in
         image.resizable()
       } placeholder: {
           Image(systemName: "person")
@@ -86,7 +82,7 @@ public struct ContactView: View {
   @MainActor
   var details: some View {
     VStack(alignment: .leading) {
-      WithViewStore(store, observe: \.gravatar?.entry.first?.name.formatted) { viewStore in
+      WithViewStore(store, observe: \.contact?.name) { viewStore in
         let value = viewStore.state
         let placeholder = "Dariusz Rybicki"
         let text = value ?? placeholder
@@ -97,7 +93,7 @@ public struct ContactView: View {
           .animation(.easeInOut, value: text)
       }
 
-      WithViewStore(store, observe: \.gravatar?.entry.first?.aboutMe) { viewStore in
+      WithViewStore(store, observe: \.contact?.description) { viewStore in
         let value = viewStore.state
         let placeholder = "Redacted Placeholder\nLorem ipsum\nPariatur ex aliqua ut"
         let text = value ?? placeholder
