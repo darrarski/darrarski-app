@@ -73,7 +73,7 @@ public struct ContactView: View {
         Text(text)
           .font(.title)
           .redacted(reason: value == nil ? .placeholder : [])
-          .animation(.easeInOut, value: text)
+          .animation(.bouncy, value: text)
       }
 
       WithViewStore(store, observe: \.contact?.description) { viewStore in
@@ -84,7 +84,7 @@ public struct ContactView: View {
         Text(text)
           .font(.headline)
           .redacted(reason: value == nil ? .placeholder : [])
-          .animation(.easeInOut, value: text)
+          .animation(.bouncy, value: text)
       }
     }
   }
