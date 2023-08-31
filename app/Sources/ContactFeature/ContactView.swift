@@ -110,7 +110,9 @@ public struct ContactView: View {
             linkButton(link: .init(
               id: "placeholder-\(index)",
               title: "Placeholder",
-              url: URL(filePath: "")
+              url: URL(filePath: ""),
+              iconURL: nil,
+              target: .system
             ))
           }
           .disabled(true)
