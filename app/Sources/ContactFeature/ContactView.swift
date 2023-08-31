@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import Kingfisher
 import SwiftUI
 
 public struct ContactView: View {
@@ -68,9 +67,9 @@ public struct ContactView: View {
         .init(name: "s", value: "450")
       ])
 
-      KFImage(imageURL)
-        .resizable()
-        .placeholder {
+      AsyncImage(url: imageURL) { image in
+        image.resizable()
+      } placeholder: {
           Image(systemName: "person")
             .resizable()
             .bold()

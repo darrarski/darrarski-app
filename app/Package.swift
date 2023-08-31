@@ -14,7 +14,6 @@ let package = Package(
     .library(name: "ProjectsFeature", targets: ["ProjectsFeature"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.9.1"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.0.0"),
   ],
   targets: [
@@ -37,7 +36,6 @@ let package = Package(
       name: "ContactFeature",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        .product(name: "Kingfisher", package: "Kingfisher"),
       ],
       resources: [
         .copy("gravatar_preview.json"),
