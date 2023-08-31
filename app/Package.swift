@@ -38,6 +38,9 @@ let package = Package(
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "Kingfisher", package: "Kingfisher"),
+      ],
+      resources: [
+        .copy("gravatar_preview.json"),
       ]
     ),
     .testTarget(
