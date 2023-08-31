@@ -91,15 +91,85 @@ public struct ContactView: View {
 
   @MainActor
   var buttons: some View {
-    VStack {
-      // TODO:
-      // Button {} label: {
-      //   Text("Button")
-      //     .frame(maxWidth: .infinity)
-      // }
+    WithViewStore(store, observe: { $0.contact?.links ?? [] }) { viewStore in
+      let links = viewStore.state
+
+      LazyVGrid(
+        columns: [
+          GridItem(
+            .adaptive(minimum: 128, maximum: 256),
+            spacing: 16,
+            alignment: .center
+          )
+        ],
+        alignment: .leading,
+        spacing: 16
+      ) {
+        if links.isEmpty {
+          ForEach(0..<4) { index in
+            linkButton(link: .init(
+              id: "placeholder-\(index)",
+              title: "Placeholder",
+              url: URL(filePath: "")
+            ))
+          }
+          .disabled(true)
+          .redacted(reason: [.placeholder])
+        } else {
+          ForEach(links) { link in
+            linkButton(link: link)
+              .transition(.asymmetric(
+                insertion: .scale.combined(with: .opacity),
+                removal: .opacity
+              ))
+          }
+        }
+      }
+      .animation(.bouncy, value: links.map(\.id))
     }
-    .controlSize(.extraLarge)
-    .buttonStyle(.borderedProminent)
+  }
+
+  func linkButton(link: Contact.Link) -> some View {
+    BackgroundGeometryReader(geometry: \.size.width) { width in
+      Button {
+        // TODO:
+      } label: {
+        Label {
+          Text(link.title)
+            .font(.callout.bold())
+            .lineLimit(1)
+
+        } icon: {
+          Group {
+            if let iconURL = link.iconURL,
+               let symbolURL = SFSymbolURL(iconURL) {
+              Image(systemName: symbolURL.name)
+                .symbolRenderingMode(symbolURL.rendering)
+                .resizable()
+                .scaledToFit()
+
+            } else {
+              AsyncImage(url: link.iconURL) { image in
+                image
+                  .renderingMode(.template)
+                  .resizable()
+                  .scaledToFit()
+              } placeholder: {
+                Image(systemName: "link")
+                  .resizable()
+                  .scaledToFit()
+                  .scaleEffect(CGSize(width: 0.75, height: 0.75))
+                  .opacity(0.5)
+              }
+            }
+          }
+          .frame(width: width.map { $0 / 8 })
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+      }
+      .controlSize(.large)
+      .buttonStyle(.borderedProminent)
+    }
   }
 }
 
