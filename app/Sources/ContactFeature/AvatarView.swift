@@ -18,16 +18,12 @@ struct AvatarView: View {
         .task { didAppear = true }
 
     } placeholder: {
-      Image(systemName: "person")
-        .resizable()
-        .bold()
-        .scaleEffect(CGSize(width: 0.5, height: 0.5), anchor: .center)
-        .padding(-10)
+      Color.clear
     }
     .animation(.bouncy, value: didAppear)
     .onChange(of: url) { _, _ in didAppear = false }
     .aspectRatio(contentMode: .fit)
-    .background(Color.secondary)
+    .background(Color.secondary.opacity(0.2))
     .clipShape(Circle())
     .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
   }
