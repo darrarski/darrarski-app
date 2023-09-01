@@ -106,10 +106,17 @@ public struct ContactView: View {
         spacing: 16
       ) {
         if links.isEmpty {
+          let placeholders = [
+            "Blob 123",
+            "Culpa irure mag",
+            "Placeholder",
+            "Lorem Ipsum",
+            "Lorem",
+          ]
           ForEach(0..<4) { index in
             linkButton(link: .init(
               id: "placeholder-\(index)",
-              title: "Placeholder",
+              title: placeholders[index % placeholders.count],
               url: URL(filePath: ""),
               iconURL: nil,
               target: .system
