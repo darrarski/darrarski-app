@@ -1,7 +1,7 @@
 import Foundation
 
 extension JSONDecoder {
-  static let mastodon: JSONDecoder = {
+  public static let mastodon: JSONDecoder = {
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     decoder.dateDecodingStrategy = .custom { decoder in
