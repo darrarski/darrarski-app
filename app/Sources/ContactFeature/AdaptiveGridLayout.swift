@@ -1,5 +1,17 @@
 import SwiftUI
 
+/// Grid layout that presents elements adaptively to their size.
+///
+/// ```
+/// +-------+----------+
+/// |  AAA  |  BBBBBB  |
+/// +-------+--+-------+
+/// |  CCCCCC  |  DDD  |
+/// +----------+-------+
+/// |        EE        |
+/// +------------------+
+/// ```
+///
 public struct AdaptiveGridLayout: Layout {
   public struct Cache: Equatable {
     struct Element: Equatable {
@@ -11,6 +23,11 @@ public struct AdaptiveGridLayout: Layout {
     var size: CGSize
   }
 
+  /// Creates an instance with optionally provided parameters
+  ///
+  /// - Parameters:
+  ///   - spacing: Spacing between elements, where `width` defines horizonal and `height` vertical spacing. Defaults to `.zero` (no spacing between elements).
+  ///   - fillWidth: Fill container horizontally by stretching out elements if needed. Defaults to `true`.
   public init(
     spacing: CGSize = .zero,
     fillWidth: Bool = true
