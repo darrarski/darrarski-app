@@ -8,7 +8,12 @@ public struct ContactView: View {
   }
 
   let store: StoreOf<ContactReducer>
+
+#if os(iOS)
   @ScaledMetric var linkButtonIconSize: CGFloat = 24
+#elseif os(macOS)
+  @ScaledMetric var linkButtonIconSize: CGFloat = 16
+#endif
 
   public var body: some View {
     ScrollView {
@@ -93,40 +98,62 @@ public struct ContactView: View {
 
   @MainActor
   var buttons: some View {
+    WithViewStore(store, observe: { $0.contact?.links.map(\.id) ?? [] }) { viewStore in
+#if os(iOS)
+      AdaptiveGridLayout(spacing: CGSize(width: 16, height: 16)) {
+        buttonsGridContent
+      }
+      .animation(.bouncy, value: viewStore.state)
+#elseif os(macOS)
+      LazyVGrid(
+        columns: [
+          GridItem(
+            .adaptive(minimum: 150, maximum: 200),
+            spacing: 16
+          ),
+        ],
+        alignment: .leading,
+        spacing: 16
+      ) {
+        buttonsGridContent
+      }
+#endif
+    }
+  }
+
+  @MainActor
+  var buttonsGridContent: some View {
     WithViewStore(store, observe: { $0.contact?.links ?? [] }) { viewStore in
       let links = viewStore.state
 
-      AdaptiveGridLayout(spacing: CGSize(width: 16, height: 16)) {
-        if links.isEmpty {
-          let placeholders = [
-            "Blob 123",
-            "Culpa irure mag",
-            "Placeholder",
-            "Lorem Ipsum",
-            "Lorem",
-          ]
-          ForEach(0..<4) { index in
-            linkButton(link: .init(
-              id: "placeholder-\(index)",
-              title: placeholders[index % placeholders.count],
-              url: URL(filePath: ""),
-              iconURL: nil,
-              target: .system
+      if links.isEmpty {
+        let placeholders = [
+          "Blob 123",
+          "Culpa irure mag",
+          "Placeholder",
+          "Lorem Ipsum",
+          "Lorem",
+        ]
+        ForEach(0..<4) { index in
+          linkButton(link: .init(
+            id: "placeholder-\(index)",
+            title: placeholders[index % placeholders.count],
+            url: URL(filePath: ""),
+            iconURL: nil,
+            target: .system
+          ))
+        }
+        .disabled(true)
+        .redacted(reason: [.placeholder])
+      } else {
+        ForEach(links) { link in
+          linkButton(link: link)
+            .transition(.asymmetric(
+              insertion: .scale.combined(with: .opacity),
+              removal: .opacity
             ))
-          }
-          .disabled(true)
-          .redacted(reason: [.placeholder])
-        } else {
-          ForEach(links) { link in
-            linkButton(link: link)
-              .transition(.asymmetric(
-                insertion: .scale.combined(with: .opacity),
-                removal: .opacity
-              ))
-          }
         }
       }
-      .animation(.bouncy, value: links.map(\.id))
     }
   }
 
@@ -166,7 +193,7 @@ public struct ContactView: View {
         }
         .frame(width: linkButtonIconSize)
       }
-      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     .controlSize(.large)
     .buttonStyle(.borderedProminent)
