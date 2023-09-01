@@ -12,6 +12,7 @@ let package = Package(
     .library(name: "AppShared", targets: ["AppShared"]),
     .library(name: "ContactFeature", targets: ["ContactFeature"]),
     .library(name: "FeedFeature", targets: ["FeedFeature"]),
+    .library(name: "Mastodon", targets: ["Mastodon"]),
     .library(name: "ProjectsFeature", targets: ["ProjectsFeature"]),
   ],
   dependencies: [
@@ -65,6 +66,18 @@ let package = Package(
       name: "FeedFeatureTests",
       dependencies: [
         .target(name: "FeedFeature"),
+      ]
+    ),
+    .target(
+      name: "Mastodon",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
+    ),
+    .testTarget(
+      name: "MastodonTests",
+      dependencies: [
+        .target(name: "Mastodon"),
       ]
     ),
     .target(
