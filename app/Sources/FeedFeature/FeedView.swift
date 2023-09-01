@@ -24,6 +24,20 @@ public struct FeedView: View {
     }
     .navigationTitle("Feed")
     .toolbar {
+#if os(macOS)
+      ToolbarItem(placement: .primaryAction) {
+        WithViewStore(store, observe: \.isLoading) { viewStore in
+          let isLoading = viewStore.state
+
+          Button {
+            store.send(.view(.refreshButtonTapped))
+          } label: {
+            Text("Refresh")
+          }
+          .disabled(isLoading)
+        }
+      }
+#elseif os(iOS)
       ToolbarItem {
         if !isRefreshing {
           WithViewStore(store, observe: \.isLoading) { viewStore in
@@ -33,6 +47,7 @@ public struct FeedView: View {
           }
         }
       }
+#endif
     }
     .task {
       await store.send(.view(.task)).finish()

@@ -22,6 +22,7 @@ public struct FeedReducer: Reducer, Sendable {
     case view(View)
 
     public enum View: Equatable, Sendable {
+      case refreshButtonTapped
       case refreshTask
       case task
     }
@@ -62,6 +63,9 @@ public struct FeedReducer: Reducer, Sendable {
 
       case .status(_, _):
         return .none
+
+      case .view(.refreshButtonTapped):
+        return .send(.fetchStatuses)
 
       case .view(.refreshTask):
         return .send(.fetchStatuses)

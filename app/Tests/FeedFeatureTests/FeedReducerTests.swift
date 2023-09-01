@@ -70,4 +70,16 @@ final class FeedReducerTests: XCTestCase {
     await store.send(.view(.refreshTask))
     await store.receive(.fetchStatuses)
   }
+
+  func testViewRefreshButtonTapped() async {
+    let store = TestStore(initialState: FeedReducer.State()) {
+      FeedReducer()
+    } withDependencies: {
+      $0.mastodon.getAccountStatuses.run = { _ in [] }
+    }
+    store.exhaustivity = .off
+
+    await store.send(.view(.refreshButtonTapped))
+    await store.receive(.fetchStatuses)
+  }
 }
