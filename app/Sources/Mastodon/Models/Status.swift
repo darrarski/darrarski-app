@@ -34,8 +34,7 @@ public struct Status: Sendable, Equatable, Identifiable, Decodable {
     reblogged: Bool?,
     muted: Bool?,
     bookmarked: Bool?,
-    pinned: Bool?,
-    filtered: Bool?
+    pinned: Bool?
   ) {
     self.id = id
     self.uri = uri
@@ -67,7 +66,6 @@ public struct Status: Sendable, Equatable, Identifiable, Decodable {
     self.muted = muted
     self.bookmarked = bookmarked
     self.pinned = pinned
-    self.filtered = filtered
   }
 
   public var id: String
@@ -100,7 +98,6 @@ public struct Status: Sendable, Equatable, Identifiable, Decodable {
   public var muted: Bool?
   public var bookmarked: Bool?
   public var pinned: Bool?
-  public var filtered: Bool?
 }
 
 extension Status {
