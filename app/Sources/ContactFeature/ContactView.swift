@@ -193,7 +193,7 @@ public struct ContactView: View {
         }
         .frame(width: linkButtonIconSize)
       }
-      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     .controlSize(.large)
     .buttonStyle(.borderedProminent)
