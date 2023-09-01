@@ -18,7 +18,7 @@ public struct Client: Sendable {
 extension Client: TestDependencyKey {
   public static var testValue = Client(
     getAccountStatuses: GetAccountStatuses(
-      run: unimplemented("\(Self.self).run")
+      run: unimplemented("\(Self.self).getAccountStatuses.run")
     )
   )
 }

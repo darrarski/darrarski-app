@@ -24,7 +24,7 @@ public struct GetAccountStatuses: Sendable {
 }
 
 extension GetAccountStatuses {
-  public struct Query: Equatable {
+  public struct Query: Equatable, Sendable {
     public init(accountId: String) {
       self.accountId = accountId
     }
