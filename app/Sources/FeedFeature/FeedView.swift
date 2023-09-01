@@ -64,11 +64,6 @@ public struct FeedView: View {
   NavigationStack {
     FeedView(store: Store(initialState: FeedReducer.State()) {
       FeedReducer()
-    } withDependencies: {
-      $0.mastodon.getAccountStatuses.run = { _ in
-        try await Task.sleep(for: .seconds(1))
-        return .preview
-      }
     })
   }
 }

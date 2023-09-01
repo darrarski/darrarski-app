@@ -62,9 +62,6 @@ let package = Package(
         .target(name: "AppShared"),
         .target(name: "Mastodon"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-      ],
-      resources: [
-        .copy("statuses_preview.json"),
       ]
     ),
     .testTarget(
@@ -77,6 +74,9 @@ let package = Package(
       name: "Mastodon",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ],
+      resources: [
+        .copy("Resources/statuses_preview.json"),
       ]
     ),
     .testTarget(
