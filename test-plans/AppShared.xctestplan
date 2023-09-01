@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "2A642DB1-0557-49D3-85C3-1BFAAF2DAE87",
+      "id" : "CBF36F13-7508-43F4-A44C-4495D1CBD49C",
       "name" : "Test Scheme Action",
       "options" : {
 
@@ -15,8 +15,8 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "AppFeatureTests",
-        "name" : "AppFeatureTests"
+        "identifier" : "AppSharedTests",
+        "name" : "AppSharedTests"
       }
     }
   ],

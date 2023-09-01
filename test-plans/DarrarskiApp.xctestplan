@@ -17,7 +17,6 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:..\/app",
         "identifier" : "AppFeatureTests",
@@ -25,7 +24,13 @@
       }
     },
     {
-      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
+        "identifier" : "AppSharedTests",
+        "name" : "AppSharedTests"
+      }
+    },
+    {
       "target" : {
         "containerPath" : "container:..\/app",
         "identifier" : "ContactFeatureTests",
@@ -33,7 +38,6 @@
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:..\/app",
         "identifier" : "FeedFeatureTests",
@@ -41,7 +45,6 @@
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:..\/app",
         "identifier" : "ProjectsFeatureTests",
