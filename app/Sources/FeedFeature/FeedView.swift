@@ -1,3 +1,4 @@
+import AppShared
 import ComposableArchitecture
 import SwiftUI
 
@@ -7,10 +8,40 @@ public struct FeedView: View {
   }
 
   let store: StoreOf<FeedReducer>
+  @State var isRefreshing = false
 
   public var body: some View {
-    Text("FeedView")
-      .navigationTitle("Feed")
+    ScrollView {
+      LazyVStack {
+        ForEachStore(
+          store.scope(
+            state: \.statuses,
+            action: FeedReducer.Action.status
+          ),
+          content: StatusView.init(store:)
+        )
+      }
+    }
+    .navigationTitle("Feed")
+    .toolbar {
+      ToolbarItem {
+        if !isRefreshing {
+          WithViewStore(store, observe: \.isLoading) { viewStore in
+            if viewStore.state {
+              ProgressView()
+            }
+          }
+        }
+      }
+    }
+    .task {
+      await store.send(.view(.task)).finish()
+    }
+    .refreshTask {
+      isRefreshing = true
+      defer { isRefreshing = false }
+      await store.send(.view(.refreshTask)).finish()
+    }
   }
 }
 
@@ -18,6 +49,11 @@ public struct FeedView: View {
   NavigationStack {
     FeedView(store: Store(initialState: FeedReducer.State()) {
       FeedReducer()
+    } withDependencies: {
+      $0.mastodon.getAccountStatuses.run = { _ in
+        try await Task.sleep(for: .seconds(1))
+        return .preview
+      }
     })
   }
 }

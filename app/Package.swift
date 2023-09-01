@@ -59,6 +59,7 @@ let package = Package(
     .target(
       name: "FeedFeature",
       dependencies: [
+        .target(name: "AppShared"),
         .target(name: "Mastodon"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ],
