@@ -7,6 +7,7 @@ public struct ContactView: View {
   }
 
   let store: StoreOf<ContactReducer>
+  @ScaledMetric var linkButtonIconSize: CGFloat = 24
 
   public var body: some View {
     ScrollView {
@@ -129,47 +130,45 @@ public struct ContactView: View {
   }
 
   func linkButton(link: Contact.Link) -> some View {
-    BackgroundGeometryReader(geometry: \.size.width) { width in
-      Button {
-        store.send(.view(.linkButtonTapped(link)))
-      } label: {
-        Label {
-          Text(link.title)
-            .font(.callout.bold())
-            .lineLimit(1)
+    Button {
+      store.send(.view(.linkButtonTapped(link)))
+    } label: {
+      Label {
+        Text(link.title)
+          .font(.callout.bold())
+          .lineLimit(1)
 
-        } icon: {
-          Group {
-            if let iconURL = link.iconURL,
-               let symbolURL = SFSymbolURL(iconURL) {
-              Image(systemName: symbolURL.name)
-                .symbolRenderingMode(symbolURL.rendering)
+      } icon: {
+        Group {
+          if let iconURL = link.iconURL,
+             let symbolURL = SFSymbolURL(iconURL) {
+            Image(systemName: symbolURL.name)
+              .symbolRenderingMode(symbolURL.rendering)
+              .resizable()
+              .scaledToFit()
+
+          } else {
+            AsyncImage(url: link.iconURL) { image in
+              image
+                .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
 
-            } else {
-              AsyncImage(url: link.iconURL) { image in
-                image
-                  .renderingMode(.template)
-                  .resizable()
-                  .scaledToFit()
-
-              } placeholder: {
-                Image(systemName: "link")
-                  .resizable()
-                  .scaledToFit()
-                  .scaleEffect(CGSize(width: 0.75, height: 0.75))
-                  .opacity(0.5)
-              }
+            } placeholder: {
+              Image(systemName: "link")
+                .resizable()
+                .scaledToFit()
+                .scaleEffect(CGSize(width: 0.75, height: 0.75))
+                .opacity(0.5)
             }
           }
-          .frame(width: width.map { $0 / 8 })
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .frame(width: linkButtonIconSize)
       }
-      .controlSize(.large)
-      .buttonStyle(.borderedProminent)
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
+    .controlSize(.large)
+    .buttonStyle(.borderedProminent)
   }
 }
 
