@@ -133,8 +133,8 @@ public struct AdaptiveGridLayout: Layout {
     cache.elements.map { element in
       SubviewPlacement(
         at: CGPoint(
-          x: element.frame.origin.x + bounds.minX,
-          y: element.frame.origin.y + bounds.minY
+          x: bounds.origin.x + element.frame.origin.x,
+          y: bounds.origin.y + element.frame.origin.y
         ),
         anchor: .topLeading,
         proposal: ProposedViewSize(element.frame.size)
