@@ -28,6 +28,14 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:..\/app",
+        "identifier" : "AppSharedTests",
+        "name" : "AppSharedTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/app",
         "identifier" : "ContactFeatureTests",
         "name" : "ContactFeatureTests"
       }
