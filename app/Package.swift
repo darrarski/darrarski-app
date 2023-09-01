@@ -60,6 +60,9 @@ let package = Package(
       name: "FeedFeature",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ],
+      resources: [
+        .copy("statuses_preview.json"),
       ]
     ),
     .testTarget(
