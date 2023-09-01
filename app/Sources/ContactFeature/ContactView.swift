@@ -94,17 +94,7 @@ public struct ContactView: View {
     WithViewStore(store, observe: { $0.contact?.links ?? [] }) { viewStore in
       let links = viewStore.state
 
-      LazyVGrid(
-        columns: [
-          GridItem(
-            .adaptive(minimum: 128, maximum: 256),
-            spacing: 16,
-            alignment: .center
-          )
-        ],
-        alignment: .leading,
-        spacing: 16
-      ) {
+      AdaptiveGridLayout(spacing: CGSize(width: 16, height: 16)) {
         if links.isEmpty {
           let placeholders = [
             "Blob 123",
