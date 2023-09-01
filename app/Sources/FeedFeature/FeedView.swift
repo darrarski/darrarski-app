@@ -12,7 +12,7 @@ public struct FeedView: View {
 
   public var body: some View {
     ScrollView {
-      LazyVStack {
+      LazyVStack(spacing: 16) {
         ForEachStore(
           store.scope(
             state: \.statuses,
@@ -21,6 +21,9 @@ public struct FeedView: View {
           content: StatusView.init(store:)
         )
       }
+      .frame(maxWidth: 600)
+      .frame(maxWidth: .infinity)
+      .padding(16)
     }
     .navigationTitle("Feed")
     .toolbar {
