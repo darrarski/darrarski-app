@@ -108,6 +108,13 @@ extension Contact {
         iconURL: URL(string: "https://app.darrarski.pl/assets/icons/github.png")!,
         target: .system
       ),
+      Link(
+        id: "cal.com",
+        title: "Book a meeting",
+        url: URL(string: "https://cal.com/darrarski")!,
+        iconURL: URL(string: "sf-symbols:calendar.badge.plus")!,
+        target: .system
+      ),
     ]
   )
 }
