@@ -36,7 +36,11 @@ let package = Package(
       ]
     ),
     .target(
-      name: "AppShared"
+      name: "AppShared",
+      dependencies: [
+        .target(name: "Mastodon"),
+        .product(name: "SwiftHTMLtoMarkdown", package: "SwiftHTMLToMarkdown"),
+      ]
     ),
     .testTarget(
       name: "AppSharedTests",
