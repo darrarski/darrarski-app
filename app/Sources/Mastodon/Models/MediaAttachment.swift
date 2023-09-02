@@ -8,6 +8,7 @@ public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
     url: String,
     previewUrl: String?,
     remoteUrl: String?,
+    meta: JSONObject,
     description: String?,
     blurhash: String
   ) {
@@ -16,6 +17,7 @@ public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
     self.url = url
     self.previewUrl = previewUrl
     self.remoteUrl = remoteUrl
+    self.meta = meta
     self.description = description
     self.blurhash = blurhash
   }
@@ -25,8 +27,7 @@ public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
   public var url: String
   public var previewUrl: String?
   public var remoteUrl: String?
-  // TODO: Add meta properties
-  // public var meta: Meta
+  public var meta: JSONObject
   public var description: String?
   public var blurhash: String
 }
