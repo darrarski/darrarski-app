@@ -12,14 +12,21 @@ public struct FeedView: View {
 
   public var body: some View {
     ScrollView {
-      LazyVStack(spacing: 16) {
-        ForEachStore(
-          store.scope(
-            state: \.statuses,
-            action: FeedReducer.Action.status
-          ),
-          content: StatusView.init(store:)
-        )
+      WithViewStore(store, observe: \.statuses.ids) { viewStore in
+        LazyVStack(spacing: 16) {
+          ForEachStore(
+            store.scope(
+              state: \.statuses,
+              action: FeedReducer.Action.status
+            ),
+            content: StatusView.init(store:)
+          )
+          .transition(.asymmetric(
+            insertion: .scale(scale: 0.95, anchor: .center).combined(with: .opacity),
+            removal: .opacity
+          ))
+        }
+        .animation(.bouncy, value: viewStore.state)
       }
       .frame(maxWidth: 600)
       .frame(maxWidth: .infinity)
