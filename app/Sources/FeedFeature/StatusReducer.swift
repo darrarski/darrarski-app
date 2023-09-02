@@ -12,6 +12,7 @@ public struct StatusReducer: Reducer, Sendable {
 
     public var id: Status.ID { status.id }
     var status: Status
+    var displayStatus: Status { status.reblog?.value ?? status }
   }
 
   public enum Action: Equatable, Sendable {
