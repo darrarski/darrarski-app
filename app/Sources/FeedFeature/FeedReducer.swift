@@ -74,5 +74,8 @@ public struct FeedReducer: Reducer, Sendable {
         return .send(.fetchStatuses)
       }
     }
+    .forEach(\.statuses, action: /Action.status(id:action:)) {
+      StatusReducer()
+    }
   }
 }
