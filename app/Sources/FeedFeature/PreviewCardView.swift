@@ -1,3 +1,4 @@
+import AppShared
 import Mastodon
 import SwiftUI
 
@@ -86,7 +87,7 @@ struct PreviewCardView: View {
 
       if let footer = state.footer {
         Text(footer)
-          .foregroundStyle(.link)
+          .foregroundStyle(Color.appTint)
           .font(.subheadline)
           .lineLimit(1)
       }
@@ -102,4 +103,5 @@ struct PreviewCardView: View {
     ))
     .padding()
   }
+  .tint(.appTint)
 }

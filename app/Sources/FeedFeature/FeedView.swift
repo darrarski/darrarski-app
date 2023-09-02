@@ -114,4 +114,5 @@ public struct FeedView: View {
       FeedReducer()
     })
   }
+  .tint(.appTint)
 }

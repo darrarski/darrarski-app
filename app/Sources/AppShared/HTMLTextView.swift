@@ -44,4 +44,5 @@ public struct HTMLTextView: View {
       }
     }
   }
+  .tint(.appTint)
 }

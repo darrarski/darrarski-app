@@ -54,4 +54,5 @@ public struct StatusView: View {
     })
     .padding()
   }
+  .tint(.appTint)
 }

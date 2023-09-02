@@ -1,3 +1,4 @@
+import AppShared
 import ComposableArchitecture
 import ContactFeature
 import FeedFeature
@@ -14,16 +15,19 @@ public struct AppView: View {
   @State var columnVisibility: NavigationSplitViewVisibility = .all
 
   public var body: some View {
+    Group {
 #if os(macOS)
-    splitView
-      .frame(minHeight: 640)
-#elseif os(iOS)
-    if horizontalSizeClass == .compact {
-      tabsView
-    } else {
       splitView
-    }
+        .frame(minHeight: 640)
+#elseif os(iOS)
+      if horizontalSizeClass == .compact {
+        tabsView
+      } else {
+        splitView
+      }
 #endif
+    }
+    .tint(.appTint)
   }
 
   @MainActor

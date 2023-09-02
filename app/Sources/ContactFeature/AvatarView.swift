@@ -25,6 +25,6 @@ struct AvatarView: View {
     .aspectRatio(contentMode: .fit)
     .background(Color.secondary.opacity(0.2))
     .clipShape(Circle())
-    .shadow(color: .accentColor, radius: 10, x: 0, y: 0)
+    .shadow(color: .appTint, radius: 10, x: 0, y: 0)
   }
 }

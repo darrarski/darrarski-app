@@ -1,3 +1,4 @@
+import AppShared
 import Mastodon
 import SwiftUI
 
@@ -64,4 +65,5 @@ struct StatusHeaderView: View {
     [Status].preview.first!
   ))
   .padding()
+  .tint(.appTint)
 }
