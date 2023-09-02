@@ -7,11 +7,17 @@ struct PreviewCardView: View {
       imageURL = card.image.flatMap(URL.init)
       title = card.title
       description = card.description
+      if !card.providerName.isEmpty {
+        footer = card.providerName
+      } else {
+        footer = URL(string: card.url)?.host()
+      }
     }
 
     var imageURL: URL?
     var title: String
     var description: String
+    var footer: String?
   }
 
   enum Layout: Equatable {
@@ -77,6 +83,13 @@ struct PreviewCardView: View {
         .foregroundStyle(.primary)
         .font(.subheadline)
         .fixedSize(horizontal: false, vertical: true)
+
+      if let footer = state.footer {
+        Text(footer)
+          .foregroundStyle(.link)
+          .font(.subheadline)
+          .lineLimit(1)
+      }
     }
     .padding()
   }
