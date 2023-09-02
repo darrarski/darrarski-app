@@ -16,6 +16,7 @@ public struct AppView: View {
   public var body: some View {
 #if os(macOS)
     splitView
+      .frame(minHeight: 640)
 #elseif os(iOS)
     if horizontalSizeClass == .compact {
       tabsView
@@ -50,6 +51,9 @@ public struct AppView: View {
 #endif
       } detail: {
         sectionView(selectedSection)
+#if os(macOS)
+          .frame(minWidth: 640)
+#endif
       }
       .navigationSplitViewStyle(.balanced)
     }
