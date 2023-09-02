@@ -1,3 +1,4 @@
+import AppShared
 import ComposableArchitecture
 import Mastodon
 import SwiftUI
@@ -17,6 +18,14 @@ public struct StatusView: View {
         StatusHeaderView(state: viewStore.state)
       }
 
+      WithViewStore(store, observe: \.displayStatus.content) { viewStore in
+        HTMLTextView(html: viewStore.state)
+      }
+      .foregroundStyle(.primary)
+      .font(.body)
+      .multilineTextAlignment(.leading)
+      .frame(maxWidth: .infinity, alignment: .leading)
+
       IfLetStore(store.scope(
         state: \.displayStatus.card,
         action: { $0 }
@@ -33,13 +42,17 @@ public struct StatusView: View {
         }
       }
     }
+    .padding(.bottom)
   }
 }
 
 #Preview {
-  StatusView(store: Store(initialState: StatusReducer.State(
-    status: [Status].preview[0]
-  )) {
-    StatusReducer()
-  })
+  ScrollView {
+    StatusView(store: Store(initialState: StatusReducer.State(
+      status: [Status].preview[0]
+    )) {
+      StatusReducer()
+    })
+    .padding()
+  }
 }
