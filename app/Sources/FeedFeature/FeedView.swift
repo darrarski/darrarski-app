@@ -26,7 +26,7 @@ public struct FeedView: View {
   public var body: some View {
     ScrollView {
       WithViewStore(store, observe: ViewState.init) { viewStore in
-        LazyVStack(spacing: 16) {
+        LazyVStack(spacing: 32) {
           if viewStore.showPlaceholder {
             placeholderView
           } else {

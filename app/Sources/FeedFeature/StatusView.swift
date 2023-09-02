@@ -42,7 +42,6 @@ public struct StatusView: View {
         }
       }
     }
-    .padding(.bottom)
   }
 }
 
