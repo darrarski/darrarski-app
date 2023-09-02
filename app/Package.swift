@@ -16,6 +16,7 @@ let package = Package(
     .library(name: "ProjectsFeature", targets: ["ProjectsFeature"]),
   ],
   dependencies: [
+    .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.0"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.0.0"),
   ],
   targets: [
