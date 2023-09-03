@@ -30,6 +30,12 @@ public struct StatusView: View {
       .multilineTextAlignment(.leading)
       .frame(maxWidth: .infinity, alignment: .leading)
 
+      ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
+        WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
+          MediaAttachmentView(state: viewStore.state)
+        }
+      }
+
       IfLetStore(store.scope(
         state: \.displayStatus.card,
         action: { $0 }
