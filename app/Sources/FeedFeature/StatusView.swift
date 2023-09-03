@@ -15,7 +15,12 @@ public struct StatusView: View {
       WithViewStore(store) {
         StatusHeaderView.State($0.displayStatus)
       } content: { viewStore in
-        StatusHeaderView(state: viewStore.state)
+        Button {
+          viewStore.send(.view(.headerTapped))
+        } label: {
+          StatusHeaderView(state: viewStore.state)
+        }
+        .buttonStyle(.plain)
       }
 
       WithViewStore(store, observe: \.displayStatus.content) { viewStore in
