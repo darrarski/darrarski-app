@@ -12,7 +12,21 @@ public struct StatusReducer: Reducer, Sendable {
 
     public var id: Status.ID { status.id }
     var status: Status
-    var displayStatus: Status { status.reblog?.value ?? status }
+
+    var displayStatus: Status {
+      status.reblog?.value ?? status
+    }
+
+    var attachments: IdentifiedArrayOf<MediaAttachment> {
+      var attachments = IdentifiedArrayOf<MediaAttachment>()
+      attachments.append(contentsOf: status.mediaAttachments)
+      for attachment in (status.reblog?.value.mediaAttachments ?? []) {
+        if attachments[id: attachment.id] == nil {
+          attachments.append(attachment)
+        }
+      }
+      return attachments
+    }
   }
 
   public enum Action: Equatable, Sendable {

@@ -62,4 +62,22 @@ final class StatusReducerTests: XCTestCase {
       statusWithoutReblog
     )
   }
+
+  func testStateAttachments() {
+    let allStatuses = [Status].preview
+    let allStatusAttachments = allStatuses.flatMap(\.mediaAttachments)
+    let allReblogs = allStatuses.compactMap(\.reblog?.value)
+    let allRebloggedAttachments = allReblogs.flatMap(\.mediaAttachments)
+    let allAttachments = (allStatusAttachments + allRebloggedAttachments)
+    var status = [Status].preview.first { $0.reblog != nil }!
+    status.mediaAttachments = Array(allAttachments[0...2])
+    status.reblog!.value.mediaAttachments = Array(allAttachments[1...3])
+    
+    XCTAssertNoDifference(StatusReducer.State(status: status).attachments, [
+      allAttachments[0],
+      allAttachments[1],
+      allAttachments[2],
+      allAttachments[3],
+    ])
+  }
 }
