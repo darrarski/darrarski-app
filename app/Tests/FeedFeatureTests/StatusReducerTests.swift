@@ -27,4 +27,25 @@ final class StatusReducerTests: XCTestCase {
       XCTAssertNoDifference($0, [cardURL])
     }
   }
+
+  func testViewLinkTapped() async {
+    let url = URL(string: "https://darrarski.pl")!
+    let didOpenURL = ActorIsolated<[URL]>([])
+
+    let store = TestStore(initialState: StatusReducer.State(
+      status: [Status].preview.first!
+    )) {
+      StatusReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.linkTapped(url)))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [url])
+    }
+  }
 }

@@ -20,6 +20,10 @@ public struct StatusView: View {
 
       WithViewStore(store, observe: \.displayStatus.content) { viewStore in
         HTMLTextView(html: viewStore.state)
+          .environment(\.openURL, OpenURLAction { url in
+            viewStore.send(.view(.linkTapped(url)))
+            return .discarded
+          })
       }
       .foregroundStyle(.primary)
       .font(.body)

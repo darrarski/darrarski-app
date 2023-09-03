@@ -20,6 +20,7 @@ public struct StatusReducer: Reducer, Sendable {
 
     public enum View: Equatable, Sendable {
       case cardTapped(PreviewCard)
+      case linkTapped(URL)
     }
   }
 
@@ -36,6 +37,9 @@ public struct StatusReducer: Reducer, Sendable {
             await openURL(url)
           }
         }
+
+      case .view(.linkTapped(let url)):
+        return .run { _ in await openURL(url) }
       }
     }
   }
