@@ -49,15 +49,15 @@ extension JSONObject {
 
 extension JSONObject {
   public subscript(_ arrayIndex: [JSONObject].Index) -> JSONObject? {
-    array?[arrayIndex]
+    arrayValue?[arrayIndex]
   }
 
   public subscript(_ dictKey: String) -> JSONObject? {
-    dict?[dictKey]
+    dictValue?[dictKey]
   }
 
   public subscript(dynamicMember string: String) -> JSONObject? {
-    self[string]
+    dictValue?[string]
   }
 }
 
