@@ -82,20 +82,6 @@ extension JSONObject: CustomDebugStringConvertible {
   }
 }
 
-struct JSONCodingKey: CodingKey {
-  init?(stringValue: String) {
-    self.stringValue = stringValue
-  }
-
-  init?(intValue: Int) {
-    self.init(stringValue: "\(intValue)")
-    self.intValue = intValue
-  }
-
-  var stringValue: String
-  var intValue: Int?
-}
-
 extension JSONObject: Decodable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
