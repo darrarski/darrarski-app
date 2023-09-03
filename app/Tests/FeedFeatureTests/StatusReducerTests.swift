@@ -48,4 +48,18 @@ final class StatusReducerTests: XCTestCase {
       XCTAssertNoDifference($0, [url])
     }
   }
+
+  func testStateDisplayStatus() {
+    let statusWithReblog = [Status].preview.first { $0.reblog != nil }!
+    let statusWithoutReblog = [Status].preview.first { $0.reblog == nil }!
+
+    XCTAssertNoDifference(
+      StatusReducer.State(status: statusWithReblog).displayStatus,
+      statusWithReblog.reblog!.value
+    )
+    XCTAssertNoDifference(
+      StatusReducer.State(status: statusWithoutReblog).displayStatus,
+      statusWithoutReblog
+    )
+  }
 }
