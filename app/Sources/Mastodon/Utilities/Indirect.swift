@@ -8,6 +8,7 @@
 ///
 /// let model = Model(id: 1, next: Model(id: 2, next: nil))
 /// ```
+@dynamicMemberLookup
 public enum Indirect<Value> {
   indirect case indirect(Value)
 
@@ -25,6 +26,15 @@ public enum Indirect<Value> {
     set {
       self = .indirect(newValue)
     }
+  }
+
+  public subscript<T>(dynamicMember keyPath: KeyPath<Value, T>) -> T {
+    value[keyPath: keyPath]
+  }
+
+  public subscript<T>(dynamicMember keyPath: WritableKeyPath<Value, T>) -> T {
+    get { value[keyPath: keyPath] }
+    set { value[keyPath: keyPath] = newValue }
   }
 }
 

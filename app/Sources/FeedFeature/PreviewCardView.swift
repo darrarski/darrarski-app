@@ -99,7 +99,7 @@ struct PreviewCardView: View {
 #Preview {
   ScrollView {
     PreviewCardView(state: PreviewCardView.State(
-      [Status].preview.first!.reblog!.value.card!
+      [Status].preview.first!.reblog!.card!
     ))
     .padding()
   }

@@ -71,7 +71,7 @@ final class StatusReducerTests: XCTestCase {
     let allAttachments = (allStatusAttachments + allRebloggedAttachments)
     var status = [Status].preview.first { $0.reblog != nil }!
     status.mediaAttachments = Array(allAttachments[0...2])
-    status.reblog!.value.mediaAttachments = Array(allAttachments[1...3])
+    status.reblog!.mediaAttachments = Array(allAttachments[1...3])
     
     XCTAssertNoDifference(StatusReducer.State(status: status).attachments, [
       allAttachments[0],

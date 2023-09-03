@@ -39,7 +39,7 @@ public struct HTMLTextView: View {
       if !content.isEmpty {
         HTMLTextView(html: content)
       }
-      if let content = status.reblog?.value.content, !content.isEmpty {
+      if let content = status.reblog?.content, !content.isEmpty {
         HTMLTextView(html: content)
       }
     }

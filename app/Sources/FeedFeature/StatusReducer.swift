@@ -20,7 +20,7 @@ public struct StatusReducer: Reducer, Sendable {
     var attachments: IdentifiedArrayOf<MediaAttachment> {
       var attachments = IdentifiedArrayOf<MediaAttachment>()
       attachments.append(contentsOf: status.mediaAttachments)
-      for attachment in (status.reblog?.value.mediaAttachments ?? []) {
+      for attachment in (status.reblog?.mediaAttachments ?? []) {
         if attachments[id: attachment.id] == nil {
           attachments.append(attachment)
         }
