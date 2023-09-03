@@ -12,7 +12,7 @@ struct MediaAttachmentView: View {
       } else if let ratio = attachemnt.meta["small"]?["aspect"]?.double {
         aspectRatio = ratio
       } else {
-        aspectRatio =  16/9
+        aspectRatio = 16/9
       }
     }
 
