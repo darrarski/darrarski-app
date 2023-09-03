@@ -49,6 +49,27 @@ final class StatusReducerTests: XCTestCase {
     }
   }
 
+  func testViewAttachmentTapped() async {
+    let status = [Status].preview.first { !$0.mediaAttachments.isEmpty }!
+    let attachment = status.mediaAttachments.first!
+    let attachmentURL = URL(string: attachment.url)!
+    let didOpenURL = ActorIsolated<[URL]>([])
+
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.attachmentTapped(attachment.id)))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [attachmentURL])
+    }
+  }
+
   func testStateDisplayStatus() {
     let statusWithReblog = [Status].preview.first { $0.reblog != nil }!
     let statusWithoutReblog = [Status].preview.first { $0.reblog == nil }!

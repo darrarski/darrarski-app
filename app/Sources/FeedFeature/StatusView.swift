@@ -32,7 +32,12 @@ public struct StatusView: View {
 
       ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
         WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
-          MediaAttachmentView(state: viewStore.state)
+          Button {
+            viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
+          } label: {
+            MediaAttachmentView(state: viewStore.state)
+          }
+          .buttonStyle(.plain)
         }
       }
 

@@ -33,6 +33,7 @@ public struct StatusReducer: Reducer, Sendable {
     case view(View)
 
     public enum View: Equatable, Sendable {
+      case attachmentTapped(MediaAttachment.ID)
       case linkTapped(URL)
       case previewCardTapped
     }
@@ -45,6 +46,13 @@ public struct StatusReducer: Reducer, Sendable {
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
+      case .view(.attachmentTapped(let id)):
+        return .run { [state] _ in
+          if let url = state.attachments[id: id].map(\.url).flatMap(URL.init) {
+            await openURL(url)
+          }
+        }
+
       case .view(.linkTapped(let url)):
         return .run { _ in await openURL(url) }
 
