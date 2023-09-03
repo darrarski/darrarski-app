@@ -1,5 +1,6 @@
 import Foundation
 
+@dynamicMemberLookup
 public enum JSONObject: Equatable, Sendable {
   case null
   case bool(Bool)
@@ -36,17 +37,23 @@ extension JSONObject {
     return value
   }
 
-  public subscript(_ arrayIndex: [JSONObject].Index) -> JSONObject? {
-    array?[arrayIndex]
-  }
-
   public var dict: [String: JSONObject]? {
     guard case .dict(let value) = self else { return nil }
     return value
   }
+}
+
+extension JSONObject {
+  public subscript(_ arrayIndex: [JSONObject].Index) -> JSONObject? {
+    array?[arrayIndex]
+  }
 
   public subscript(_ dictKey: String) -> JSONObject? {
     dict?[dictKey]
+  }
+
+  public subscript(dynamicMember string: String) -> JSONObject? {
+    self[string]
   }
 }
 
