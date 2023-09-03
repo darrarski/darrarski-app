@@ -12,32 +12,36 @@ public enum JSONObject: Equatable, Sendable {
 }
 
 extension JSONObject {
-  public var bool: Bool? {
+  public var isNull: Bool {
+    self == .null
+  }
+
+  public var boolValue: Bool? {
     guard case .bool(let value) = self else { return nil }
     return value
   }
 
-  public var int: Int? {
+  public var intValue: Int? {
     guard case .int(let value) = self else { return nil }
     return value
   }
 
-  public var double: Double? {
+  public var doubleValue: Double? {
     guard case .double(let value) = self else { return nil }
     return value
   }
 
-  public var string: String? {
+  public var stringValue: String? {
     guard case .string(let value) = self else { return nil }
     return value
   }
 
-  public var array: [JSONObject]? {
+  public var arrayValue: [JSONObject]? {
     guard case .array(let value) = self else { return nil }
     return value
   }
 
-  public var dict: [String: JSONObject]? {
+  public var dictValue: [String: JSONObject]? {
     guard case .dict(let value) = self else { return nil }
     return value
   }

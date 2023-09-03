@@ -7,9 +7,9 @@ struct MediaAttachmentView: View {
     init(_ attachemnt: MediaAttachment) {
       type = attachemnt.type
       previewURL = attachemnt.previewUrl.flatMap(URL.init)
-      if let ratio = attachemnt.meta.original?.aspect?.double {
+      if let ratio = attachemnt.meta.original?.aspect?.doubleValue {
         aspectRatio = ratio
-      } else if let ratio = attachemnt.meta.small?.aspect?.double {
+      } else if let ratio = attachemnt.meta.small?.aspect?.doubleValue {
         aspectRatio = ratio
       } else {
         aspectRatio = 16/9
