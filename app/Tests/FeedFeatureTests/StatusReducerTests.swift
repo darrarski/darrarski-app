@@ -5,7 +5,7 @@ import XCTest
 
 @MainActor
 final class StatusReducerTests: XCTestCase {
-  func testViewCardTapped() async {
+  func testViewPreviewCardTapped() async {
     let status = [Status].preview.first { $0.card != nil }!
     let card = status.card!
     let cardURL = URL(string: card.url)!
@@ -22,7 +22,7 @@ final class StatusReducerTests: XCTestCase {
       }
     }
 
-    await store.send(.view(.cardTapped(card)))
+    await store.send(.view(.previewCardTapped))
     await didOpenURL.withValue {
       XCTAssertNoDifference($0, [cardURL])
     }

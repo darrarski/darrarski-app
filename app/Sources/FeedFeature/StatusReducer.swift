@@ -3,7 +3,7 @@ import Foundation
 import Mastodon
 
 public struct StatusReducer: Reducer, Sendable {
-  public struct State: Equatable, Identifiable {
+  public struct State: Equatable, Sendable, Identifiable {
     public init(
       status: Status
     ) {
@@ -19,8 +19,8 @@ public struct StatusReducer: Reducer, Sendable {
     case view(View)
 
     public enum View: Equatable, Sendable {
-      case cardTapped(PreviewCard)
       case linkTapped(URL)
+      case previewCardTapped
     }
   }
 
@@ -31,15 +31,15 @@ public struct StatusReducer: Reducer, Sendable {
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case .view(.cardTapped(let card)):
-        return .run { _ in
-          if let url = URL(string: card.url) {
+      case .view(.linkTapped(let url)):
+        return .run { _ in await openURL(url) }
+
+      case .view(.previewCardTapped):
+        return .run { [state] _ in
+          if let url = (state.status.card?.url).flatMap(URL.init) {
             await openURL(url)
           }
         }
-
-      case .view(.linkTapped(let url)):
-        return .run { _ in await openURL(url) }
       }
     }
   }

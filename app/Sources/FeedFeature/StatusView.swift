@@ -36,9 +36,7 @@ public struct StatusView: View {
       )) { store in
         WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
           Button {
-            store.withState { card in
-              _ = store.send(.view(.cardTapped(card)))
-            }
+            viewStore.send(.view(.previewCardTapped))
           } label: {
             PreviewCardView(state: viewStore.state)
           }
