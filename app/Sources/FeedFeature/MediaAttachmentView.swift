@@ -14,11 +14,13 @@ struct MediaAttachmentView: View {
       } else {
         aspectRatio = 16/9
       }
+      url = URL(string: attachemnt.url)
     }
 
     var type: MediaAttachment.MediaAttachmentType
     var previewURL: URL?
     var aspectRatio: CGFloat?
+    var url: URL?
   }
 
   var state: State
@@ -44,7 +46,17 @@ struct MediaAttachmentView: View {
       EmptyView()
 
     case .video:
-      EmptyView()
+      cardView {
+        ZStack {
+          AsyncImage(url: state.previewURL) { image in
+            image.resizable().scaledToFill()
+          } placeholder: {
+            Color.clear
+          }
+
+          VideoPreviewView(url: state.url)
+        }
+      }
 
     case .audio:
       EmptyView()
