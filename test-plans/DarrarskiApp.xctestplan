@@ -47,6 +47,13 @@
     {
       "target" : {
         "containerPath" : "container:..\/app",
+        "identifier" : "MastodonTests",
+        "name" : "MastodonTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/app",
         "identifier" : "ProjectsFeatureTests",
         "name" : "ProjectsFeatureTests"
       }

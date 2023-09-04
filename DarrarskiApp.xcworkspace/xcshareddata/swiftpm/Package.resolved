@@ -82,6 +82,24 @@
       }
     },
     {
+      "identity" : "swifthtmltomarkdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git",
+      "state" : {
+        "revision" : "88d011155041b84efd333505c6fcbcaa4fda3362",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scinfu/SwiftSoup.git",
+      "state" : {
+        "revision" : "8b6cf29eead8841a1fa7822481cb3af4ddaadba6",
+        "version" : "2.6.1"
+      }
+    },
+    {
       "identity" : "swiftui-navigation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",

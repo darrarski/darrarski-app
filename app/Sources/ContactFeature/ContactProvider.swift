@@ -25,7 +25,8 @@ extension ContactProvider: TestDependencyKey {
   )
 
   public static let previewValue = ContactProvider {
-    .preview
+    try await Task.sleep(for: .seconds(1))
+    return .preview
   }
 }
 

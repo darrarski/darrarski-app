@@ -12,15 +12,18 @@ let package = Package(
     .library(name: "AppShared", targets: ["AppShared"]),
     .library(name: "ContactFeature", targets: ["ContactFeature"]),
     .library(name: "FeedFeature", targets: ["FeedFeature"]),
+    .library(name: "Mastodon", targets: ["Mastodon"]),
     .library(name: "ProjectsFeature", targets: ["ProjectsFeature"]),
   ],
   dependencies: [
+    .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.0"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.0.0"),
   ],
   targets: [
     .target(
       name: "AppFeature",
       dependencies: [
+        .target(name: "AppShared"),
         .target(name: "ContactFeature"),
         .target(name: "FeedFeature"),
         .target(name: "ProjectsFeature"),
@@ -34,7 +37,14 @@ let package = Package(
       ]
     ),
     .target(
-      name: "AppShared"
+      name: "AppShared",
+      dependencies: [
+        .target(name: "Mastodon"),
+        .product(name: "SwiftHTMLtoMarkdown", package: "SwiftHTMLToMarkdown"),
+      ],
+      resources: [
+        .process("Resources/Media.xcassets"),
+      ]
     ),
     .testTarget(
       name: "AppSharedTests",
@@ -58,6 +68,8 @@ let package = Package(
     .target(
       name: "FeedFeature",
       dependencies: [
+        .target(name: "AppShared"),
+        .target(name: "Mastodon"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
@@ -68,8 +80,24 @@ let package = Package(
       ]
     ),
     .target(
+      name: "Mastodon",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ],
+      resources: [
+        .copy("Resources/statuses_preview.json"),
+      ]
+    ),
+    .testTarget(
+      name: "MastodonTests",
+      dependencies: [
+        .target(name: "Mastodon"),
+      ]
+    ),
+    .target(
       name: "ProjectsFeature",
       dependencies: [
+        .target(name: "AppShared"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),

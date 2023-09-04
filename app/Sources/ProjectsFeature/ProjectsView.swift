@@ -1,3 +1,4 @@
+import AppShared
 import ComposableArchitecture
 import SwiftUI
 
@@ -20,4 +21,5 @@ public struct ProjectsView: View {
       ProjectsReducer()
     })
   }
+  .tint(.appTint)
 }

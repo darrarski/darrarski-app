@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "CF5221AE-F04B-4A67-9F11-A62E282B1367",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "MastodonTests",
+        "name" : "MastodonTests"
+      }
+    }
+  ],
+  "version" : 1
+}
