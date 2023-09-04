@@ -56,10 +56,21 @@ public struct StatusReducer: Reducer, Sendable {
         return .none
 
       case .view(.attachmentTapped(let id)):
-        if let url = state.attachments[id: id].map(\.url).flatMap(URL.init) {
-          state.quickLookItem = url
+        guard let attachment = state.attachments[id: id],
+              let url = URL(string: attachment.url)
+        else {
+          return .none
         }
-        return .none
+#if os(macOS)
+        if attachment.type == .image {
+          state.quickLookItem = url
+          return .none
+        } else {
+          return .run { _ in await openURL(url) }
+        }
+#else
+        return .run { _ in await openURL(url) }
+#endif
 
       case .view(.headerTapped):
         return .run { [state] _ in

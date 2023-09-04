@@ -49,11 +49,44 @@ final class StatusReducerTests: XCTestCase {
     }
   }
 
-  func testViewAttachmentTapped() async {
-    let status = [Status].preview.first { !$0.mediaAttachments.isEmpty }!
-    let attachment = status.mediaAttachments.first!
-    let attachmentURL = URL(string: attachment.url)!
+  func testViewAttachmentTapped_Invalid() async {
+    let status = [Status].preview.first { $0.mediaAttachments.isEmpty }!
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    }
 
+    await store.send(.view(.attachmentTapped("invalid-id")))
+  }
+
+  func testViewAttachmentTapped_Video() async {
+    let status = [Status].preview
+      .first { $0.reblog?.mediaAttachments.contains { $0.type == .video } == true }!
+    let attachment = status.reblog!.mediaAttachments
+      .first { $0.type == .video }!
+    let attachmentURL = URL(string: attachment.url)!
+    let didOpenURL = ActorIsolated<[URL]>([])
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.attachmentTapped(attachment.id)))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [attachmentURL])
+    }
+  }
+
+  func testViewAttachmentTapped_Image() async {
+    let status = [Status].preview
+      .first { $0.mediaAttachments.contains { $0.type == .image } }!
+    let attachment = status.mediaAttachments
+      .first { $0.type == .image }!
+    let attachmentURL = URL(string: attachment.url)!
+#if os(macOS)
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
     }
@@ -61,9 +94,36 @@ final class StatusReducerTests: XCTestCase {
     await store.send(.view(.attachmentTapped(attachment.id))) {
       $0.quickLookItem = attachmentURL
     }
-    let newURL = URL(string: "https://darrarski.pl/test")!
-    await store.send(.view(.quickLookItemChanged(newURL))) {
-      $0.quickLookItem = newURL
+    await store.send(.quickLookItem(.dismiss)) {
+      $0.quickLookItem = nil
+    }
+#else
+    let didOpenURL = ActorIsolated<[URL]>([])
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.attachmentTapped(attachment.id)))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [attachmentURL])
+    }
+#endif
+  }
+
+  func testViewQuickLookItemChanged() async {
+    let status = [Status].preview.first!
+    let url = URL(string: "https://darrarski.pl/test")!
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    }
+
+    await store.send(.view(.quickLookItemChanged(url))) {
+      $0.quickLookItem = url
     }
     await store.send(.quickLookItem(.dismiss)) {
       $0.quickLookItem = nil
