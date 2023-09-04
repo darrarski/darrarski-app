@@ -5,13 +5,16 @@ import Mastodon
 public struct StatusReducer: Reducer, Sendable {
   public struct State: Equatable, Sendable, Identifiable {
     public init(
-      status: Status
+      status: Status,
+      quickLookItem: URL? = nil
     ) {
       self.status = status
+      self.quickLookItem = quickLookItem
     }
 
     public var id: Status.ID { status.id }
     var status: Status
+    @PresentationState var quickLookItem: URL?
 
     var displayStatus: Status {
       status.reblog?.value ?? status
@@ -30,6 +33,7 @@ public struct StatusReducer: Reducer, Sendable {
   }
 
   public enum Action: Equatable, Sendable {
+    case quickLookItem(PresentationAction<Never>)
     case view(View)
 
     public enum View: Equatable, Sendable {
@@ -37,6 +41,7 @@ public struct StatusReducer: Reducer, Sendable {
       case headerTapped
       case linkTapped(URL)
       case previewCardTapped
+      case quickLookItemChanged(URL)
     }
   }
 
@@ -47,12 +52,14 @@ public struct StatusReducer: Reducer, Sendable {
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
+      case .quickLookItem(_):
+        return .none
+
       case .view(.attachmentTapped(let id)):
-        return .run { [state] _ in
-          if let url = state.attachments[id: id].map(\.url).flatMap(URL.init) {
-            await openURL(url)
-          }
+        if let url = state.attachments[id: id].map(\.url).flatMap(URL.init) {
+          state.quickLookItem = url
         }
+        return .none
 
       case .view(.headerTapped):
         return .run { [state] _ in
@@ -70,7 +77,14 @@ public struct StatusReducer: Reducer, Sendable {
             await openURL(url)
           }
         }
+
+      case .view(.quickLookItemChanged(let url)):
+        state.quickLookItem = url
+        return .none
       }
+    }
+    .ifLet(\.$quickLookItem, action: /Action.quickLookItem) {
+      EmptyReducer()
     }
   }
 }

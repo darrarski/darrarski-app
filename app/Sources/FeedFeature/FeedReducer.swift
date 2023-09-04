@@ -53,7 +53,7 @@ public struct FeedReducer: Reducer, Sendable {
         switch result {
         case .success(let statuses):
           state.statuses = .init(
-            uniqueElements: statuses.map(StatusReducer.State.init(status:))
+            uniqueElements: statuses.map { StatusReducer.State(status:$0) }
           )
 
         case .failure(_):

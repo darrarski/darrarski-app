@@ -26,7 +26,7 @@ final class FeedReducerTests: XCTestCase {
     await store.receive(.fetchStatusesResult(.success(statuses))) {
       $0.isLoading = false
       $0.statuses = .init(
-        uniqueElements: statuses.map(StatusReducer.State.init)
+        uniqueElements: statuses.map { StatusReducer.State(status: $0) }
       )
     }
   }

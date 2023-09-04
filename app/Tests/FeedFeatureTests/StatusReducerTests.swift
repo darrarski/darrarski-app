@@ -53,20 +53,20 @@ final class StatusReducerTests: XCTestCase {
     let status = [Status].preview.first { !$0.mediaAttachments.isEmpty }!
     let attachment = status.mediaAttachments.first!
     let attachmentURL = URL(string: attachment.url)!
-    let didOpenURL = ActorIsolated<[URL]>([])
 
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
-    } withDependencies: {
-      $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
-        return true
-      }
     }
 
-    await store.send(.view(.attachmentTapped(attachment.id)))
-    await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [attachmentURL])
+    await store.send(.view(.attachmentTapped(attachment.id))) {
+      $0.quickLookItem = attachmentURL
+    }
+    let newURL = URL(string: "https://darrarski.pl/test")!
+    await store.send(.view(.quickLookItemChanged(newURL))) {
+      $0.quickLookItem = newURL
+    }
+    await store.send(.quickLookItem(.dismiss)) {
+      $0.quickLookItem = nil
     }
   }
 

@@ -1,6 +1,7 @@
 import AppShared
 import ComposableArchitecture
 import Mastodon
+import QuickLook
 import SwiftUI
 
 public struct StatusView: View {
@@ -58,6 +59,20 @@ public struct StatusView: View {
           }
           .buttonStyle(.plain)
         }
+      }
+    }
+    .background {
+      WithViewStore(store, observe: \.quickLookItem) { viewStore in
+        Color.clear.quickLookPreview(Binding(
+          get: { viewStore.state },
+          set: { url, transaction in
+            if let url {
+              viewStore.send(.view(.quickLookItemChanged(url)), transaction: transaction)
+            } else {
+              viewStore.send(.quickLookItem(.dismiss), transaction: transaction)
+            }
+          }
+        ))
       }
     }
   }
