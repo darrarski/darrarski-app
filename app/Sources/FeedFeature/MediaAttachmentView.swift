@@ -33,10 +33,7 @@ struct MediaAttachmentView: View {
     case .image:
       cardView {
         AsyncImage(url: state.previewURL) { image in
-          image
-            .resizable()
-            .scaledToFill()
-
+          image.resizable().scaledToFill()
         } placeholder: {
           Color.clear
         }
