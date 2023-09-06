@@ -1,0 +1,49 @@
+{
+  "avatarURL": "https://2.gravatar.com/avatar/6050a5cb46e4ae93355bbe6c95931ea5?s=512",
+  "name": "Dariusz Rybicki",
+  "description": "Software Engineer,\niOS & Mac App Developer,\nScrum Master, Mentor",
+  "links": [
+    {
+      "id": "mail",
+      "title": "Mail",
+      "url": "mailto:dariusz@darrarski.pl",
+      "iconURL": "sf-symbols:envelope.fill",
+      "target": "system"
+    },
+    {
+      "id": "mastodon.social",
+      "title": "Mastodon",
+      "url": "https://mastodon.social/@darrarski",
+      "iconURL": "https://app.darrarski.pl/assets/icons/mastodon.png",
+      "target": "system"
+    },
+    {
+      "id": "twitter",
+      "title": "Twitter",
+      "url": "https://twitter.com/darrarski",
+      "iconURL": "https://app.darrarski.pl/assets/icons/twitter.png",
+      "target": "system"
+    },
+    {
+      "id": "linked-in",
+      "title": "Linked In",
+      "url": "https://www.linkedin.com/in/darrarski",
+      "iconURL": "https://app.darrarski.pl/assets/icons/linked-in.png",
+      "target": "system"
+    },
+    {
+      "id": "github",
+      "title": "GitHub",
+      "url": "https://github.com/darrarski",
+      "iconURL": "https://app.darrarski.pl/assets/icons/github.png",
+      "target": "system"
+    },
+    {
+      "id": "cal.com",
+      "title": "Book a meeting",
+      "url": "https://cal.com/darrarski",
+      "iconURL": "sf-symbols:calendar.badge.plus",
+      "target": "system"
+    }
+  ]
+}

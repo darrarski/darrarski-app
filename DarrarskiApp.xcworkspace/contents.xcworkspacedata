@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
       location = "group:project/DarrarskiApp.xcodeproj">
    </FileRef>
    <FileRef
@@ -9,5 +12,8 @@
    </FileRef>
    <FileRef
       location = "group:test-plans">
+   </FileRef>
+   <FileRef
+      location = "group:web">
    </FileRef>
 </Workspace>
