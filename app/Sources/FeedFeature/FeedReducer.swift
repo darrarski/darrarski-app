@@ -31,6 +31,7 @@ public struct FeedReducer: Reducer, Sendable {
   public init() {}
 
   @Dependency(\.mastodon) var mastodon
+  static let mastodonAccountId = "108131495937150285"
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
@@ -42,7 +43,7 @@ public struct FeedReducer: Reducer, Sendable {
         return .run { send in
           let result = await TaskResult {
             try await mastodon.getAccountStatuses(
-              accountId: "108131495937150285",
+              accountId: Self.mastodonAccountId,
               limit: 40,
               excludeReplies: true
             )

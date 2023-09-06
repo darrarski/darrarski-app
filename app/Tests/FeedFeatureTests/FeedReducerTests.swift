@@ -22,7 +22,7 @@ final class FeedReducerTests: XCTestCase {
     }
     await didFetchWithQuery.withValue {
       XCTAssertNoDifference($0, [.init(
-        accountId: "108131495937150285",
+        accountId: FeedReducer.mastodonAccountId,
         limit: 40,
         excludeReplies: true
       )])
