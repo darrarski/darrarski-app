@@ -41,6 +41,16 @@ public struct FeedView: View {
               .scale(scale: placeholderScale, anchor: .center)
               .combined(with: .opacity)
             )
+
+            Button {
+              viewStore.send(.view(.seeMoreButtonTapped))
+            } label: {
+              Text("See more on Mastodon")
+                .padding(.horizontal)
+            }
+            .controlSize(.extraLarge)
+            .buttonStyle(.borderedProminent)
+            .transition(.opacity)
           }
         }
         .animation(.bouncy, value: viewStore.animationValue)

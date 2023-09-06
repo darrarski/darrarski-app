@@ -86,4 +86,23 @@ final class FeedReducerTests: XCTestCase {
     await store.send(.view(.refreshButtonTapped))
     await store.receive(.fetchStatuses)
   }
+
+  func testViewSeeMoreButtonTapped() async {
+    let didOpenURL = ActorIsolated<[URL]>([])
+    let store = TestStore(initialState: FeedReducer.State()) {
+      FeedReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.seeMoreButtonTapped))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [
+        FeedReducer.mastodonAccountURL
+      ])
+    }
+  }
 }

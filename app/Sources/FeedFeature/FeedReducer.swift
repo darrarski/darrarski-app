@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import Foundation
 import Mastodon
 
 public struct FeedReducer: Reducer, Sendable {
@@ -24,6 +25,7 @@ public struct FeedReducer: Reducer, Sendable {
     public enum View: Equatable, Sendable {
       case refreshButtonTapped
       case refreshTask
+      case seeMoreButtonTapped
       case task
     }
   }
@@ -31,7 +33,9 @@ public struct FeedReducer: Reducer, Sendable {
   public init() {}
 
   @Dependency(\.mastodon) var mastodon
+  @Dependency(\.openURL) var openURL
   static let mastodonAccountId = "108131495937150285"
+  static let mastodonAccountURL = URL(string: "https://mastodon.social/@darrarski")!
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
@@ -72,6 +76,11 @@ public struct FeedReducer: Reducer, Sendable {
 
       case .view(.refreshTask):
         return .send(.fetchStatuses)
+
+      case .view(.seeMoreButtonTapped):
+        return .run { send in
+          await openURL(Self.mastodonAccountURL)
+        }
 
       case .view(.task):
         return .send(.fetchStatuses)
