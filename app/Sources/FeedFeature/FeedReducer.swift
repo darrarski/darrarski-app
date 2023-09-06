@@ -42,7 +42,9 @@ public struct FeedReducer: Reducer, Sendable {
         return .run { send in
           let result = await TaskResult {
             try await mastodon.getAccountStatuses(
-              accountId: "108131495937150285"
+              accountId: "108131495937150285",
+              limit: 40,
+              excludeReplies: true
             )
           }
           await send(.fetchStatusesResult(result))

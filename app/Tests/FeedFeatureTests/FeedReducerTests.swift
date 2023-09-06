@@ -21,7 +21,11 @@ final class FeedReducerTests: XCTestCase {
       $0.isLoading = true
     }
     await didFetchWithQuery.withValue {
-      XCTAssertNoDifference($0, [.init(accountId: "108131495937150285")])
+      XCTAssertNoDifference($0, [.init(
+        accountId: "108131495937150285",
+        limit: 40,
+        excludeReplies: true
+      )])
     }
     await store.receive(.fetchStatusesResult(.success(statuses))) {
       $0.isLoading = false
