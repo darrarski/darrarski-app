@@ -15,20 +15,32 @@ public struct GetAccountStatuses: Sendable {
   }
 
   public func callAsFunction(
-    accountId: String
+    accountId: String,
+    limit: Int? = nil,
+    excludeReplies: Bool? = nil
   ) async throws -> [Status] {
     try await run(Query(
-      accountId: accountId
+      accountId: accountId,
+      limit: limit,
+      excludeReplies: excludeReplies
     ))
   }
 }
 
 extension GetAccountStatuses {
   public struct Query: Equatable, Sendable {
-    public init(accountId: String) {
+    public init(
+      accountId: String,
+      limit: Int? = nil,
+      excludeReplies: Bool? = nil
+    ) {
       self.accountId = accountId
+      self.limit = limit
+      self.excludeReplies = excludeReplies
     }
 
     public var accountId: String
+    public var limit: Int?
+    public var excludeReplies: Bool?
   }
 }
