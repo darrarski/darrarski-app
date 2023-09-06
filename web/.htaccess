@@ -1,0 +1,11 @@
+AddHandler application/x-httpd-php73 php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php
+  RewriteRule ^index.php/?(.*)$ $1 [R=301,L]
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1?%{QUERY_STRING} [L]
+</IfModule>

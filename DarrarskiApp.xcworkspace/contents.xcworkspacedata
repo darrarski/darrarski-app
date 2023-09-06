@@ -13,4 +13,7 @@
    <FileRef
       location = "group:test-plans">
    </FileRef>
+   <FileRef
+      location = "group:web">
+   </FileRef>
 </Workspace>
