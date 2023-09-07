@@ -99,6 +99,9 @@ let package = Package(
       dependencies: [
         .target(name: "AppShared"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ],
+      resources: [
+        .copy("Resources/projects_preview.json"),
       ]
     ),
     .testTarget(
