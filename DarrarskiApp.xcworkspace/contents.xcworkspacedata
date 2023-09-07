@@ -11,6 +11,9 @@
       location = "group:app">
    </FileRef>
    <FileRef
+      location = "group:scripts">
+   </FileRef>
+   <FileRef
       location = "group:test-plans">
    </FileRef>
    <FileRef
