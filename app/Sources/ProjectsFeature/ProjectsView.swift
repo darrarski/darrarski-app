@@ -92,6 +92,8 @@ public struct ProjectsView: View {
         }
       }
 
+      Divider()
+
       Text(project.type)
         .font(.body)
         .foregroundStyle(.secondary)
@@ -100,6 +102,13 @@ public struct ProjectsView: View {
     }
     .frame(maxWidth: .infinity, alignment: .topLeading)
     .padding()
+    .background {
+      Rectangle()
+        .foregroundStyle(.tint)
+        .opacity(0.25)
+        .saturation(0.5)
+        .visualEffect(verticalScrollPositionHueRotation)
+    }
 #if os(iOS)
     .background(.thickMaterial)
 #elseif os(macOS)
@@ -131,6 +140,17 @@ public struct ProjectsView: View {
           .stroke()
           .foregroundStyle(.tertiary)
       }
+  }
+
+  @Sendable
+  func verticalScrollPositionHueRotation(
+    content: EmptyVisualEffect,
+    geometryProxy: GeometryProxy
+  ) -> some VisualEffect {
+    let scrollHeight = geometryProxy.bounds(of: .scrollView)?.height ?? 100
+    let contentLocation = geometryProxy.frame(in: .scrollView).minY
+    let scrollProgress = contentLocation / scrollHeight
+    return content.hueRotation(.degrees(180 * scrollProgress))
   }
 }
 
