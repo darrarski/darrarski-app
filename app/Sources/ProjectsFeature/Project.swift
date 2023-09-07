@@ -22,6 +22,20 @@ public struct Project: Equatable, Sendable, Decodable {
   public var url: URL?
 }
 
+extension Project: Identifiable {
+  public struct ID: Hashable, Sendable {
+    public init(date: Date, name: String) {
+      self.date = date
+      self.name = name
+    }
+    
+    public var date: Date
+    public var name: String
+  }
+
+  public var id: ID { ID(date: date, name: name) }
+}
+
 extension Project {
   @propertyWrapper
   public struct ProjectDate: Equatable, Sendable {

@@ -11,12 +11,26 @@ public struct ProjectsView: View {
 
   public var body: some View {
     ScrollView {
-      WithViewStore(store, observe: \.projects) { viewStore in
-        var projects = ""
-        let _ = customDump(viewStore.state, to: &projects)
-        Text(projects)
+      LazyVStack {
+        ForEachStore(store.scope(state: \.groups, action: \.1)) { store in
+          WithViewStore(store, observe: \.date) { viewStore in
+            Text(viewStore.state.formatted(Date.FormatStyle().year(.extended())))
+              .font(.title)
+              .frame(maxWidth: .infinity, alignment: .leading)
+          }
+          LazyVStack {
+            ForEachStore(store.scope(state: \.projects, action: \.1)) { store in
+              WithViewStore(store, observe: \.name) { viewStore in
+                Text("\(viewStore.state)")
+                  .font(.title2)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+              }
+            }
+          }
+          .padding(.bottom)
+          .padding(.bottom)
+        }
       }
-      .multilineTextAlignment(.leading)
       .frame(maxWidth: 500, alignment: .leading)
       .frame(maxWidth: .infinity)
       .padding()

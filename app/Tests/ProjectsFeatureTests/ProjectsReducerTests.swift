@@ -16,7 +16,7 @@ final class ProjectsReducerTests: XCTestCase {
     }
     await store.receive(.fetchProjectsResult(.success(.preview))) {
       $0.isLoading = false
-      $0.projects = .preview
+      $0.groups = .init(groupingByYear: .init(uniqueElements: [Project].preview))
     }
   }
 

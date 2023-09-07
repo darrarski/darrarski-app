@@ -3,14 +3,14 @@ import ComposableArchitecture
 public struct ProjectsReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
-      projects: [Project] = [],
+      groups: IdentifiedArrayOf<ProjectsGroup> = [],
       isLoading: Bool = false
     ) {
-      self.projects = projects
+      self.groups = groups
       self.isLoading = isLoading
     }
 
-    var projects: [Project]
+    var groups: IdentifiedArrayOf<ProjectsGroup>
     var isLoading: Bool
   }
 
@@ -47,7 +47,7 @@ public struct ProjectsReducer: Reducer, Sendable {
         state.isLoading = false
         switch result {
         case .success(let projects):
-          state.projects = projects
+          state.groups = .init(groupingByYear: .init(uniqueElements: projects))
         case .failure(_):
           break
         }
