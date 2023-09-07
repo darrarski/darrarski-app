@@ -29,6 +29,7 @@ public struct ProjectsView: View {
             Section {
               ForEach(group.projects) { project in
                 Button {
+                  viewStore.send(.view(.projectCardTapped(project.id)))
                 } label: {
                   projectCardView(project)
                 }

@@ -12,6 +12,10 @@ public struct ProjectsReducer: Reducer, Sendable {
 
     var groups: IdentifiedArrayOf<ProjectsGroup>
     var isLoading: Bool
+
+    var projects: IdentifiedArrayOf<Project> {
+      IdentifiedArray(uniqueElements: groups.flatMap(\.projects))
+    }
   }
 
   public enum Action: Equatable, Sendable {
@@ -20,6 +24,7 @@ public struct ProjectsReducer: Reducer, Sendable {
     case view(View)
 
     public enum View: Equatable, Sendable {
+      case projectCardTapped(Project.ID)
       case refreshButtonTapped
       case refreshTask
       case task
@@ -29,6 +34,7 @@ public struct ProjectsReducer: Reducer, Sendable {
   public init() {}
 
   @Dependency(\.projectsProvider) var projectsProvider
+  @Dependency(\.openURL) var openURL
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
@@ -50,6 +56,12 @@ public struct ProjectsReducer: Reducer, Sendable {
           state.groups = .init(groupingByYear: .init(uniqueElements: projects))
         case .failure(_):
           break
+        }
+        return .none
+
+      case .view(.projectCardTapped(let projectId)):
+        if let url = state.projects[id: projectId]?.url {
+          return .run { _ in await openURL(url) }
         }
         return .none
 

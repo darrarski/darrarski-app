@@ -71,4 +71,25 @@ final class ProjectsReducerTests: XCTestCase {
     await store.send(.view(.task))
     await store.receive(.fetchProjects)
   }
+
+  func testViewProjectCardTapped() async {
+    let didOpenURL = ActorIsolated<[URL]>([])
+    let projects = IdentifiedArray(uniqueElements: [Project].preview)
+    let project = projects.first { $0.url != nil }!
+    let store = TestStore(initialState: ProjectsReducer.State(
+      groups: .init(groupingByYear: projects)
+    )) {
+      ProjectsReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.projectCardTapped(project.id)))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [project.url!])
+    }
+  }
 }
