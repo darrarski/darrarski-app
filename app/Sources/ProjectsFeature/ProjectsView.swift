@@ -16,13 +16,13 @@ public struct ProjectsView: View {
         LazyVGrid(
           columns: [
             GridItem(
-              .adaptive(minimum: 200, maximum: .infinity),
-              spacing: nil,
+              .adaptive(minimum: 250, maximum: .infinity),
+              spacing: 16,
               alignment: .topLeading
             ),
           ],
           alignment: .leading,
-          spacing: nil,
+          spacing: 16,
           pinnedViews: [.sectionHeaders]
         ) {
           ForEach(viewStore.state) { group in
@@ -34,7 +34,6 @@ public struct ProjectsView: View {
                   projectCardView(project)
                 }
                 .buttonStyle(.plain)
-                .padding(.horizontal)
               }
             } header: {
               groupHeader(group)
@@ -43,7 +42,7 @@ public struct ProjectsView: View {
         }
       }
       .frame(maxWidth: .infinity)
-      .padding(.vertical)
+      .padding()
     }
     .task {
       await store.send(.view(.task)).finish()
@@ -73,9 +72,12 @@ public struct ProjectsView: View {
   func groupHeader(_ group: ProjectsGroup) -> some View {
     Text(group.date.formatted(Date.FormatStyle().year(.extended())))
       .font(.title)
-      .padding()
-      .frame(maxWidth: .infinity, alignment: .leading)
+      .padding(.horizontal, 16)
+      .padding(.vertical, 8)
       .background(.ultraThinMaterial)
+      .clipShape(Capsule())
+      .padding(.horizontal, 4)
+      .padding(.vertical, 4)
   }
 
   func projectCardView(_ project: Project) -> some View {
@@ -100,7 +102,7 @@ public struct ProjectsView: View {
 
       tagsView(project.tags)
     }
-    .frame(maxWidth: .infinity, alignment: .topLeading)
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .padding()
     .background {
       Rectangle()
