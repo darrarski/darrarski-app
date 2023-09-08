@@ -16,6 +16,7 @@
 		310E44782A9E3999009A5B62 /* Darrarski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Darrarski.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310E447F2A9E399A009A5B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		310E44812A9E399A009A5B62 /* DarrarskiApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DarrarskiApp.entitlements; sourceTree = "<group>"; };
+		3179C9D02AAB450C007BA35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		31D1DD232A9E41670067EDFF /* DarrarskiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarrarskiApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +54,7 @@
 				310E447F2A9E399A009A5B62 /* Assets.xcassets */,
 				310E44812A9E399A009A5B62 /* DarrarskiApp.entitlements */,
 				31D1DD232A9E41670067EDFF /* DarrarskiApp.swift */,
+				3179C9D02AAB450C007BA35C /* Info.plist */,
 			);
 			path = DarrarskiApp;
 			sourceTree = "<group>";
@@ -264,6 +266,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DarrarskiApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DR;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -305,6 +308,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DarrarskiApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DR;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
