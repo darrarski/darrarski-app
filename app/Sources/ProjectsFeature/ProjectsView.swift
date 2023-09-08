@@ -10,9 +10,19 @@ public struct ProjectsView: View {
 
   let store: StoreOf<ProjectsReducer>
 
+  struct ViewState: Equatable {
+    init(_ state: ProjectsReducer.State) {
+      groups = state.groups
+      showPlaceholder = state.projects.isEmpty && state.isLoading
+    }
+
+    var groups: IdentifiedArrayOf<ProjectsGroup>
+    var showPlaceholder: Bool
+  }
+
   public var body: some View {
     ScrollView {
-      WithViewStore(store, observe: \.groups) { viewStore in
+      WithViewStore(store, observe: ViewState.init) { viewStore in
         LazyVGrid(
           columns: [
             GridItem(
@@ -25,19 +35,12 @@ public struct ProjectsView: View {
           spacing: 16,
           pinnedViews: [.sectionHeaders]
         ) {
-          ForEach(viewStore.state) { group in
-            Section {
-              ForEach(group.projects) { project in
-                Button {
-                  viewStore.send(.view(.projectCardTapped(project.id)))
-                } label: {
-                  projectCardView(project)
-                }
-                .buttonStyle(.plain)
-              }
-            } header: {
-              groupHeader(group)
-            }
+          if viewStore.showPlaceholder {
+            groupsView(.placeholder)
+              .redacted(reason: .placeholder)
+              .disabled(true)
+          } else {
+            groupsView(viewStore.groups)
           }
         }
       }
@@ -66,6 +69,23 @@ public struct ProjectsView: View {
         }
       }
 #endif
+    }
+  }
+
+  func groupsView(_ groups: IdentifiedArrayOf<ProjectsGroup>) -> some View {
+    ForEach(groups) { group in
+      Section {
+        ForEach(group.projects) { project in
+          Button {
+            store.send(.view(.projectCardTapped(project.id)))
+          } label: {
+            projectCardView(project)
+          }
+          .buttonStyle(.plain)
+        }
+      } header: {
+        groupHeader(group)
+      }
     }
   }
 
@@ -154,6 +174,19 @@ public struct ProjectsView: View {
     let scrollProgress = contentLocation / scrollHeight
     return content.hueRotation(.degrees(180 * scrollProgress))
   }
+}
+
+private extension IdentifiedArrayOf<ProjectsGroup> {
+  static let placeholder = IdentifiedArrayOf<ProjectsGroup>(
+    groupingByYear: IdentifiedArrayOf<Project>(
+      uniqueElements: [Project].preview
+        .sorted { $0.date > $1.date }
+        .prefix(3)
+        .enumerated()
+        .map(makeUpdate { $0.element.name.append("\($0.offset)") })
+        .map(\.element)
+    )
+  )
 }
 
 #Preview {
