@@ -102,6 +102,7 @@ let package = Package(
       ],
       resources: [
         .copy("Resources/projects_preview.json"),
+        .copy("Resources/projects_preview.md"),
       ]
     ),
     .testTarget(
