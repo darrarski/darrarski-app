@@ -134,7 +134,7 @@ public struct ProjectsView: View {
     .padding()
     .background {
       Rectangle()
-        .foregroundStyle(.tint)
+        .foregroundStyle(.green)
         .opacity(0.03)
         .saturation(3)
         .visualEffect(verticalScrollPositionHueRotation)

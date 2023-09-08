@@ -109,6 +109,15 @@
       }
     },
     {
+      "identity" : "swiftui-app-icon-creator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/darrarski/swiftui-app-icon-creator.git",
+      "state" : {
+        "revision" : "f0c7ba4e66d3dc8135ccf9146afc05f9dff3c4ff",
+        "version" : "1.2.0"
+      }
+    },
+    {
       "identity" : "swiftui-navigation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",
