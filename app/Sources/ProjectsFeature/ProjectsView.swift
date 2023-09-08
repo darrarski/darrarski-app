@@ -9,6 +9,7 @@ public struct ProjectsView: View {
   }
 
   let store: StoreOf<ProjectsReducer>
+  var placeholderScale: CGFloat = 0.95
 
   struct ViewState: Equatable {
     init(_ state: ProjectsReducer.State) {
@@ -39,10 +40,18 @@ public struct ProjectsView: View {
             groupsView(.placeholder)
               .redacted(reason: .placeholder)
               .disabled(true)
+              .opacity(0.5)
+              .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
+              .transition(.opacity)
           } else {
             groupsView(viewStore.groups)
+              .transition(
+                .scale(scale: placeholderScale, anchor: .center)
+                .combined(with: .opacity)
+              )
           }
         }
+        .animation(.bouncy, value: viewStore.groups)
       }
       .frame(maxWidth: .infinity)
       .padding()
