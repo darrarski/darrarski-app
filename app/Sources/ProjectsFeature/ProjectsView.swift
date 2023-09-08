@@ -31,7 +31,6 @@ public struct ProjectsView: View {
         ZStack {
           if viewStore.showInfoPlaceholder {
             infoView(.preview)
-              .redacted(reason: .placeholder)
               .disabled(true)
               .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
               .transition(.opacity)
@@ -43,6 +42,7 @@ public struct ProjectsView: View {
               )
           }
         }
+        .redacted(reason: viewStore.showInfoPlaceholder ? .placeholder : [])
         .animation(.bouncy, value: viewStore.info)
 
         LazyVGrid(
@@ -59,7 +59,6 @@ public struct ProjectsView: View {
         ) {
           if viewStore.showGroupsPlaceholder {
             groupsView(.placeholder)
-              .redacted(reason: .placeholder)
               .disabled(true)
               .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
               .transition(.opacity)
@@ -71,6 +70,7 @@ public struct ProjectsView: View {
               )
           }
         }
+        .redacted(reason: viewStore.showGroupsPlaceholder ? .placeholder : [])
         .animation(.bouncy, value: viewStore.groups)
       }
       .frame(maxWidth: .infinity)
