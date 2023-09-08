@@ -72,6 +72,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
     store.exhaustivity = .off
@@ -84,6 +85,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
     store.exhaustivity = .off
@@ -96,6 +98,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
     store.exhaustivity = .off
