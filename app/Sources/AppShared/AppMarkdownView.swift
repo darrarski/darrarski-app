@@ -10,8 +10,11 @@ public struct AppMarkdownView: View {
 
   public var body: some View {
     Text(attributedString ?? AttributedString())
-      .onChange(of: markdown, initial: true) { _, newValue in
-        attributedString = try? AttributedString(appMarkdown: newValue)
+      .task(id: markdown, priority: .userInitiated) {
+        let task = Task.detached { [markdown] in
+          try? AttributedString(appMarkdown: markdown)
+        }
+        attributedString = await task.value
       }
   }
 }
