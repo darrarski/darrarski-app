@@ -9,7 +9,7 @@ public struct ProjectsView: View {
   }
 
   let store: StoreOf<ProjectsReducer>
-  var placeholderScale: CGFloat = 0.95
+  var placeholderScale: CGFloat = 0.9
 
   struct ViewState: Equatable {
     init(_ state: ProjectsReducer.State) {
@@ -40,7 +40,6 @@ public struct ProjectsView: View {
             groupsView(.placeholder)
               .redacted(reason: .placeholder)
               .disabled(true)
-              .opacity(0.5)
               .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
               .transition(.opacity)
           } else {
@@ -136,8 +135,8 @@ public struct ProjectsView: View {
     .background {
       Rectangle()
         .foregroundStyle(.tint)
-        .opacity(0.25)
-        .saturation(0.5)
+        .opacity(0.03)
+        .saturation(3)
         .visualEffect(verticalScrollPositionHueRotation)
     }
 #if os(iOS)
