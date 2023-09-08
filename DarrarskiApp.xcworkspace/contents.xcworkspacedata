@@ -11,6 +11,9 @@
       location = "group:app">
    </FileRef>
    <FileRef
+      location = "group:app-icon">
+   </FileRef>
+   <FileRef
       location = "group:scripts">
    </FileRef>
    <FileRef
