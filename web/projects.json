@@ -1,0 +1,812 @@
+[
+  {
+    "date" : "2011.05.20",
+    "name" : "Photo Denoiser iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://wp.darrarski.pl/2011/05/photodenoiser/"
+  },
+  {
+    "date" : "2013.04.02",
+    "name" : "ShapeFlick",
+    "tags" : [
+      "Objective-C",
+      "SpriteKit",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2013.04.08",
+    "name" : "Znany Lekarz iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apps.apple.com/app/id610303915"
+  },
+  {
+    "date" : "2013.04.10",
+    "name" : "http://Charged.fm iOS app",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.behance.net/gallery/20162709/chargedfm"
+  },
+  {
+    "date" : "2013.05.13",
+    "name" : "QC One Horti iOS app",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://qcone.com"
+  },
+  {
+    "date" : "2013.07.01",
+    "name" : "SmartPass SVA Convergence",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://wp.darrarski.pl/2014/09/vodafone-smartpass-ios/"
+  },
+  {
+    "date" : "2013.10.24",
+    "name" : "Positionly iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://positionly.com"
+  },
+  {
+    "date" : "2013.11.13",
+    "name" : "Aspireboard macOS app",
+    "tags" : [
+      "AppKit",
+      "Objective-C",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.elpassion.com/projects/aspireboard"
+  },
+  {
+    "date" : "2013.11.29",
+    "name" : "QC One Agri iOS app",
+    "tags" : [
+      "CoreData",
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://qcone.com"
+  },
+  {
+    "date" : "2014.05.05",
+    "name" : "iFinxS iOS",
+    "tags" : [
+      "CoreData",
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apps.apple.com/app/id669946244"
+  },
+  {
+    "date" : "2014.05.08",
+    "name" : "DRCollectionViewTableLayout-iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/DRCollectionViewTableLayout-iOS"
+  },
+  {
+    "date" : "2014.05.30",
+    "name" : "F1RST-Media-iOS-App",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.elpassion.com/projects/f1rst"
+  },
+  {
+    "date" : "2014.09.18",
+    "name" : "SwiftMustaches",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Other",
+    "url" : "https://github.com/darrarski/SwiftMustaches"
+  },
+  {
+    "date" : "2014.09.30",
+    "name" : "ShopKonnect 2.0",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.shopconnect.live"
+  },
+  {
+    "date" : "2015.01.25",
+    "name" : "Doc Planner (Znany Lekarz) iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.elpassion.com/projects/docplanner"
+  },
+  {
+    "date" : "2015.02.24",
+    "name" : "EL Agenda iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2015.03.21",
+    "name" : "DRSwipeMenu-iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/DRSwipeMenu-iOS"
+  },
+  {
+    "date" : "2015.04.14",
+    "name" : "Legalsense iOS",
+    "tags" : [
+      "CoreData",
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apps.apple.com/app/id999300861"
+  },
+  {
+    "date" : "2015.04.25",
+    "name" : "DRCircularProgress-iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/DRCircularProgress-iOS"
+  },
+  {
+    "date" : "2015.05.29",
+    "name" : "PayTango iOS",
+    "tags" : [
+      "Objective-C",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2015.09.30",
+    "name" : "Lavito iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.elpassion.com/projects/lavito"
+  },
+  {
+    "date" : "2016.02.29",
+    "name" : "AdFairs iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2016.08.16",
+    "name" : "UpTick Play iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.uptick.com"
+  },
+  {
+    "date" : "2016.09.05",
+    "name" : "RentLabs iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2017.01.12",
+    "name" : "Indoor PacMan",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iBeacon",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.indoorway.com"
+  },
+  {
+    "date" : "2017.02.06",
+    "name" : "SwipeToReveal-iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/SwipeToReveal-iOS"
+  },
+  {
+    "date" : "2017.06.07",
+    "name" : "ScrollingBackgrounds",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/ScrollingBackgrounds"
+  },
+  {
+    "date" : "2017.07.18",
+    "name" : "Indoorway Office",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.indoorway.com"
+  },
+  {
+    "date" : "2017.11.03",
+    "name" : "Booksy",
+    "tags" : [
+      "Objective-C",
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://booksy.com/"
+  },
+  {
+    "date" : "2017.11.07",
+    "name" : "ScrollViewController",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/ScrollViewController"
+  },
+  {
+    "date" : "2017.11.27",
+    "name" : "CustomIntensityVisualEffectView",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/CustomIntensityVisualEffectView"
+  },
+  {
+    "date" : "2018.02.12",
+    "name" : "Avenue",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2018.06.11",
+    "name" : "ARFashion",
+    "tags" : [
+      "ARKit",
+      "Swift",
+      "iOS"
+    ],
+    "type" : "Other"
+  },
+  {
+    "date" : "2018.06.21",
+    "name" : "Lovelooks",
+    "tags" : [
+      "Swift",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://lovelooks.com/"
+  },
+  {
+    "date" : "2018.09.04",
+    "name" : "ScrollViewLayout",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/ScrollViewLayout"
+  },
+  {
+    "date" : "2018.09.26",
+    "name" : "JiraPlayground",
+    "tags" : [
+      "Swift"
+    ],
+    "type" : "Other"
+  },
+  {
+    "date" : "2019.02.26",
+    "name" : "ReadingListCalendarApp",
+    "tags" : [
+      "AppKit",
+      "Swift",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://github.com/elpassion/ReadingListCalendarApp"
+  },
+  {
+    "date" : "2019.03.05",
+    "name" : "Lifeness",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apps.apple.com/app/id1458097934"
+  },
+  {
+    "date" : "2019.04.09",
+    "name" : "eDirham",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.mof.gov.ae/En/About/programsProjects/Pages/EDirham.aspx"
+  },
+  {
+    "date" : "2019.07.11",
+    "name" : "StateRestoration",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Other",
+    "url" : "https://github.com/darrarski/iOS-State-Restoration"
+  },
+  {
+    "date" : "2019.08.21",
+    "name" : "GoogleSignIn-Swift",
+    "tags" : [
+      "Swift"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/GoogleSignIn-Swift"
+  },
+  {
+    "date" : "2019.12.18",
+    "name" : "ELHub",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2020.02.08",
+    "name" : "SwiftEndpoint",
+    "tags" : [
+      "Swift"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/SwiftEndpoint"
+  },
+  {
+    "date" : "2020.04.15",
+    "name" : "http://XX.Network Messenger",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://xx.network/messenger/"
+  },
+  {
+    "date" : "2020.05.05",
+    "name" : "Vooom iOS app",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://en.vooom.pl"
+  },
+  {
+    "date" : "2020.06.12",
+    "name" : "GitHubBarApp",
+    "tags" : [
+      "AppKit",
+      "Swift",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://github.com/darrarski/github-status-bar"
+  },
+  {
+    "date" : "2020.08.17",
+    "name" : "Spark",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2020.09.10",
+    "name" : "WallpapersApp",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://github.com/darrarski/WallpapersStudio-iOS"
+  },
+  {
+    "date" : "2020.10.19",
+    "name" : "Fitly Scanner",
+    "tags" : [
+      "ARKit",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://fitly.ai"
+  },
+  {
+    "date" : "2020.11.06",
+    "name" : "SideMenuTransition-iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/SideMenuTransition-iOS"
+  },
+  {
+    "date" : "2020.12.05",
+    "name" : "Router-PoC",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Other",
+    "url" : "https://github.com/darrarski/Router-PoC"
+  },
+  {
+    "date" : "2020.12.11",
+    "name" : "swiftui-app-icon-creator",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swiftui-app-icon-creator"
+  },
+  {
+    "date" : "2021.02.20",
+    "name" : "TotalHours",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://github.com/darrarski/TotalHours-app"
+  },
+  {
+    "date" : "2021.03.01",
+    "name" : "x-kom iOS",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apps.apple.com/app/id1193315738"
+  },
+  {
+    "date" : "2021.04.27",
+    "name" : "SwimCam",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://www.athlee.com"
+  },
+  {
+    "date" : "2021.06.07",
+    "name" : "TV2 Play iOS & tvOS app",
+    "tags" : [
+      "Swift",
+      "UIKit",
+      "iOS",
+      "tvOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apps.apple.com/app/id675096718"
+  },
+  {
+    "date" : "2021.06.17",
+    "name" : "xcframework-maker",
+    "tags" : [
+      "Swift",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/xcframework-maker"
+  },
+  {
+    "date" : "2021.08.29",
+    "name" : "ImageOperations",
+    "tags" : [
+      "Swift",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swift-image-operations"
+  },
+  {
+    "date" : "2021.09.02",
+    "name" : "Swift Composable Presentation",
+    "tags" : [
+      "Swift",
+      "TCA"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swift-composable-presentation"
+  },
+  {
+    "date" : "2021.10.29",
+    "name" : "IDFire",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2021.12.06",
+    "name" : "Location Tracker",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2021.12.21",
+    "name" : "SortSwiftImports",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/sort-swift-imports"
+  },
+  {
+    "date" : "2022.01.01",
+    "name" : "MultiCam",
+    "tags" : [
+      "AVFoundation",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2022.01.09",
+    "name" : "SwiftUIMKMapView",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/SwiftUIMKMapView"
+  },
+  {
+    "date" : "2022.01.13",
+    "name" : "swiftui-tabs-view",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swiftui-tabs-view"
+  },
+  {
+    "date" : "2022.05.12",
+    "name" : "Elixxir Messenger DB",
+    "tags" : [
+      "GRDB",
+      "Swift",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "https://git.xx.network/elixxir/client-ios-db"
+  },
+  {
+    "date" : "2022.05.31",
+    "name" : "Elixxir dApps SDK",
+    "tags" : [
+      "Swift",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "https://git.xx.network/elixxir/elixxir-dapps-sdk-swift"
+  },
+  {
+    "date" : "2022.09.27",
+    "name" : "Swifty Ledger",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2022.11.14",
+    "name" : "Store Navigation Controller",
+    "tags" : [
+      "Swift",
+      "TCA",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/store-navigation-controller"
+  },
+  {
+    "date" : "2022.12.21",
+    "name" : "Haven iOS",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application"
+  },
+  {
+    "date" : "2023.01.19",
+    "name" : "SwiftUI Simple Table",
+    "tags" : [
+      "SwiftUI",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swiftui-simple-table"
+  },
+  {
+    "date" : "2023.07.02",
+    "name" : "Swift Google Drive Client",
+    "tags" : [
+      "Swift",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swift-google-drive-client"
+  },
+  {
+    "date" : "2023.07.07",
+    "name" : "Swift Dropbox Client",
+    "tags" : [
+      "Swift",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/swift-dropbox-client"
+  },
+  {
+    "date" : "2023.08.09",
+    "name" : "TCASwiftLog",
+    "tags" : [
+      "Swift",
+      "TCA"
+    ],
+    "type" : "Library",
+    "url" : "https://github.com/darrarski/tca-swift-log"
+  }
+]
