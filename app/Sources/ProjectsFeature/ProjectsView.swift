@@ -13,17 +13,38 @@ public struct ProjectsView: View {
 
   struct ViewState: Equatable {
     init(_ state: ProjectsReducer.State) {
+      info = state.info
       groups = state.groups
-      showPlaceholder = state.projects.isEmpty && state.isLoading
+      showInfoPlaceholder = state.info == nil && state.isLoading
+      showGroupsPlaceholder = state.projects.isEmpty && state.isLoading
     }
 
+    var info: ProjectsInfo?
     var groups: IdentifiedArrayOf<ProjectsGroup>
-    var showPlaceholder: Bool
+    var showInfoPlaceholder: Bool
+    var showGroupsPlaceholder: Bool
   }
 
   public var body: some View {
     ScrollView {
       WithViewStore(store, observe: ViewState.init) { viewStore in
+        ZStack {
+          if viewStore.showInfoPlaceholder {
+            infoView(.preview)
+              .redacted(reason: .placeholder)
+              .disabled(true)
+              .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
+              .transition(.opacity)
+          } else if let info = viewStore.info {
+            infoView(info)
+              .transition(
+                .scale(scale: placeholderScale, anchor: .center)
+                .combined(with: .opacity)
+              )
+          }
+        }
+        .animation(.bouncy, value: viewStore.info)
+
         LazyVGrid(
           columns: [
             GridItem(
@@ -36,7 +57,7 @@ public struct ProjectsView: View {
           spacing: 16,
           pinnedViews: [.sectionHeaders]
         ) {
-          if viewStore.showPlaceholder {
+          if viewStore.showGroupsPlaceholder {
             groupsView(.placeholder)
               .redacted(reason: .placeholder)
               .disabled(true)
@@ -78,6 +99,11 @@ public struct ProjectsView: View {
       }
 #endif
     }
+  }
+
+  func infoView(_ info: ProjectsInfo) -> some View {
+    AppMarkdownView(markdown: info.markdown)
+      .frame(maxWidth: .infinity, alignment: .leading)
   }
 
   func groupsView(_ groups: IdentifiedArrayOf<ProjectsGroup>) -> some View {
