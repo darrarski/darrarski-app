@@ -23,6 +23,13 @@ public struct ProjectsView: View {
     var groups: IdentifiedArrayOf<ProjectsGroup>
     var showInfoPlaceholder: Bool
     var showGroupsPlaceholder: Bool
+    var infoAnimationValue: AnimationValue { .info(info, showInfoPlaceholder) }
+    var groupsAnimationValue: AnimationValue { .groups(groups, showGroupsPlaceholder) }
+  }
+
+  enum AnimationValue: Equatable {
+    case info(ProjectsInfo?, Bool)
+    case groups(IdentifiedArrayOf<ProjectsGroup>, Bool)
   }
 
   public var body: some View {
@@ -43,7 +50,7 @@ public struct ProjectsView: View {
           }
         }
         .redacted(reason: viewStore.showInfoPlaceholder ? .placeholder : [])
-        .animation(.bouncy, value: viewStore.info)
+        .animation(.bouncy, value: viewStore.infoAnimationValue)
 
         LazyVGrid(
           columns: [
@@ -71,7 +78,7 @@ public struct ProjectsView: View {
           }
         }
         .redacted(reason: viewStore.showGroupsPlaceholder ? .placeholder : [])
-        .animation(.bouncy, value: viewStore.groups)
+        .animation(.bouncy, value: viewStore.groupsAnimationValue)
       }
       .frame(maxWidth: .infinity)
       .padding()
