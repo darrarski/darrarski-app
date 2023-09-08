@@ -3,6 +3,7 @@ import ComposableArchitecture
 public struct ProjectsReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
+      info: ProjectsInfo? = nil,
       groups: IdentifiedArrayOf<ProjectsGroup> = [],
       isLoading: Bool = false
     ) {
@@ -10,6 +11,7 @@ public struct ProjectsReducer: Reducer, Sendable {
       self.isLoading = isLoading
     }
 
+    var info: ProjectsInfo?
     var groups: IdentifiedArrayOf<ProjectsGroup>
     var isLoading: Bool
 
@@ -19,7 +21,9 @@ public struct ProjectsReducer: Reducer, Sendable {
   }
 
   public enum Action: Equatable, Sendable {
-    case fetchProjects
+    case fetch
+    case fetchFinished
+    case fetchInfoResult(TaskResult<ProjectsInfo>)
     case fetchProjectsResult(TaskResult<[Project]>)
     case view(View)
 
@@ -38,25 +42,37 @@ public struct ProjectsReducer: Reducer, Sendable {
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
-      enum CancelId { case fetchProjects }
+      enum CancelId { case fetch }
 
       switch action {
-      case .fetchProjects:
+      case .fetch:
         state.isLoading = true
         return .run { send in
-          await send(.fetchProjectsResult(TaskResult {
-            try await projectsProvider.fetch()
+          await send(.fetchInfoResult(TaskResult {
+            try await projectsProvider.fetchInfo()
           }))
-        }.cancellable(id: CancelId.fetchProjects, cancelInFlight: true)
+          await send(.fetchProjectsResult(TaskResult {
+            try await projectsProvider.fetchProjects()
+          }))
+          await send(.fetchFinished)
+        }.cancellable(id: CancelId.fetch, cancelInFlight: true)
 
-      case .fetchProjectsResult(let result):
+      case .fetchFinished:
         state.isLoading = false
-        switch result {
-        case .success(let projects):
-          state.groups = .init(groupingByYear: .init(uniqueElements: projects))
-        case .failure(_):
-          break
-        }
+        return .none
+
+      case .fetchInfoResult(.success(let info)):
+        state.info = info
+        return .none
+
+      case .fetchInfoResult(.failure(_)):
+        return .none
+
+      case .fetchProjectsResult(.success(let projects)):
+        state.groups = .init(groupingByYear: .init(uniqueElements: projects))
+        return .none
+
+      case .fetchProjectsResult(.failure(_)):
         return .none
 
       case .view(.projectCardTapped(let projectId)):
@@ -66,13 +82,13 @@ public struct ProjectsReducer: Reducer, Sendable {
         return .none
 
       case .view(.refreshButtonTapped):
-        return .send(.fetchProjects)
+        return .send(.fetch)
 
       case .view(.refreshTask):
-        return .send(.fetchProjects)
+        return .send(.fetch)
 
       case .view(.task):
-        return .send(.fetchProjects)
+        return .send(.fetch)
       }
     }
   }
