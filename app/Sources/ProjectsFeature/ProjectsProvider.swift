@@ -3,13 +3,13 @@ import Foundation
 import XCTestDynamicOverlay
 
 public struct ProjectsProvider: Sendable {
-  public typealias Fetch = @Sendable () async throws -> [Project]
+  public typealias FetchProjects = @Sendable () async throws -> [Project]
 
-  public init(fetch: @escaping Fetch) {
-    self.fetch = fetch
+  public init(fetchProjects: @escaping FetchProjects) {
+    self.fetchProjects = fetchProjects
   }
 
-  public var fetch: Fetch
+  public var fetchProjects: FetchProjects
 }
 
 extension DependencyValues {
@@ -21,13 +21,15 @@ extension DependencyValues {
 
 extension ProjectsProvider: TestDependencyKey {
   public static let testValue = ProjectsProvider(
-    fetch: unimplemented("\(Self.self).fetch")
+    fetchProjects: unimplemented("\(Self.self).fetchProjects")
   )
 
-  public static let previewValue = ProjectsProvider {
-    try await Task.sleep(for: .seconds(1))
-    return .preview
-  }
+  public static let previewValue = ProjectsProvider(
+    fetchProjects: {
+      try await Task.sleep(for: .seconds(1))
+      return .preview
+    }
+  )
 }
 
 extension ProjectsProvider: DependencyKey {
@@ -45,26 +47,28 @@ extension ProjectsProvider: DependencyKey {
     public var data: Data
   }
 
-  public static let liveValue = ProjectsProvider {
-    @Dependency(\.urlSession) var urlSession
+  public static let liveValue = ProjectsProvider(
+    fetchProjects: {
+      @Dependency(\.urlSession) var urlSession
 
-    var urlComponents = URLComponents()
-    urlComponents.scheme = "https"
-    urlComponents.host = "app.darrarski.pl"
-    urlComponents.path = "/projects.json"
-    guard let url = urlComponents.url else {
-      throw InvalidURLError()
-    }
-    var urlRequest = URLRequest(url: url)
-    urlRequest.httpMethod = "GET"
-    let (data, response) = try await urlSession.data(for: urlRequest)
-    let statusCode = (response as? HTTPURLResponse)?.statusCode
-    guard let statusCode, (200..<300).contains(statusCode) else {
-      throw ResponseError(statusCode: statusCode, data: data)
-    }
-    let decoder = JSONDecoder()
-    let projects = try decoder.decode([Project].self, from: data)
+      var urlComponents = URLComponents()
+      urlComponents.scheme = "https"
+      urlComponents.host = "app.darrarski.pl"
+      urlComponents.path = "/projects.json"
+      guard let url = urlComponents.url else {
+        throw InvalidURLError()
+      }
+      var urlRequest = URLRequest(url: url)
+      urlRequest.httpMethod = "GET"
+      let (data, response) = try await urlSession.data(for: urlRequest)
+      let statusCode = (response as? HTTPURLResponse)?.statusCode
+      guard let statusCode, (200..<300).contains(statusCode) else {
+        throw ResponseError(statusCode: statusCode, data: data)
+      }
+      let decoder = JSONDecoder()
+      let projects = try decoder.decode([Project].self, from: data)
 
-    return projects
-  }
+      return projects
+    }
+  )
 }

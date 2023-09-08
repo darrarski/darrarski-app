@@ -45,7 +45,7 @@ public struct ProjectsReducer: Reducer, Sendable {
         state.isLoading = true
         return .run { send in
           await send(.fetchProjectsResult(TaskResult {
-            try await projectsProvider.fetch()
+            try await projectsProvider.fetchProjects()
           }))
         }.cancellable(id: CancelId.fetchProjects, cancelInFlight: true)
 
