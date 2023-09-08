@@ -4,19 +4,46 @@ import XCTest
 
 @MainActor
 final class ProjectsReducerTests: XCTestCase {
-  func testFetchProjects() async {
+  func testFetch() async {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
 
-    await store.send(.fetchProjects) {
+    await store.send(.fetch) {
       $0.isLoading = true
     }
+    await store.receive(.fetchInfoResult(.success(.preview))) {
+      $0.info = .preview
+    }
     await store.receive(.fetchProjectsResult(.success(.preview))) {
-      $0.isLoading = false
       $0.groups = .init(groupingByYear: .init(uniqueElements: [Project].preview))
+    }
+    await store.receive(.fetchFinished) {
+      $0.isLoading = false
+    }
+  }
+
+  func testFetchInfoFailure() async {
+    let error = NSError(domain: "test", code: 1234)
+    let store = TestStore(initialState: ProjectsReducer.State()) {
+      ProjectsReducer()
+    } withDependencies: {
+      $0.projectsProvider.fetchInfo = { throw error }
+      $0.projectsProvider.fetchProjects = { .preview }
+    }
+
+    await store.send(.fetch) {
+      $0.isLoading = true
+    }
+    await store.receive(.fetchInfoResult(.failure(error)))
+    await store.receive(.fetchProjectsResult(.success(.preview))) {
+      $0.groups = .init(groupingByYear: .init(uniqueElements: [Project].preview))
+    }
+    await store.receive(.fetchFinished) {
+      $0.isLoading = false
     }
   }
 
@@ -25,13 +52,18 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { throw error }
     }
 
-    await store.send(.fetchProjects) {
+    await store.send(.fetch) {
       $0.isLoading = true
     }
-    await store.receive(.fetchProjectsResult(.failure(error))) {
+    await store.receive(.fetchInfoResult(.success(.preview))) {
+      $0.info = .preview
+    }
+    await store.receive(.fetchProjectsResult(.failure(error)))
+    await store.receive(.fetchFinished) {
       $0.isLoading = false
     }
   }
@@ -45,7 +77,7 @@ final class ProjectsReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshButtonTapped))
-    await store.receive(.fetchProjects)
+    await store.receive(.fetch)
   }
 
   func testViewRefreshTask() async {
@@ -57,7 +89,7 @@ final class ProjectsReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshTask))
-    await store.receive(.fetchProjects)
+    await store.receive(.fetch)
   }
 
   func testViewTask() async {
@@ -69,7 +101,7 @@ final class ProjectsReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.task))
-    await store.receive(.fetchProjects)
+    await store.receive(.fetch)
   }
 
   func testViewProjectCardTapped() async {
