@@ -8,7 +8,7 @@ public struct ContactView: View {
   }
 
   let store: StoreOf<ContactReducer>
-
+  let maxContentWidth: CGFloat = 500
 #if os(iOS)
   @ScaledMetric var linkButtonIconSize: CGFloat = 24
 #elseif os(macOS)
@@ -21,7 +21,7 @@ public struct ContactView: View {
         header
         buttons
       }
-      .frame(maxWidth: 500)
+      .frame(maxWidth: maxContentWidth)
       .frame(maxWidth: .infinity)
       .padding()
     }
@@ -52,20 +52,18 @@ public struct ContactView: View {
 
   @MainActor
   var header: some View {
-    BackgroundGeometryReader(geometry: \.size.width) { width in
-      let avatarSize = width.map { $0 / 3 }
-
-      HStack(alignment: .top) {
-        WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
-          AvatarView(url: viewStore.state)
-        }
-        .frame(width: avatarSize, height: avatarSize)
-        .padding(.bottom)
-
-        details
-          .frame(maxWidth: .infinity, alignment: .leading)
-          .padding([.leading, .vertical])
+    HStack(alignment: .top) {
+      WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
+        AvatarView(url: viewStore.state)
       }
+      .containerRelativeFrame(.horizontal) { width, _ in
+        min(width, maxContentWidth) / 3
+      }
+      .padding(.bottom)
+
+      details
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding([.leading, .vertical])
     }
   }
 
