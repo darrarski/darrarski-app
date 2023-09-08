@@ -5,3 +5,6 @@ xcuserdata/
 /app/Package.resolved
 /app-icon/Package.resolved
 /scripts/Package.resolved
+
+# Ignore WhatToTest files used by Xcode Cloud when deploying to TestFlight & App Store.
+TestFlight/WhatToTest.*.txt
