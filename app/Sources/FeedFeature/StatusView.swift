@@ -42,6 +42,7 @@ public struct StatusView: View {
             viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
           } label: {
             MediaAttachmentView(state: viewStore.state)
+              .containerRelativeFrame(.vertical) { height, _ in height / 2 }
           }
           .buttonStyle(.plain)
         }
@@ -56,6 +57,7 @@ public struct StatusView: View {
             viewStore.send(.view(.previewCardTapped))
           } label: {
             PreviewCardView(state: viewStore.state)
+              .containerRelativeFrame(.vertical) { height, _ in height / 2 }
           }
           .buttonStyle(.plain)
         }
