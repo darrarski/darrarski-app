@@ -26,7 +26,7 @@ extension Project.ID: AppTelemetryPayloadProviding {
 }
 
 extension Mastodon.Status: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { ["mastodon.status.id": id.rawValue] }
+  var appTelemetryPayload: [String: String] { id.appTelemetryPayload }
 }
 
 extension Mastodon.Status.ID: AppTelemetryPayloadProviding {
