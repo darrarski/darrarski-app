@@ -20,7 +20,7 @@ public struct Contact: Equatable, Sendable, Codable {
 }
 
 extension Contact {
-  public struct Link: Equatable, Sendable, Codable, Identifiable {
+  public struct Link: Equatable, Sendable, Codable {
     public init(
       id: String,
       title: String,
@@ -28,18 +28,38 @@ extension Contact {
       iconURL: URL?,
       target: Target
     ) {
-      self.id = id
+      self.id = ID(rawValue: id)
       self.title = title
       self.url = url
       self.iconURL = iconURL
       self.target = target
     }
     
-    public var id: String
+    public var id: ID
     public var title: String
     public var url: URL
     public var iconURL: URL?
     public var target: Target
+  }
+}
+
+extension Contact.Link: Identifiable {
+  public struct ID: Hashable, Sendable, Codable {
+    public init(rawValue: String) {
+      self.rawValue = rawValue
+    }
+
+    public init(from decoder: Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.rawValue = try container.decode(String.self)
+    }
+
+    public var rawValue: String
+
+    public func encode(to encoder: Encoder) throws {
+      var container = encoder.singleValueContainer()
+      try container.encode(self.rawValue)
+    }
   }
 }
 
