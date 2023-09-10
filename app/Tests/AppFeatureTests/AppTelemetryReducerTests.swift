@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import ContactFeature
 import XCTest
 @testable import AppFeature
 
@@ -26,7 +27,7 @@ final class AppTelemetryReducerTests: XCTestCase {
           case tenth
         }
       }
-      
+
       var body: some ReducerOf<Self> {
         EmptyReducer()
       }
@@ -168,6 +169,50 @@ final class AppTelemetryReducerTests: XCTestCase {
         "error.domain_2": nsError3.domain,
         "error.code_2": "\(nsError3.code)",
       ]
+    )])
+    signals.setValue([])
+  }
+
+  func testActionWithContactLink() async {
+    struct ExampleReducer: Reducer {
+      struct State: Equatable {}
+
+      enum Action: Equatable {
+        case link(Contact.Link)
+        case linkID(Contact.Link.ID)
+      }
+
+      var body: some ReducerOf<Self> {
+        EmptyReducer()
+      }
+    }
+    let signals = LockIsolated<[AppTelemetrySignal]>([])
+    let store = TestStore(initialState: ExampleReducer.State()) {
+      ExampleReducer()
+      AppTelemetryReducer()
+    } withDependencies: {
+      $0.appTelemetry.send = { @Sendable signal in
+        signals.withValue { $0.append(signal) }
+      }
+    }
+
+    await store.send(.link(.init(
+      id: "test-1",
+      title: "Test Title",
+      url: URL(filePath: "test.url"),
+      iconURL: nil,
+      target: .system
+    )))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.link(Contact.Link)",
+      payload: ["contact.link.id": "test-1"]
+    )])
+    signals.setValue([])
+
+    await store.send(.linkID(.init(rawValue: "test-2")))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.linkID(Contact.Link.ID)",
+      payload: ["contact.link.id": "test-2"]
     )])
     signals.setValue([])
   }
