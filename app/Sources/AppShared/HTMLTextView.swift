@@ -12,15 +12,12 @@ public struct HTMLTextView: View {
 
   public var body: some View {
     Text(attributedString)
-      .task {
-        attributedString = Self.attributedString(html: html)
-      }
-      .onChange(of: html) { _, newValue in
-        attributedString = Self.attributedString(html: html)
+      .task(id: html, priority: .userInitiated) {
+        attributedString = await Self.attributedString(html: html)
       }
   }
 
-  static func attributedString(html: String) -> AttributedString {
+  static func attributedString(html: String) async -> AttributedString {
     var document = MastodonHTML(rawHTML: html)
     do {
       try document.parse()
