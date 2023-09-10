@@ -1,7 +1,7 @@
 /// Represents a file or media attachment that can be added to a status.
 ///
 /// [API documentation](https://docs.joinmastodon.org/entities/MediaAttachment/)
-public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
+public struct MediaAttachment: Sendable, Equatable, Decodable {
   public init(
     id: String,
     type: MediaAttachmentType,
@@ -12,7 +12,7 @@ public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
     description: String?,
     blurhash: String
   ) {
-    self.id = id
+    self.id = ID(rawValue: id)
     self.type = type
     self.url = url
     self.previewUrl = previewUrl
@@ -22,7 +22,7 @@ public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
     self.blurhash = blurhash
   }
 
-  public var id: String
+  public var id: ID
   public var type: MediaAttachmentType
   public var url: String
   public var previewUrl: String?
@@ -30,6 +30,21 @@ public struct MediaAttachment: Sendable, Equatable, Identifiable, Decodable {
   public var meta: JSONObject
   public var description: String?
   public var blurhash: String
+}
+
+extension MediaAttachment: Identifiable {
+  public struct ID: Hashable, Sendable, Decodable {
+    public init(rawValue: String) {
+      self.rawValue = rawValue
+    }
+
+    public init(from decoder: Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.rawValue = try container.decode(String.self)
+    }
+
+    public var rawValue: String
+  }
 }
 
 extension MediaAttachment {

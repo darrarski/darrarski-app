@@ -55,7 +55,7 @@ final class StatusReducerTests: XCTestCase {
       StatusReducer()
     }
 
-    await store.send(.view(.attachmentTapped("invalid-id")))
+    await store.send(.view(.attachmentTapped(.init(rawValue: "invalid-id"))))
   }
 
   func testViewAttachmentTapped_Video() async {
