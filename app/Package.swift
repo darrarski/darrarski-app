@@ -30,6 +30,9 @@ let package = Package(
         .target(name: "ProjectsFeature"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "TelemetryClient", package: "SwiftClient"),
+      ],
+      resources: [
+        .embedInCode("Secrets/TelemetryDeckAppID"),
       ]
     ),
     .testTarget(

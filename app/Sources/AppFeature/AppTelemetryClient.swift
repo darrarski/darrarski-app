@@ -1,6 +1,8 @@
 import Dependencies
+import Foundation
 import TelemetryClient
 import XCTestDynamicOverlay
+import OSLog
 
 struct AppTelemetryClient: Sendable {
   var initialize: @Sendable () -> Void
@@ -29,12 +31,27 @@ extension DependencyValues {
 extension AppTelemetryClient: DependencyKey {
   static let liveValue = AppTelemetryClient(
     initialize: {
-      TelemetryManager.initialize(with: .init(
-        appID: "" // TODO: TelemetryDeck AppID
-      ))
+      guard !TelemetryManager.isInitialized, let appID = Self.appID() else { return }
+      TelemetryManager.initialize(with: .init(appID: appID))
     },
     send: { signal in
+      guard TelemetryManager.isInitialized else { return }
       TelemetryManager.send(signal)
     }
   )
+
+  private static func appID() -> String? {
+    let data = Data(PackageResources.TelemetryDeckAppID)
+    let string = String(data: data, encoding: .utf8)?
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+    guard let string, !string.isEmpty else {
+      let log = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: "AppTelemetryClient"
+      )
+      log.fault("Missing TelemetryDeck AppID (app/Sources/AppFeature/Secrets/TelemetryDeckAppID)")
+      return nil
+    }
+    return string
+  }
 }
