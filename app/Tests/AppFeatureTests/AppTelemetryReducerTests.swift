@@ -50,23 +50,41 @@ final class AppTelemetryReducerTests: XCTestCase {
     )])
     signals.setValue([])
 
-    await store.send(.contact(.fetchContactResult(.failure(NSError(domain: "test", code: 1337)))))
+    let nsError = NSError(domain: "test", code: 1337)
+    await store.send(.contact(.fetchContactResult(.failure(nsError))))
     XCTAssertNoDifference(signals.value, [.init(
-      type: "AppReducer.Action.contact(.fetchContactResult(.failure(NSError)))"
+      type: "AppReducer.Action.contact(.fetchContactResult(.failure(NSError)))",
+      payload: [
+        "error.localizedDescription": nsError.localizedDescription,
+        "error.domain": nsError.domain,
+        "error.code": "\(nsError.code)",
+      ]
     )])
     signals.setValue([])
 
     struct StructError: Error { var value = 44 }
-    await store.send(.contact(.fetchContactResult(.failure(StructError()))))
+    let structError = StructError()
+    await store.send(.contact(.fetchContactResult(.failure(structError))))
     XCTAssertNoDifference(signals.value, [.init(
-      type: "AppReducer.Action.contact(.fetchContactResult(.failure(\(Self.self).StructError)))"
+      type: "AppReducer.Action.contact(.fetchContactResult(.failure(\(Self.self).StructError)))",
+      payload: [
+        "error.localizedDescription": structError.localizedDescription,
+        "error.domain": (structError as NSError).domain,
+        "error.code": "\((structError as NSError).code)",
+      ]
     )])
     signals.setValue([])
 
     enum EnumError: Error { case failure }
-    await store.send(.contact(.fetchContactResult(.failure(EnumError.failure))))
+    let enumError = EnumError.failure
+    await store.send(.contact(.fetchContactResult(.failure(enumError))))
     XCTAssertNoDifference(signals.value, [.init(
-      type: "AppReducer.Action.contact(.fetchContactResult(.failure(\(Self.self).EnumError.failure)))"
+      type: "AppReducer.Action.contact(.fetchContactResult(.failure(\(Self.self).EnumError.failure)))",
+      payload: [
+        "error.localizedDescription": enumError.localizedDescription,
+        "error.domain": (enumError as NSError).domain,
+        "error.code": "\((enumError as NSError).code)",
+      ]
     )])
     signals.setValue([])
   }
