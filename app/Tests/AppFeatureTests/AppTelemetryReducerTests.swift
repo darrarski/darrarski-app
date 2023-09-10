@@ -304,4 +304,43 @@ final class AppTelemetryReducerTests: XCTestCase {
     )])
     signals.setValue([])
   }
+
+  func testActionWithMastodonMediaAttachment() async {
+    struct ExampleReducer: Reducer {
+      struct State: Equatable {}
+
+      enum Action: Equatable {
+        case attachment(Mastodon.MediaAttachment)
+        case attachmentID(Mastodon.MediaAttachment.ID)
+      }
+
+      var body: some ReducerOf<Self> {
+        EmptyReducer()
+      }
+    }
+    let signals = LockIsolated<[AppTelemetrySignal]>([])
+    let store = TestStore(initialState: ExampleReducer.State()) {
+      ExampleReducer()
+      AppTelemetryReducer()
+    } withDependencies: {
+      $0.appTelemetry.send = { @Sendable signal in
+        signals.withValue { $0.append(signal) }
+      }
+    }
+    let attachment = [Status].preview.flatMap(\.mediaAttachments).first!
+
+    await store.send(.attachment(attachment))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.attachment(MediaAttachment)",
+      payload: ["mastodon.media-attachment.id": attachment.id.rawValue]
+    )])
+    signals.setValue([])
+
+    await store.send(.attachmentID(attachment.id))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.attachmentID(MediaAttachment.ID)",
+      payload: ["mastodon.media-attachment.id": attachment.id.rawValue]
+    )])
+    signals.setValue([])
+  }
 }

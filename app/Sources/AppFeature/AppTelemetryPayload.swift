@@ -33,6 +33,14 @@ extension Mastodon.Status.ID: AppTelemetryPayloadProviding {
   var appTelemetryPayload: [String: String] { ["mastodon.status.id": rawValue] }
 }
 
+extension Mastodon.MediaAttachment: AppTelemetryPayloadProviding {
+  var appTelemetryPayload: [String: String] { id.appTelemetryPayload }
+}
+
+extension Mastodon.MediaAttachment.ID: AppTelemetryPayloadProviding {
+  var appTelemetryPayload: [String: String] { ["mastodon.media-attachment.id": rawValue] }
+}
+
 private extension DateFormatter {
   static let yearMonthDay: DateFormatter = {
     let formatter = DateFormatter()
