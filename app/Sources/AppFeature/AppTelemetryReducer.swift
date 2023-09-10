@@ -69,6 +69,9 @@ struct AppTelemetryReducer<State, Action>: Reducer {
       payload["error.domain"] = nsError.domain
       payload["error.code"] = "\(nsError.code)"
     }
+    if let providedPayload = (value as? AppTelemetryPayloadProviding)?.appTelemetryPayload {
+      payload.addPayload(providedPayload)
+    }
     let mirror = Mirror(reflecting: value)
     switch mirror.displayStyle {
     case .enum:
