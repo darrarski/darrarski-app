@@ -36,30 +36,47 @@ public struct StatusView: View {
       .multilineTextAlignment(.leading)
       .frame(maxWidth: .infinity, alignment: .leading)
 
-      ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
-        WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
-          Button {
-            viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
-          } label: {
-            MediaAttachmentView(state: viewStore.state)
-              .containerRelativeFrame(.vertical) { height, _ in height / 2 }
-          }
-          .buttonStyle(.plain)
-        }
-      }
+      WithViewStore(store) { state -> Bool in
+        let hasAttachments = !state.attachments.isEmpty
+        let hasPreviewCard = state.displayStatus.card != nil
+        return hasAttachments || hasPreviewCard
+      } content: { viewStore in
+        if viewStore.state {
+          ScrollView(.horizontal) {
+            HStack(spacing: 16) {
+              Group {
+                IfLetStore(store.scope(
+                  state: \.displayStatus.card,
+                  action: { $0 }
+                )) { store in
+                  WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
+                    Button {
+                      viewStore.send(.view(.previewCardTapped))
+                    } label: {
+                      PreviewCardView(state: viewStore.state)
+                    }
+                  }
+                }
 
-      IfLetStore(store.scope(
-        state: \.displayStatus.card,
-        action: { $0 }
-      )) { store in
-        WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
-          Button {
-            viewStore.send(.view(.previewCardTapped))
-          } label: {
-            PreviewCardView(state: viewStore.state)
-              .containerRelativeFrame(.vertical) { height, _ in height / 2 }
+                ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
+                  WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
+                    Button {
+                      viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
+                    } label: {
+                      MediaAttachmentView(state: viewStore.state)
+                    }
+                  }
+                }
+              }
+              .buttonStyle(.plain)
+              .containerRelativeFrame(.horizontal) { width, _ in width * 0.8 }
+            }
+            .scrollTargetLayout()
           }
-          .buttonStyle(.plain)
+          .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
+          .scrollIndicators(.hidden)
+          .scrollClipDisabled()
+          .containerRelativeFrame(.vertical) { height, _ in height / 2 }
         }
       }
     }
