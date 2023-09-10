@@ -32,4 +32,7 @@ if [[ $CI_WORKFLOW == "Deploy" ]]; then
     >> $WHAT_TO_TEST_PATH
   echo "What To Test:"
   cat $WHAT_TO_TEST_PATH
+
+  # Use TelemetryDeckAppID secret from workflow environment variable
+  echo "${TelemetryDeckAppID}" > ../app/Sources/AppFeature/Secrets/TelemetryDeckAppID
 fi
