@@ -24,12 +24,20 @@ public struct StatusView: View {
         .buttonStyle(.plain)
       }
 
-      WithViewStore(store, observe: \.displayStatus.content) { viewStore in
-        HTMLTextView(html: viewStore.state)
+      WithViewStore(store, observe: \.text) { viewStore in
+        let text = viewStore.state ?? AttributedString.statusTextPlaceholder
+        let isPlaceholder = viewStore.state == nil
+        Text(text)
+          .redacted(reason: isPlaceholder ? .placeholder : [])
+          .disabled(isPlaceholder)
+          .onChange(of: viewStore.state == nil, initial: true) { _, isNil in
+            if isNil { viewStore.send(.view(.textTask)) }
+          }
           .environment(\.openURL, OpenURLAction { url in
             viewStore.send(.view(.linkTapped(url)))
             return .discarded
           })
+          .animation(.bouncy, value: isPlaceholder)
       }
       .foregroundStyle(.primary)
       .font(.body)
@@ -95,6 +103,14 @@ public struct StatusView: View {
       }
     }
   }
+}
+
+private extension AttributedString {
+  static let statusTextPlaceholder = AttributedString("""
+    Proident sit adipisicing ex nulla. Ea id proident laboris occaecat excepteur. 
+    Consectetur deserunt excepteur cillum.
+    Esse laborum laborum qui ut eu non amet consectetur consectetur elit dolor consequat pariatur.
+    """)
 }
 
 #Preview {
