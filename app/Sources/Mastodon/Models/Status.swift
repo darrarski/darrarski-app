@@ -3,7 +3,7 @@ import Foundation
 /// Represents a status posted by an account.
 ///
 /// [API documentation](https://docs.joinmastodon.org/entities/Status/)
-public struct Status: Sendable, Equatable, Identifiable, Decodable {
+public struct Status: Sendable, Equatable, Decodable {
   public init(
     id: String,
     uri: String,
@@ -36,7 +36,7 @@ public struct Status: Sendable, Equatable, Identifiable, Decodable {
     bookmarked: Bool?,
     pinned: Bool?
   ) {
-    self.id = id
+    self.id = ID(rawValue: id)
     self.uri = uri
     self.createdAt = createdAt
     self.account = account
@@ -68,7 +68,7 @@ public struct Status: Sendable, Equatable, Identifiable, Decodable {
     self.pinned = pinned
   }
 
-  public var id: String
+  public var id: ID
   public var uri: String
   public var createdAt: Date
   public var account: Account
@@ -98,6 +98,21 @@ public struct Status: Sendable, Equatable, Identifiable, Decodable {
   public var muted: Bool?
   public var bookmarked: Bool?
   public var pinned: Bool?
+}
+
+extension Status: Identifiable {
+  public struct ID: Hashable, Sendable, Decodable {
+    public init(rawValue: String) {
+      self.rawValue = rawValue
+    }
+
+    public init(from decoder: Decoder) throws {
+      let container = try decoder.singleValueContainer()
+      self.rawValue = try container.decode(String.self)
+    }
+
+    public var rawValue: String
+  }
 }
 
 extension Status {

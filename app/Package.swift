@@ -17,6 +17,7 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.0"),
+    .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.0"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.0.0"),
   ],
   targets: [
@@ -28,6 +29,10 @@ let package = Package(
         .target(name: "FeedFeature"),
         .target(name: "ProjectsFeature"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "TelemetryClient", package: "SwiftClient"),
+      ],
+      resources: [
+        .embedInCode("Secrets/TelemetryDeckAppID"),
       ]
     ),
     .testTarget(

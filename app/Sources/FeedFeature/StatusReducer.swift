@@ -84,7 +84,7 @@ public struct StatusReducer: Reducer, Sendable {
 
       case .view(.previewCardTapped):
         return .run { [state] _ in
-          if let url = (state.status.card?.url).flatMap(URL.init) {
+          if let url = (state.displayStatus.card?.url).flatMap(URL.init) {
             await openURL(url)
           }
         }
