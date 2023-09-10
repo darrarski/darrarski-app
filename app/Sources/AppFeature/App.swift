@@ -11,6 +11,7 @@ struct App: SwiftUI.App {
   @Dependency(\.appTelemetry) var appTelemetry
   let store = Store(initialState: AppReducer.State()) {
     AppReducer()
+    AppTelemetryReducer()
   }
 
   var body: some Scene {
