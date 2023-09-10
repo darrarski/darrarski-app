@@ -28,6 +28,27 @@ final class StatusReducerTests: XCTestCase {
     }
   }
 
+  func testViewPreviewCardTappedOnRebloggedStatus() async {
+    let status = [Status].preview.first { $0.reblog?.card != nil }!
+    let didOpenURL = ActorIsolated<[URL]>([])
+
+    let store = TestStore(initialState: StatusReducer.State(
+      status: status
+    )) {
+      StatusReducer()
+    } withDependencies: {
+      $0.openURL = .init { url in
+        await didOpenURL.withValue { $0.append(url) }
+        return true
+      }
+    }
+
+    await store.send(.view(.previewCardTapped))
+    await didOpenURL.withValue {
+      XCTAssertNoDifference($0, [URL(string: status.reblog!.card!.url)!])
+    }
+  }
+
   func testViewLinkTapped() async {
     let url = URL(string: "https://darrarski.pl")!
     let didOpenURL = ActorIsolated<[URL]>([])
