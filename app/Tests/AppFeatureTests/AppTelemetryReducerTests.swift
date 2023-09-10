@@ -15,9 +15,15 @@ final class AppTelemetryReducerTests: XCTestCase {
         case fourth(number: Int, text: String)
         case fifth(String?)
         case sixth(SixthAction)
+        case eight([EightAction])
 
         enum SixthAction: Equatable {
           case seventh
+        }
+
+        enum EightAction: Equatable {
+          case ninth
+          case tenth
         }
       }
       
@@ -74,6 +80,12 @@ final class AppTelemetryReducerTests: XCTestCase {
     await store.send(.sixth(.seventh))
     XCTAssertNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.sixth(.seventh)"
+    )])
+    signals.setValue([])
+
+    await store.send(.eight([.ninth, .tenth]))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.eight(Array)"
     )])
     signals.setValue([])
   }
