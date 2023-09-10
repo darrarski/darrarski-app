@@ -23,8 +23,10 @@ struct AppTelemetryReducer<State, Action>: Reducer {
     switch mirror.displayStyle {
     case .enum:
       if let child = mirror.children.first {
-        let childPath = describe(child.value, abbreviated: true)
-        return "\(prefix).\(child.label ?? "")\(childPath.isEmpty ? "" : "(\(childPath))")"
+        let childLabel = child.label ?? ""
+        let childOutput = describe(child.value, abbreviated: true)
+          .nonEmpty.map { "(\($0))" } ?? ""
+        return "\(prefix).\(childLabel)\(childOutput)"
       } else {
         return "\(prefix).\(value)"
       }
@@ -34,6 +36,13 @@ struct AppTelemetryReducer<State, Action>: Reducer {
       } else {
         return "\(prefix).none"
       }
+    case .tuple:
+      return mirror.children.map { label, value in
+        let childLabel = toupleChildLabel(label).map { "\($0):" }
+        let childOutput = describe(value, abbreviated: true).nonEmpty
+        return [childLabel, childOutput].compactMap { $0 } .joined(separator: " ")
+      }
+      .joined(separator: ", ")
     default:
       return typeName(mirror.subjectType)
     }
@@ -71,11 +80,26 @@ struct AppTelemetryReducer<State, Action>: Reducer {
       if let child = mirror.children.first {
         payload = self.payload(for: child.value)
       }
+    case .tuple:
+      for (_, value) in mirror.children {
+        let childPayload = self.payload(for: value)
+        payload.addPayload(childPayload)
+      }
     default:
       break
     }
     return payload
   }
+
+  private func toupleChildLabel(_ label: String?) -> String? {
+    guard let label else { return nil }
+    let isUnlabeled = label.matches(of: #/^\.[0-9]+$/#).first != nil
+    return isUnlabeled ? nil : label
+  }
+}
+
+private extension Collection {
+  var nonEmpty: Self? { isEmpty ? nil : self }
 }
 
 private extension [String: String] {

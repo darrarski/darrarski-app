@@ -87,5 +87,11 @@ final class AppTelemetryReducerTests: XCTestCase {
       ]
     )])
     signals.setValue([])
+
+    await store.send(.feed(.status(id: "test-id", action: .view(.linkTapped(URL(fileURLWithPath: "test.url"))))))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "AppReducer.Action.feed(.status(id: String, action: .view(.linkTapped(URL))))"
+    )])
+    signals.setValue([])
   }
 }
