@@ -12,6 +12,16 @@ struct App: SwiftUI.App {
   let store = Store(initialState: AppReducer.State()) {
     AppReducer()
     AppTelemetryReducer()
+  } withDependencies: {
+    $0.openURL = .init { [dependencies = $0] url in
+      defer {
+        dependencies.appTelemetry.send(.init(
+          type: "OpenURL",
+          payload: ["url": url.absoluteString]
+        ))
+      }
+      return await dependencies.openURL(url)
+    }
   }
 
   var body: some Scene {
