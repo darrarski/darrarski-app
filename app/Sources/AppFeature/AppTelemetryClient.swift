@@ -20,8 +20,8 @@ extension AppTelemetryClient: TestDependencyKey {
   )
 
   static let previewValue = AppTelemetryClient(
-    initialize: { print("AppTelemetryClient.initialize()") },
-    send: { print(#"AppTelemetryClient.send("\#($0)")"#) }
+    initialize: { log.debug("initialize") },
+    send: { log.debug("send \($0.type)\($0.payload.isEmpty ? "" : " \($0.payload)")") }
   )
 }
 
@@ -49,15 +49,16 @@ extension AppTelemetryClient: DependencyKey {
     }
   )
 
+  private static let log = Logger(
+    subsystem: Bundle.main.bundleIdentifier!,
+    category: "AppTelemetryClient"
+  )
+
   private static func appID() -> String? {
     let data = Data(PackageResources.TelemetryDeckAppID)
     let string = String(data: data, encoding: .utf8)?
       .trimmingCharacters(in: .whitespacesAndNewlines)
     guard let string, !string.isEmpty else {
-      let log = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
-        category: "AppTelemetryClient"
-      )
       log.fault("Missing TelemetryDeck AppID (app/Sources/AppFeature/Secrets/TelemetryDeckAppID)")
       return nil
     }
