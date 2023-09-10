@@ -59,7 +59,6 @@ public struct FeedView: View {
         }
         .animation(.bouncy, value: viewStore.animationValue)
       }
-      .frame(maxWidth: 600)
       .frame(maxWidth: .infinity)
       .padding(16)
     }
