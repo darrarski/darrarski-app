@@ -35,7 +35,7 @@ struct AppTelemetryReducer<State, Action>: Reducer {
         return "\(prefix).none"
       }
     default:
-      return "\(typeName(mirror.subjectType))"
+      return typeName(mirror.subjectType)
     }
   }
 
