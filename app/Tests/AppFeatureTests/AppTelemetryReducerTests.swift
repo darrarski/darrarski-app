@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import ContactFeature
+import ProjectsFeature
 import XCTest
 @testable import AppFeature
 
@@ -213,6 +214,53 @@ final class AppTelemetryReducerTests: XCTestCase {
     XCTAssertNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.linkID(Contact.Link.ID)",
       payload: ["contact.link.id": "test-2"]
+    )])
+    signals.setValue([])
+  }
+
+  func testActionWithProject() async {
+    struct ExampleReducer: Reducer {
+      struct State: Equatable {}
+
+      enum Action: Equatable {
+        case project(Project)
+        case projectID(Project.ID)
+      }
+
+      var body: some ReducerOf<Self> {
+        EmptyReducer()
+      }
+    }
+    let signals = LockIsolated<[AppTelemetrySignal]>([])
+    let store = TestStore(initialState: ExampleReducer.State()) {
+      ExampleReducer()
+      AppTelemetryReducer()
+    } withDependencies: {
+      $0.appTelemetry.send = { @Sendable signal in
+        signals.withValue { $0.append(signal) }
+      }
+    }
+
+    await store.send(.project(.init(
+      date: Date(timeIntervalSince1970: 0),
+      type: "Type",
+      name: "Name",
+      tags: [],
+      url: nil
+    )))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.project(Project)",
+      payload: ["project.id": "1970-01-01 Name"]
+    )])
+    signals.setValue([])
+
+    await store.send(.projectID(.init(
+      date: Date(timeIntervalSince1970: 0),
+      name: "Name"
+    )))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.projectID(Project.ID)",
+      payload: ["project.id": "1970-01-01 Name"]
     )])
     signals.setValue([])
   }
