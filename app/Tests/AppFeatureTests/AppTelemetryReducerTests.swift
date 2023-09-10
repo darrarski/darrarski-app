@@ -13,26 +13,54 @@ final class AppTelemetryReducerTests: XCTestCase {
         signals.withValue { $0.append(signal) }
       }
     }
-    let actions: [AppReducer.Action] = [
-      .view(.sectionSelected(.contact)),
-      .view(.sectionSelected(.feed)),
-      .view(.sectionSelected(.none)),
-      .contact(.view(.task)),
-      .contact(.fetchContact),
-      .contact(.fetchContactResult(.success(.preview))),
-      .contact(.fetchContactResult(.failure(NSError(domain: "test", code: 1337)))),
-    ]
-    for action in actions {
-      await store.send(action)
-    }
-    XCTAssertNoDifference(signals.value, [
-      "AppReducer.Action.view(.sectionSelected(.some(.contact)))",
-      "AppReducer.Action.view(.sectionSelected(.some(.feed)))",
-      "AppReducer.Action.view(.sectionSelected(.none))",
-      "AppReducer.Action.contact(.view(.task))",
-      "AppReducer.Action.contact(.fetchContact)",
-      "AppReducer.Action.contact(.fetchContactResult(.success(Contact)))",
-      "AppReducer.Action.contact(.fetchContactResult(.failure(NSError)))",
-    ])
+
+    await store.send(.view(.sectionSelected(.contact)))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.view(.sectionSelected(.some(.contact)))"
+    )
+    signals.setValue([])
+
+    await store.send(.view(.sectionSelected(.feed)))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.view(.sectionSelected(.some(.feed)))"
+    )
+    signals.setValue([])
+
+    await store.send(.view(.sectionSelected(.none)))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.view(.sectionSelected(.none))"
+    )
+    signals.setValue([])
+
+    await store.send(.contact(.view(.task)))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.contact(.view(.task))"
+    )
+    signals.setValue([])
+
+    await store.send(.contact(.fetchContact))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.contact(.fetchContact)"
+    )
+    signals.setValue([])
+
+    await store.send(.contact(.fetchContactResult(.success(.preview))))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.contact(.fetchContactResult(.success(Contact)))"
+    )
+    signals.setValue([])
+
+    await store.send(.contact(.fetchContactResult(.failure(NSError(domain: "test", code: 1337)))))
+    XCTAssertNoDifference(
+      signals.value.joined(separator: "\n"),
+      "AppReducer.Action.contact(.fetchContactResult(.failure(NSError)))"
+    )
+    signals.setValue([])
   }
 }
