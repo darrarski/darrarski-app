@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import ContactFeature
+import Mastodon
 import ProjectsFeature
 import XCTest
 @testable import AppFeature
@@ -261,6 +262,45 @@ final class AppTelemetryReducerTests: XCTestCase {
     XCTAssertNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.projectID(Project.ID)",
       payload: ["project.id": "1970-01-01 Name"]
+    )])
+    signals.setValue([])
+  }
+
+  func testActionWithMastodonStatus() async {
+    struct ExampleReducer: Reducer {
+      struct State: Equatable {}
+
+      enum Action: Equatable {
+        case status(Mastodon.Status)
+        case statusID(Mastodon.Status.ID)
+      }
+
+      var body: some ReducerOf<Self> {
+        EmptyReducer()
+      }
+    }
+    let signals = LockIsolated<[AppTelemetrySignal]>([])
+    let store = TestStore(initialState: ExampleReducer.State()) {
+      ExampleReducer()
+      AppTelemetryReducer()
+    } withDependencies: {
+      $0.appTelemetry.send = { @Sendable signal in
+        signals.withValue { $0.append(signal) }
+      }
+    }
+    let status = [Status].preview.first!
+
+    await store.send(.status(status))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.status(Status)",
+      payload: ["mastodon.status.id": status.id.rawValue]
+    )])
+    signals.setValue([])
+
+    await store.send(.statusID(status.id))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.statusID(Status.ID)",
+      payload: ["mastodon.status.id": status.id.rawValue]
     )])
     signals.setValue([])
   }

@@ -1,5 +1,6 @@
 import ContactFeature
 import Foundation
+import Mastodon
 import ProjectsFeature
 
 protocol AppTelemetryPayloadProviding {
@@ -22,6 +23,14 @@ extension Project.ID: AppTelemetryPayloadProviding {
   var appTelemetryPayload: [String: String] {
     ["project.id": "\(DateFormatter.yearMonthDay.string(from: date)) \(name)"]
   }
+}
+
+extension Mastodon.Status: AppTelemetryPayloadProviding {
+  var appTelemetryPayload: [String: String] { ["mastodon.status.id": id.rawValue] }
+}
+
+extension Mastodon.Status.ID: AppTelemetryPayloadProviding {
+  var appTelemetryPayload: [String: String] { ["mastodon.status.id": rawValue] }
 }
 
 private extension DateFormatter {
