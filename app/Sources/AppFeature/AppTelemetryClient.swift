@@ -6,7 +6,11 @@ import OSLog
 
 struct AppTelemetryClient: Sendable {
   var initialize: @Sendable () -> Void
-  var send: @Sendable (String) -> Void
+  var send: @Sendable (AppTelemetrySignal) -> Void
+
+  func send(_ signalType: String) {
+    send(AppTelemetrySignal(type: signalType))
+  }
 }
 
 extension AppTelemetryClient: TestDependencyKey {
@@ -36,7 +40,12 @@ extension AppTelemetryClient: DependencyKey {
     },
     send: { signal in
       guard TelemetryManager.isInitialized else { return }
-      TelemetryManager.send(signal)
+      TelemetryManager.send(
+        signal.type,
+        for: signal.clientUser,
+        floatValue: signal.floatValue,
+        with: signal.payload
+      )
     }
   )
 
