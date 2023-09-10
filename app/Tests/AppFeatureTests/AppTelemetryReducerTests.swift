@@ -55,5 +55,19 @@ final class AppTelemetryReducerTests: XCTestCase {
       type: "AppReducer.Action.contact(.fetchContactResult(.failure(NSError)))"
     )])
     signals.setValue([])
+
+    struct StructError: Error { var value = 44 }
+    await store.send(.contact(.fetchContactResult(.failure(StructError()))))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "AppReducer.Action.contact(.fetchContactResult(.failure(\(Self.self).StructError)))"
+    )])
+    signals.setValue([])
+
+    enum EnumError: Error { case failure }
+    await store.send(.contact(.fetchContactResult(.failure(EnumError.failure))))
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "AppReducer.Action.contact(.fetchContactResult(.failure(\(Self.self).EnumError.failure)))"
+    )])
+    signals.setValue([])
   }
 }

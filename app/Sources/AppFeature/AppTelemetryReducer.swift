@@ -16,7 +16,7 @@ struct AppTelemetryReducer<State, Action>: Reducer {
 
   private func describe(_ value: Any, abbreviated: Bool = false) -> String {
     let mirror = Mirror(reflecting: value)
-    let prefix = abbreviated ? "" : typeName(type(of: value))
+    let prefix = (abbreviated && !(value is Error)) ? "" : typeName(type(of: value))
     switch mirror.displayStyle {
     case .enum:
       if let child = mirror.children.first {
