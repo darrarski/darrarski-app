@@ -22,4 +22,7 @@
    <FileRef
       location = "group:web">
    </FileRef>
+   <FileRef
+      location = "group:ci_scripts">
+   </FileRef>
 </Workspace>
