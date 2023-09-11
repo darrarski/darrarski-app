@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Contact: Equatable, Sendable, Codable {
+public struct Contact: Equatable, Sendable, Decodable {
   public init(
     avatarURL: URL,
     name: String,
@@ -20,7 +20,7 @@ public struct Contact: Equatable, Sendable, Codable {
 }
 
 extension Contact {
-  public struct Link: Equatable, Sendable, Codable {
+  public struct Link: Equatable, Sendable, Decodable {
     public init(
       id: String,
       title: String,
@@ -44,7 +44,7 @@ extension Contact {
 }
 
 extension Contact.Link: Identifiable {
-  public struct ID: Hashable, Sendable, Codable {
+  public struct ID: Hashable, Sendable, Decodable {
     public init(rawValue: String) {
       self.rawValue = rawValue
     }
@@ -64,7 +64,7 @@ extension Contact.Link: Identifiable {
 }
 
 extension Contact.Link {
-  public enum Target: String, Equatable, Sendable, Codable {
+  public enum Target: String, Equatable, Sendable, Decodable {
     case system
 
     public init(from decoder: Decoder) throws {
@@ -74,11 +74,6 @@ extension Contact.Link {
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "")
       }
       self = target
-    }
-
-    public func encode(to encoder: Encoder) throws {
-      var container = encoder.singleValueContainer()
-      try container.encode(rawValue)
     }
   }
 }
