@@ -18,8 +18,9 @@ public struct ContactView: View {
 
   public var body: some View {
     ScrollView {
-      VStack {
+      VStack(spacing: 16) {
         header
+        content.frame(maxWidth: .infinity, alignment: .leading)
         buttons
       }
       .frame(maxWidth: maxContentWidth)
@@ -60,7 +61,6 @@ public struct ContactView: View {
       .containerRelativeFrame(.horizontal) { width, _ in
         min(width, maxContentWidth) / 3
       }
-      .padding(.bottom)
 
       details
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -92,6 +92,20 @@ public struct ContactView: View {
           .redacted(reason: value == nil ? .placeholder : [])
           .animation(.bouncy, value: text)
       }
+    }
+  }
+
+  @MainActor
+  var content: some View {
+    WithViewStore(store, observe: \.contact?.content) { viewStore in
+      let value = viewStore.state
+      let placeholder = AttributedString("Aliquip in qui enim. Labore incididunt velit qui eu ad cillum culpa enim. In elit sit est officia aliquip consequat nisi incididunt reprehenderit labore consequat id qui est. Veniam velit voluptate occaecat. Aliquip ullamco irure sunt anim sit ad aliqua consectetur Lorem aliquip. Do ullamco nisi ex consequat cillum cupidatat ea commodo consectetur.")
+      let text = value ?? placeholder
+
+      Text(text)
+        .font(.body)
+        .redacted(reason: value == nil ? .placeholder : [])
+        .animation(.bouncy, value: text)
     }
   }
 
