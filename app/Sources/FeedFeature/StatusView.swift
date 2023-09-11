@@ -51,35 +51,43 @@ public struct StatusView: View {
       } content: { viewStore in
         if viewStore.state {
           ScrollView(.horizontal) {
-            HStack(spacing: 16) {
-              Group {
-                IfLetStore(store.scope(
-                  state: \.displayStatus.card,
-                  action: { $0 }
-                )) { store in
-                  WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
-                    Button {
-                      viewStore.send(.view(.previewCardTapped))
-                    } label: {
-                      PreviewCardView(state: viewStore.state)
-                    }
-                  }
-                }
+            HStack(spacing: 0) {
+              Spacer()
+                .containerRelativeFrame(.horizontal) { width, _ in width * 0.1 }
 
-                ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
-                  WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
-                    Button {
-                      viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
-                    } label: {
-                      MediaAttachmentView(state: viewStore.state)
+              HStack(spacing: 16) {
+                Group {
+                  IfLetStore(store.scope(
+                    state: \.displayStatus.card,
+                    action: { $0 }
+                  )) { store in
+                    WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
+                      Button {
+                        viewStore.send(.view(.previewCardTapped))
+                      } label: {
+                        PreviewCardView(state: viewStore.state)
+                      }
+                    }
+                  }
+
+                  ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
+                    WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
+                      Button {
+                        viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
+                      } label: {
+                        MediaAttachmentView(state: viewStore.state)
+                      }
                     }
                   }
                 }
+                .buttonStyle(.plain)
+                .containerRelativeFrame(.horizontal) { width, _ in width * 0.8 }
               }
-              .buttonStyle(.plain)
-              .containerRelativeFrame(.horizontal) { width, _ in width * 0.8 }
+              .scrollTargetLayout()
+
+              Spacer()
+                .containerRelativeFrame(.horizontal) { width, _ in width * 0.1 }
             }
-            .scrollTargetLayout()
           }
           .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
           .scrollIndicators(.hidden)
