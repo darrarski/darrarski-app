@@ -1,5 +1,6 @@
 import AppShared
 import ComposableArchitecture
+import Kingfisher
 import SwiftUI
 
 public struct ContactView: View {
@@ -174,19 +175,17 @@ public struct ContactView: View {
               .scaledToFit()
 
           } else {
-            AsyncImage(url: link.iconURL) { image in
-              image
-                .renderingMode(.template)
-                .resizable()
-                .scaledToFit()
-
-            } placeholder: {
-              Image(systemName: "link")
-                .resizable()
-                .scaledToFit()
-                .scaleEffect(CGSize(width: 0.75, height: 0.75))
-                .opacity(0.5)
-            }
+            KFImage(link.iconURL)
+              .placeholder {
+                Image(systemName: "link")
+                  .resizable()
+                  .scaledToFit()
+                  .scaleEffect(CGSize(width: 0.75, height: 0.75))
+                  .opacity(0.5)
+              }
+              .renderingMode(.template)
+              .resizable()
+              .scaledToFit()
           }
         }
         .frame(width: linkButtonIconSize)

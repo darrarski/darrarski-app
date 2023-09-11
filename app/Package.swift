@@ -18,6 +18,7 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.0"),
     .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.0"),
+    .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.9.1"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.0.0"),
   ],
   targets: [
@@ -62,6 +63,7 @@ let package = Package(
       dependencies: [
         .target(name: "AppShared"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "Kingfisher", package: "Kingfisher"),
       ]
     ),
     .testTarget(
@@ -76,6 +78,7 @@ let package = Package(
         .target(name: "AppShared"),
         .target(name: "Mastodon"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "Kingfisher", package: "Kingfisher"),
       ]
     ),
     .testTarget(
