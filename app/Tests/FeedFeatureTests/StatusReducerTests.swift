@@ -244,6 +244,8 @@ final class StatusReducerTests: XCTestCase {
     await store.receive(.textRendered(renderedText)) {
       $0.text = renderedText
     }
+
+    await store.send(.view(.textTask))
   }
 
   func testTextRenderingFailure() async {
