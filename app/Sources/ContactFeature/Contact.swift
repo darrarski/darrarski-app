@@ -1,26 +1,49 @@
 import Foundation
 
-public struct Contact: Equatable, Sendable, Codable {
+public struct Contact: Equatable, Sendable {
   public init(
     avatarURL: URL,
     name: String,
     description: String,
+    content: AttributedString,
     links: [Link]
   ) {
     self.avatarURL = avatarURL
     self.name = name
     self.description = description
+    self.content = content
     self.links = links
   }
   
   public var avatarURL: URL
   public var name: String
   public var description: String
+  public var content: AttributedString
   public var links: [Link]
 }
 
+extension Contact: Decodable {
+  enum CodingKeys: CodingKey {
+    case avatarURL
+    case name
+    case description
+    case content
+    case links
+  }
+
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    self.avatarURL = try container.decode(URL.self, forKey: .avatarURL)
+    self.name = try container.decode(String.self, forKey: .name)
+    self.description = try container.decode(String.self, forKey: .description)
+    let content = try container.decode(String.self, forKey: .content)
+    self.content = try AttributedString(appMarkdown: content)
+    self.links = try container.decode([Link].self, forKey: .links)
+  }
+}
+
 extension Contact {
-  public struct Link: Equatable, Sendable, Codable {
+  public struct Link: Equatable, Sendable, Decodable {
     public init(
       id: String,
       title: String,
@@ -44,7 +67,7 @@ extension Contact {
 }
 
 extension Contact.Link: Identifiable {
-  public struct ID: Hashable, Sendable, Codable {
+  public struct ID: Hashable, Sendable, Decodable {
     public init(rawValue: String) {
       self.rawValue = rawValue
     }
@@ -64,7 +87,7 @@ extension Contact.Link: Identifiable {
 }
 
 extension Contact.Link {
-  public enum Target: String, Equatable, Sendable, Codable {
+  public enum Target: String, Equatable, Sendable, Decodable {
     case system
 
     public init(from decoder: Decoder) throws {
@@ -75,66 +98,14 @@ extension Contact.Link {
       }
       self = target
     }
-
-    public func encode(to encoder: Encoder) throws {
-      var container = encoder.singleValueContainer()
-      try container.encode(rawValue)
-    }
   }
 }
 
 extension Contact {
-  public static let preview = Contact(
-    avatarURL: URL(string: "https://2.gravatar.com/avatar/6050a5cb46e4ae93355bbe6c95931ea5?s=512")!,
-    name: "Dariusz Rybicki",
-    description: """
-      Software Engineer,
-      iOS & Mac App Developer,
-      Scrum Master, Mentor
-      """,
-    links: [
-      Link(
-        id: "mail",
-        title: "Mail",
-        url: URL(string: "mailto:dariusz@darrarski.pl")!,
-        iconURL: URL(string: "sf-symbols:envelope.fill")!,
-        target: .system
-      ),
-      Link(
-        id: "mastodon.social",
-        title: "Mastodon",
-        url: URL(string: "https://mastodon.social/@darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/mastodon.png")!,
-        target: .system
-      ),
-      Link(
-        id: "twitter",
-        title: "Twitter",
-        url: URL(string: "https://twitter.com/darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/twitter.png")!,
-        target: .system
-      ),
-      Link(
-        id: "linked-in",
-        title: "Linked In",
-        url: URL(string: "https://www.linkedin.com/in/darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/linked-in.png")!,
-        target: .system
-      ),
-      Link(
-        id: "github",
-        title: "GitHub",
-        url: URL(string: "https://github.com/darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/github.png")!,
-        target: .system
-      ),
-      Link(
-        id: "cal.com",
-        title: "Book a meeting",
-        url: URL(string: "https://cal.com/darrarski")!,
-        iconURL: URL(string: "sf-symbols:calendar.badge.plus")!,
-        target: .system
-      ),
-    ]
-  )
+  public static let preview: Contact = {
+    let url = Bundle.module.url(forResource: "contact_preview", withExtension: "json")!
+    let data = try! Data(contentsOf: url)
+    let decoder = JSONDecoder()
+    return try! decoder.decode(Contact.self, from: data)
+  }()
 }
