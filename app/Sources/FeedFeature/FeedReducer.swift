@@ -54,6 +54,7 @@ public struct FeedReducer: Reducer, Sendable {
           }
           await send(.fetchStatusesResult(result))
         }
+        .cancellable(id: CancelId.fetchStatuses, cancelInFlight: true)
 
       case .fetchStatusesResult(let result):
         state.isLoading = false
