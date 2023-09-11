@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 extension AttributedString {
   public init(appMarkdown markdownString: String) throws {
@@ -32,9 +33,33 @@ extension AttributedString {
         }
       }
       if intentRange.lowerBound != output.startIndex {
-        output.characters.insert(contentsOf: "\n", at: intentRange.lowerBound)
+        output.characters.insert(contentsOf: "\n\n", at: intentRange.lowerBound)
       }
     }
     self = output
   }
+}
+
+#Preview {
+  ScrollView {
+    let markdown = """
+# Header 1
+## Header 2
+### Header 3
+
+Sunt sit **labore anim pariatur** eiusmod est *reprehenderit* in elit.
+
+Consectetur __dolor ad mollit__ velit aute aliqua elit _deserunt_ non velit consectetur quis pariatur.
+Tempor nulla [incididunt cupidatat](https://app.darrarski.pl) excepteur duis aute magna do.
+Commodo officia anim `elit consequat` aliqua mollit nisi eu consequat veniam sunt Lorem eu.
+
+Qui ut nisi et magna sint.
+"""
+    let attributedString = try! AttributedString(appMarkdown: markdown)
+
+    Text(attributedString)
+      .frame(maxWidth: .infinity, alignment: .leading)
+      .padding()
+  }
+  .tint(.appTint)
 }
