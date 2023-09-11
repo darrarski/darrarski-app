@@ -63,6 +63,7 @@ let package = Package(
       dependencies: [
         .target(name: "AppShared"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "Kingfisher", package: "Kingfisher"),
       ]
     ),
     .testTarget(
@@ -77,6 +78,7 @@ let package = Package(
         .target(name: "AppShared"),
         .target(name: "Mastodon"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "Kingfisher", package: "Kingfisher"),
       ]
     ),
     .testTarget(

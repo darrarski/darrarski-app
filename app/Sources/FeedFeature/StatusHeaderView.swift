@@ -1,4 +1,5 @@
 import AppShared
+import Kingfisher
 import Mastodon
 import SwiftUI
 
@@ -22,21 +23,19 @@ struct StatusHeaderView: View {
 
   var body: some View {
     HStack(alignment: .top) {
-      AsyncImage(url: state.avatarURL) { image in
-        image
-          .resizable()
-          .scaledToFit()
-
-      } placeholder: {
-        Image(systemName: "person")
-          .resizable()
-          .scaledToFit()
-          .padding(avatarSize / 10)
-      }
-      .background(Color.secondary)
-      .clipShape(Circle())
-      .aspectRatio(contentMode: .fit)
-      .frame(width: avatarSize)
+      KFImage(state.avatarURL)
+        .placeholder {
+          Image(systemName: "person")
+            .resizable()
+            .scaledToFit()
+            .padding(avatarSize / 10)
+        }
+        .resizable()
+        .scaledToFit()
+        .background(Color.secondary)
+        .clipShape(Circle())
+        .aspectRatio(contentMode: .fit)
+        .frame(width: avatarSize)
 
       VStack(alignment: .leading) {
         Text(state.displayName)

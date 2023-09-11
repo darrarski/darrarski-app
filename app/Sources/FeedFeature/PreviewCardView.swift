@@ -1,4 +1,5 @@
 import AppShared
+import Kingfisher
 import Mastodon
 import SwiftUI
 
@@ -50,26 +51,28 @@ struct PreviewCardView: View {
   @ViewBuilder
   var image: some View {
     if let imageURL = state.imageURL {
-      AsyncImage(url: imageURL) { image in
-        image
-          .resizable()
-          .scaledToFit()
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background {
-            image
-              .resizable()
-              .scaledToFill()
-              .blur(radius: 10)
-              .opacity(0.8)
-          }
-      } placeholder: {
-        Color.clear
-      }
-      .clipped()
+      KFImage(imageURL)
+        .resizable()
+        .placeholder {
+          Color.clear
+        }
+        .scaledToFit()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background {
+          KFImage(imageURL)
+            .resizable()
+            .placeholder {
+              Color.clear
+            }
+            .scaledToFill()
+            .blur(radius: 10)
+            .opacity(0.8)
+        }
+        .clipped()
 #if os(iOS)
-      .background(.ultraThickMaterial)
+        .background(.ultraThickMaterial)
 #elseif os(macOS)
-      .background(.primary.opacity(0.1))
+        .background(.primary.opacity(0.1))
 #endif
     }
   }

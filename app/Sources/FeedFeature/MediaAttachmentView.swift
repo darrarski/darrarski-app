@@ -1,4 +1,5 @@
 import AppShared
+import Kingfisher
 import Mastodon
 import SwiftUI
 
@@ -32,21 +33,20 @@ struct MediaAttachmentView: View {
 
     case .image:
       cardView {
-        AsyncImage(url: state.previewURL) { image in
-          image
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background {
-              image
-                .resizable()
-                .scaledToFill()
-                .blur(radius: 10)
-                .opacity(0.8)
-            }
-        } placeholder: {
-          Color.clear
-        }
+        KFImage(state.previewURL)
+          .resizable()
+          .placeholder {
+            Color.clear
+          }
+          .scaledToFit()
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .background {
+            KFImage(state.previewURL)
+              .resizable()
+              .scaledToFill()
+              .blur(radius: 10)
+              .opacity(0.8)
+          }
       }
 
     case .gifv:
@@ -55,16 +55,15 @@ struct MediaAttachmentView: View {
     case .video:
       cardView {
         ZStack {
-          AsyncImage(url: state.previewURL) { image in
-            Color.clear.background {
-              image
-                .resizable()
-                .scaledToFill()
-                .blur(radius: 10)
-                .opacity(0.8)
-            }
-          } placeholder: {
-            Color.clear
+          Color.clear.background {
+            KFImage(state.previewURL)
+              .resizable()
+              .placeholder {
+                Color.clear
+              }
+              .scaledToFill()
+              .blur(radius: 10)
+              .opacity(0.8)
           }
 
           VideoPreviewView(url: state.url)
