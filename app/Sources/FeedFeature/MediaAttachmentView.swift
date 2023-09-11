@@ -33,7 +33,17 @@ struct MediaAttachmentView: View {
     case .image:
       cardView {
         AsyncImage(url: state.previewURL) { image in
-          image.resizable().scaledToFill()
+          image
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+              image
+                .resizable()
+                .scaledToFill()
+                .blur(radius: 10)
+                .opacity(0.8)
+            }
         } placeholder: {
           Color.clear
         }
@@ -46,12 +56,19 @@ struct MediaAttachmentView: View {
       cardView {
         ZStack {
           AsyncImage(url: state.previewURL) { image in
-            image.resizable().scaledToFill()
+            Color.clear.background {
+              image
+                .resizable()
+                .scaledToFill()
+                .blur(radius: 10)
+                .opacity(0.8)
+            }
           } placeholder: {
             Color.clear
           }
 
           VideoPreviewView(url: state.url)
+            .scaledToFit()
         }
       }
 
@@ -69,18 +86,13 @@ struct MediaAttachmentView: View {
     @ViewBuilder overlay: () -> Overlay
   ) -> some View {
     ZStack {
-      Color.clear
+      content()
+        .clipped()
 #if os(iOS)
         .background(.ultraThickMaterial)
 #elseif os(macOS)
         .background(.primary.opacity(0.1))
 #endif
-        .background(.ultraThickMaterial)
-        .aspectRatio(state.aspectRatio, contentMode: .fit)
-        .overlay {
-          content()
-        }
-        .clipped()
 
       overlay()
     }
@@ -100,13 +112,14 @@ struct MediaAttachmentView: View {
 
 #Preview {
   ScrollView {
-    VStack {
+    VStack(spacing: 10) {
       let attachments: [MediaAttachment] = [Status].preview
         .flatMap { [$0, $0.reblog?.value].compactMap { $0 } }
         .flatMap(\.mediaAttachments)
 
       ForEach(attachments) { attachment in
         MediaAttachmentView(state: .init(attachment))
+          .aspectRatio(1, contentMode: .fill)
       }
     }
     .padding()

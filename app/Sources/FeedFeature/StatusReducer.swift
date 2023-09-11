@@ -6,14 +6,17 @@ public struct StatusReducer: Reducer, Sendable {
   public struct State: Equatable, Sendable, Identifiable {
     public init(
       status: Status,
+      text: AttributedString? = nil,
       quickLookItem: URL? = nil
     ) {
       self.status = status
+      self.text = text
       self.quickLookItem = quickLookItem
     }
 
     public var id: Status.ID { status.id }
     var status: Status
+    var text: AttributedString?
     @PresentationState var quickLookItem: URL?
 
     var displayStatus: Status {
@@ -34,6 +37,8 @@ public struct StatusReducer: Reducer, Sendable {
 
   public enum Action: Equatable, Sendable {
     case quickLookItem(PresentationAction<Never>)
+    case renderText
+    case textRendered(AttributedString)
     case view(View)
 
     public enum View: Equatable, Sendable {
@@ -42,17 +47,31 @@ public struct StatusReducer: Reducer, Sendable {
       case linkTapped(URL)
       case previewCardTapped
       case quickLookItemChanged(URL)
+      case textTask
     }
   }
 
   public init() {}
 
   @Dependency(\.openURL) var openURL
+  @Dependency(\.statusTextRenderer) var render
 
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .quickLookItem(_):
+        return .none
+
+      case .renderText:
+        let html = state.displayStatus.content
+        return .run { send in
+          await send(.textRendered(try render(html)))
+        } catch: { _, send in
+          await send(.textRendered(AttributedString(html)))
+        }
+
+      case .textRendered(let text):
+        state.text = text
         return .none
 
       case .view(.attachmentTapped(let id)):
@@ -91,6 +110,12 @@ public struct StatusReducer: Reducer, Sendable {
 
       case .view(.quickLookItemChanged(let url)):
         state.quickLookItem = url
+        return .none
+
+      case .view(.textTask):
+        if state.text == nil {
+          return .send(.renderText)
+        }
         return .none
       }
     }

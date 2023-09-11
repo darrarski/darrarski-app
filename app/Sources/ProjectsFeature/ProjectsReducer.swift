@@ -37,6 +37,7 @@ public struct ProjectsReducer: Reducer, Sendable {
 
   public init() {}
 
+  @Dependency(\.continuousClock) var clock
   @Dependency(\.projectsProvider) var projectsProvider
   @Dependency(\.openURL) var openURL
 
@@ -48,6 +49,7 @@ public struct ProjectsReducer: Reducer, Sendable {
       case .fetch:
         state.isLoading = true
         return .run { send in
+          try await clock.sleep(for: .seconds(0.5))
           await send(.fetchInfoResult(TaskResult {
             try await projectsProvider.fetchInfo()
           }))
@@ -55,7 +57,8 @@ public struct ProjectsReducer: Reducer, Sendable {
             try await projectsProvider.fetchProjects()
           }))
           await send(.fetchFinished)
-        }.cancellable(id: CancelId.fetch, cancelInFlight: true)
+        }
+        .cancellable(id: CancelId.fetch, cancelInFlight: true)
 
       case .fetchFinished:
         state.isLoading = false

@@ -24,40 +24,75 @@ public struct StatusView: View {
         .buttonStyle(.plain)
       }
 
-      WithViewStore(store, observe: \.displayStatus.content) { viewStore in
-        HTMLTextView(html: viewStore.state)
+      WithViewStore(store, observe: \.text) { viewStore in
+        let text = viewStore.state ?? AttributedString.statusTextPlaceholder
+        let isPlaceholder = viewStore.state == nil
+        Text(text)
+          .redacted(reason: isPlaceholder ? .placeholder : [])
+          .disabled(isPlaceholder)
+          .onChange(of: viewStore.state == nil, initial: true) { _, isNil in
+            if isNil { viewStore.send(.view(.textTask)) }
+          }
           .environment(\.openURL, OpenURLAction { url in
             viewStore.send(.view(.linkTapped(url)))
             return .discarded
           })
+          .animation(.bouncy, value: isPlaceholder)
       }
       .foregroundStyle(.primary)
       .font(.body)
       .multilineTextAlignment(.leading)
       .frame(maxWidth: .infinity, alignment: .leading)
 
-      ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
-        WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
-          Button {
-            viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
-          } label: {
-            MediaAttachmentView(state: viewStore.state)
-          }
-          .buttonStyle(.plain)
-        }
-      }
+      WithViewStore(store) { state -> Bool in
+        let hasAttachments = !state.attachments.isEmpty
+        let hasPreviewCard = state.displayStatus.card != nil
+        return hasAttachments || hasPreviewCard
+      } content: { viewStore in
+        if viewStore.state {
+          ScrollView(.horizontal) {
+            HStack(spacing: 0) {
+              Spacer()
+                .containerRelativeFrame(.horizontal) { width, _ in width * 0.1 }
 
-      IfLetStore(store.scope(
-        state: \.displayStatus.card,
-        action: { $0 }
-      )) { store in
-        WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
-          Button {
-            viewStore.send(.view(.previewCardTapped))
-          } label: {
-            PreviewCardView(state: viewStore.state)
+              HStack(spacing: 16) {
+                Group {
+                  IfLetStore(store.scope(
+                    state: \.displayStatus.card,
+                    action: { $0 }
+                  )) { store in
+                    WithViewStore(store, observe: PreviewCardView.State.init) { viewStore in
+                      Button {
+                        viewStore.send(.view(.previewCardTapped))
+                      } label: {
+                        PreviewCardView(state: viewStore.state)
+                      }
+                    }
+                  }
+
+                  ForEachStore(store.scope(state: \.attachments, action: \.1)) { store in
+                    WithViewStore(store, observe: MediaAttachmentView.State.init) { viewStore in
+                      Button {
+                        viewStore.send(.view(.attachmentTapped(store.withState(\.id))))
+                      } label: {
+                        MediaAttachmentView(state: viewStore.state)
+                      }
+                    }
+                  }
+                }
+                .buttonStyle(.plain)
+                .containerRelativeFrame(.horizontal) { width, _ in width * 0.8 }
+              }
+              .scrollTargetLayout()
+
+              Spacer()
+                .containerRelativeFrame(.horizontal) { width, _ in width * 0.1 }
+            }
           }
-          .buttonStyle(.plain)
+          .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
+          .scrollIndicators(.hidden)
+          .scrollClipDisabled()
+          .containerRelativeFrame(.vertical) { height, _ in height / 2 }
         }
       }
     }
@@ -76,6 +111,14 @@ public struct StatusView: View {
       }
     }
   }
+}
+
+private extension AttributedString {
+  static let statusTextPlaceholder = AttributedString("""
+    Proident sit adipisicing ex nulla. Ea id proident laboris occaecat excepteur. 
+    Consectetur deserunt excepteur cillum.
+    Esse laborum laborum qui ut eu non amet consectetur consectetur elit dolor consequat pariatur.
+    """)
 }
 
 #Preview {

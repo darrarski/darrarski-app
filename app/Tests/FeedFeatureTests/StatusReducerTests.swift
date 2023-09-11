@@ -222,4 +222,48 @@ final class StatusReducerTests: XCTestCase {
       allAttachments[3],
     ])
   }
+
+  func testTextRendering() async {
+    var status = [Status].preview.first!
+    status.content = "html content"
+    status.reblog = nil
+    let renderedText = AttributedString("redered text")
+    let didRender = LockIsolated<[String]>([])
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    } withDependencies: {
+      $0.statusTextRenderer.render = { text in
+        didRender.withValue { $0.append(text) }
+        return renderedText
+      }
+    }
+
+    await store.send(.view(.textTask))
+    await store.receive(.renderText)
+    XCTAssertNoDifference(didRender.value, [status.content])
+    await store.receive(.textRendered(renderedText)) {
+      $0.text = renderedText
+    }
+
+    await store.send(.view(.textTask))
+  }
+
+  func testTextRenderingFailure() async {
+    var status = [Status].preview.first!
+    status.content = "html content"
+    status.reblog = nil
+    let store = TestStore(initialState: StatusReducer.State(status: status)) {
+      StatusReducer()
+    } withDependencies: {
+      $0.statusTextRenderer.render = { _ in
+        throw NSError(domain: "test", code: 1337)
+      }
+    }
+
+    await store.send(.view(.textTask))
+    await store.receive(.renderText)
+    await store.receive(.textRendered(AttributedString(status.content))) {
+      $0.text = AttributedString(status.content)
+    }
+  }
 }

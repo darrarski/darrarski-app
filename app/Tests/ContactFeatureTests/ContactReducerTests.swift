@@ -5,15 +5,18 @@ import XCTest
 @MainActor
 final class ContactReducerTests: XCTestCase {
   func testFetchContact() async {
+    let clock = TestClock()
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
+      $0.continuousClock = clock
       $0.contactProvider.fetch = { .preview }
     }
 
     await store.send(.fetchContact) {
       $0.isLoading = true
     }
+    await clock.advance(by: .seconds(0.5))
     await store.receive(.fetchContactResult(.success(.preview))) {
       $0.isLoading = false
       $0.contact = .preview
@@ -25,6 +28,7 @@ final class ContactReducerTests: XCTestCase {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.contactProvider.fetch = { throw error }
     }
 
@@ -40,6 +44,7 @@ final class ContactReducerTests: XCTestCase {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.contactProvider.fetch = { .preview }
     }
     store.exhaustivity = .off
@@ -52,6 +57,7 @@ final class ContactReducerTests: XCTestCase {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.contactProvider.fetch = { .preview }
     }
     store.exhaustivity = .off
@@ -65,6 +71,7 @@ final class ContactReducerTests: XCTestCase {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.contactProvider.fetch = { .preview }
     }
     store.exhaustivity = .off

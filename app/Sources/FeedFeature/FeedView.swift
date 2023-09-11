@@ -17,10 +17,12 @@ public struct FeedView: View {
     init(_ state: FeedReducer.State) {
       animationValue = state.statuses.ids
       showPlaceholder = state.statuses.isEmpty && state.isLoading
+      showMoreButton = !state.statuses.isEmpty
     }
 
     var animationValue: OrderedSet<StatusReducer.State.ID>
     var showPlaceholder: Bool
+    var showMoreButton: Bool
   }
 
   public var body: some View {
@@ -42,20 +44,21 @@ public struct FeedView: View {
               .combined(with: .opacity)
             )
 
-            Button {
-              viewStore.send(.view(.seeMoreButtonTapped))
-            } label: {
-              Text("See more on Mastodon")
-                .padding(.horizontal)
+            if viewStore.showMoreButton {
+              Button {
+                viewStore.send(.view(.seeMoreButtonTapped))
+              } label: {
+                Text("See more on Mastodon")
+                  .padding(.horizontal)
+              }
+              .controlSize(.extraLarge)
+              .buttonStyle(.borderedProminent)
+              .transition(.opacity)
             }
-            .controlSize(.extraLarge)
-            .buttonStyle(.borderedProminent)
-            .transition(.opacity)
           }
         }
         .animation(.bouncy, value: viewStore.animationValue)
       }
-      .frame(maxWidth: 600)
       .frame(maxWidth: .infinity)
       .padding(16)
     }

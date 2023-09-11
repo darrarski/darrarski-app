@@ -50,25 +50,27 @@ struct PreviewCardView: View {
   @ViewBuilder
   var image: some View {
     if let imageURL = state.imageURL {
-      Color.clear
-#if os(iOS)
-        .background(.ultraThickMaterial)
-#elseif os(macOS)
-        .background(.primary.opacity(0.1))
-#endif
-        .background(.ultraThickMaterial)
-        .aspectRatio(16/9, contentMode: .fit)
-        .overlay {
-          AsyncImage(url: imageURL) { image in
+      AsyncImage(url: imageURL) { image in
+        image
+          .resizable()
+          .scaledToFit()
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .background {
             image
               .resizable()
               .scaledToFill()
-
-          } placeholder: {
-            Color.clear
+              .blur(radius: 10)
+              .opacity(0.8)
           }
-        }
-        .clipped()
+      } placeholder: {
+        Color.clear
+      }
+      .clipped()
+#if os(iOS)
+      .background(.ultraThickMaterial)
+#elseif os(macOS)
+      .background(.primary.opacity(0.1))
+#endif
     }
   }
 
@@ -78,16 +80,14 @@ struct PreviewCardView: View {
       Text(state.title)
         .foregroundStyle(.primary)
         .font(.headline)
-        .fixedSize(horizontal: false, vertical: true)
 
       Text(state.description)
         .foregroundStyle(.primary)
         .font(.subheadline)
-        .fixedSize(horizontal: false, vertical: true)
 
       if let footer = state.footer {
         Text(footer)
-          .foregroundStyle(Color.appTint)
+          .foregroundStyle(.tint)
           .font(.subheadline)
           .lineLimit(1)
       }
@@ -97,11 +97,9 @@ struct PreviewCardView: View {
 }
 
 #Preview {
-  ScrollView {
-    PreviewCardView(state: PreviewCardView.State(
-      [Status].preview.first!.reblog!.card!
-    ))
-    .padding()
-  }
+  PreviewCardView(state: PreviewCardView.State(
+    [Status].preview.first!.reblog!.card!
+  ))
+  .padding()
   .tint(.appTint)
 }

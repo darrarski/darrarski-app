@@ -30,6 +30,7 @@ public struct ContactReducer: Reducer, Sendable {
 
   public init() {}
 
+  @Dependency(\.continuousClock) var clock
   @Dependency(\.contactProvider) var contactProvider
   @Dependency(\.openURL) var openURL
 
@@ -41,6 +42,7 @@ public struct ContactReducer: Reducer, Sendable {
       case .fetchContact:
         state.isLoading = true
         return .run { send in
+          try await clock.sleep(for: .seconds(0.5))
           let result = await TaskResult {
             try await contactProvider.fetch()
           }

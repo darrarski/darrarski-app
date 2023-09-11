@@ -5,9 +5,11 @@ import XCTest
 @MainActor
 final class ProjectsReducerTests: XCTestCase {
   func testFetch() async {
+    let clock = TestClock()
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.continuousClock = clock
       $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
@@ -15,6 +17,7 @@ final class ProjectsReducerTests: XCTestCase {
     await store.send(.fetch) {
       $0.isLoading = true
     }
+    await clock.advance(by: .seconds(0.5))
     await store.receive(.fetchInfoResult(.success(.preview))) {
       $0.info = .preview
     }
@@ -31,6 +34,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.projectsProvider.fetchInfo = { throw error }
       $0.projectsProvider.fetchProjects = { .preview }
     }
@@ -52,6 +56,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { throw error }
     }
@@ -72,6 +77,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
@@ -85,6 +91,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }
@@ -98,6 +105,7 @@ final class ProjectsReducerTests: XCTestCase {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.projectsProvider.fetchInfo = { .preview }
       $0.projectsProvider.fetchProjects = { .preview }
     }

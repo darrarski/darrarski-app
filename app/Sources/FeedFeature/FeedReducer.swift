@@ -32,6 +32,7 @@ public struct FeedReducer: Reducer, Sendable {
 
   public init() {}
 
+  @Dependency(\.continuousClock) var clock
   @Dependency(\.mastodon) var mastodon
   @Dependency(\.openURL) var openURL
   static let mastodonAccountId = "108131495937150285"
@@ -45,6 +46,7 @@ public struct FeedReducer: Reducer, Sendable {
       case .fetchStatuses:
         state.isLoading = true
         return .run { send in
+          try await clock.sleep(for: .seconds(0.5))
           let result = await TaskResult {
             try await mastodon.getAccountStatuses(
               accountId: Self.mastodonAccountId,
@@ -54,6 +56,7 @@ public struct FeedReducer: Reducer, Sendable {
           }
           await send(.fetchStatusesResult(result))
         }
+        .cancellable(id: CancelId.fetchStatuses, cancelInFlight: true)
 
       case .fetchStatusesResult(let result):
         state.isLoading = false
