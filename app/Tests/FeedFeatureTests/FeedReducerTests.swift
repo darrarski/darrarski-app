@@ -6,11 +6,13 @@ import XCTest
 @MainActor
 final class FeedReducerTests: XCTestCase {
   func testFetchStatuses() async {
+    let clock = TestClock()
     let didFetchWithQuery = ActorIsolated<[Mastodon.GetAccountStatuses.Query]>([])
     let statuses = [Status].preview
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
+      $0.continuousClock = clock
       $0.mastodon.getAccountStatuses.run = { query in
         await didFetchWithQuery.withValue { $0.append(query) }
         return statuses
@@ -20,6 +22,7 @@ final class FeedReducerTests: XCTestCase {
     await store.send(.fetchStatuses) {
       $0.isLoading = true
     }
+    await clock.advance(by: .seconds(0.5))
     await didFetchWithQuery.withValue {
       XCTAssertNoDifference($0, [.init(
         accountId: FeedReducer.mastodonAccountId,
@@ -40,6 +43,7 @@ final class FeedReducerTests: XCTestCase {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.mastodon.getAccountStatuses.run = { _ in throw error }
     }
 
@@ -55,6 +59,7 @@ final class FeedReducerTests: XCTestCase {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.mastodon.getAccountStatuses.run = { _ in [] }
     }
     store.exhaustivity = .off
@@ -67,6 +72,7 @@ final class FeedReducerTests: XCTestCase {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.mastodon.getAccountStatuses.run = { _ in [] }
     }
     store.exhaustivity = .off
@@ -79,6 +85,7 @@ final class FeedReducerTests: XCTestCase {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
+      $0.continuousClock = ImmediateClock()
       $0.mastodon.getAccountStatuses.run = { _ in [] }
     }
     store.exhaustivity = .off
