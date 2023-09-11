@@ -64,6 +64,9 @@ let package = Package(
         .target(name: "AppShared"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "Kingfisher", package: "Kingfisher"),
+      ],
+      resources: [
+        .copy("Resources/contact_preview.json"),
       ]
     ),
     .testTarget(
