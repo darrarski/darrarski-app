@@ -84,57 +84,10 @@ extension Contact.Link {
 }
 
 extension Contact {
-  public static let preview = Contact(
-    avatarURL: URL(string: "https://2.gravatar.com/avatar/6050a5cb46e4ae93355bbe6c95931ea5?s=512")!,
-    name: "Dariusz Rybicki",
-    description: """
-      Software Engineer,
-      iOS & Mac App Developer,
-      Scrum Master, Mentor
-      """,
-    links: [
-      Link(
-        id: "mail",
-        title: "Mail",
-        url: URL(string: "mailto:dariusz@darrarski.pl")!,
-        iconURL: URL(string: "sf-symbols:envelope.fill")!,
-        target: .system
-      ),
-      Link(
-        id: "mastodon.social",
-        title: "Mastodon",
-        url: URL(string: "https://mastodon.social/@darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/mastodon.png")!,
-        target: .system
-      ),
-      Link(
-        id: "twitter",
-        title: "Twitter",
-        url: URL(string: "https://twitter.com/darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/twitter.png")!,
-        target: .system
-      ),
-      Link(
-        id: "linked-in",
-        title: "Linked In",
-        url: URL(string: "https://www.linkedin.com/in/darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/linked-in.png")!,
-        target: .system
-      ),
-      Link(
-        id: "github",
-        title: "GitHub",
-        url: URL(string: "https://github.com/darrarski")!,
-        iconURL: URL(string: "https://app.darrarski.pl/assets/icons/github.png")!,
-        target: .system
-      ),
-      Link(
-        id: "cal.com",
-        title: "Book a meeting",
-        url: URL(string: "https://cal.com/darrarski")!,
-        iconURL: URL(string: "sf-symbols:calendar.badge.plus")!,
-        target: .system
-      ),
-    ]
-  )
+  public static let preview: Contact = {
+    let url = Bundle.module.url(forResource: "contact_preview", withExtension: "json")!
+    let data = try! Data(contentsOf: url)
+    let decoder = JSONDecoder()
+    return try! decoder.decode(Contact.self, from: data)
+  }()
 }
