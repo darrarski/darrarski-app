@@ -1,22 +1,45 @@
 import Foundation
 
-public struct Contact: Equatable, Sendable, Decodable {
+public struct Contact: Equatable, Sendable {
   public init(
     avatarURL: URL,
     name: String,
     description: String,
+    content: AttributedString,
     links: [Link]
   ) {
     self.avatarURL = avatarURL
     self.name = name
     self.description = description
+    self.content = content
     self.links = links
   }
   
   public var avatarURL: URL
   public var name: String
   public var description: String
+  public var content: AttributedString
   public var links: [Link]
+}
+
+extension Contact: Decodable {
+  enum CodingKeys: CodingKey {
+    case avatarURL
+    case name
+    case description
+    case content
+    case links
+  }
+
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    self.avatarURL = try container.decode(URL.self, forKey: .avatarURL)
+    self.name = try container.decode(String.self, forKey: .name)
+    self.description = try container.decode(String.self, forKey: .description)
+    let content = try container.decode(String.self, forKey: .content)
+    self.content = try AttributedString(appMarkdown: content)
+    self.links = try container.decode([Link].self, forKey: .links)
+  }
 }
 
 extension Contact {
