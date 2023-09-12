@@ -3,7 +3,10 @@
 ![Swift v5.9](https://img.shields.io/badge/swift-v5.9-orange.svg)
 ![platforms iOS, macOS](https://img.shields.io/badge/platforms-iOS,_macOS-blue.svg)
 
-iOS & macOS SwiftUI application about my work and services.
+Hello, my name is Dariusz and this is the iOS & macOS SwiftUI application about my work and services.
+
+[<img src="web/assets/appstore.png" width="200" alt="Download on the App Store">](https://apps.apple.com/app/darrarski/id6463758169)
+[<img src="web/assets/testflight.png" width="200" alt="Available on TestFlight">](https://testflight.apple.com/join/sGoIvYtI) 
 
 ## 📖 Documentation
 
