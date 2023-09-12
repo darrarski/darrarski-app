@@ -808,5 +808,18 @@
     ],
     "type" : "Library",
     "url" : "https://github.com/darrarski/tca-swift-log"
+  },
+  {
+    "date" : "2023.08.29",
+    "name" : "Darrarski.app",
+    "tags" : [
+      "iOS",
+      "macOS",
+      "Swift",
+      "SwiftUI",
+      "TCA"
+    ],
+    "type" : "Application",
+    "url" : "https://github.com/darrarski/darrarski-app"
   }
 ]
