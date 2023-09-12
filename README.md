@@ -1,4 +1,4 @@
-# Darrarski App
+# <img src="project/DarrarskiApp/Assets.xcassets/AppIcon.appiconset/Mac 128pt 2x.png" height="128" align="right"> Darrarski.app
 
 ![Swift v5.9](https://img.shields.io/badge/swift-v5.9-orange.svg)
 ![platforms iOS, macOS](https://img.shields.io/badge/platforms-iOS,_macOS-blue.svg)
