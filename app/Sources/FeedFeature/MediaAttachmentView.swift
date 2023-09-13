@@ -51,12 +51,7 @@ struct MediaAttachmentView: View {
           }
       }
 
-    case .gifv:
-      cardView {
-        Text("GIFV")
-      }
-
-    case .video:
+    case .gifv, .video:
       cardView {
         ZStack {
           Color.clear.background {
