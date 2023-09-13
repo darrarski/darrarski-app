@@ -32,11 +32,11 @@ extension IdentifiedArrayOf<ProjectsGroup> {
     calendar: Calendar = .current
   ) {
     self = .init(
-      uniqueElements: Dictionary(
+      uniqueElements: Dictionary<Int, [Project]>(
         grouping: projects,
         by: { calendar.component(.year, from: $0.date) }
       )
-      .map { year, projects in
+      .map { (year: Int, projects: [Project]) -> ProjectsGroup  in
         ProjectsGroup(
           date: calendar.date(from: DateComponents(year: year))!,
           projects: .init(
