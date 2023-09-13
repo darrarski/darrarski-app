@@ -101,6 +101,7 @@ public struct StatusView: View {
         Color.clear.quickLookPreview(Binding(
           get: { viewStore.state },
           set: { url, transaction in
+            guard viewStore.state != url else { return }
             if let url {
               viewStore.send(.view(.quickLookItemChanged(url)), transaction: transaction)
             } else {
