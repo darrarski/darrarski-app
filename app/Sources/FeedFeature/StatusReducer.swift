@@ -38,7 +38,7 @@ public struct StatusReducer: Reducer, Sendable {
   public enum Action: Equatable, Sendable {
     case quickLookItem(PresentationAction<Never>)
     case renderText
-    case textRendered(AttributedString)
+    case textRendered(TaskResult<AttributedString>)
     case view(View)
 
     public enum View: Equatable, Sendable {
@@ -65,12 +65,15 @@ public struct StatusReducer: Reducer, Sendable {
       case .renderText:
         let html = state.displayStatus.content
         return .run { send in
-          await send(.textRendered(try render(html)))
-        } catch: { _, send in
-          await send(.textRendered(AttributedString(html)))
+          let result = await TaskResult<AttributedString> { try render(html) }
+          await send(.textRendered(result))
         }
 
-      case .textRendered(let text):
+      case .textRendered(.failure(_)):
+        state.text = AttributedString(state.displayStatus.content)
+        return .none
+
+      case .textRendered(.success(let text)):
         state.text = text
         return .none
 

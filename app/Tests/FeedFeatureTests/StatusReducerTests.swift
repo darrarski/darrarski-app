@@ -241,7 +241,7 @@ final class StatusReducerTests: XCTestCase {
     await store.send(.view(.textTask))
     await store.receive(.renderText)
     XCTAssertNoDifference(didRender.value, [status.content])
-    await store.receive(.textRendered(renderedText)) {
+    await store.receive(.textRendered(.success(renderedText))) {
       $0.text = renderedText
     }
 
@@ -249,20 +249,20 @@ final class StatusReducerTests: XCTestCase {
   }
 
   func testTextRenderingFailure() async {
+    struct Failure: Error, Equatable {}
+    let failure = Failure()
     var status = [Status].preview.first!
     status.content = "html content"
     status.reblog = nil
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
     } withDependencies: {
-      $0.statusTextRenderer.render = { _ in
-        throw NSError(domain: "test", code: 1337)
-      }
+      $0.statusTextRenderer.render = { _ in throw failure }
     }
 
     await store.send(.view(.textTask))
     await store.receive(.renderText)
-    await store.receive(.textRendered(AttributedString(status.content))) {
+    await store.receive(.textRendered(.failure(failure))) {
       $0.text = AttributedString(status.content)
     }
   }

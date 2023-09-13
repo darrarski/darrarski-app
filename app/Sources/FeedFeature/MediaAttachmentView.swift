@@ -29,7 +29,9 @@ struct MediaAttachmentView: View {
   var body: some View {
     switch state.type {
     case .unknown:
-      EmptyView()
+      cardView {
+        Text("Attachment")
+      }
 
     case .image:
       cardView {
@@ -46,13 +48,11 @@ struct MediaAttachmentView: View {
               .scaledToFill()
               .blur(radius: 10)
               .opacity(0.8)
+              .allowsHitTesting(false)
           }
       }
 
-    case .gifv:
-      EmptyView()
-
-    case .video:
+    case .gifv, .video:
       cardView {
         ZStack {
           Color.clear.background {
@@ -64,6 +64,7 @@ struct MediaAttachmentView: View {
               .scaledToFill()
               .blur(radius: 10)
               .opacity(0.8)
+              .allowsHitTesting(false)
           }
 
           VideoPreviewView(url: state.url)
@@ -72,7 +73,9 @@ struct MediaAttachmentView: View {
       }
 
     case .audio:
-      EmptyView()
+      cardView {
+        Text("Audio")
+      }
     }
   }
 
@@ -86,16 +89,15 @@ struct MediaAttachmentView: View {
   ) -> some View {
     ZStack {
       content()
-        .clipped()
-#if os(iOS)
-        .background(.ultraThickMaterial)
-#elseif os(macOS)
-        .background(.primary.opacity(0.1))
-#endif
-
       overlay()
     }
-    .frame(maxWidth: .infinity)
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+#if os(iOS)
+    .background(.ultraThickMaterial)
+#elseif os(macOS)
+    .background(.primary.opacity(0.1))
+#endif
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
 #if os(iOS)
     .background(.thickMaterial)
 #elseif os(macOS)

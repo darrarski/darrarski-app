@@ -25,7 +25,7 @@ if [[ $CI_WORKFLOW == "Deploy" ]]; then
   git fetch --unshallow --tags
   git log \
     $(git describe --tags --abbrev=0 HEAD~1)..HEAD \
-    --pretty=format:'- [%h] %s' \
+    --pretty=format:'- %s' \
     --first-parent \
     > $WHAT_TO_TEST_PATH
   echo "\n- More info: https://github.com/darrarski/darrarski-app/releases/tag/${BUILD_TAG}" \

@@ -26,7 +26,8 @@ struct App: SwiftUI.App {
       case .feed(.status(_, .quickLookItem(.dismiss))): true
       case .feed(.status(_, .quickLookItem(.presented(_)))): false
       case .feed(.status(_, .renderText)): false
-      case .feed(.status(_, .textRendered(_))): false
+      case .feed(.status(_, .textRendered(.failure(_)))): true
+      case .feed(.status(_, .textRendered(.success(_)))): false
       case .feed(.status(_, .view(.attachmentTapped(_)))): true
       case .feed(.status(_, .view(.headerTapped))): true
       case .feed(.status(_, .view(.linkTapped(_)))): true
