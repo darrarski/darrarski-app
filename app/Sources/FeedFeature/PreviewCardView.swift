@@ -48,33 +48,35 @@ struct PreviewCardView: View {
   }
 
   @MainActor
-  @ViewBuilder
   var image: some View {
-    if let imageURL = state.imageURL {
-      KFImage(imageURL)
-        .resizable()
-        .placeholder {
-          Color.clear
-        }
-        .scaledToFit()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background {
-          KFImage(imageURL)
-            .resizable()
-            .placeholder {
-              Color.clear
-            }
-            .scaledToFill()
-            .blur(radius: 10)
-            .opacity(0.8)
-        }
-        .clipped()
-#if os(iOS)
-        .background(.ultraThickMaterial)
-#elseif os(macOS)
-        .background(.primary.opacity(0.1))
-#endif
+    ZStack {
+      if let imageURL = state.imageURL {
+        KFImage(imageURL)
+          .resizable()
+          .placeholder {
+            Color.clear
+          }
+          .scaledToFit()
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .background {
+            KFImage(imageURL)
+              .resizable()
+              .placeholder {
+                Color.clear
+              }
+              .scaledToFill()
+              .blur(radius: 10)
+              .opacity(0.8)
+          }
+      }
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .clipped()
+#if os(iOS)
+    .background(.ultraThickMaterial)
+#elseif os(macOS)
+    .background(.primary.opacity(0.1))
+#endif
   }
 
   @MainActor
