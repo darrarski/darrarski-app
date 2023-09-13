@@ -48,6 +48,7 @@ struct MediaAttachmentView: View {
               .scaledToFill()
               .blur(radius: 10)
               .opacity(0.8)
+              .allowsHitTesting(false)
           }
       }
 
@@ -63,6 +64,7 @@ struct MediaAttachmentView: View {
               .scaledToFill()
               .blur(radius: 10)
               .opacity(0.8)
+              .allowsHitTesting(false)
           }
 
           VideoPreviewView(url: state.url)
