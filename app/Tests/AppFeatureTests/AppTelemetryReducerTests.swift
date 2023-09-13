@@ -343,4 +343,110 @@ final class AppTelemetryReducerTests: XCTestCase {
     )])
     signals.setValue([])
   }
+
+  func testDisableByState() async {
+    struct ExampleReducer: Reducer {
+      struct State: Equatable {
+        var isTelemetryEnabled: Bool
+      }
+
+      enum Action: Equatable {
+        case enableTelemetry
+        case disableTelemetry
+        case otherAction
+      }
+
+      func reduce(into state: inout State, action: Action) -> Effect<Action> {
+        switch action {
+        case .enableTelemetry:
+          state.isTelemetryEnabled = true
+        case .disableTelemetry:
+          state.isTelemetryEnabled = false
+        case .otherAction:
+          break
+        }
+        return .none
+      }
+    }
+    let signals = LockIsolated<[AppTelemetrySignal]>([])
+    let store = TestStore(initialState: ExampleReducer.State(
+      isTelemetryEnabled: false
+    )) {
+      ExampleReducer()
+      AppTelemetryReducer { state, _ in
+        state.isTelemetryEnabled
+      }
+    } withDependencies: {
+      $0.appTelemetry.send = { @Sendable signal in
+        signals.withValue { $0.append(signal) }
+      }
+    }
+
+    await store.send(.otherAction)
+    XCTAssertNoDifference(signals.value, [])
+    signals.setValue([])
+
+    await store.send(.enableTelemetry) {
+      $0.isTelemetryEnabled = true
+    }
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.enableTelemetry"
+    )])
+    signals.setValue([])
+
+    await store.send(.otherAction)
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.otherAction"
+    )])
+    signals.setValue([])
+
+    await store.send(.disableTelemetry) {
+      $0.isTelemetryEnabled = false
+    }
+    XCTAssertNoDifference(signals.value, [])
+    signals.setValue([])
+
+    await store.send(.otherAction)
+    XCTAssertNoDifference(signals.value, [])
+    signals.setValue([])
+  }
+
+  func testDisableByAction() async {
+    struct ExampleReducer: Reducer {
+      struct State: Equatable {}
+
+      enum Action: Equatable {
+        case includedAction
+        case excludedAction
+      }
+
+      func reduce(into _: inout State, action: Action) -> Effect<Action> {
+        .none
+      }
+    }
+    let signals = LockIsolated<[AppTelemetrySignal]>([])
+    let store = TestStore(initialState: ExampleReducer.State()) {
+      ExampleReducer()
+      AppTelemetryReducer { _, action in
+        switch action {
+        case .includedAction: true
+        case .excludedAction: false
+        }
+      }
+    } withDependencies: {
+      $0.appTelemetry.send = { @Sendable signal in
+        signals.withValue { $0.append(signal) }
+      }
+    }
+
+    await store.send(.includedAction)
+    XCTAssertNoDifference(signals.value, [.init(
+      type: "\(Self.self).ExampleReducer.Action.includedAction"
+    )])
+    signals.setValue([])
+
+    await store.send(.excludedAction)
+    XCTAssertNoDifference(signals.value, [])
+    signals.setValue([])
+  }
 }

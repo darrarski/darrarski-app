@@ -4,10 +4,20 @@ import TelemetryClient
 
 typealias AppTelemetryReducerOf<R: Reducer> = AppTelemetryReducer<R.State, R.Action>
 
-struct AppTelemetryReducer<State, Action>: Reducer {
-  @Dependency(\.appTelemetry) var appTelemetry
+struct AppTelemetryReducer<State, Action>: Reducer, Sendable {
+  typealias IsEnabled = @Sendable (State, Action) -> Bool
 
-  func reduce(into _: inout State, action: Action) -> Effect<Action> {
+  init(enabled: @escaping IsEnabled = { _, _ in true }) {
+    self.isEnabled = enabled
+  }
+  
+  @Dependency(\.appTelemetry) var appTelemetry
+  var isEnabled: IsEnabled
+
+  func reduce(into state: inout State, action: Action) -> Effect<Action> {
+    guard isEnabled(state, action) else {
+      return .none
+    }
     let action = UncheckedSendable(action)
     return .run(priority: .low) { send in
       appTelemetry.send(.init(
