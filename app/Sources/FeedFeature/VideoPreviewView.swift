@@ -90,8 +90,7 @@ private extension Image {
 }
 
 #Preview {
-  VideoPreviewView(url: URL(
-    string: [Status].preview.first!.reblog!.mediaAttachments.first!.url
-  ))
-  .aspectRatio(16/9, contentMode: .fit)
+  let urlString: String = [Status].preview.first!.reblog!.mediaAttachments.first!.url
+  return VideoPreviewView(url: URL(string: urlString))
+    .aspectRatio(16/9, contentMode: .fit)
 }
