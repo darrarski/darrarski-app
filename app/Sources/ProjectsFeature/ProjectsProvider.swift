@@ -89,8 +89,9 @@ extension ProjectsProvider: DependencyKey {
       guard let string = String(data: data, encoding: .utf8) else {
         throw InvalidResponseError(statusCode: statusCode, data: data)
       }
+      let content = try AttributedString(appMarkdown: string)
 
-      return ProjectsInfo(markdown: string)
+      return ProjectsInfo(content: content)
     },
     fetchProjects: {
       @Dependency(\.urlSession) var urlSession

@@ -109,7 +109,7 @@ public struct ProjectsView: View {
   }
 
   func infoView(_ info: ProjectsInfo) -> some View {
-    AppMarkdownView(markdown: info.markdown)
+    Text(info.content)
       .frame(maxWidth: .infinity, alignment: .leading)
   }
 
