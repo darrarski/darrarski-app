@@ -34,7 +34,7 @@ struct PreviewCardView: View {
       image
       details
     }
-    .frame(maxWidth: .infinity, alignment: .leading)
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 #if os(iOS)
     .background(.thickMaterial)
 #elseif os(macOS)
@@ -48,35 +48,34 @@ struct PreviewCardView: View {
   }
 
   @MainActor
+  @ViewBuilder
   var image: some View {
-    ZStack {
-      if let imageURL = state.imageURL {
-        KFImage(imageURL)
-          .resizable()
-          .placeholder {
-            Color.clear
-          }
-          .scaledToFit()
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background {
-            KFImage(imageURL)
-              .resizable()
-              .placeholder {
-                Color.clear
-              }
-              .scaledToFill()
-              .blur(radius: 10)
-              .opacity(0.8)
-          }
-      }
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .clipped()
+    if let imageURL = state.imageURL {
+      KFImage(imageURL)
+        .resizable()
+        .placeholder {
+          Color.clear
+        }
+        .scaledToFit()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background {
+          KFImage(imageURL)
+            .resizable()
+            .placeholder {
+              Color.clear
+            }
+            .scaledToFill()
+            .blur(radius: 10)
+            .opacity(0.8)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
 #if os(iOS)
-    .background(.ultraThickMaterial)
+        .background(.ultraThickMaterial)
 #elseif os(macOS)
-    .background(.primary.opacity(0.1))
+        .background(.primary.opacity(0.1))
 #endif
+    }
   }
 
   @MainActor
@@ -89,6 +88,10 @@ struct PreviewCardView: View {
       Text(state.description)
         .foregroundStyle(.primary)
         .font(.subheadline)
+
+      if state.imageURL == nil {
+        Spacer(minLength: 0)
+      }
 
       if let footer = state.footer {
         Text(footer)
