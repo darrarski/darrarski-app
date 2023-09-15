@@ -56,6 +56,12 @@ Individual features of the application are implemented as libraries produced by 
 | [Mastodon](app/Sources/Mastodon) | Provides models and API client for Mastodon network. Implements only a small subset of the API endpoints, that are needed by the app.
 | [ProjectFeature](app/Sources/ProjectsFeature) | Implements screen with a list of projects. Each project, with some basic information about it, is presented on a grid. The list is fetched from the backend.
 
+### Previews
+
+Each view of the application is implemented in SwiftUI and comes with a preview. The preview is driven by a real `Store` and `Reducer`, but the application dependencies are mocked up for preview purposes. For example, an API client fetch-endpoint dependency immediately returns a JSON file loaded from disk, instead of performing an actual network request. This behavior allows for easier UI development in Xcode, in isolation from the outside world.
+
+![Screenshot of Xcode running feed screen preview](web/assets/xcode-preview-feed.png)
+
 ### App icon
 
 _app-icon package, AppIcon library, app-icon-export executable_
