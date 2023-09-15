@@ -12,11 +12,11 @@ Hello, my name is Dariusz and this is the iOS & macOS SwiftUI application about 
 
 ## 📖 Documentation
 
-_not yet_
+Darrarski.app is as an example of a modular iOS & macOS application built with [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture). The repository contains Xcode Workspace, in which all the source code is organized.
 
-## 🏛 Project structure
+### Project structure
 
-Use Xcode workspace for development, the whole project is structured in it.
+The whole project is organized within Xcode workspace, which should be used for development.
 
 ```
 DarrarskiApp ---------------- Xcode workspace
@@ -26,10 +26,10 @@ DarrarskiApp ---------------- Xcode workspace
  ├─ app --------------------- swift package with the app source code
  │   ├─ AppFeature ---------- root app feature library
  │   ├─ AppShared ----------- library with shared source code
- │   ├─ ContactFeature ------ contact feature library
- │   ├─ FeedFeature --------- feed feature library
+ │   ├─ ContactFeature ------ contact screen feature library
+ │   ├─ FeedFeature --------- feed screen feature library
  │   ├─ Mastodon ------------ Mastodon client library
- │   └─ ProjectsFeature ----- projects feature library
+ │   └─ ProjectsFeature ----- projects screen feature library
  ├─ app-icon ---------------- swift package for app icon
  │   ├─ app-icon-export ----- executable, generates app icons assets
  │   └─ AppIcon ------------- library with app icon implementation
@@ -42,6 +42,35 @@ DarrarskiApp ---------------- Xcode workspace
  ├─ web --------------------- group with web server files
  └─ ci_scripts -------------- group with scripts used by Xcode Cloud
 ```
+
+### Libraries
+
+Individual features of the application are implemented as libraries produced by Swift packages.
+
+| Library | Description |
+|:--|:--|
+| AppFeature | Root feature of the application. Manages application state and presents split view or tabs navigation UI, depending on platform and device.
+| AppShared | Contains source code shared between other libraries.
+| ContactFeature | Contains contact screen UI, as well as the logic responsible for loading contact information from the backend.
+| FeedFeature | Implements social feed screen, based on posts fetched from Mastodon. Presents statuses and boosts with attachments.
+| Mastodon | Provides models and API client for Mastodon network. Implements only a small subset of the API endpoints, that are needed by the app.
+| ProjectFeature | Implements screen with a list of projects. Each project, with some basic information about it, is presented on a grid. The list is fetched from the backend.
+
+### App icon
+
+_app-icon package, AppIcon library, app-icon-export executable_
+
+### Tests
+
+_unit tests, test plans, schemes_
+
+### Telemetry
+
+_TelemetryDeck, AppTelemetryReducer_
+
+### CI/CD
+
+_Xcode Cloud, tests, deployment, version tags, generating WhatToTest_
 
 ## 🛠 Develop
 
