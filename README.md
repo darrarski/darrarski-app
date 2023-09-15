@@ -95,7 +95,9 @@ The fact that all events that can occur in the application are defined by the re
 
 ### CI/CD
 
-_Xcode Cloud, tests, deployment, version tags, generating WhatToTest_
+The project is integrated with [Xcode Cloud](https://developer.apple.com/xcode-cloud/). There are two workflows defined: one that runs tests for each pull request, and one that archives the app and deploys it to TestFlight. For the deployment lane, the [ci_post_clone](ci_scripts/ci_post_clone.sh) script does some extra work. Version tag (e.g. `v1.0.0-123`) is added to the repository, and `WhatToTest` file is created with commit messages since the last tag. This file is automatically picked up by Xcode Cloud and used as release notes on App Store Connect.
+
+![Screenshot of Xcode with cloud workflows](web/assets/xcode-cloud-deploy.png)
 
 ## 🛠 Develop
 
