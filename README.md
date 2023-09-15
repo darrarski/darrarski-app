@@ -82,7 +82,16 @@ Every feature of the application is covered by unit tests. Each library can be t
 
 ### Telemetry
 
-_TelemetryDeck, AppTelemetryReducer_
+The application uses [TelemetryDeck](https://telemetrydeck.com/) to collect anonymous infomration about how it's being used by the users.
+
+> TelemetryDeck helps app and web developers improve their product by supplying immediate, accurate usage data while users use their app. And the best part: It's all anonymized so users' data stays private!
+
+The fact that all events that can occur in the application are defined by the reducer's actions powers the logic responsible for producing telemetry signals. [`AppTelemetryReducer`](app/Sources/AppFeature/AppTelemetryReducer.swift) is responsible for describing each action in a privacy-aware way and then sending a telemetry signal.
+
+![Screenshot of Xcode console with telemetry logs](web/assets/xcode-telemetry-logs.png)
+
+[!WARNING]\
+The AppID key required to communicate with TelemetryDeck is **NOT** included in the repository. If you want to use telemetry, you need to set your own key in `app/Sources/AppFeature/Secrets/TelemetryDeckAppID`.
 
 ### CI/CD
 
