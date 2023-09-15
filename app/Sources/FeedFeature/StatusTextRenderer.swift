@@ -22,7 +22,7 @@ extension StatusTextRenderer: DependencyKey {
     var document = MastodonHTML(rawHTML: html)
     try document.parse()
     let markdown = try document.asMarkdown()
-    return try AttributedString(markdown: markdown)
+    return try AttributedString(appMarkdown: markdown)
   }
 }
 

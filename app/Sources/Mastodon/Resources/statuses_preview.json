@@ -1,1457 +1,20 @@
 [
   {
-    "id": "110969000740723337",
-    "created_at": "2023-08-28T19:56:14.788Z",
-    "in_reply_to_id": null,
-    "in_reply_to_account_id": null,
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": null,
-    "uri": "https://mastodon.social/users/darrarski/statuses/110969000740723337/activity",
-    "url": "https://mastodon.social/users/darrarski/statuses/110969000740723337/activity",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "",
-    "filtered": [
-
-    ],
-    "reblog": {
-      "id": "110968557625173052",
-      "created_at": "2023-08-28T18:03:29.000Z",
-      "in_reply_to_id": null,
-      "in_reply_to_account_id": null,
-      "sensitive": false,
-      "spoiler_text": "",
-      "visibility": "public",
-      "language": "en",
-      "uri": "https://hachyderm.io/users/pointfreeco/statuses/110968557393627502",
-      "url": "https://hachyderm.io/@pointfreeco/110968557393627502",
-      "replies_count": 0,
-      "reblogs_count": 3,
-      "favourites_count": 3,
-      "edited_at": null,
-      "favourited": true,
-      "reblogged": true,
-      "muted": false,
-      "bookmarked": false,
-      "content": "\u003cp\u003eWe’ll learn how to precisely model navigation in the Composable Architecture using an enum to eliminate impossible runtime states at compile time. And we’ll begin to implement the app’s most complex screen and most complex dependency: the record meeting view and the speech client.\u003c/p\u003e\u003cp\u003e👉 \u003ca href=\"https://www.pointfree.co/episodes/ep247-tour-of-the-composable-architecture-1-0-correctness\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/episodes/ep247-to\u003c/span\u003e\u003cspan class=\"invisible\"\u003eur-of-the-composable-architecture-1-0-correctness\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-      "filtered": [
-
-      ],
-      "reblog": null,
-      "account": {
-        "id": "109525079623237342",
-        "username": "pointfreeco",
-        "acct": "pointfreeco@hachyderm.io",
-        "display_name": "Point-Free",
-        "locked": false,
-        "bot": false,
-        "discoverable": true,
-        "group": false,
-        "created_at": "2022-12-16T00:00:00.000Z",
-        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
-        "url": "https://hachyderm.io/@pointfreeco",
-        "uri": "https://hachyderm.io/users/pointfreeco",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "followers_count": 1425,
-        "following_count": 2,
-        "statuses_count": 372,
-        "last_status_at": "2023-08-31",
-        "emojis": [
-
-        ],
-        "fields": [
-          {
-            "name": "Point-Free",
-            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": "2023-09-01T11:43:32.992+00:00"
-          },
-          {
-            "name": "Twitter",
-            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          },
-          {
-            "name": "GitHub",
-            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          }
-        ]
-      },
-      "media_attachments": [
-        {
-          "id": "110968557436168198",
-          "type": "video",
-          "url": "https://files.mastodon.social/cache/media_attachments/files/110/968/557/436/168/198/original/036a0a617aad8c68.mp4",
-          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/110/968/557/436/168/198/small/036a0a617aad8c68.png",
-          "remote_url": "https://media.hachyderm.io/media_attachments/files/110/968/556/732/365/710/original/0315ffafae9b05c2.mp4",
-          "preview_remote_url": null,
-          "text_url": null,
-          "meta": {
-            "original": {
-              "width": 1280,
-              "height": 720,
-              "frame_rate": "24000/1001",
-              "duration": 65.536,
-              "bitrate": 2145934
-            },
-            "small": {
-              "width": 400,
-              "height": 225,
-              "size": "400x225",
-              "aspect": 1.7777777777777777
-            }
-          },
-          "description": null,
-          "blurhash": "U0S~x5_3fQ_3~qj[fQj[j[fQfQfQ~qj[fQj["
-        }
-      ],
-      "mentions": [
-
-      ],
-      "tags": [
-
-      ],
-      "emojis": [
-
-      ],
-      "card": {
-        "url": "https://www.pointfree.co/episodes/ep247-tour-of-the-composable-architecture-1-0-correctness",
-        "title": "Episode #247: Tour of the Composable Architecture 1.0: Correctness",
-        "description": "We'll learn how to precisely model navigation in the Composable Architecture using an enum to eliminate impossible runtime states at compile time. And we'll begin to implement the app's most complex screen and most complex dependency: the record meeting view and the speech client.",
-        "language": "en",
-        "type": "link",
-        "author_name": "",
-        "author_url": "",
-        "provider_name": "",
-        "provider_url": "",
-        "html": "",
-        "width": 1400,
-        "height": 788,
-        "image": "https://files.mastodon.social/cache/preview_cards/images/071/355/514/original/ad80e5d63ea04bd3.jpeg",
-        "image_description": "",
-        "embed_url": "",
-        "blurhash": "UCDQ|T$;fR$;ssxMoOfQoOR#WSNV$pxMWSR#",
-        "published_at": null
-      },
-      "poll": null
-    },
-    "application": null,
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110951919273383537",
-    "created_at": "2023-08-25T19:32:12.277Z",
-    "in_reply_to_id": "110946948278738454",
-    "in_reply_to_account_id": "419826",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110951919273383537",
-    "url": "https://mastodon.social/@darrarski/110951919273383537",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@stevex\" class=\"u-url mention\"\u003e@\u003cspan\u003estevex\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e AFAIK the @ Binding does not update the view when wrapped value changes. It\u0026#39;s just a proxy for getting and setting some value. The @ State on the other hand triggers the update. You have @ State in the ContentView, and the whole view (including child views) is updated whenever ModelRoot changes.\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "419826",
-        "username": "stevex",
-        "url": "https://mastodon.social/@stevex",
-        "acct": "stevex"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110929600162484127",
-    "created_at": "2023-08-21T20:56:09.676Z",
-    "in_reply_to_id": null,
-    "in_reply_to_account_id": null,
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": null,
-    "uri": "https://mastodon.social/users/darrarski/statuses/110929600162484127/activity",
-    "url": "https://mastodon.social/users/darrarski/statuses/110929600162484127/activity",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "",
-    "filtered": [
-
-    ],
-    "reblog": {
-      "id": "110928275706264333",
-      "created_at": "2023-08-21T15:19:13.000Z",
-      "in_reply_to_id": null,
-      "in_reply_to_account_id": null,
-      "sensitive": false,
-      "spoiler_text": "",
-      "visibility": "public",
-      "language": "en",
-      "uri": "https://hachyderm.io/users/pointfreeco/statuses/110928275304302866",
-      "url": "https://hachyderm.io/@pointfreeco/110928275304302866",
-      "replies_count": 0,
-      "reblogs_count": 2,
-      "favourites_count": 4,
-      "edited_at": null,
-      "favourited": true,
-      "reblogged": true,
-      "muted": false,
-      "bookmarked": false,
-      "content": "\u003cp\u003eWe show how to add stack-based navigation to a Composable Architecture application, how to support many different kinds of screens, how to deep link into a navigation stack, and how to write deep tests for how navigation integrates into the application. \u003ca href=\"https://www.pointfree.co/episodes/ep246-tour-of-the-composable-architecture-1-0-stacks\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/episodes/ep246-to\u003c/span\u003e\u003cspan class=\"invisible\"\u003eur-of-the-composable-architecture-1-0-stacks\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-      "filtered": [
-
-      ],
-      "reblog": null,
-      "account": {
-        "id": "109525079623237342",
-        "username": "pointfreeco",
-        "acct": "pointfreeco@hachyderm.io",
-        "display_name": "Point-Free",
-        "locked": false,
-        "bot": false,
-        "discoverable": true,
-        "group": false,
-        "created_at": "2022-12-16T00:00:00.000Z",
-        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
-        "url": "https://hachyderm.io/@pointfreeco",
-        "uri": "https://hachyderm.io/users/pointfreeco",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "followers_count": 1425,
-        "following_count": 2,
-        "statuses_count": 372,
-        "last_status_at": "2023-08-31",
-        "emojis": [
-
-        ],
-        "fields": [
-          {
-            "name": "Point-Free",
-            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": "2023-09-01T11:43:32.992+00:00"
-          },
-          {
-            "name": "Twitter",
-            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          },
-          {
-            "name": "GitHub",
-            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          }
-        ]
-      },
-      "media_attachments": [
-        {
-          "id": "110928275362610625",
-          "type": "video",
-          "url": "https://files.mastodon.social/cache/media_attachments/files/110/928/275/362/610/625/original/f90c108434c8aadb.mp4",
-          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/110/928/275/362/610/625/small/f90c108434c8aadb.png",
-          "remote_url": "https://media.hachyderm.io/media_attachments/files/110/928/272/924/818/486/original/404b0cb97e58b8e1.mp4",
-          "preview_remote_url": null,
-          "text_url": null,
-          "meta": {
-            "original": {
-              "width": 1280,
-              "height": 720,
-              "frame_rate": "24000/1001",
-              "duration": 117.206,
-              "bitrate": 2280424
-            },
-            "small": {
-              "width": 400,
-              "height": 225,
-              "size": "400x225",
-              "aspect": 1.7777777777777777
-            }
-          },
-          "description": null,
-          "blurhash": "U0S~x5_3fQ_3~qj[fQj[j[fQfQfQ~qj[fQj["
-        }
-      ],
-      "mentions": [
-
-      ],
-      "tags": [
-
-      ],
-      "emojis": [
-
-      ],
-      "card": {
-        "url": "https://www.pointfree.co/episodes/ep246-tour-of-the-composable-architecture-1-0-stacks",
-        "title": "Episode #246: Tour of the Composable Architecture 1.0: Stacks",
-        "description": "We show how to add stack-based navigation to a Composable Architecture application, how to\nsupport many different kinds of screens, how to deep link into a navigation stack, and how to\nwrite deep tests for how navigation is integrated into the application.",
-        "language": "en",
-        "type": "link",
-        "author_name": "",
-        "author_url": "",
-        "provider_name": "",
-        "provider_url": "",
-        "html": "",
-        "width": 1400,
-        "height": 788,
-        "image": "https://files.mastodon.social/cache/preview_cards/images/070/671/444/original/832e9e5b0fd1deab.jpeg",
-        "image_description": "",
-        "embed_url": "",
-        "blurhash": "UE90actnfRyZf6pJkCj@kDVraJaJtmt.ayV?",
-        "published_at": null
-      },
-      "poll": null
-    },
-    "application": null,
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110917143806121776",
-    "created_at": "2023-08-19T16:08:20.755Z",
-    "in_reply_to_id": "110917010110972297",
-    "in_reply_to_account_id": "109276572592739921",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110917143806121776",
-    "url": "https://mastodon.social/@darrarski/110917143806121776",
-    "replies_count": 1,
-    "reblogs_count": 0,
-    "favourites_count": 1,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://social.lol/@braker1nine\" class=\"u-url mention\"\u003e@\u003cspan\u003ebraker1nine\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e Task.init takes a closure, within which you can capture your variables. The captured variables become immutable inside the closure.\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-      {
-        "id": "110917143554272764",
-        "type": "image",
-        "url": "https://files.mastodon.social/media_attachments/files/110/917/143/554/272/764/original/8afe486c0e95e688.png",
-        "preview_url": "https://files.mastodon.social/media_attachments/files/110/917/143/554/272/764/small/8afe486c0e95e688.png",
-        "remote_url": null,
-        "preview_remote_url": null,
-        "text_url": null,
-        "meta": {
-          "original": {
-            "width": 1693,
-            "height": 904,
-            "size": "1693x904",
-            "aspect": 1.872787610619469
-          },
-          "small": {
-            "width": 657,
-            "height": 351,
-            "size": "657x351",
-            "aspect": 1.8717948717948718
-          }
-        },
-        "description": null,
-        "blurhash": "UhPQ8K9[D*NaNZo0ayoL02R*xtjZS2ofayWB"
-      }
-    ],
-    "mentions": [
-      {
-        "id": "109276572592739921",
-        "username": "braker1nine",
-        "url": "https://social.lol/@braker1nine",
-        "acct": "braker1nine@social.lol"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110916172375077892",
-    "created_at": "2023-08-19T12:01:17.892Z",
-    "in_reply_to_id": "110915338378082856",
-    "in_reply_to_account_id": "411397",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110916172375077892",
-    "url": "https://mastodon.social/@darrarski/110916172375077892",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 2,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@simonbs\" class=\"u-url mention\"\u003e@\u003cspan\u003esimonbs\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e I use Arc app since Moves was discontinued. It\u0026#39;s not perfect, but it can import Moves data and automatically export GPX files to your iCloud Drive, so you can migrate to another solution in the future. I haven\u0026#39;t found anything better that \u0026quot;just works\u0026quot; and battery usage is OK in my opinion.\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "411397",
-        "username": "simonbs",
-        "url": "https://mastodon.social/@simonbs",
-        "acct": "simonbs"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110900190435376821",
-    "created_at": "2023-08-16T16:16:52.847Z",
-    "in_reply_to_id": "110873077630477716",
-    "in_reply_to_account_id": "109536490890210773",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110900190435376821",
-    "url": "https://mastodon.social/@darrarski/110900190435376821",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 1,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@deanatoire\" class=\"u-url mention\"\u003e@\u003cspan\u003edeanatoire\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e consider extracting the view modifiers to private extensions in the same file. In my recent project it improved compile time by \u0026gt;200%\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-      {
-        "id": "110900190148272345",
-        "type": "image",
-        "url": "https://files.mastodon.social/media_attachments/files/110/900/190/148/272/345/original/3747cfe197b33287.png",
-        "preview_url": "https://files.mastodon.social/media_attachments/files/110/900/190/148/272/345/small/3747cfe197b33287.png",
-        "remote_url": null,
-        "preview_remote_url": null,
-        "text_url": null,
-        "meta": {
-          "original": {
-            "width": 2791,
-            "height": 1649,
-            "size": "2791x1649",
-            "aspect": 1.692540933899333
-          },
-          "small": {
-            "width": 624,
-            "height": 369,
-            "size": "624x369",
-            "aspect": 1.6910569105691058
-          }
-        },
-        "description": null,
-        "blurhash": "UcP?,lELD*NtNGoKa|j[02R*xZf6SfoLayay"
-      }
-    ],
-    "mentions": [
-      {
-        "id": "109536490890210773",
-        "username": "deanatoire",
-        "url": "https://mastodon.social/@deanatoire",
-        "acct": "deanatoire"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110893883300946903",
-    "created_at": "2023-08-15T13:32:53.674Z",
-    "in_reply_to_id": "110893879427258304",
-    "in_reply_to_account_id": "487744",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "direct",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110893883300946903",
-    "url": "https://mastodon.social/@darrarski/110893883300946903",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 1,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@zholmquist\" class=\"u-url mention\"\u003e@\u003cspan\u003ezholmquist\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e sure: dariusz@darrarski.pl\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "487744",
-        "username": "zholmquist",
-        "url": "https://mastodon.social/@zholmquist",
-        "acct": "zholmquist"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110888749220651834",
-    "created_at": "2023-08-14T15:47:13.764Z",
-    "in_reply_to_id": "110888705575413410",
-    "in_reply_to_account_id": "487744",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "direct",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110888749220651834",
-    "url": "https://mastodon.social/@darrarski/110888749220651834",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@zholmquist\" class=\"u-url mention\"\u003e@\u003cspan\u003ezholmquist\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e if it\u0026#39;s not a problem, you can share the code with me in advance, for brief review. Are you looking for someone to take it over and finish remaining work, or rather for someone to guide you and provide mentoring support?\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "487744",
-        "username": "zholmquist",
-        "url": "https://mastodon.social/@zholmquist",
-        "acct": "zholmquist"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110888705575413410",
-    "created_at": "2023-08-14T15:36:07.796Z",
-    "in_reply_to_id": "110888579805383576",
-    "in_reply_to_account_id": "487744",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "direct",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110888705575413410",
-    "url": "https://mastodon.social/@darrarski/110888705575413410",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@zholmquist\" class=\"u-url mention\"\u003e@\u003cspan\u003ezholmquist\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e hey! Sounds cool. Let\u0026#39;s have a quick call later this week to see how can I help you. Please use the following link to book a meeting: \u003ca href=\"https://cal.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003ecal.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "487744",
-        "username": "zholmquist",
-        "url": "https://mastodon.social/@zholmquist",
-        "acct": "zholmquist"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": {
-      "url": "https://cal.com/darrarski",
-      "title": "Dariusz Rybicki | Cal.com",
-      "description": "Apple Developer, Scrum Master, Mentor",
-      "language": "en",
-      "type": "link",
-      "author_name": "",
-      "author_url": "",
-      "provider_name": "Cal.com",
-      "provider_url": "",
-      "html": "",
-      "width": 1200,
-      "height": 630,
-      "image": "https://files.mastodon.social/cache/preview_cards/images/070/021/260/original/7f5947932c9f33ca.png",
-      "image_description": "",
-      "embed_url": "",
-      "blurhash": "UOLqkVWC-;oL~Vofa#axRjfRR*fPt7WBRjj]",
-      "published_at": null
-    },
-    "poll": null
-  },
-  {
-    "id": "110882425624469397",
-    "created_at": "2023-08-13T12:59:03.345Z",
-    "in_reply_to_id": "110869313143416548",
-    "in_reply_to_account_id": "413290",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110882425624469397",
-    "url": "https://mastodon.social/@darrarski/110882425624469397",
-    "replies_count": 1,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@harshil\" class=\"u-url mention\"\u003e@\u003cspan\u003eharshil\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@kylebshr\" class=\"u-url mention\"\u003e@\u003cspan\u003ekylebshr\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e did you find any issues caused by the wrapping? (I assume you have SwiftUI presenting UIKit hosting SwiftUI). Like environment not propagating, navigation bar styling messed up, etc\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "413290",
-        "username": "harshil",
-        "url": "https://mastodon.social/@harshil",
-        "acct": "harshil"
-      },
-      {
-        "id": "408537",
-        "username": "kylebshr",
-        "url": "https://mastodon.social/@kylebshr",
-        "acct": "kylebshr"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110867772246282423",
-    "created_at": "2023-08-10T22:52:30.557Z",
+    "id": "111069834705517376",
+    "created_at": "2023-09-15T15:19:38.998Z",
     "in_reply_to_id": null,
     "in_reply_to_account_id": null,
     "sensitive": false,
     "spoiler_text": "",
     "visibility": "public",
     "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110867772246282423",
-    "url": "https://mastodon.social/@darrarski/110867772246282423",
-    "replies_count": 1,
-    "reblogs_count": 2,
-    "favourites_count": 13,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003eIf you need to use just a small subset of \u003ca href=\"https://mastodon.social/tags/Google\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eGoogle\u003c/span\u003e\u003c/a\u003e services in your \u003ca href=\"https://mastodon.social/tags/iOS\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eiOS\u003c/span\u003e\u003c/a\u003e or \u003ca href=\"https://mastodon.social/tags/macOS\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003emacOS\u003c/span\u003e\u003c/a\u003e application, you don\u0026#39;t have to embed heavy, closed-source \u003ca href=\"https://mastodon.social/tags/SDK\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eSDK\u003c/span\u003e\u003c/a\u003e dependencies in your project.\u003c/p\u003e\u003cp\u003eGoogle has a well-documented HTTP REST API, which can be easily used from \u003ca href=\"https://mastodon.social/tags/SwiftLang\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eSwiftLang\u003c/span\u003e\u003c/a\u003e.\u003c/p\u003e\u003cp\u003eFor example, here is my \u003ca href=\"https://mastodon.social/tags/GoogleDrive\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eGoogleDrive\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/Swift\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eSwift\u003c/span\u003e\u003c/a\u003e client library that has no extra dependencies and uses URLSession:\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://github.com/darrarski/swift-google-drive-client\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003egithub.com/darrarski/swift-goo\u003c/span\u003e\u003cspan class=\"invisible\"\u003egle-drive-client\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://mastodon.social/tags/OpenSource\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eOpenSource\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/iOSDev\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eiOSDev\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/macOSDev\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003emacOSDev\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-
-    ],
-    "tags": [
-      {
-        "name": "google",
-        "url": "https://mastodon.social/tags/google"
-      },
-      {
-        "name": "iOS",
-        "url": "https://mastodon.social/tags/iOS"
-      },
-      {
-        "name": "macos",
-        "url": "https://mastodon.social/tags/macos"
-      },
-      {
-        "name": "sdk",
-        "url": "https://mastodon.social/tags/sdk"
-      },
-      {
-        "name": "swiftlang",
-        "url": "https://mastodon.social/tags/swiftlang"
-      },
-      {
-        "name": "googledrive",
-        "url": "https://mastodon.social/tags/googledrive"
-      },
-      {
-        "name": "swift",
-        "url": "https://mastodon.social/tags/swift"
-      },
-      {
-        "name": "opensource",
-        "url": "https://mastodon.social/tags/opensource"
-      },
-      {
-        "name": "iosdev",
-        "url": "https://mastodon.social/tags/iosdev"
-      },
-      {
-        "name": "macosdev",
-        "url": "https://mastodon.social/tags/macosdev"
-      }
-    ],
-    "emojis": [
-
-    ],
-    "card": {
-      "url": "https://github.com/darrarski/swift-google-drive-client",
-      "title": "GitHub - darrarski/swift-google-drive-client: Basic Google Drive HTTP API client that does not depend on Google's SDK.",
-      "description": "Basic Google Drive HTTP API client that does not depend on Google's SDK. - GitHub - darrarski/swift-google-drive-client: Basic Google Drive HTTP API client that does not depend on Google's ...",
-      "language": "en",
-      "type": "link",
-      "author_name": "",
-      "author_url": "",
-      "provider_name": "GitHub",
-      "provider_url": "",
-      "html": "",
-      "width": 1200,
-      "height": 600,
-      "image": "https://files.mastodon.social/cache/preview_cards/images/069/696/199/original/c71adeb9d97804d8.png",
-      "image_description": "Basic Google Drive HTTP API client that does not depend on Google\u0026#39;s SDK. - GitHub - darrarski/swift-google-drive-client: Basic Google Drive HTTP API client that does not depend on Google\u0026#39;s ...",
-      "embed_url": "",
-      "blurhash": "ULSr=iWWWBxuPAbIf6ofrCf6ozWB.maeozWB",
-      "published_at": null
-    },
-    "poll": null
-  },
-  {
-    "id": "110867285999356135",
-    "created_at": "2023-08-10T20:48:50.998Z",
-    "in_reply_to_id": "110862215952051882",
-    "in_reply_to_account_id": "109700472093112498",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110867285999356135",
-    "url": "https://mastodon.social/@darrarski/110867285999356135",
-    "replies_count": 1,
-    "reblogs_count": 0,
-    "favourites_count": 1,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://iosdev.space/@swiftandtips\" class=\"u-url mention\"\u003e@\u003cspan\u003eswiftandtips\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e The \u0026quot;1.0.0\u0026quot; is a marketing version, which can be changed every time you release to a wider audience, while \u0026quot;87\u0026quot; is a build number, bumped whenever uploading a build to App Store Connect. Not sure if this is helpful in your case, but when you use Xcode Cloud the build number can be automatically incremented. You can also have a CI script that adds a git tag like \u0026quot;v1.0.0-87\u0026quot; wherever a build is uploaded to ASC.\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Web",
-      "website": null
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "109700472093112498",
-        "username": "swiftandtips",
-        "url": "https://iosdev.space/@swiftandtips",
-        "acct": "swiftandtips@iosdev.space"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110865567552275601",
-    "created_at": "2023-08-10T13:31:49.580Z",
-    "in_reply_to_id": null,
-    "in_reply_to_account_id": null,
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110865567552275601",
-    "url": "https://mastodon.social/@darrarski/110865567552275601",
+    "uri": "https://mastodon.social/users/darrarski/statuses/111069834705517376",
+    "url": "https://mastodon.social/@darrarski/111069834705517376",
     "replies_count": 0,
     "reblogs_count": 5,
-    "favourites_count": 19,
+    "favourites_count": 6,
     "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003eI’ve open-sourced a small utility that helped me debug my \u003ca href=\"https://mastodon.social/tags/iOS\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eiOS\u003c/span\u003e\u003c/a\u003e and \u003ca href=\"https://mastodon.social/tags/macOS\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003emacOS\u003c/span\u003e\u003c/a\u003e applications using \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://hachyderm.io/@pointfreeco\" class=\"u-url mention\"\u003e@\u003cspan\u003epointfreeco\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e’s \u003ca href=\"https://mastodon.social/tags/ComposableArchitecture\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eComposableArchitecture\u003c/span\u003e\u003c/a\u003e + Apple’s SwiftLog + \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@a_grebenyuk\" class=\"u-url mention\"\u003e@\u003cspan\u003ea_grebenyuk\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e’s Pulse. \u003c/p\u003e\u003cp\u003e\u003ca href=\"https://github.com/darrarski/tca-swift-log\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003egithub.com/darrarski/tca-swift\u003c/span\u003e\u003cspan class=\"invisible\"\u003e-log\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://mastodon.social/tags/swift\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eswift\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/SwiftLang\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eSwiftLang\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/opensource\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eopensource\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/tca\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003etca\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-    "filtered": [
-
-    ],
+    "content": "\u003cp\u003eI’ve open-sourced \u003ca href=\"https://mastodon.social/tags/SwiftUI\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eSwiftUI\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/iOS\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eiOS\u003c/span\u003e\u003c/a\u003e and \u003ca href=\"https://mastodon.social/tags/macOS\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003emacOS\u003c/span\u003e\u003c/a\u003e app built with \u003ca href=\"https://mastodon.social/tags/ComposableArchitecture\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eComposableArchitecture\u003c/span\u003e\u003c/a\u003e (from \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://hachyderm.io/@pointfreeco\" class=\"u-url mention\"\u003e@\u003cspan\u003epointfreeco\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e)\u003c/p\u003e\u003cp\u003eIt contains examples of modularization, architecture, dependencies handling, UI previews, testing, CI/CD, and more. \u003c/p\u003e\u003cp\u003eOh, and it has a tiny \u003ca href=\"https://mastodon.social/tags/Mastodon\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eMastodon\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/Swift\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eSwift\u003c/span\u003e\u003c/a\u003e client and feed view, too!\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://mastodon.social/tags/OpenSource\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eOpenSource\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/BuildInPublic\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eBuildInPublic\u003c/span\u003e\u003c/a\u003e \u003ca href=\"https://mastodon.social/tags/TCA\" class=\"mention hashtag\" rel=\"tag\"\u003e#\u003cspan\u003eTCA\u003c/span\u003e\u003c/a\u003e \u003cbr /\u003e\u003ca href=\"https://app.darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003eapp.darrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
     "reblog": null,
     "application": {
       "name": "Ivory for iOS",
@@ -1474,10 +37,10 @@
       "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
       "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
       "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
+      "followers_count": 105,
       "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
+      "statuses_count": 89,
+      "last_status_at": "2023-09-15",
       "noindex": false,
       "emojis": [
 
@@ -1500,29 +63,79 @@
     },
     "media_attachments": [
       {
-        "id": "110865567300758260",
+        "id": "111069834163613635",
         "type": "image",
-        "url": "https://files.mastodon.social/media_attachments/files/110/865/567/300/758/260/original/53fa7ea5808c8ea2.png",
-        "preview_url": "https://files.mastodon.social/media_attachments/files/110/865/567/300/758/260/small/53fa7ea5808c8ea2.png",
+        "url": "https://files.mastodon.social/media_attachments/files/111/069/834/163/613/635/original/d8eaf9fc3c7a248b.png",
+        "preview_url": "https://files.mastodon.social/media_attachments/files/111/069/834/163/613/635/small/d8eaf9fc3c7a248b.png",
         "remote_url": null,
         "preview_remote_url": null,
         "text_url": null,
         "meta": {
           "original": {
-            "width": 1790,
-            "height": 1007,
-            "size": "1790x1007",
-            "aspect": 1.7775571002979147
+            "width": 1280,
+            "height": 640,
+            "size": "1280x640",
+            "aspect": 2.0
           },
           "small": {
-            "width": 640,
-            "height": 360,
-            "size": "640x360",
-            "aspect": 1.7777777777777777
+            "width": 678,
+            "height": 339,
+            "size": "678x339",
+            "aspect": 2.0
           }
         },
-        "description": null,
-        "blurhash": "UZFqqY0v?IWl,0$NR+jY%G+^OBs;#W$iR*f+"
+        "description": "Darrarski.app screenshots on iPhone, iMac, and iPad",
+        "blurhash": "UCALtMIACptTC7z=y2giLc-XITD$?@Fqo$xs"
+      },
+      {
+        "id": "111069834297392520",
+        "type": "image",
+        "url": "https://files.mastodon.social/media_attachments/files/111/069/834/297/392/520/original/6d7c68afb8af60cd.png",
+        "preview_url": "https://files.mastodon.social/media_attachments/files/111/069/834/297/392/520/small/6d7c68afb8af60cd.png",
+        "remote_url": null,
+        "preview_remote_url": null,
+        "text_url": null,
+        "meta": {
+          "original": {
+            "width": 1252,
+            "height": 885,
+            "size": "1252x885",
+            "aspect": 1.4146892655367231
+          },
+          "small": {
+            "width": 571,
+            "height": 404,
+            "size": "571x404",
+            "aspect": 1.4133663366336633
+          }
+        },
+        "description": "Screenshot of Xcode running feed screen preview",
+        "blurhash": "U368N+9qoOrcxus;WAkBDz$nR#kU%ORhogWD"
+      },
+      {
+        "id": "111069834426759270",
+        "type": "image",
+        "url": "https://files.mastodon.social/media_attachments/files/111/069/834/426/759/270/original/c0a12a6b0fd549ae.png",
+        "preview_url": "https://files.mastodon.social/media_attachments/files/111/069/834/426/759/270/small/c0a12a6b0fd549ae.png",
+        "remote_url": null,
+        "preview_remote_url": null,
+        "text_url": null,
+        "meta": {
+          "original": {
+            "width": 1252,
+            "height": 885,
+            "size": "1252x885",
+            "aspect": 1.4146892655367231
+          },
+          "small": {
+            "width": 571,
+            "height": 404,
+            "size": "571x404",
+            "aspect": 1.4133663366336633
+          }
+        },
+        "description": "Screenshot of Xcode test results",
+        "blurhash": "U56u9Q~q%MM~t6ogV@adIURPRjoet8V@ayog"
       }
     ],
     "mentions": [
@@ -1531,15 +144,37 @@
         "username": "pointfreeco",
         "url": "https://hachyderm.io/@pointfreeco",
         "acct": "pointfreeco@hachyderm.io"
-      },
-      {
-        "id": "108194113520602290",
-        "username": "a_grebenyuk",
-        "url": "https://mastodon.social/@a_grebenyuk",
-        "acct": "a_grebenyuk"
       }
     ],
     "tags": [
+      {
+        "name": "composablearchitecture",
+        "url": "https://mastodon.social/tags/composablearchitecture"
+      },
+      {
+        "name": "mastodon",
+        "url": "https://mastodon.social/tags/mastodon"
+      },
+      {
+        "name": "swift",
+        "url": "https://mastodon.social/tags/swift"
+      },
+      {
+        "name": "opensource",
+        "url": "https://mastodon.social/tags/opensource"
+      },
+      {
+        "name": "BuildInPublic",
+        "url": "https://mastodon.social/tags/BuildInPublic"
+      },
+      {
+        "name": "tca",
+        "url": "https://mastodon.social/tags/tca"
+      },
+      {
+        "name": "swiftui",
+        "url": "https://mastodon.social/tags/swiftui"
+      },
       {
         "name": "iOS",
         "url": "https://mastodon.social/tags/iOS"
@@ -1547,819 +182,15 @@
       {
         "name": "macos",
         "url": "https://mastodon.social/tags/macos"
-      },
-      {
-        "name": "composablearchitecture",
-        "url": "https://mastodon.social/tags/composablearchitecture"
-      },
-      {
-        "name": "swift",
-        "url": "https://mastodon.social/tags/swift"
-      },
-      {
-        "name": "swiftlang",
-        "url": "https://mastodon.social/tags/swiftlang"
-      },
-      {
-        "name": "opensource",
-        "url": "https://mastodon.social/tags/opensource"
-      },
-      {
-        "name": "tca",
-        "url": "https://mastodon.social/tags/tca"
       }
     ],
     "emojis": [
 
     ],
     "card": {
-      "url": "https://github.com/darrarski/tca-swift-log",
-      "title": "GitHub - darrarski/tca-swift-log",
-      "description": "Contribute to darrarski/tca-swift-log development by creating an account on GitHub.",
-      "language": "en",
-      "type": "link",
-      "author_name": "",
-      "author_url": "",
-      "provider_name": "GitHub",
-      "provider_url": "",
-      "html": "",
-      "width": 1200,
-      "height": 600,
-      "image": "https://files.mastodon.social/cache/preview_cards/images/069/650/191/original/b83ba9e3888f6d4a.png",
-      "image_description": "Contribute to darrarski/tca-swift-log development by creating an account on GitHub.",
-      "embed_url": "",
-      "blurhash": "ULSr[pozWAofPAkCjZa|d=WBt7j[.mWBozay",
-      "published_at": null
-    },
-    "poll": null
-  },
-  {
-    "id": "110855695927316242",
-    "created_at": "2023-08-08T19:41:20.535Z",
-    "in_reply_to_id": null,
-    "in_reply_to_account_id": null,
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": null,
-    "uri": "https://mastodon.social/users/darrarski/statuses/110855695927316242/activity",
-    "url": "https://mastodon.social/users/darrarski/statuses/110855695927316242/activity",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "",
-    "filtered": [
-
-    ],
-    "reblog": {
-      "id": "110855397765331210",
-      "created_at": "2023-08-08T18:25:30.000Z",
-      "in_reply_to_id": null,
-      "in_reply_to_account_id": null,
-      "sensitive": false,
-      "spoiler_text": "",
-      "visibility": "public",
-      "language": "en",
-      "uri": "https://hachyderm.io/users/pointfreeco/statuses/110855397727492572",
-      "url": "https://hachyderm.io/@pointfreeco/110855397727492572",
-      "replies_count": 0,
-      "reblogs_count": 4,
-      "favourites_count": 2,
-      "edited_at": null,
-      "favourited": true,
-      "reblogged": true,
-      "muted": false,
-      "bookmarked": false,
-      "content": "\u003cp\u003eThis week we implement a few features in the new Standups app, with some nuanced logic around focus and validation.\u003c/p\u003e\u003cp\u003eLuckily the Composable Architecture comes with all the tools necessary to fully test this logic, and it's all thanks to value types!\u003c/p\u003e\u003cp\u003e👉 \u003ca href=\"https://www.pointfree.co/episodes/ep244-tour-of-the-composable-architecture-1-0-standups-part-1\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/episodes/ep244-to\u003c/span\u003e\u003cspan class=\"invisible\"\u003eur-of-the-composable-architecture-1-0-standups-part-1\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-      "filtered": [
-
-      ],
-      "reblog": null,
-      "account": {
-        "id": "109525079623237342",
-        "username": "pointfreeco",
-        "acct": "pointfreeco@hachyderm.io",
-        "display_name": "Point-Free",
-        "locked": false,
-        "bot": false,
-        "discoverable": true,
-        "group": false,
-        "created_at": "2022-12-16T00:00:00.000Z",
-        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
-        "url": "https://hachyderm.io/@pointfreeco",
-        "uri": "https://hachyderm.io/users/pointfreeco",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "followers_count": 1425,
-        "following_count": 2,
-        "statuses_count": 372,
-        "last_status_at": "2023-08-31",
-        "emojis": [
-
-        ],
-        "fields": [
-          {
-            "name": "Point-Free",
-            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": "2023-09-01T11:43:32.992+00:00"
-          },
-          {
-            "name": "Twitter",
-            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          },
-          {
-            "name": "GitHub",
-            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          }
-        ]
-      },
-      "media_attachments": [
-
-      ],
-      "mentions": [
-
-      ],
-      "tags": [
-
-      ],
-      "emojis": [
-
-      ],
-      "card": {
-        "url": "https://www.pointfree.co/episodes/ep244-tour-of-the-composable-architecture-1-0-standups-part-1",
-        "title": "Episode #244: Tour of the Composable Architecture 1.0: Standups, Part 1",
-        "description": "We continue our tour of the Composable Architecture 1.0 by rebuilding one of Apple's most\ncomplex sample projects: [Scrumdinger](https://developer.apple.com/tutorials/app-dev-training/getting-started-with-scrumdinger).\nWe will create our own \"Standups\" app using the tools of the Composable Architecture.",
-        "language": "en",
-        "type": "link",
-        "author_name": "",
-        "author_url": "",
-        "provider_name": "",
-        "provider_url": "",
-        "html": "",
-        "width": 1400,
-        "height": 788,
-        "image": "https://files.mastodon.social/cache/preview_cards/images/069/351/317/original/b1102b3c05682d9f.jpeg",
-        "image_description": "",
-        "embed_url": "",
-        "blurhash": "UEMQad~mRk~TRl^$s.M}oeIWM}Rl-n~TWCIq",
-        "published_at": null
-      },
-      "poll": null
-    },
-    "application": null,
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110850329590468498",
-    "created_at": "2023-08-07T20:56:36.737Z",
-    "in_reply_to_id": null,
-    "in_reply_to_account_id": null,
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": null,
-    "uri": "https://mastodon.social/users/darrarski/statuses/110850329590468498/activity",
-    "url": "https://mastodon.social/users/darrarski/statuses/110850329590468498/activity",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "",
-    "filtered": [
-
-    ],
-    "reblog": {
-      "id": "110849565177253670",
-      "created_at": "2023-08-07T17:42:12.000Z",
-      "in_reply_to_id": null,
-      "in_reply_to_account_id": null,
-      "sensitive": false,
-      "spoiler_text": "",
-      "visibility": "public",
-      "language": "en",
-      "uri": "https://hachyderm.io/users/pointfreeco/statuses/110849565134167807",
-      "url": "https://hachyderm.io/@pointfreeco/110849565134167807",
-      "replies_count": 0,
-      "reblogs_count": 14,
-      "favourites_count": 8,
-      "edited_at": null,
-      "favourited": true,
-      "reblogged": true,
-      "muted": false,
-      "bookmarked": false,
-      "content": "\u003cp\u003eMacros are one of the most celebrated new features of Swift, and many of us are excited to adopt them in our projects.\u003c/p\u003e\u003cp\u003eBut unfortunately, there seems to be hidden costs and open questions: what does it take to actually ship a library of macros?!\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://forums.swift.org/t/macro-adoption-concerns-around-swiftsyntax/66588\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003eforums.swift.org/t/macro-adopt\u003c/span\u003e\u003cspan class=\"invisible\"\u003eion-concerns-around-swiftsyntax/66588\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-      "filtered": [
-
-      ],
-      "reblog": null,
-      "account": {
-        "id": "109525079623237342",
-        "username": "pointfreeco",
-        "acct": "pointfreeco@hachyderm.io",
-        "display_name": "Point-Free",
-        "locked": false,
-        "bot": false,
-        "discoverable": true,
-        "group": false,
-        "created_at": "2022-12-16T00:00:00.000Z",
-        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
-        "url": "https://hachyderm.io/@pointfreeco",
-        "uri": "https://hachyderm.io/users/pointfreeco",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "followers_count": 1425,
-        "following_count": 2,
-        "statuses_count": 372,
-        "last_status_at": "2023-08-31",
-        "emojis": [
-
-        ],
-        "fields": [
-          {
-            "name": "Point-Free",
-            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": "2023-09-01T11:43:32.992+00:00"
-          },
-          {
-            "name": "Twitter",
-            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          },
-          {
-            "name": "GitHub",
-            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          }
-        ]
-      },
-      "media_attachments": [
-
-      ],
-      "mentions": [
-
-      ],
-      "tags": [
-
-      ],
-      "emojis": [
-
-      ],
-      "card": {
-        "url": "https://forums.swift.org/t/macro-adoption-concerns-around-swiftsyntax/66588",
-        "title": "Macro Adoption Concerns around SwiftSyntax",
-        "description": "Macros are one of the most celebrated new features of Swift, and many of us are excited to adopt them in our projects. Many members of the core team are also excited to suggest macros as a solution to many problems. We’d love to hit the ground running and adopt macros in our projects, but the decision to adopt them raises some questions, particularly around the dependence on the swift-syntax package.    Introducing SwiftSyntax to a project immediately incurs an additional 20 second debug build c...",
-        "language": "en",
-        "type": "link",
-        "author_name": "",
-        "author_url": "",
-        "provider_name": "Swift Forums",
-        "provider_url": "",
-        "html": "",
-        "width": 590,
-        "height": 585,
-        "image": "https://files.mastodon.social/cache/preview_cards/images/069/362/895/original/6d068b7f00fda3b5.png",
-        "image_description": "",
-        "embed_url": "",
-        "blurhash": "UWQ?FKv#8wyDR4kCo}e.8wkqPUVYpdaeZ$kW",
-        "published_at": "2023-08-04T18:02:03.000Z"
-      },
-      "poll": null
-    },
-    "application": null,
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110849315647988108",
-    "created_at": "2023-08-07T16:38:45.232Z",
-    "in_reply_to_id": null,
-    "in_reply_to_account_id": null,
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": null,
-    "uri": "https://mastodon.social/users/darrarski/statuses/110849315647988108/activity",
-    "url": "https://mastodon.social/users/darrarski/statuses/110849315647988108/activity",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "content": "",
-    "filtered": [
-
-    ],
-    "reblog": {
-      "id": "110849040699978128",
-      "created_at": "2023-08-07T15:28:44.000Z",
-      "in_reply_to_id": null,
-      "in_reply_to_account_id": null,
-      "sensitive": false,
-      "spoiler_text": "",
-      "visibility": "public",
-      "language": "en",
-      "uri": "https://hachyderm.io/users/pointfreeco/statuses/110849040361643680",
-      "url": "https://hachyderm.io/@pointfreeco/110849040361643680",
-      "replies_count": 0,
-      "reblogs_count": 3,
-      "favourites_count": 4,
-      "edited_at": null,
-      "favourited": true,
-      "reblogged": true,
-      "muted": false,
-      "bookmarked": false,
-      "content": "\u003cp\u003eWe continue our tour of the Composable Architecture 1.0 by rebuilding one of Apple’s most complex sample projects: Scrumdinger. We will create our own “Standups” app using the tools of the Composable Architecture.\u003c/p\u003e\u003cp\u003e👉 \u003ca href=\"https://www.pointfree.co/episodes/ep244-tour-of-the-composable-architecture-1-0-standups-part-1\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/episodes/ep244-to\u003c/span\u003e\u003cspan class=\"invisible\"\u003eur-of-the-composable-architecture-1-0-standups-part-1\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-      "filtered": [
-
-      ],
-      "reblog": null,
-      "account": {
-        "id": "109525079623237342",
-        "username": "pointfreeco",
-        "acct": "pointfreeco@hachyderm.io",
-        "display_name": "Point-Free",
-        "locked": false,
-        "bot": false,
-        "discoverable": true,
-        "group": false,
-        "created_at": "2022-12-16T00:00:00.000Z",
-        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
-        "url": "https://hachyderm.io/@pointfreeco",
-        "uri": "https://hachyderm.io/users/pointfreeco",
-        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
-        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
-        "followers_count": 1425,
-        "following_count": 2,
-        "statuses_count": 372,
-        "last_status_at": "2023-08-31",
-        "emojis": [
-
-        ],
-        "fields": [
-          {
-            "name": "Point-Free",
-            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": "2023-09-01T11:43:32.992+00:00"
-          },
-          {
-            "name": "Twitter",
-            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          },
-          {
-            "name": "GitHub",
-            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-            "verified_at": null
-          }
-        ]
-      },
-      "media_attachments": [
-        {
-          "id": "110849040418612003",
-          "type": "video",
-          "url": "https://files.mastodon.social/cache/media_attachments/files/110/849/040/418/612/003/original/53ae0c653e4851ed.mp4",
-          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/110/849/040/418/612/003/small/53ae0c653e4851ed.png",
-          "remote_url": "https://media.hachyderm.io/media_attachments/files/110/849/038/902/236/478/original/17e4f8622af74627.mp4",
-          "preview_remote_url": null,
-          "text_url": null,
-          "meta": {
-            "original": {
-              "width": 1280,
-              "height": 720,
-              "frame_rate": "24000/1001",
-              "duration": 61.098,
-              "bitrate": 1430003
-            },
-            "small": {
-              "width": 400,
-              "height": 225,
-              "size": "400x225",
-              "aspect": 1.7777777777777777
-            }
-          },
-          "description": null,
-          "blurhash": "U0S~x5_3fQ_3~qj[fQj[j[fQfQfQ~qj[fQj["
-        }
-      ],
-      "mentions": [
-
-      ],
-      "tags": [
-
-      ],
-      "emojis": [
-
-      ],
-      "card": {
-        "url": "https://www.pointfree.co/episodes/ep244-tour-of-the-composable-architecture-1-0-standups-part-1",
-        "title": "Episode #244: Tour of the Composable Architecture 1.0: Standups, Part 1",
-        "description": "We continue our tour of the Composable Architecture 1.0 by rebuilding one of Apple's most\ncomplex sample projects: [Scrumdinger](https://developer.apple.com/tutorials/app-dev-training/getting-started-with-scrumdinger).\nWe will create our own \"Standups\" app using the tools of the Composable Architecture.",
-        "language": "en",
-        "type": "link",
-        "author_name": "",
-        "author_url": "",
-        "provider_name": "",
-        "provider_url": "",
-        "html": "",
-        "width": 1400,
-        "height": 788,
-        "image": "https://files.mastodon.social/cache/preview_cards/images/069/351/317/original/b1102b3c05682d9f.jpeg",
-        "image_description": "",
-        "embed_url": "",
-        "blurhash": "UEMQad~mRk~TRl^$s.M}oeIWM}Rl-n~TWCIq",
-        "published_at": null
-      },
-      "poll": null
-    },
-    "application": null,
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": null,
-    "poll": null
-  },
-  {
-    "id": "110843152817188031",
-    "created_at": "2023-08-06T14:31:27.876Z",
-    "in_reply_to_id": "110842863626948939",
-    "in_reply_to_account_id": "107840604069755885",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110843152817188031",
-    "url": "https://mastodon.social/@darrarski/110843152817188031",
-    "replies_count": 0,
-    "reblogs_count": 0,
-    "favourites_count": 1,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@ristkof\" class=\"u-url mention\"\u003e@\u003cspan\u003eristkof\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mastodon.social/@jamesog\" class=\"u-url mention\"\u003e@\u003cspan\u003ejamesog\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e true. Although, in most cases using external dependency is an overkill. Here\u0026#39;s an example of a simple wrapper: \u003ca href=\"https://github.com/darrarski/swift-dropbox-client/blob/b7871defa289f636baedc61b4b45af9c13888ea4/Sources/DropboxClient/Keychain.swift#L52\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003egithub.com/darrarski/swift-dro\u003c/span\u003e\u003cspan class=\"invisible\"\u003epbox-client/blob/b7871defa289f636baedc61b4b45af9c13888ea4/Sources/DropboxClient/Keychain.swift#L52\u003c/span\u003e\u003c/a\u003e ~80 lines of code.\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "107840604069755885",
-        "username": "ristkof",
-        "url": "https://mastodon.social/@ristkof",
-        "acct": "ristkof"
-      },
-      {
-        "id": "189016",
-        "username": "jamesog",
-        "url": "https://mastodon.social/@jamesog",
-        "acct": "jamesog"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": {
-      "url": "https://github.com/darrarski/swift-dropbox-client/blob/b7871defa289f636baedc61b4b45af9c13888ea4/Sources/DropboxClient/Keychain.swift",
-      "title": "swift-dropbox-client/Sources/DropboxClient/Keychain.swift at b7871defa289f636baedc61b4b45af9c13888ea4 · darrarski/swift-dropbox-client",
-      "description": "Basic Dropbox HTTP API client that does not depend on Dropbox's SDK - darrarski/swift-dropbox-client",
-      "language": "en",
-      "type": "link",
-      "author_name": "",
-      "author_url": "",
-      "provider_name": "GitHub",
-      "provider_url": "",
-      "html": "",
-      "width": 1200,
-      "height": 600,
-      "image": "https://files.mastodon.social/cache/preview_cards/images/069/258/420/original/8fc09bfb38f81bba.png",
-      "image_description": "",
-      "embed_url": "",
-      "blurhash": "UJSr[pbbV@t7PAkCaxj[mlayt7ay.mV@t7ay",
-      "published_at": null
-    },
-    "poll": null
-  },
-  {
-    "id": "110842229562173283",
-    "created_at": "2023-08-06T10:36:40.109Z",
-    "in_reply_to_id": "110841081477775893",
-    "in_reply_to_account_id": "109418349291323348",
-    "sensitive": false,
-    "spoiler_text": "",
-    "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110842229562173283",
-    "url": "https://mastodon.social/@darrarski/110842229562173283",
-    "replies_count": 1,
-    "reblogs_count": 1,
-    "favourites_count": 0,
-    "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003e\u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://mstdn.social/@gbuela\" class=\"u-url mention\"\u003e@\u003cspan\u003egbuela\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e me too :) \u003ca href=\"https://github.com/darrarski/swiftui-app-icon-creator\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003egithub.com/darrarski/swiftui-a\u003c/span\u003e\u003cspan class=\"invisible\"\u003epp-icon-creator\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
-    "filtered": [
-
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Ivory for iOS",
-      "website": "https://tapbots.com/"
-    },
-    "account": {
-      "id": "108131495937150285",
-      "username": "darrarski",
-      "acct": "darrarski",
-      "display_name": "Dariusz Rybicki",
-      "locked": false,
-      "bot": false,
-      "discoverable": true,
-      "group": false,
-      "created_at": "2022-04-14T00:00:00.000Z",
-      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
-      "url": "https://mastodon.social/@darrarski",
-      "uri": "https://mastodon.social/users/darrarski",
-      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
-      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
-      "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
-      "noindex": false,
-      "emojis": [
-
-      ],
-      "roles": [
-
-      ],
-      "fields": [
-        {
-          "name": "Web",
-          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-07-01T17:31:38.523+00:00"
-        },
-        {
-          "name": "GitHub",
-          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
-          "verified_at": "2023-08-15T14:14:14.099+00:00"
-        }
-      ]
-    },
-    "media_attachments": [
-
-    ],
-    "mentions": [
-      {
-        "id": "109418349291323348",
-        "username": "gbuela",
-        "url": "https://mstdn.social/@gbuela",
-        "acct": "gbuela@mstdn.social"
-      }
-    ],
-    "tags": [
-
-    ],
-    "emojis": [
-
-    ],
-    "card": {
-      "url": "https://github.com/darrarski/swiftui-app-icon-creator",
-      "title": "GitHub - darrarski/swiftui-app-icon-creator: Create iOS and macOS application icon in Xcode with SwiftUI",
-      "description": "Create iOS and macOS application icon in Xcode with SwiftUI - GitHub - darrarski/swiftui-app-icon-creator: Create iOS and macOS application icon in Xcode with SwiftUI",
+      "url": "https://github.com/darrarski/darrarski-app",
+      "title": "GitHub - darrarski/darrarski-app: iOS \u0026 macOS SwiftUI application about my work and services",
+      "description": "iOS \u0026 macOS SwiftUI application about my work and services - GitHub - darrarski/darrarski-app: iOS \u0026 macOS SwiftUI application about my work and services",
       "language": "en",
       "type": "link",
       "author_name": "",
@@ -2369,43 +200,152 @@
       "html": "",
       "width": 1280,
       "height": 640,
-      "image": "https://files.mastodon.social/cache/preview_cards/images/069/243/675/original/9510b825e0ae7da4.png",
-      "image_description": "",
+      "image": "https://files.mastodon.social/cache/preview_cards/images/073/102/686/original/ccda707ad8d47f39.png",
+      "image_description": "iOS \u0026 macOS SwiftUI application about my work and services - GitHub - darrarski/darrarski-app: iOS \u0026 macOS SwiftUI application about my work and services",
       "embed_url": "",
-      "blurhash": "U56kbe$%I7%ji@t9o$MvoyRiV@t8V=kWbcRO",
+      "blurhash": "UBAeykDiC:tTC8zry2X.Lc-XIT9Y??Fqo$xt",
       "published_at": null
     },
     "poll": null
   },
   {
-    "id": "110824508488824250",
-    "created_at": "2023-08-03T07:29:57.988Z",
-    "in_reply_to_id": "110824501187866850",
-    "in_reply_to_account_id": "108131495937150285",
+    "id": "111058926662087682",
+    "created_at": "2023-09-13T17:05:35.449Z",
+    "in_reply_to_id": null,
+    "in_reply_to_account_id": null,
     "sensitive": false,
     "spoiler_text": "",
     "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110824508488824250",
-    "url": "https://mastodon.social/@darrarski/110824508488824250",
+    "language": null,
+    "uri": "https://mastodon.social/users/darrarski/statuses/111058926662087682/activity",
+    "url": "https://mastodon.social/users/darrarski/statuses/111058926662087682/activity",
     "replies_count": 0,
     "reblogs_count": 0,
     "favourites_count": 0,
     "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": false,
-    "content": "\u003cp\u003eMy recent projects were built with ComposableArchitecture by \u003cspan class=\"h-card\" translate=\"no\"\u003e\u003ca href=\"https://hachyderm.io/@pointfreeco\" class=\"u-url mention\"\u003e@\u003cspan\u003epointfreeco\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e, which I use since it was introduced.\u003c/p\u003e\u003cp\u003eIf you feel I could help you or your team, or if you just want to make a connection - feel free to send me a message.\u003c/p\u003e",
-    "filtered": [
+    "content": "",
+    "reblog": {
+      "id": "111058905655603185",
+      "created_at": "2023-09-13T17:00:13.000Z",
+      "in_reply_to_id": null,
+      "in_reply_to_account_id": null,
+      "sensitive": false,
+      "spoiler_text": "",
+      "visibility": "public",
+      "language": "en",
+      "uri": "https://hachyderm.io/users/pointfreeco/statuses/111058905554948510",
+      "url": "https://hachyderm.io/@pointfreeco/111058905554948510",
+      "replies_count": 0,
+      "reblogs_count": 5,
+      "favourites_count": 12,
+      "edited_at": null,
+      "content": "\u003cp\u003eAnnouncing the biggest update to our popular SnapshotTesting library since its 1.0 release: *inline* snapshot testing!\u003c/p\u003e\u003cp\u003eIt puts your text-based snapshots right alongside your test source code, instead of in an external file.\u003c/p\u003e\u003cp\u003eLearn more about the feature: \u003ca href=\"https://www.pointfree.co/blog/posts/113-inline-snapshot-testing\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/blog/posts/113-in\u003c/span\u003e\u003cspan class=\"invisible\"\u003eline-snapshot-testing\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
+      "reblog": null,
+      "account": {
+        "id": "109525079623237342",
+        "username": "pointfreeco",
+        "acct": "pointfreeco@hachyderm.io",
+        "display_name": "Point-Free",
+        "locked": false,
+        "bot": false,
+        "discoverable": true,
+        "group": false,
+        "created_at": "2022-12-16T00:00:00.000Z",
+        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
+        "url": "https://hachyderm.io/@pointfreeco",
+        "uri": "https://hachyderm.io/users/pointfreeco",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "followers_count": 1436,
+        "following_count": 2,
+        "statuses_count": 386,
+        "last_status_at": "2023-09-15",
+        "emojis": [
 
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Web",
-      "website": null
+        ],
+        "fields": [
+          {
+            "name": "Point-Free",
+            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": "2023-09-08T20:33:47.954+00:00"
+          },
+          {
+            "name": "Twitter",
+            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          },
+          {
+            "name": "GitHub",
+            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          }
+        ]
+      },
+      "media_attachments": [
+        {
+          "id": "111058905596698353",
+          "type": "gifv",
+          "url": "https://files.mastodon.social/cache/media_attachments/files/111/058/905/596/698/353/original/4bc5d114491d11bd.mp4",
+          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/111/058/905/596/698/353/small/4bc5d114491d11bd.png",
+          "remote_url": "https://media.hachyderm.io/media_attachments/files/111/058/902/708/215/096/original/5528fe26225b7a0a.mp4",
+          "preview_remote_url": null,
+          "text_url": null,
+          "meta": {
+            "focus": {
+              "x": -1.0,
+              "y": 0.01
+            },
+            "original": {
+              "width": 1192,
+              "height": 296,
+              "frame_rate": "33/1",
+              "duration": 8.364,
+              "bitrate": 109363
+            },
+            "small": {
+              "width": 640,
+              "height": 159,
+              "size": "640x159",
+              "aspect": 4.0251572327044025
+            }
+          },
+          "description": "An animated gif demonstrating an inline snapshot being recorded directly into a test file.",
+          "blurhash": "U2Ss1^R-E1xu19IVM|WB0iIVM|WB-;M{NGWB"
+        }
+      ],
+      "mentions": [
+
+      ],
+      "tags": [
+
+      ],
+      "emojis": [
+
+      ],
+      "card": {
+        "url": "https://www.pointfree.co/blog/posts/113-inline-snapshot-testing",
+        "title": "Inline Snapshot Testing",
+        "description": "We are releasing a major update to our popular SnapshotTesting library: inline snapshot testing!\nThis allows your text-based snapshots to live right in the test source code, rather than in an\nexternal file. ",
+        "language": "en",
+        "type": "link",
+        "author_name": "",
+        "author_url": "",
+        "provider_name": "",
+        "provider_url": "",
+        "html": "",
+        "width": 0,
+        "height": 0,
+        "image": null,
+        "image_description": "",
+        "embed_url": "",
+        "blurhash": null,
+        "published_at": null
+      },
+      "poll": null
     },
+    "application": null,
     "account": {
       "id": "108131495937150285",
       "username": "darrarski",
@@ -2423,10 +363,10 @@
       "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
       "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
       "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
+      "followers_count": 105,
       "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
+      "statuses_count": 89,
+      "last_status_at": "2023-09-15",
       "noindex": false,
       "emojis": [
 
@@ -2451,12 +391,7 @@
 
     ],
     "mentions": [
-      {
-        "id": "109525079623237342",
-        "username": "pointfreeco",
-        "url": "https://hachyderm.io/@pointfreeco",
-        "acct": "pointfreeco@hachyderm.io"
-      }
+
     ],
     "tags": [
 
@@ -2468,34 +403,142 @@
     "poll": null
   },
   {
-    "id": "110824501187866850",
-    "created_at": "2023-08-03T07:28:06.581Z",
+    "id": "111057235028910368",
+    "created_at": "2023-09-13T09:55:23.173Z",
     "in_reply_to_id": null,
     "in_reply_to_account_id": null,
     "sensitive": false,
     "spoiler_text": "",
     "visibility": "public",
-    "language": "en",
-    "uri": "https://mastodon.social/users/darrarski/statuses/110824501187866850",
-    "url": "https://mastodon.social/@darrarski/110824501187866850",
-    "replies_count": 1,
-    "reblogs_count": 9,
-    "favourites_count": 6,
+    "language": null,
+    "uri": "https://mastodon.social/users/darrarski/statuses/111057235028910368/activity",
+    "url": "https://mastodon.social/users/darrarski/statuses/111057235028910368/activity",
+    "replies_count": 0,
+    "reblogs_count": 0,
+    "favourites_count": 0,
     "edited_at": null,
-    "favourited": false,
-    "reblogged": false,
-    "muted": false,
-    "bookmarked": false,
-    "pinned": true,
-    "content": "\u003cp\u003eHello! I’ve recently finished a long-term project and I’m available to hire. \u003c/p\u003e\u003cp\u003eI do consulting for teams and individual developers. I help with iOS and macOS app architecture, solving technical problems, creating clean and maintainable code, test-driven development, and more.\u003c/p\u003e\u003cp\u003eI have more than a decade of experience developing apps in Apple\u0026#39;s ecosystem, using Swift and Objective-C. I\u0026#39;ve been working with SwiftUI and UIKit, and most of Apple\u0026#39;s frameworks (like CoreData or AVFoundation).\u003c/p\u003e",
-    "filtered": [
+    "content": "",
+    "reblog": {
+      "id": "111053060457839728",
+      "created_at": "2023-09-12T16:13:43.000Z",
+      "in_reply_to_id": null,
+      "in_reply_to_account_id": null,
+      "sensitive": false,
+      "spoiler_text": "",
+      "visibility": "public",
+      "language": "en",
+      "uri": "https://hachyderm.io/users/pointfreeco/statuses/111053060374920194",
+      "url": "https://hachyderm.io/@pointfreeco/111053060374920194",
+      "replies_count": 0,
+      "reblogs_count": 6,
+      "favourites_count": 7,
+      "edited_at": null,
+      "content": "\u003cp\u003eOur tour of the Composable Architecture 1.0 has finally come to an end. If you are curious what the library has to offer, then check out the full series here:\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://www.pointfree.co/collections/tours/composable-architecture-1-0\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/collections/tours\u003c/span\u003e\u003cspan class=\"invisible\"\u003e/composable-architecture-1-0\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e\u003cp\u003eWe cover navigation, domain modeling, dependencies, and a whole bunch more!\u003c/p\u003e",
+      "reblog": null,
+      "account": {
+        "id": "109525079623237342",
+        "username": "pointfreeco",
+        "acct": "pointfreeco@hachyderm.io",
+        "display_name": "Point-Free",
+        "locked": false,
+        "bot": false,
+        "discoverable": true,
+        "group": false,
+        "created_at": "2022-12-16T00:00:00.000Z",
+        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
+        "url": "https://hachyderm.io/@pointfreeco",
+        "uri": "https://hachyderm.io/users/pointfreeco",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "followers_count": 1436,
+        "following_count": 2,
+        "statuses_count": 386,
+        "last_status_at": "2023-09-15",
+        "emojis": [
 
-    ],
-    "reblog": null,
-    "application": {
-      "name": "Web",
-      "website": null
+        ],
+        "fields": [
+          {
+            "name": "Point-Free",
+            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": "2023-09-08T20:33:47.954+00:00"
+          },
+          {
+            "name": "Twitter",
+            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          },
+          {
+            "name": "GitHub",
+            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          }
+        ]
+      },
+      "media_attachments": [
+        {
+          "id": "111053060409759816",
+          "type": "image",
+          "url": "https://files.mastodon.social/cache/media_attachments/files/111/053/060/409/759/816/original/a78c86c0242fed0c.png",
+          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/111/053/060/409/759/816/small/a78c86c0242fed0c.png",
+          "remote_url": "https://media.hachyderm.io/media_attachments/files/111/053/058/389/446/255/original/bce72be82f17c1c8.png",
+          "preview_remote_url": null,
+          "text_url": null,
+          "meta": {
+            "focus": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "original": {
+              "width": 1468,
+              "height": 1413,
+              "size": "1468x1413",
+              "aspect": 1.0389242745930645
+            },
+            "small": {
+              "width": 489,
+              "height": 471,
+              "size": "489x471",
+              "aspect": 1.0382165605095541
+            }
+          },
+          "description": "A screenshot of our website showing the full series of 7 episodes for our tour of the Composable Architecture 1.0.\n\nThe table of contents reads as follows:\n\nCore lessons\n\nThe Basics\n57 min\n\nIntroducing Standups\n50 min\n\nNavigation\n50 min\n\nStacks\n1 hr 2 min\n\nCorrectness\n36 min\n\nDependencies\n51 min\n\nPersistence\n51 min",
+          "blurhash": "U~N^e:WBayof00j[ayayD%j[ayayt7ayayj["
+        }
+      ],
+      "mentions": [
+
+      ],
+      "tags": [
+
+      ],
+      "emojis": [
+
+      ],
+      "card": {
+        "url": "https://www.pointfree.co/collections/tours/composable-architecture-1-0",
+        "title": "Tours › The Composable Architecture",
+        "description": "We open sourced the [Composable Architecture](http://github.com/pointfreeco/swift-composable-architecture) after many, _many_ months of developing the concepts from first principles in Point-Free episodes. In this tour we build a small application from scratch, focus on breaking it down to into small understandable units, and write a full test suite to exercise every subtle aspect of the application.",
+        "language": "en",
+        "type": "link",
+        "author_name": "",
+        "author_url": "",
+        "provider_name": "",
+        "provider_url": "",
+        "html": "",
+        "width": 900,
+        "height": 471,
+        "image": "https://files.mastodon.social/cache/preview_cards/images/071/359/798/original/e708c157156a0e91.png",
+        "image_description": "",
+        "embed_url": "",
+        "blurhash": "U~LqqZ00t8xbxaRQIUWBtRouays;V[WEa#WB",
+        "published_at": null
+      },
+      "poll": null
     },
+    "application": null,
     "account": {
       "id": "108131495937150285",
       "username": "darrarski",
@@ -2513,10 +556,393 @@
       "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
       "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
       "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
-      "followers_count": 99,
+      "followers_count": 105,
       "following_count": 231,
-      "statuses_count": 84,
-      "last_status_at": "2023-08-28",
+      "statuses_count": 89,
+      "last_status_at": "2023-09-15",
+      "noindex": false,
+      "emojis": [
+
+      ],
+      "roles": [
+
+      ],
+      "fields": [
+        {
+          "name": "Web",
+          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+          "verified_at": "2023-07-01T17:31:38.523+00:00"
+        },
+        {
+          "name": "GitHub",
+          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+          "verified_at": "2023-08-15T14:14:14.099+00:00"
+        }
+      ]
+    },
+    "media_attachments": [
+
+    ],
+    "mentions": [
+
+    ],
+    "tags": [
+
+    ],
+    "emojis": [
+
+    ],
+    "card": null,
+    "poll": null
+  },
+  {
+    "id": "111019555045392174",
+    "created_at": "2023-09-06T18:12:52.260Z",
+    "in_reply_to_id": null,
+    "in_reply_to_account_id": null,
+    "sensitive": false,
+    "spoiler_text": "",
+    "visibility": "public",
+    "language": null,
+    "uri": "https://mastodon.social/users/darrarski/statuses/111019555045392174/activity",
+    "url": "https://mastodon.social/users/darrarski/statuses/111019555045392174/activity",
+    "replies_count": 0,
+    "reblogs_count": 0,
+    "favourites_count": 0,
+    "edited_at": null,
+    "content": "",
+    "reblog": {
+      "id": "111018845957934784",
+      "created_at": "2023-09-06T15:12:29.000Z",
+      "in_reply_to_id": null,
+      "in_reply_to_account_id": null,
+      "sensitive": false,
+      "spoiler_text": "",
+      "visibility": "public",
+      "language": "en",
+      "uri": "https://hachyderm.io/users/pointfreeco/statuses/111018845798201471",
+      "url": "https://hachyderm.io/@pointfreeco/111018845798201471",
+      "replies_count": 3,
+      "reblogs_count": 2,
+      "favourites_count": 1,
+      "edited_at": null,
+      "content": "\u003cp\u003eOne of the superpowers of the Composable Architecture is its ability to test every facet of your features.\u003c/p\u003e\u003cp\u003eIn this clip we show how the integration of 3 features on a navigation can be easily tested and make sure that it behaves as we expected.\u003c/p\u003e\u003cp\u003e👉 \u003ca href=\"https://www.pointfree.co/episodes/ep248-tour-of-the-composable-architecture-1-0-dependencies\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/episodes/ep248-to\u003c/span\u003e\u003cspan class=\"invisible\"\u003eur-of-the-composable-architecture-1-0-dependencies\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
+      "reblog": null,
+      "account": {
+        "id": "109525079623237342",
+        "username": "pointfreeco",
+        "acct": "pointfreeco@hachyderm.io",
+        "display_name": "Point-Free",
+        "locked": false,
+        "bot": false,
+        "discoverable": true,
+        "group": false,
+        "created_at": "2022-12-16T00:00:00.000Z",
+        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
+        "url": "https://hachyderm.io/@pointfreeco",
+        "uri": "https://hachyderm.io/users/pointfreeco",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "followers_count": 1436,
+        "following_count": 2,
+        "statuses_count": 386,
+        "last_status_at": "2023-09-15",
+        "emojis": [
+
+        ],
+        "fields": [
+          {
+            "name": "Point-Free",
+            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": "2023-09-08T20:33:47.954+00:00"
+          },
+          {
+            "name": "Twitter",
+            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          },
+          {
+            "name": "GitHub",
+            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          }
+        ]
+      },
+      "media_attachments": [
+        {
+          "id": "111018845853745365",
+          "type": "video",
+          "url": "https://files.mastodon.social/cache/media_attachments/files/111/018/845/853/745/365/original/2cf3f076fe40052a.mp4",
+          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/111/018/845/853/745/365/small/2cf3f076fe40052a.png",
+          "remote_url": "https://media.hachyderm.io/media_attachments/files/111/018/843/734/466/494/original/6dfe4da0755d6fd3.mp4",
+          "preview_remote_url": null,
+          "text_url": null,
+          "meta": {
+            "original": {
+              "width": 1280,
+              "height": 720,
+              "frame_rate": "560782/23439",
+              "duration": 176.17,
+              "bitrate": 313557
+            },
+            "small": {
+              "width": 640,
+              "height": 360,
+              "size": "640x360",
+              "aspect": 1.7777777777777777
+            }
+          },
+          "description": null,
+          "blurhash": "U25hlT.StQMdxwoNV@oHxbs:jsof%MtRkCax"
+        }
+      ],
+      "mentions": [
+
+      ],
+      "tags": [
+
+      ],
+      "emojis": [
+
+      ],
+      "card": {
+        "url": "https://www.pointfree.co/episodes/ep248-tour-of-the-composable-architecture-1-0-dependencies",
+        "title": "Episode #248: Tour of the Composable Architecture 1.0: Dependencies",
+        "description": "We introduce a complex dependency to the record meeting screen: speech recognition. We will begin to integrate this dependency into our app's logic, and show how to control it for Xcode previews and tests",
+        "language": "en",
+        "type": "link",
+        "author_name": "",
+        "author_url": "",
+        "provider_name": "",
+        "provider_url": "",
+        "html": "",
+        "width": 1400,
+        "height": 788,
+        "image": "https://files.mastodon.social/cache/preview_cards/images/072/033/024/original/565c46e02f6285ca.jpeg",
+        "image_description": "",
+        "embed_url": "",
+        "blurhash": "UGJ*UkxsM}~Tj[?YoeM}xsM}M}M}Rk~mM}E3",
+        "published_at": null
+      },
+      "poll": null
+    },
+    "application": null,
+    "account": {
+      "id": "108131495937150285",
+      "username": "darrarski",
+      "acct": "darrarski",
+      "display_name": "Dariusz Rybicki",
+      "locked": false,
+      "bot": false,
+      "discoverable": true,
+      "group": false,
+      "created_at": "2022-04-14T00:00:00.000Z",
+      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
+      "url": "https://mastodon.social/@darrarski",
+      "uri": "https://mastodon.social/users/darrarski",
+      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
+      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
+      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
+      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
+      "followers_count": 105,
+      "following_count": 231,
+      "statuses_count": 89,
+      "last_status_at": "2023-09-15",
+      "noindex": false,
+      "emojis": [
+
+      ],
+      "roles": [
+
+      ],
+      "fields": [
+        {
+          "name": "Web",
+          "value": "\u003ca href=\"https://darrarski.pl\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003edarrarski.pl\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+          "verified_at": "2023-07-01T17:31:38.523+00:00"
+        },
+        {
+          "name": "GitHub",
+          "value": "\u003ca href=\"https://github.com/darrarski\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/darrarski\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+          "verified_at": "2023-08-15T14:14:14.099+00:00"
+        }
+      ]
+    },
+    "media_attachments": [
+
+    ],
+    "mentions": [
+
+    ],
+    "tags": [
+
+    ],
+    "emojis": [
+
+    ],
+    "card": null,
+    "poll": null
+  },
+  {
+    "id": "111019552104729693",
+    "created_at": "2023-09-06T18:12:07.386Z",
+    "in_reply_to_id": null,
+    "in_reply_to_account_id": null,
+    "sensitive": false,
+    "spoiler_text": "",
+    "visibility": "public",
+    "language": null,
+    "uri": "https://mastodon.social/users/darrarski/statuses/111019552104729693/activity",
+    "url": "https://mastodon.social/users/darrarski/statuses/111019552104729693/activity",
+    "replies_count": 0,
+    "reblogs_count": 0,
+    "favourites_count": 0,
+    "edited_at": null,
+    "content": "",
+    "reblog": {
+      "id": "111013469265781907",
+      "created_at": "2023-09-05T16:25:09.000Z",
+      "in_reply_to_id": null,
+      "in_reply_to_account_id": null,
+      "sensitive": false,
+      "spoiler_text": "",
+      "visibility": "public",
+      "language": "en",
+      "uri": "https://hachyderm.io/users/pointfreeco/statuses/111013469178935929",
+      "url": "https://hachyderm.io/@pointfreeco/111013469178935929",
+      "replies_count": 0,
+      "reblogs_count": 1,
+      "favourites_count": 2,
+      "edited_at": null,
+      "content": "\u003cp\u003eThis week we show how Apple's speech recognition APIs do not play nicely with Xcode previews or tests.\u003c/p\u003e\u003cp\u003eBut, we can take control over that dependency and unlock all new capabilities for our app.\u003c/p\u003e\u003cp\u003eLearn more: 👉 \u003ca href=\"https://www.pointfree.co/episodes/ep248-tour-of-the-composable-architecture-1-0-dependencies\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"ellipsis\"\u003epointfree.co/episodes/ep248-to\u003c/span\u003e\u003cspan class=\"invisible\"\u003eur-of-the-composable-architecture-1-0-dependencies\u003c/span\u003e\u003c/a\u003e\u003c/p\u003e",
+      "reblog": null,
+      "account": {
+        "id": "109525079623237342",
+        "username": "pointfreeco",
+        "acct": "pointfreeco@hachyderm.io",
+        "display_name": "Point-Free",
+        "locked": false,
+        "bot": false,
+        "discoverable": true,
+        "group": false,
+        "created_at": "2022-12-16T00:00:00.000Z",
+        "note": "\u003cp\u003eA video series exploring Swift and functional programming. Hosted by \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@mbrandonw\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003embrandonw\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e and \u003cspan class=\"h-card\"\u003e\u003ca href=\"https://hachyderm.io/@stephencelis\" class=\"u-url mention\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e@\u003cspan\u003estephencelis\u003c/span\u003e\u003c/a\u003e\u003c/span\u003e.\u003c/p\u003e",
+        "url": "https://hachyderm.io/@pointfreeco",
+        "uri": "https://hachyderm.io/users/pointfreeco",
+        "avatar": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "avatar_static": "https://files.mastodon.social/cache/accounts/avatars/109/525/079/623/237/342/original/cf7129504c8e3753.png",
+        "header": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "header_static": "https://files.mastodon.social/cache/accounts/headers/109/525/079/623/237/342/original/4ae18ee647e3cc2a.jpeg",
+        "followers_count": 1436,
+        "following_count": 2,
+        "statuses_count": 386,
+        "last_status_at": "2023-09-15",
+        "emojis": [
+
+        ],
+        "fields": [
+          {
+            "name": "Point-Free",
+            "value": "\u003ca href=\"https://www.pointfree.co\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003epointfree.co\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": "2023-09-08T20:33:47.954+00:00"
+          },
+          {
+            "name": "Twitter",
+            "value": "\u003ca href=\"http://twitter.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttp://\u003c/span\u003e\u003cspan class=\"\"\u003etwitter.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          },
+          {
+            "name": "GitHub",
+            "value": "\u003ca href=\"https://www.github.com/pointfreeco\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003egithub.com/pointfreeco\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e",
+            "verified_at": null
+          }
+        ]
+      },
+      "media_attachments": [
+        {
+          "id": "111013469211598609",
+          "type": "image",
+          "url": "https://files.mastodon.social/cache/media_attachments/files/111/013/469/211/598/609/original/7ca7b1a84f4709c4.png",
+          "preview_url": "https://files.mastodon.social/cache/media_attachments/files/111/013/469/211/598/609/small/7ca7b1a84f4709c4.png",
+          "remote_url": "https://media.hachyderm.io/media_attachments/files/111/013/468/428/181/065/original/5d8f57281686084b.png",
+          "preview_remote_url": null,
+          "text_url": null,
+          "meta": {
+            "focus": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "original": {
+              "width": 1195,
+              "height": 673,
+              "size": "1195x673",
+              "aspect": 1.775631500742942
+            },
+            "small": {
+              "width": 639,
+              "height": 360,
+              "size": "639x360",
+              "aspect": 1.775
+            }
+          },
+          "description": "A screenshot of code showing a lightweight dependency interface for a speech client. The code reads as follows:\n\n// A lightweight interface to abstract over a speech\n// recognition client.\nstruct SpeechClient {\n  var requestAuthorization: @Sendable\n    () async -\u003e SFSpeechRecognizerAuthorizationStatus\n  var start: @Sendable \n    () -\u003e AsyncThrowingStream\u003cString, Error\u003e\n}",
+          "blurhash": "U*Af]Pj[o|aykVfQfQjty:ayaLj[kCjtaya|"
+        }
+      ],
+      "mentions": [
+
+      ],
+      "tags": [
+
+      ],
+      "emojis": [
+
+      ],
+      "card": {
+        "url": "https://www.pointfree.co/episodes/ep248-tour-of-the-composable-architecture-1-0-dependencies",
+        "title": "Episode #248: Tour of the Composable Architecture 1.0: Dependencies",
+        "description": "We introduce a complex dependency to the record meeting screen: speech recognition. We will begin to integrate this dependency into our app's logic, and show how to control it for Xcode previews and tests",
+        "language": "en",
+        "type": "link",
+        "author_name": "",
+        "author_url": "",
+        "provider_name": "",
+        "provider_url": "",
+        "html": "",
+        "width": 1400,
+        "height": 788,
+        "image": "https://files.mastodon.social/cache/preview_cards/images/072/033/024/original/565c46e02f6285ca.jpeg",
+        "image_description": "",
+        "embed_url": "",
+        "blurhash": "UGJ*UkxsM}~Tj[?YoeM}xsM}M}M}Rk~mM}E3",
+        "published_at": null
+      },
+      "poll": null
+    },
+    "application": null,
+    "account": {
+      "id": "108131495937150285",
+      "username": "darrarski",
+      "acct": "darrarski",
+      "display_name": "Dariusz Rybicki",
+      "locked": false,
+      "bot": false,
+      "discoverable": true,
+      "group": false,
+      "created_at": "2022-04-14T00:00:00.000Z",
+      "note": "\u003cp\u003eSoftware Engineer, Scrum Master, Mentor, Apple, iOS, macOS\u003c/p\u003e",
+      "url": "https://mastodon.social/@darrarski",
+      "uri": "https://mastodon.social/users/darrarski",
+      "avatar": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
+      "avatar_static": "https://files.mastodon.social/accounts/avatars/108/131/495/937/150/285/original/cd3adc8979c0a566.png",
+      "header": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
+      "header_static": "https://files.mastodon.social/accounts/headers/108/131/495/937/150/285/original/44689f9f7cffb247.png",
+      "followers_count": 105,
+      "following_count": 231,
+      "statuses_count": 89,
+      "last_status_at": "2023-09-15",
       "noindex": false,
       "emojis": [
 
