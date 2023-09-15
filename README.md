@@ -70,7 +70,9 @@ The workspace contains a Swift package named `app-icon`. It provides `AppIcon` l
 
 ### Tests
 
-_unit tests, test plans, schemes_
+Every feature of the application is covered by unit tests. Each library can be tested in isolation, using the provided build scheme with the same name as the library, like `AppFeature`. All tests of the application can be run from `DarrarskiApp` build scheme.
+
+![Screenshot of Xcode test results](web/assets/xcode-test-results.png)
 
 ### Telemetry
 
