@@ -78,7 +78,8 @@ public struct StatusView: View {
                 attachments
               }
               .buttonStyle(.plain)
-              .containerRelativeFrame(.horizontal) { width, _ in width * 0.8 }
+              .aspectRatio(1, contentMode: .fit)
+              .containerRelativeFrame(.horizontal) { width, _ in min(width * 0.8, 400) }
             }
             .scrollTargetLayout()
 
@@ -89,7 +90,6 @@ public struct StatusView: View {
         .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
         .scrollIndicators(.hidden)
         .scrollClipDisabled()
-        .containerRelativeFrame(.vertical) { height, _ in height / 2 }
       }
     }
   }
