@@ -64,7 +64,9 @@ Each view of the application is implemented in SwiftUI and comes with a preview.
 
 ### App icon
 
-_app-icon package, AppIcon library, app-icon-export executable_
+The workspace contains a Swift package named `app-icon`. It provides `AppIcon` library with SwiftUI implementation of the icon view. The included preview allows you to see how the icon will look on different platforms. The package also contains an executable - `app-icon-export`. It's used to render the icon and save it as assets for the app. This way of creating an app icon is possible thanks to [SwiftUI App Icon Creator](https://github.com/darrarski/swiftui-app-icon-creator).
+
+![Screenshot of Xcode running app icon preview](web/assets/xcode-preview-app-icon.png)
 
 ### Tests
 
