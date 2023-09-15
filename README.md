@@ -56,6 +56,12 @@ Individual features of the application are implemented as libraries produced by 
 | [Mastodon](app/Sources/Mastodon) | Provides models and API client for Mastodon network. Implements only a small subset of the API endpoints, that are needed by the app.
 | [ProjectFeature](app/Sources/ProjectsFeature) | Implements screen with a list of projects. Each project, with some basic information about it, is presented on a grid. The list is fetched from the backend.
 
+### Architecture
+
+The application and its components are built using [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture). Each component of the application contains a state and action definition, as well as a reducer that mutates the state and handles side effects. The `State` clearly defines a data set the given component is operating on. The `Action` provides an interface for all events that the component is handling, like user interactions or receiving a response to a network request.
+
+![Screenshot of Xcode test results](web/assets/xcode-contact-reducer.png)
+
 ### Previews
 
 Each view of the application is implemented in SwiftUI and comes with a preview. The preview is driven by a real `Store` and `Reducer`, but the application dependencies are mocked up for preview purposes. For example, an API client fetch-endpoint dependency immediately returns a JSON file loaded from disk, instead of performing an actual network request. This behavior allows for easier UI development in Xcode, in isolation from the outside world.
