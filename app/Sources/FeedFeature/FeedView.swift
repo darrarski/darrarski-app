@@ -102,7 +102,7 @@ public struct FeedView: View {
   @MainActor
   @ViewBuilder
   var placeholderView: some View {
-    let statuses: [Status] = .preview.shuffled()[0..<3]
+    let statuses: [Status] = .preview.shuffled().suffix(3)
       .enumerated()
       .map(makeUpdate { $0.element.id = .init(rawValue: "preview\($0.offset)") })
       .map(\.element)
