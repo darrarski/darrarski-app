@@ -60,7 +60,7 @@ Individual features of the application are implemented as libraries produced by 
 
 The application and its components are built using [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture). Each component of the application contains a state and action definition, as well as a reducer that mutates the state and handles side effects. The `State` clearly defines a data set the given component is operating on. The `Action` provides an interface for all events that the component is handling, like user interactions or receiving a response to a network request.
 
-![Screenshot of Xcode test results](web/assets/xcode-contact-reducer.png)
+![Screenshot of Xcode with source code of contact reducer](web/assets/xcode-contact-reducer.png)
 
 ### Previews
 
