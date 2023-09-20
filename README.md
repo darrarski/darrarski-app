@@ -82,7 +82,7 @@ Every feature of the application is covered by unit tests. Each library can be t
 
 ### Telemetry
 
-The application uses [TelemetryDeck](https://telemetrydeck.com/) to collect anonymous infomration about how it's being used by the users.
+The application uses [TelemetryDeck](https://telemetrydeck.com/) to collect anonymous information about how it's being used by the users.
 
 > TelemetryDeck helps app and web developers improve their product by supplying immediate, accurate usage data while users use their app. And the best part: It's all anonymized so users' data stays private!
 
