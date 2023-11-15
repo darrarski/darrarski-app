@@ -810,16 +810,39 @@
     "url" : "https://github.com/darrarski/tca-swift-log"
   },
   {
+    "date" : "2023.08.21",
+    "name" : "Seer AI",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://apple.co/3XzScHQ"
+  },
+  {
     "date" : "2023.08.29",
     "name" : "Darrarski.app",
     "tags" : [
-      "iOS",
-      "macOS",
       "Swift",
       "SwiftUI",
-      "TCA"
+      "TCA",
+      "iOS",
+      "macOS"
     ],
     "type" : "Application",
-    "url" : "https://github.com/darrarski/darrarski-app"
+    "url" : "https://app.darrarski.pl"
+  },
+  {
+    "date" : "2023.11.05",
+    "name" : "Interfungible Assets PoC app",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS"
+    ],
+    "type" : "Application"
   }
 ]
