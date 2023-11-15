@@ -37,7 +37,7 @@ public struct ContactReducer: Reducer, Sendable {
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       enum CancelId { case fetchGravatar }
 
       switch action {

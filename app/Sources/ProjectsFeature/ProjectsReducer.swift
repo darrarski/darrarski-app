@@ -44,7 +44,7 @@ public struct ProjectsReducer: Reducer, Sendable {
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       enum CancelId { case fetch }
 
       switch action {

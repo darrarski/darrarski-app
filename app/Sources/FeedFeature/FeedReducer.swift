@@ -41,7 +41,7 @@ public struct FeedReducer: Reducer, Sendable {
   static let mastodonAccountURL = URL(string: "https://mastodon.social/@darrarski")!
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       enum CancelId { case fetchStatuses }
 
       switch action {

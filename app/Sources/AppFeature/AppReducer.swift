@@ -56,7 +56,7 @@ public struct AppReducer: Reducer, Sendable {
       ProjectsReducer()
     }
 
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .contact(_), .feed(_), .projects(_):
         return .none

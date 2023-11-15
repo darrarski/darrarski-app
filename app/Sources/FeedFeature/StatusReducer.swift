@@ -59,7 +59,7 @@ public struct StatusReducer: Reducer, Sendable {
   @Dependency(\.statusTextRenderer) var render
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .quickLookItem(_):
         return .none
