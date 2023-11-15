@@ -30,6 +30,7 @@ extension Client: DependencyKey {
         throw RequestBuildingError()
       }
       var request = URLRequest(url: url)
+      request.cachePolicy = .reloadRevalidatingCacheData
       request.httpMethod = "GET"
 
       let (data, response) = try await urlSession.data(for: request)

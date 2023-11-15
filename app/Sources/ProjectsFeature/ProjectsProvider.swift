@@ -80,6 +80,7 @@ extension ProjectsProvider: DependencyKey {
         throw InvalidURLError()
       }
       var urlRequest = URLRequest(url: url)
+      urlRequest.cachePolicy = .reloadRevalidatingCacheData
       urlRequest.httpMethod = "GET"
       let (data, response) = try await urlSession.data(for: urlRequest)
       let statusCode = (response as? HTTPURLResponse)?.statusCode
@@ -104,6 +105,7 @@ extension ProjectsProvider: DependencyKey {
         throw InvalidURLError()
       }
       var urlRequest = URLRequest(url: url)
+      urlRequest.cachePolicy = .reloadRevalidatingCacheData
       urlRequest.httpMethod = "GET"
       let (data, response) = try await urlSession.data(for: urlRequest)
       let statusCode = (response as? HTTPURLResponse)?.statusCode
