@@ -30,7 +30,7 @@ final class FeedReducerTests: XCTestCase {
         excludeReplies: true
       )])
     }
-    await store.receive(.fetchStatusesResult(.success(statuses))) {
+    await store.receive(\.fetchStatusesResult.success) {
       $0.isLoading = false
       $0.statuses = .init(
         uniqueElements: statuses.map { StatusReducer.State(status: $0) }
@@ -50,7 +50,7 @@ final class FeedReducerTests: XCTestCase {
     await store.send(.fetchStatuses) {
       $0.isLoading = true
     }
-    await store.receive(.fetchStatusesResult(.failure(error))) {
+    await store.receive(\.fetchStatusesResult.failure) {
       $0.isLoading = false
     }
   }
@@ -65,7 +65,7 @@ final class FeedReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.task))
-    await store.receive(.fetchStatuses)
+    await store.receive(\.fetchStatuses)
   }
 
   func testViewRefreshTask() async {
@@ -78,7 +78,7 @@ final class FeedReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshTask))
-    await store.receive(.fetchStatuses)
+    await store.receive(\.fetchStatuses)
   }
 
   func testViewRefreshButtonTapped() async {
@@ -91,7 +91,7 @@ final class FeedReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshButtonTapped))
-    await store.receive(.fetchStatuses)
+    await store.receive(\.fetchStatuses)
   }
 
   func testViewSeeMoreButtonTapped() async {

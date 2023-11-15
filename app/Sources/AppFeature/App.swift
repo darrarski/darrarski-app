@@ -23,17 +23,17 @@ struct App: SwiftUI.App {
       case .feed(.fetchStatuses): false
       case .feed(.fetchStatusesResult(.failure(_))): true
       case .feed(.fetchStatusesResult(.success(_))): false
-      case .feed(.status(_, .quickLookItem(.dismiss))): true
-      case .feed(.status(_, .quickLookItem(.presented(_)))): false
-      case .feed(.status(_, .renderText)): false
-      case .feed(.status(_, .textRendered(.failure(_)))): true
-      case .feed(.status(_, .textRendered(.success(_)))): false
-      case .feed(.status(_, .view(.attachmentTapped(_)))): true
-      case .feed(.status(_, .view(.headerTapped))): true
-      case .feed(.status(_, .view(.linkTapped(_)))): true
-      case .feed(.status(_, .view(.previewCardTapped))): true
-      case .feed(.status(_, .view(.quickLookItemChanged(_)))): true
-      case .feed(.status(_, .view(.textTask))): false
+      case .feed(.status(.element(_, .quickLookItem(.dismiss)))): true
+      case .feed(.status(.element(_, .quickLookItem(.presented(_))))): false
+      case .feed(.status(.element(_, .renderText))): false
+      case .feed(.status(.element(_, .textRendered(.failure(_))))): true
+      case .feed(.status(.element(_, .textRendered(.success(_))))): false
+      case .feed(.status(.element(_, .view(.attachmentTapped(_))))): true
+      case .feed(.status(.element(_, .view(.headerTapped)))): true
+      case .feed(.status(.element(_, .view(.linkTapped(_))))): true
+      case .feed(.status(.element(_, .view(.previewCardTapped)))): true
+      case .feed(.status(.element(_, .view(.quickLookItemChanged(_))))): true
+      case .feed(.status(.element(_, .view(.textTask)))): false
       case .feed(.view(.refreshButtonTapped)): true
       case .feed(.view(.refreshTask)): true
       case .feed(.view(.seeMoreButtonTapped)): true

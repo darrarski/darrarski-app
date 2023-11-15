@@ -18,13 +18,13 @@ final class ProjectsReducerTests: XCTestCase {
       $0.isLoading = true
     }
     await clock.advance(by: .seconds(0.5))
-    await store.receive(.fetchInfoResult(.success(.preview))) {
+    await store.receive(\.fetchInfoResult.success) {
       $0.info = .preview
     }
-    await store.receive(.fetchProjectsResult(.success(.preview))) {
+    await store.receive(\.fetchProjectsResult.success) {
       $0.groups = .init(groupingByYear: .init(uniqueElements: [Project].preview))
     }
-    await store.receive(.fetchFinished) {
+    await store.receive(\.fetchFinished) {
       $0.isLoading = false
     }
   }
@@ -42,11 +42,11 @@ final class ProjectsReducerTests: XCTestCase {
     await store.send(.fetch) {
       $0.isLoading = true
     }
-    await store.receive(.fetchInfoResult(.failure(error)))
-    await store.receive(.fetchProjectsResult(.success(.preview))) {
+    await store.receive(\.fetchInfoResult.failure)
+    await store.receive(\.fetchProjectsResult.success) {
       $0.groups = .init(groupingByYear: .init(uniqueElements: [Project].preview))
     }
-    await store.receive(.fetchFinished) {
+    await store.receive(\.fetchFinished) {
       $0.isLoading = false
     }
   }
@@ -64,11 +64,11 @@ final class ProjectsReducerTests: XCTestCase {
     await store.send(.fetch) {
       $0.isLoading = true
     }
-    await store.receive(.fetchInfoResult(.success(.preview))) {
+    await store.receive(\.fetchInfoResult.success) {
       $0.info = .preview
     }
-    await store.receive(.fetchProjectsResult(.failure(error)))
-    await store.receive(.fetchFinished) {
+    await store.receive(\.fetchProjectsResult.failure)
+    await store.receive(\.fetchFinished) {
       $0.isLoading = false
     }
   }
@@ -84,7 +84,7 @@ final class ProjectsReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshButtonTapped))
-    await store.receive(.fetch)
+    await store.receive(\.fetch)
   }
 
   func testViewRefreshTask() async {
@@ -98,7 +98,7 @@ final class ProjectsReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshTask))
-    await store.receive(.fetch)
+    await store.receive(\.fetch)
   }
 
   func testViewTask() async {
@@ -112,7 +112,7 @@ final class ProjectsReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.task))
-    await store.receive(.fetch)
+    await store.receive(\.fetch)
   }
 
   func testViewProjectCardTapped() async {

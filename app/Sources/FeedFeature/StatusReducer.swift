@@ -2,6 +2,7 @@ import ComposableArchitecture
 import Foundation
 import Mastodon
 
+@Reducer
 public struct StatusReducer: Reducer, Sendable {
   public struct State: Equatable, Sendable, Identifiable {
     public init(
@@ -35,13 +36,14 @@ public struct StatusReducer: Reducer, Sendable {
     }
   }
 
-  public enum Action: Equatable, Sendable {
+  public enum Action: Sendable {
     case quickLookItem(PresentationAction<Never>)
     case renderText
-    case textRendered(TaskResult<AttributedString>)
+    case textRendered(Result<AttributedString, Error>)
     case view(View)
 
-    public enum View: Equatable, Sendable {
+    @CasePathable
+    public enum View: Sendable {
       case attachmentTapped(MediaAttachment.ID)
       case headerTapped
       case linkTapped(URL)
@@ -57,7 +59,7 @@ public struct StatusReducer: Reducer, Sendable {
   @Dependency(\.statusTextRenderer) var render
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .quickLookItem(_):
         return .none
@@ -65,7 +67,7 @@ public struct StatusReducer: Reducer, Sendable {
       case .renderText:
         let html = state.displayStatus.content
         return .run { send in
-          let result = await TaskResult<AttributedString> { try render(html) }
+          let result = Result { try render(html) }
           await send(.textRendered(result))
         }
 
@@ -122,7 +124,7 @@ public struct StatusReducer: Reducer, Sendable {
         return .none
       }
     }
-    .ifLet(\.$quickLookItem, action: /Action.quickLookItem) {
+    .ifLet(\.$quickLookItem, action: \.quickLookItem) {
       EmptyReducer()
     }
   }

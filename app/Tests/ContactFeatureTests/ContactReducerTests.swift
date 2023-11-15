@@ -17,7 +17,7 @@ final class ContactReducerTests: XCTestCase {
       $0.isLoading = true
     }
     await clock.advance(by: .seconds(0.5))
-    await store.receive(.fetchContactResult(.success(.preview))) {
+    await store.receive(\.fetchContactResult.success) {
       $0.isLoading = false
       $0.contact = .preview
     }
@@ -35,7 +35,7 @@ final class ContactReducerTests: XCTestCase {
     await store.send(.fetchContact) {
       $0.isLoading = true
     }
-    await store.receive(.fetchContactResult(.failure(error))) {
+    await store.receive(\.fetchContactResult.failure) {
       $0.isLoading = false
     }
   }
@@ -50,7 +50,7 @@ final class ContactReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.task))
-    await store.receive(.fetchContact)
+    await store.receive(\.fetchContact)
   }
 
   func testViewRefreshTask() async {
@@ -63,7 +63,7 @@ final class ContactReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshTask))
-    await store.receive(.fetchContact)
+    await store.receive(\.fetchContact)
 
   }
 
@@ -77,7 +77,7 @@ final class ContactReducerTests: XCTestCase {
     store.exhaustivity = .off
 
     await store.send(.view(.refreshButtonTapped))
-    await store.receive(.fetchContact)
+    await store.receive(\.fetchContact)
   }
 
   func testViewLinkButtonTapped() async {

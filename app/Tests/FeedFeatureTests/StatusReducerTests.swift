@@ -239,9 +239,9 @@ final class StatusReducerTests: XCTestCase {
     }
 
     await store.send(.view(.textTask))
-    await store.receive(.renderText)
+    await store.receive(\.renderText)
     XCTAssertNoDifference(didRender.value, [status.content])
-    await store.receive(.textRendered(.success(renderedText))) {
+    await store.receive(\.textRendered.success) {
       $0.text = renderedText
     }
 
@@ -261,8 +261,8 @@ final class StatusReducerTests: XCTestCase {
     }
 
     await store.send(.view(.textTask))
-    await store.receive(.renderText)
-    await store.receive(.textRendered(.failure(failure))) {
+    await store.receive(\.renderText)
+    await store.receive(\.textRendered.failure) {
       $0.text = AttributedString(status.content)
     }
   }

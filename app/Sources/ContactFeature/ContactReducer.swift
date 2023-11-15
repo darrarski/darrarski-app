@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import Foundation
 
+@Reducer
 public struct ContactReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
@@ -15,12 +16,13 @@ public struct ContactReducer: Reducer, Sendable {
     var isLoading: Bool
   }
 
-  public enum Action: Equatable, Sendable {
+  public enum Action: Sendable {
     case fetchContact
-    case fetchContactResult(TaskResult<Contact>)
+    case fetchContactResult(Result<Contact, Error>)
     case view(View)
 
-    public enum View: Equatable, Sendable {
+    @CasePathable
+    public enum View: Sendable {
       case linkButtonTapped(Contact.Link)
       case refreshButtonTapped
       case refreshTask
@@ -35,7 +37,7 @@ public struct ContactReducer: Reducer, Sendable {
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
+    Reduce<State, Action> { state, action in
       enum CancelId { case fetchGravatar }
 
       switch action {
@@ -43,7 +45,7 @@ public struct ContactReducer: Reducer, Sendable {
         state.isLoading = true
         return .run { send in
           try await clock.sleep(for: .seconds(0.5))
-          let result = await TaskResult {
+          let result = await Result {
             try await contactProvider.fetch()
           }
           await send(.fetchContactResult(result))
