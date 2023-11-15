@@ -5,7 +5,7 @@ import Foundation
 import ProjectsFeature
 
 @Reducer
-public struct AppReducer {
+public struct AppReducer: Reducer, Sendable {
   public struct State: Equatable {
     public enum Section: Equatable, CaseIterable {
       case contact

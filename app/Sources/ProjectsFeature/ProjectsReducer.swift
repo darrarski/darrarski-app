@@ -1,7 +1,7 @@
 import ComposableArchitecture
 
 @Reducer
-public struct ProjectsReducer: Sendable {
+public struct ProjectsReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
       info: ProjectsInfo? = nil,

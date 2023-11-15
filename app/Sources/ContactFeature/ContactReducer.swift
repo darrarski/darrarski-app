@@ -2,7 +2,7 @@ import ComposableArchitecture
 import Foundation
 
 @Reducer
-public struct ContactReducer: Sendable {
+public struct ContactReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
       contact: Contact? = nil,

@@ -3,7 +3,7 @@ import Foundation
 import Mastodon
 
 @Reducer
-public struct FeedReducer: Sendable {
+public struct FeedReducer: Reducer, Sendable {
   public struct State: Equatable {
     public init(
       statuses: IdentifiedArrayOf<StatusReducer.State> = [],

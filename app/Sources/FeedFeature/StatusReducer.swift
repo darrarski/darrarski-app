@@ -3,7 +3,7 @@ import Foundation
 import Mastodon
 
 @Reducer
-public struct StatusReducer: Sendable {
+public struct StatusReducer: Reducer, Sendable {
   public struct State: Equatable, Sendable, Identifiable {
     public init(
       status: Status,
