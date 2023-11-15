@@ -97,8 +97,8 @@ final class AppTelemetryReducerTests: XCTestCase {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
-      enum Action: Equatable {
-        case first(TaskResult<String>)
+      enum Action {
+        case first(Result<String, Error>)
         case second(NSError, NSError, NSError)
       }
 

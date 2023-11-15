@@ -4,7 +4,8 @@ import FeedFeature
 import Foundation
 import ProjectsFeature
 
-public struct AppReducer: Reducer {
+@Reducer
+public struct AppReducer {
   public struct State: Equatable {
     public enum Section: Equatable, CaseIterable {
       case contact
@@ -30,13 +31,14 @@ public struct AppReducer: Reducer {
     var selectedSection: Section
   }
 
-  public enum Action: Equatable {
+  public enum Action {
     case contact(ContactReducer.Action)
     case feed(FeedReducer.Action)
     case projects(ProjectsReducer.Action)
     case view(View)
 
-    public enum View: Equatable {
+    @CasePathable
+    public enum View {
       case sectionSelected(State.Section?)
     }
   }
@@ -44,13 +46,13 @@ public struct AppReducer: Reducer {
   public init() {}
 
   public var body: some ReducerOf<Self> {
-    Scope(state: \.contact, action: /Action.contact) {
+    Scope(state: \.contact, action: \.contact) {
       ContactReducer()
     }
-    Scope(state: \.feed, action: /Action.feed) {
+    Scope(state: \.feed, action: \.feed) {
       FeedReducer()
     }
-    Scope(state: \.projects, action: /Action.projects) {
+    Scope(state: \.projects, action: \.projects) {
       ProjectsReducer()
     }
 

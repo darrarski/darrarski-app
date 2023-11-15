@@ -1,6 +1,7 @@
 import ComposableArchitecture
 
-public struct ProjectsReducer: Reducer, Sendable {
+@Reducer
+public struct ProjectsReducer: Sendable {
   public struct State: Equatable {
     public init(
       info: ProjectsInfo? = nil,
@@ -20,14 +21,15 @@ public struct ProjectsReducer: Reducer, Sendable {
     }
   }
 
-  public enum Action: Equatable, Sendable {
+  public enum Action: Sendable {
     case fetch
     case fetchFinished
-    case fetchInfoResult(TaskResult<ProjectsInfo>)
-    case fetchProjectsResult(TaskResult<[Project]>)
+    case fetchInfoResult(Result<ProjectsInfo, Error>)
+    case fetchProjectsResult(Result<[Project], Error>)
     case view(View)
 
-    public enum View: Equatable, Sendable {
+    @CasePathable
+    public enum View: Sendable {
       case projectCardTapped(Project.ID)
       case refreshButtonTapped
       case refreshTask
@@ -50,10 +52,10 @@ public struct ProjectsReducer: Reducer, Sendable {
         state.isLoading = true
         return .run { send in
           try await clock.sleep(for: .seconds(0.5))
-          await send(.fetchInfoResult(TaskResult {
+          await send(.fetchInfoResult(Result {
             try await projectsProvider.fetchInfo()
           }))
-          await send(.fetchProjectsResult(TaskResult {
+          await send(.fetchProjectsResult(Result {
             try await projectsProvider.fetchProjects()
           }))
           await send(.fetchFinished)

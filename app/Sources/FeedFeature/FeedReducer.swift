@@ -2,7 +2,8 @@ import ComposableArchitecture
 import Foundation
 import Mastodon
 
-public struct FeedReducer: Reducer, Sendable {
+@Reducer
+public struct FeedReducer: Sendable {
   public struct State: Equatable {
     public init(
       statuses: IdentifiedArrayOf<StatusReducer.State> = [],
@@ -16,13 +17,14 @@ public struct FeedReducer: Reducer, Sendable {
     public var isLoading: Bool
   }
 
-  public enum Action: Equatable, Sendable {
+  public enum Action: Sendable {
     case fetchStatuses
-    case fetchStatusesResult(TaskResult<[Mastodon.Status]>)
+    case fetchStatusesResult(Result<[Mastodon.Status], Error>)
     case status(id: StatusReducer.State.ID, action: StatusReducer.Action)
     case view(View)
 
-    public enum View: Equatable, Sendable {
+    @CasePathable
+    public enum View: Sendable {
       case refreshButtonTapped
       case refreshTask
       case seeMoreButtonTapped
@@ -47,7 +49,7 @@ public struct FeedReducer: Reducer, Sendable {
         state.isLoading = true
         return .run { send in
           try await clock.sleep(for: .seconds(0.5))
-          let result = await TaskResult {
+          let result = await Result {
             try await mastodon.getAccountStatuses(
               accountId: Self.mastodonAccountId,
               limit: 40,
@@ -89,7 +91,7 @@ public struct FeedReducer: Reducer, Sendable {
         return .send(.fetchStatuses)
       }
     }
-    .forEach(\.statuses, action: /Action.status(id:action:)) {
+    .forEach(\.statuses, action: \.status) {
       StatusReducer()
     }
   }

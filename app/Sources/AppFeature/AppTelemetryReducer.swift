@@ -4,7 +4,8 @@ import TelemetryClient
 
 typealias AppTelemetryReducerOf<R: Reducer> = AppTelemetryReducer<R.State, R.Action>
 
-struct AppTelemetryReducer<State, Action>: Reducer, Sendable {
+@Reducer
+struct AppTelemetryReducer<State, Action>: Sendable {
   typealias IsEnabled = @Sendable (State, Action) -> Bool
 
   init(enabled: @escaping IsEnabled = { _, _ in true }) {
