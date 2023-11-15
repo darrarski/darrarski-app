@@ -20,7 +20,7 @@ public struct FeedReducer: Sendable {
   public enum Action: Sendable {
     case fetchStatuses
     case fetchStatusesResult(Result<[Mastodon.Status], Error>)
-    case status(id: StatusReducer.State.ID, action: StatusReducer.Action)
+    case status(IdentifiedActionOf<StatusReducer>)
     case view(View)
 
     @CasePathable
@@ -73,7 +73,7 @@ public struct FeedReducer: Sendable {
         }
         return .none
 
-      case .status(_, _):
+      case .status(_):
         return .none
 
       case .view(.refreshButtonTapped):
