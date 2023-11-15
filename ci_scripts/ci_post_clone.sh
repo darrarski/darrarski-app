@@ -36,3 +36,6 @@ if [[ $CI_WORKFLOW == "Deploy" ]]; then
   # Use TelemetryDeckAppID secret from workflow environment variable
   echo "${TelemetryDeckAppID}" > ../app/Sources/AppFeature/Secrets/TelemetryDeckAppID
 fi
+
+# Skip validation of third-party swift macros
+defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
