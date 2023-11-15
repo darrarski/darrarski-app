@@ -9,6 +9,7 @@ public struct ProjectsView: View {
   }
 
   let store: StoreOf<ProjectsReducer>
+  @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.9
 
   struct ViewState: Equatable {
@@ -87,6 +88,8 @@ public struct ProjectsView: View {
       await store.send(.view(.task)).finish()
     }
     .refreshTask {
+      isRefreshing = true
+      defer { isRefreshing = false }
       await store.send(.view(.refreshTask)).finish()
     }
     .navigationTitle("Projects")
@@ -102,6 +105,16 @@ public struct ProjectsView: View {
             Text("Refresh")
           }
           .disabled(isLoading)
+        }
+      }
+#elseif os(iOS)
+      ToolbarItem {
+        if !isRefreshing {
+          WithViewStore(store, observe: \.isLoading) { viewStore in
+            if viewStore.state {
+              ProgressView()
+            }
+          }
         }
       }
 #endif

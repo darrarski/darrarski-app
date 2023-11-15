@@ -9,6 +9,7 @@ public struct ContactView: View {
   }
 
   let store: StoreOf<ContactReducer>
+  @State var isRefreshing = false
   let maxContentWidth: CGFloat = 500
 #if os(iOS)
   @ScaledMetric var linkButtonIconSize: CGFloat = 24
@@ -31,11 +32,13 @@ public struct ContactView: View {
       await store.send(.view(.task)).finish()
     }
     .refreshTask {
+      isRefreshing = true
+      defer { isRefreshing = false }
       await store.send(.view(.refreshTask)).finish()
     }
     .navigationTitle("Darrarski")
-#if os(macOS)
     .toolbar {
+#if os(macOS)
       ToolbarItem(placement: .primaryAction) {
         WithViewStore(store, observe: \.isLoading) { viewStore in
           let isLoading = viewStore.state
@@ -48,8 +51,18 @@ public struct ContactView: View {
           .disabled(isLoading)
         }
       }
-    }
+#elseif os(iOS)
+      ToolbarItem {
+        if !isRefreshing {
+          WithViewStore(store, observe: \.isLoading) { viewStore in
+            if viewStore.state {
+              ProgressView()
+            }
+          }
+        }
+      }
 #endif
+    }
   }
 
   @MainActor
