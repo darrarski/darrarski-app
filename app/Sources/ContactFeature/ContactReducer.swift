@@ -17,7 +17,7 @@ public struct ContactReducer: Reducer, Sendable {
     var isLoading: Bool
   }
 
-  public enum Action: Sendable {
+  public enum Action: Sendable, ViewAction {
     case fetchContact
     case fetchContactResult(Result<Contact, Error>)
     case view(View)

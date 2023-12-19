@@ -5,12 +5,13 @@ import FeedFeature
 import ProjectsFeature
 import SwiftUI
 
+@ViewAction(for: AppReducer.self)
 public struct AppView: View {
   public init(store: StoreOf<AppReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<AppReducer>
+  public let store: StoreOf<AppReducer>
   @Environment(\.horizontalSizeClass) var horizontalSizeClass
   @State var columnVisibility: NavigationSplitViewVisibility = .all
 
@@ -35,7 +36,7 @@ public struct AppView: View {
     NavigationSplitView(columnVisibility: $columnVisibility) {
       List(selection: Binding(
         get: { store.selectedSection },
-        set: { store.send(.view(.sectionSelected($0)), transaction: $1) }
+        set: { send(.sectionSelected($0), transaction: $1) }
       )) {
         Section {
           ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
@@ -63,7 +64,7 @@ public struct AppView: View {
   var tabsView: some View {
     TabView(selection: Binding(
       get: { store.selectedSection },
-      set: { store.send(.view(.sectionSelected($0)), transaction: $1) }
+      set: { send(.sectionSelected($0), transaction: $1) }
     )) {
       ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
         NavigationStack {

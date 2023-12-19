@@ -37,7 +37,7 @@ public struct StatusReducer: Reducer, Sendable {
     }
   }
 
-  public enum Action: Sendable {
+  public enum Action: Sendable, ViewAction {
     case quickLookItem(PresentationAction<Never>)
     case renderText
     case textRendered(Result<AttributedString, Error>)
@@ -49,7 +49,7 @@ public struct StatusReducer: Reducer, Sendable {
       case headerTapped
       case linkTapped(URL)
       case previewCardTapped
-      case quickLookItemChanged(URL)
+      case quickLookItemChanged(URL?)
       case textTask
     }
   }

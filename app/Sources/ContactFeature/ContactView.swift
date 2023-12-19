@@ -3,12 +3,13 @@ import ComposableArchitecture
 import Kingfisher
 import SwiftUI
 
+@ViewAction(for: ContactReducer.self)
 public struct ContactView: View {
   public init(store: StoreOf<ContactReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<ContactReducer>
+  public let store: StoreOf<ContactReducer>
   @State var isRefreshing = false
   let maxContentWidth: CGFloat = 500
 #if os(iOS)
@@ -29,19 +30,19 @@ public struct ContactView: View {
       .padding()
     }
     .task {
-      await store.send(.view(.task)).finish()
+      await send(.task).finish()
     }
     .refreshTask {
       isRefreshing = true
       defer { isRefreshing = false }
-      await store.send(.view(.refreshTask)).finish()
+      await send(.refreshTask).finish()
     }
     .navigationTitle("Darrarski")
     .toolbar {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
         Button {
-          store.send(.view(.refreshButtonTapped))
+          send(.refreshButtonTapped)
         } label: {
           Text("Refresh")
         }
@@ -163,7 +164,7 @@ public struct ContactView: View {
 
   func linkButton(link: Contact.Link) -> some View {
     Button {
-      store.send(.view(.linkButtonTapped(link)))
+      send(.linkButtonTapped(link))
     } label: {
       Label {
         Text(link.title)

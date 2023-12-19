@@ -4,12 +4,13 @@ import Mastodon
 import OrderedCollections
 import SwiftUI
 
+@ViewAction(for: FeedReducer.self)
 public struct FeedView: View {
   public init(store: StoreOf<FeedReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<FeedReducer>
+  public let store: StoreOf<FeedReducer>
   @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.95
 
@@ -33,7 +34,7 @@ public struct FeedView: View {
 
           if showMoreButton {
             Button {
-              store.send(.view(.seeMoreButtonTapped))
+              send(.seeMoreButtonTapped)
             } label: {
               Text("See more on Mastodon")
                 .padding(.horizontal)
@@ -53,7 +54,7 @@ public struct FeedView: View {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
         Button {
-          store.send(.view(.refreshButtonTapped))
+          send(.refreshButtonTapped)
         } label: {
           Text("Refresh")
         }
@@ -68,12 +69,12 @@ public struct FeedView: View {
 #endif
     }
     .task {
-      await store.send(.view(.task)).finish()
+      await send(.task).finish()
     }
     .refreshTask {
       isRefreshing = true
       defer { isRefreshing = false }
-      await store.send(.view(.refreshTask)).finish()
+      await send(.refreshTask).finish()
     }
   }
 

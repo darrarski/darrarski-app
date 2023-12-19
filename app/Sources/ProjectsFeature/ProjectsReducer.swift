@@ -22,7 +22,7 @@ public struct ProjectsReducer: Reducer, Sendable {
     }
   }
 
-  public enum Action: Sendable {
+  public enum Action: Sendable, ViewAction {
     case fetch
     case fetchFinished
     case fetchInfoResult(Result<ProjectsInfo, Error>)

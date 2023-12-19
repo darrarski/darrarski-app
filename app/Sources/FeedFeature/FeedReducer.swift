@@ -18,7 +18,7 @@ public struct FeedReducer: Reducer, Sendable {
     public var isLoading: Bool
   }
 
-  public enum Action: Sendable {
+  public enum Action: Sendable, ViewAction {
     case fetchStatuses
     case fetchStatusesResult(Result<[Mastodon.Status], Error>)
     case status(IdentifiedActionOf<StatusReducer>)

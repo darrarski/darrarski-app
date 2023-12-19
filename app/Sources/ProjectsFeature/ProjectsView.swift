@@ -3,12 +3,13 @@ import ComposableArchitecture
 import OrderedCollections
 import SwiftUI
 
+@ViewAction(for: ProjectsReducer.self)
 public struct ProjectsView: View {
   public init(store: StoreOf<ProjectsReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<ProjectsReducer>
+  public let store: StoreOf<ProjectsReducer>
   @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.9
 
@@ -76,19 +77,19 @@ public struct ProjectsView: View {
       .padding()
     }
     .task {
-      await store.send(.view(.task)).finish()
+      await send(.task).finish()
     }
     .refreshTask {
       isRefreshing = true
       defer { isRefreshing = false }
-      await store.send(.view(.refreshTask)).finish()
+      await send(.refreshTask).finish()
     }
     .navigationTitle("Projects")
     .toolbar {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
         Button {
-          store.send(.view(.refreshButtonTapped))
+          send(.refreshButtonTapped)
         } label: {
           Text("Refresh")
         }
@@ -114,7 +115,7 @@ public struct ProjectsView: View {
       Section {
         ForEach(group.projects) { project in
           Button {
-            store.send(.view(.projectCardTapped(project.id)))
+            send(.projectCardTapped(project.id))
           } label: {
             projectCardView(project)
           }

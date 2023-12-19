@@ -32,7 +32,7 @@ public struct AppReducer: Reducer, Sendable {
     var selectedSection: Section
   }
 
-  public enum Action {
+  public enum Action: ViewAction {
     case contact(ContactReducer.Action)
     case feed(FeedReducer.Action)
     case projects(ProjectsReducer.Action)

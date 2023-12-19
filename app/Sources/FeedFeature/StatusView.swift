@@ -4,12 +4,13 @@ import Mastodon
 import QuickLook
 import SwiftUI
 
+@ViewAction(for: StatusReducer.self)
 public struct StatusView: View {
   public init(store: StoreOf<StatusReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<StatusReducer>
+  public let store: StoreOf<StatusReducer>
 
   public var body: some View {
     VStack {
@@ -25,7 +26,7 @@ public struct StatusView: View {
   @MainActor
   var header: some View {
     Button {
-      store.send(.view(.headerTapped))
+      send(.headerTapped)
     } label: {
       StatusHeaderView(state: .init(store.displayStatus))
     }
@@ -42,10 +43,10 @@ public struct StatusView: View {
       .redacted(reason: isPlaceholder ? .placeholder : [])
       .disabled(isPlaceholder)
       .onChange(of: isPlaceholder, initial: true) { _, isPlaceholder in
-        if isPlaceholder { store.send(.view(.textTask)) }
+        if isPlaceholder { send(.textTask) }
       }
       .environment(\.openURL, OpenURLAction { url in
-        store.send(.view(.linkTapped(url)))
+        send(.linkTapped(url))
         return .discarded
       })
       .animation(.bouncy, value: isPlaceholder)
@@ -94,7 +95,7 @@ public struct StatusView: View {
   var previewCard: some View {
     if let card = store.displayStatus.card {
       Button {
-        store.send(.view(.previewCardTapped))
+        send(.previewCardTapped)
       } label: {
         PreviewCardView(state: .init(card))
       }
@@ -105,7 +106,7 @@ public struct StatusView: View {
   var attachments: some View {
     ForEach(store.attachments) { attachment in
       Button {
-        store.send(.view(.attachmentTapped(attachment.id)))
+        send(.attachmentTapped(attachment.id))
       } label: {
         MediaAttachmentView(state: .init(attachment))
       }
@@ -118,11 +119,7 @@ public struct StatusView: View {
       get: { store.quickLookItem },
       set: { url, transaction in
         guard store.quickLookItem != url else { return }
-        if let url {
-          store.send(.view(.quickLookItemChanged(url)), transaction: transaction)
-        } else {
-          store.send(.quickLookItem(.dismiss), transaction: transaction)
-        }
+        send(.quickLookItemChanged(url), transaction: transaction)
       }
     ))
   }
