@@ -3,6 +3,7 @@ import Foundation
 
 @Reducer
 public struct ContactReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public init(
       contact: Contact? = nil,

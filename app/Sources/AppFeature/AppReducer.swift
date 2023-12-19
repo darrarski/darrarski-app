@@ -6,6 +6,7 @@ import ProjectsFeature
 
 @Reducer
 public struct AppReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public enum Section: Equatable, CaseIterable {
       case contact

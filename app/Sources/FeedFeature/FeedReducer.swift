@@ -4,6 +4,7 @@ import Mastodon
 
 @Reducer
 public struct FeedReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public init(
       statuses: IdentifiedArrayOf<StatusReducer.State> = [],

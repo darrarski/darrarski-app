@@ -13,52 +13,38 @@ public struct FeedView: View {
   @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.95
 
-  struct ViewState: Equatable {
-    init(_ state: FeedReducer.State) {
-      animationValue = state.statuses.ids
-      showPlaceholder = state.statuses.isEmpty && state.isLoading
-      showMoreButton = !state.statuses.isEmpty
-    }
-
-    var animationValue: OrderedSet<StatusReducer.State.ID>
-    var showPlaceholder: Bool
-    var showMoreButton: Bool
-  }
-
   public var body: some View {
-    ScrollView {
-      WithViewStore(store, observe: ViewState.init) { viewStore in
-        LazyVStack(spacing: 32) {
-          if viewStore.showPlaceholder {
-            placeholderView
-          } else {
-            ForEachStore(
-              store.scope(
-                state: \.statuses,
-                action: FeedReducer.Action.status
-              ),
-              content: StatusView.init(store:)
-            )
-            .transition(
-              .scale(scale: placeholderScale, anchor: .center)
-              .combined(with: .opacity)
-            )
+    let animationValue: OrderedSet<StatusReducer.State.ID> = store.statuses.ids
+    let showPlaceholder: Bool = store.statuses.isEmpty && store.isLoading
+    let showMoreButton: Bool = !store.statuses.isEmpty
 
-            if viewStore.showMoreButton {
-              Button {
-                viewStore.send(.view(.seeMoreButtonTapped))
-              } label: {
-                Text("See more on Mastodon")
-                  .padding(.horizontal)
-              }
-              .controlSize(.extraLarge)
-              .buttonStyle(.borderedProminent)
-              .transition(.opacity)
+    ScrollView {
+      LazyVStack(spacing: 32) {
+        if showPlaceholder {
+          placeholderView
+        } else {
+          ForEach(store.scope(state: \.statuses, action: \.status)) { statusStore in
+            StatusView(store: statusStore)
+          }
+          .transition(
+            .scale(scale: placeholderScale, anchor: .center)
+            .combined(with: .opacity)
+          )
+
+          if showMoreButton {
+            Button {
+              store.send(.view(.seeMoreButtonTapped))
+            } label: {
+              Text("See more on Mastodon")
+                .padding(.horizontal)
             }
+            .controlSize(.extraLarge)
+            .buttonStyle(.borderedProminent)
+            .transition(.opacity)
           }
         }
-        .animation(.bouncy, value: viewStore.animationValue)
       }
+      .animation(.bouncy, value: animationValue)
       .frame(maxWidth: .infinity)
       .padding(16)
     }
@@ -66,25 +52,17 @@ public struct FeedView: View {
     .toolbar {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
-        WithViewStore(store, observe: \.isLoading) { viewStore in
-          let isLoading = viewStore.state
-
-          Button {
-            store.send(.view(.refreshButtonTapped))
-          } label: {
-            Text("Refresh")
-          }
-          .disabled(isLoading)
+        Button {
+          store.send(.view(.refreshButtonTapped))
+        } label: {
+          Text("Refresh")
         }
+        .disabled(store.isLoading)
       }
 #elseif os(iOS)
       ToolbarItem {
-        if !isRefreshing {
-          WithViewStore(store, observe: \.isLoading) { viewStore in
-            if viewStore.state {
-              ProgressView()
-            }
-          }
+        if !isRefreshing, store.isLoading {
+          ProgressView()
         }
       }
 #endif

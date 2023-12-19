@@ -2,6 +2,7 @@ import ComposableArchitecture
 
 @Reducer
 public struct ProjectsReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public init(
       info: ProjectsInfo? = nil,

@@ -32,53 +32,47 @@ public struct AppView: View {
 
   @MainActor
   var splitView: some View {
-    WithViewStore(store, observe: \.selectedSection) { viewStore in
-      let selectedSection = viewStore.state
-      
-      NavigationSplitView(columnVisibility: $columnVisibility) {
-        List(selection: Binding(
-          get: { selectedSection },
-          set: { viewStore.send(.view(.sectionSelected($0)), transaction: $1) }
-        )) {
-          Section {
-            ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
-              NavigationLink(value: section) {
-                sectionLabel(section)
-              }
+    NavigationSplitView(columnVisibility: $columnVisibility) {
+      List(selection: Binding(
+        get: { store.selectedSection },
+        set: { store.send(.view(.sectionSelected($0)), transaction: $1) }
+      )) {
+        Section {
+          ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
+            NavigationLink(value: section) {
+              sectionLabel(section)
             }
           }
         }
-        .listStyle(.sidebar)
-        .navigationSplitViewColumnWidth(220)
-#if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-#endif
-      } detail: {
-        sectionView(selectedSection)
-#if os(macOS)
-          .frame(minWidth: 640)
-#endif
       }
-      .navigationSplitViewStyle(.balanced)
+      .listStyle(.sidebar)
+      .navigationSplitViewColumnWidth(220)
+#if os(iOS)
+      .navigationBarTitleDisplayMode(.inline)
+#endif
+    } detail: {
+      sectionView(store.selectedSection)
+#if os(macOS)
+        .frame(minWidth: 640)
+#endif
     }
+    .navigationSplitViewStyle(.balanced)
   }
 
   @MainActor
   var tabsView: some View {
-    WithViewStore(store, observe: \.selectedSection) { viewStore in
-      TabView(selection: Binding(
-        get: { viewStore.state },
-        set: { viewStore.send(.view(.sectionSelected($0)), transaction: $1) }
-      )) {
-        ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
-          NavigationStack {
-            sectionView(section)
-          }
-          .tabItem {
-            sectionLabel(section)
-          }
-          .tag(section)
+    TabView(selection: Binding(
+      get: { store.selectedSection },
+      set: { store.send(.view(.sectionSelected($0)), transaction: $1) }
+    )) {
+      ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
+        NavigationStack {
+          sectionView(section)
         }
+        .tabItem {
+          sectionLabel(section)
+        }
+        .tag(section)
       }
     }
   }
@@ -92,19 +86,19 @@ public struct AppView: View {
     case .feed:
       FeedView(store: store.scope(
         state: \.feed,
-        action: { .feed($0) }
+        action: \.feed
       ))
 
     case .projects:
       ProjectsView(store: store.scope(
         state: \.projects,
-        action: { .projects($0) }
+        action: \.projects
       ))
 
     case .contact:
       ContactView(store: store.scope(
         state: \.contact,
-        action: { .contact($0) }
+        action: \.contact
       ))
     }
   }

@@ -4,6 +4,7 @@ import Mastodon
 
 @Reducer
 public struct StatusReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable, Sendable, Identifiable {
     public init(
       status: Status,
@@ -18,7 +19,7 @@ public struct StatusReducer: Reducer, Sendable {
     public var id: Status.ID { status.id }
     var status: Status
     var text: AttributedString?
-    @PresentationState var quickLookItem: URL?
+    @Presents var quickLookItem: URL?
 
     var displayStatus: Status {
       status.reblog?.value ?? status
