@@ -4,45 +4,33 @@ import Foundation
 import XCTestDynamicOverlay
 
 @DependencyClient
-public struct ProjectsProvider: Sendable {
-  public struct InvalidURLError: Error {
-    public init() {}
+struct ProjectsProvider: Sendable {
+  struct InvalidURLError: Error {}
+
+  struct ResponseError: Error {
+    var statusCode: Int?
+    var data: Data
   }
 
-  public struct ResponseError: Error {
-    public init(statusCode: Int?, data: Data) {
-      self.statusCode = statusCode
-      self.data = data
-    }
-
-    public var statusCode: Int?
-    public var data: Data
+  struct InvalidResponseError: Error {
+    var statusCode: Int
+    var data: Data
   }
 
-  public struct InvalidResponseError: Error {
-    public init(statusCode: Int, data: Data) {
-      self.statusCode = statusCode
-      self.data = data
-    }
-
-    public var statusCode: Int
-    public var data: Data
-  }
-
-  public var fetchInfo: @Sendable () async throws -> ProjectsInfo
-  public var fetchProjects: @Sendable () async throws -> [Project]
+  var fetchInfo: @Sendable () async throws -> ProjectsInfo
+  var fetchProjects: @Sendable () async throws -> [Project]
 }
 
 extension DependencyValues {
-  public var projectsProvider: ProjectsProvider {
+  var projectsProvider: ProjectsProvider {
     get { self[ProjectsProvider.self] }
     set { self[ProjectsProvider.self] = newValue }
   }
 }
 
-extension ProjectsProvider: DependencyKey {
-  public static let testValue = ProjectsProvider()
-  public static let previewValue = ProjectsProvider(
+extension ProjectsProvider: TestDependencyKey {
+  static let testValue = ProjectsProvider()
+  static let previewValue = ProjectsProvider(
     fetchInfo: {
       try await Task.sleep(for: .seconds(0.5))
       return .preview
@@ -52,7 +40,10 @@ extension ProjectsProvider: DependencyKey {
       return .preview
     }
   )
-  public static let liveValue = ProjectsProvider(
+}
+
+extension ProjectsProvider: DependencyKey {
+  static let liveValue = ProjectsProvider(
     fetchInfo: {
       @Dependency(\.urlSession) var urlSession
 
