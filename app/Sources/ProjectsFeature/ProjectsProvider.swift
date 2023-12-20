@@ -1,49 +1,10 @@
 import Dependencies
+import DependenciesMacros
 import Foundation
 import XCTestDynamicOverlay
 
+@DependencyClient
 public struct ProjectsProvider: Sendable {
-  public typealias FetchInfo = @Sendable () async throws -> ProjectsInfo
-  public typealias FetchProjects = @Sendable () async throws -> [Project]
-
-  public init(
-    fetchInfo: @escaping FetchInfo,
-    fetchProjects: @escaping FetchProjects
-  ) {
-    self.fetchInfo = fetchInfo
-    self.fetchProjects = fetchProjects
-  }
-
-  public var fetchInfo: FetchInfo
-  public var fetchProjects: FetchProjects
-}
-
-extension DependencyValues {
-  public var projectsProvider: ProjectsProvider {
-    get { self[ProjectsProvider.self] }
-    set { self[ProjectsProvider.self] = newValue }
-  }
-}
-
-extension ProjectsProvider: TestDependencyKey {
-  public static let testValue = ProjectsProvider(
-    fetchInfo: unimplemented("\(Self.self).fetchInfo"),
-    fetchProjects: unimplemented("\(Self.self).fetchProjects")
-  )
-
-  public static let previewValue = ProjectsProvider(
-    fetchInfo: {
-      try await Task.sleep(for: .seconds(0.5))
-      return .preview
-    },
-    fetchProjects: {
-      try await Task.sleep(for: .seconds(1))
-      return .preview
-    }
-  )
-}
-
-extension ProjectsProvider: DependencyKey {
   public struct InvalidURLError: Error {
     public init() {}
   }
@@ -63,11 +24,34 @@ extension ProjectsProvider: DependencyKey {
       self.statusCode = statusCode
       self.data = data
     }
-    
+
     public var statusCode: Int
     public var data: Data
   }
 
+  public var fetchInfo: @Sendable () async throws -> ProjectsInfo
+  public var fetchProjects: @Sendable () async throws -> [Project]
+}
+
+extension DependencyValues {
+  public var projectsProvider: ProjectsProvider {
+    get { self[ProjectsProvider.self] }
+    set { self[ProjectsProvider.self] = newValue }
+  }
+}
+
+extension ProjectsProvider: DependencyKey {
+  public static let testValue = ProjectsProvider()
+  public static let previewValue = ProjectsProvider(
+    fetchInfo: {
+      try await Task.sleep(for: .seconds(0.5))
+      return .preview
+    },
+    fetchProjects: {
+      try await Task.sleep(for: .seconds(1))
+      return .preview
+    }
+  )
   public static let liveValue = ProjectsProvider(
     fetchInfo: {
       @Dependency(\.urlSession) var urlSession
