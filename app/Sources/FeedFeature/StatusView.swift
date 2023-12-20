@@ -28,7 +28,7 @@ public struct StatusView: View {
     Button {
       send(.headerTapped)
     } label: {
-      StatusHeaderView(state: .init(store.displayStatus))
+      StatusHeaderView(store.displayStatus)
     }
     .buttonStyle(.plain)
   }
@@ -97,7 +97,7 @@ public struct StatusView: View {
       Button {
         send(.previewCardTapped)
       } label: {
-        PreviewCardView(state: .init(card))
+        PreviewCardView(card)
       }
     }
   }
@@ -108,7 +108,7 @@ public struct StatusView: View {
       Button {
         send(.attachmentTapped(attachment.id))
       } label: {
-        MediaAttachmentView(state: .init(attachment))
+        MediaAttachmentView(attachment)
       }
     }
   }

@@ -13,12 +13,10 @@ public struct FeedView: View {
   public let store: StoreOf<FeedReducer>
   @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.95
+  var showPlaceholder: Bool { store.statuses.isEmpty && store.isLoading }
+  var showMoreButton: Bool { !store.statuses.isEmpty }
 
   public var body: some View {
-    let animationValue: OrderedSet<StatusReducer.State.ID> = store.statuses.ids
-    let showPlaceholder: Bool = store.statuses.isEmpty && store.isLoading
-    let showMoreButton: Bool = !store.statuses.isEmpty
-
     ScrollView {
       LazyVStack(spacing: 32) {
         if showPlaceholder {
@@ -45,7 +43,7 @@ public struct FeedView: View {
           }
         }
       }
-      .animation(.bouncy, value: animationValue)
+      .animation(.bouncy, value: store.statuses.ids)
       .frame(maxWidth: .infinity)
       .padding(16)
     }

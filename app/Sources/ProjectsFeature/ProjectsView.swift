@@ -5,6 +5,11 @@ import SwiftUI
 
 @ViewAction(for: ProjectsReducer.self)
 public struct ProjectsView: View {
+  enum AnimationValue: Equatable {
+    case info(ProjectsInfo?, Bool)
+    case groups(IdentifiedArrayOf<ProjectsGroup>, Bool)
+  }
+
   public init(store: StoreOf<ProjectsReducer>) {
     self.store = store
   }
@@ -12,20 +17,12 @@ public struct ProjectsView: View {
   public let store: StoreOf<ProjectsReducer>
   @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.9
-
-  enum AnimationValue: Equatable {
-    case info(ProjectsInfo?, Bool)
-    case groups(IdentifiedArrayOf<ProjectsGroup>, Bool)
-  }
+  var showInfoPlaceholder: Bool { store.info == nil && store.isLoading }
+  var showGroupsPlaceholder: Bool { store.projects.isEmpty && store.isLoading }
+  var infoAnimationValue: AnimationValue { .info(store.info, showInfoPlaceholder) }
+  var groupsAnimationValue: AnimationValue { .groups(store.groups, showGroupsPlaceholder) }
 
   public var body: some View {
-    let info: ProjectsInfo? = store.info
-    let groups: IdentifiedArrayOf<ProjectsGroup> = store.groups
-    let showInfoPlaceholder: Bool = store.info == nil && store.isLoading
-    let showGroupsPlaceholder: Bool = store.projects.isEmpty && store.isLoading
-    var infoAnimationValue: AnimationValue { .info(info, showInfoPlaceholder) }
-    var groupsAnimationValue: AnimationValue { .groups(groups, showGroupsPlaceholder) }
-
     ScrollView {
       VStack {
         ZStack {
@@ -34,7 +31,7 @@ public struct ProjectsView: View {
               .disabled(true)
               .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
               .transition(.opacity)
-          } else if let info = info {
+          } else if let info = store.info {
             infoView(info)
               .transition(
                 .scale(scale: placeholderScale, anchor: .center)
