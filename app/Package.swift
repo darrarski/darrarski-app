@@ -30,6 +30,7 @@ let package = Package(
         .target(name: "ContactFeature"),
         .target(name: "FeedFeature"),
         .target(name: "ProjectsFeature"),
+        .target(name: "SettingsFeature"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "TelemetryClient", package: "SwiftClient"),
       ],

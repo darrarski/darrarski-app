@@ -3,6 +3,7 @@ import ComposableArchitecture
 import ContactFeature
 import FeedFeature
 import ProjectsFeature
+import SettingsFeature
 import SwiftUI
 
 @ViewAction(for: AppReducer.self)
@@ -101,6 +102,12 @@ public struct AppView: View {
         state: \.contact,
         action: \.contact
       ))
+
+    case .settings:
+      SettingsView(store: store.scope(
+        state: \.settings,
+        action: \.settings
+      ))
     }
   }
 
@@ -126,6 +133,13 @@ public struct AppView: View {
         Text("Contact")
       } icon: {
         Image(systemName: "person.crop.circle.fill")
+      }
+
+    case .settings:
+      Label {
+        Text("Settings")
+      } icon: {
+        Image(systemName: "gearshape.fill")
       }
     }
   }
