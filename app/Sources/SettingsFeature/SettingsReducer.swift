@@ -5,14 +5,24 @@ import ComposableArchitecture
 public struct SettingsReducer: Reducer {
   @ObservableState
   public struct State: Equatable {
-    public init() {}
+    public init(
+      theme: AppTheme = .default
+    ) {
+      self.theme = theme
+    }
+
+    public internal(set) var theme: AppTheme
   }
 
-  public enum Action: Equatable {}
+  public enum Action {
+    case theme(AppThemeReducer.Action)
+  }
 
   public init() {}
 
   public var body: some ReducerOf<Self> {
-    EmptyReducer()
+    Scope(state: \.theme, action: \.theme) {
+      AppThemeReducer()
+    }
   }
 }
