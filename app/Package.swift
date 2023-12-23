@@ -14,6 +14,7 @@ let package = Package(
     .library(name: "FeedFeature", targets: ["FeedFeature"]),
     .library(name: "Mastodon", targets: ["Mastodon"]),
     .library(name: "ProjectsFeature", targets: ["ProjectsFeature"]),
+    .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
   ],
   dependencies: [
     .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.1"),
@@ -120,6 +121,19 @@ let package = Package(
       name: "ProjectsFeatureTests",
       dependencies: [
         .target(name: "ProjectsFeature"),
+      ]
+    ),
+    .target(
+      name: "SettingsFeature",
+      dependencies: [
+        .target(name: "AppShared"),
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
+    ),
+    .testTarget(
+      name: "SettingsFeatureTests",
+      dependencies: [
+        .target(name: "SettingsFeature"),
       ]
     ),
   ]
