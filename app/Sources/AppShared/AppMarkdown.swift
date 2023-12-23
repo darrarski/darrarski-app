@@ -61,5 +61,5 @@ Qui ut nisi et magna sint.
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding()
   }
-  .tint(.appTint)
+  .appTheme(.preview)
 }

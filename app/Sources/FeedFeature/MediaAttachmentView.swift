@@ -121,5 +121,5 @@ struct MediaAttachmentView: View {
     }
     .padding()
   }
-  .tint(.appTint)
+  .appTheme(.preview)
 }

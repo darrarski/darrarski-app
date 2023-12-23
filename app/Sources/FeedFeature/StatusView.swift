@@ -142,5 +142,5 @@ private extension AttributedString {
     })
     .padding()
   }
-  .tint(.appTint)
+  .appTheme(.preview)
 }

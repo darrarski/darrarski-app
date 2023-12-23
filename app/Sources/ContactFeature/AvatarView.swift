@@ -1,3 +1,4 @@
+import AppShared
 import Kingfisher
 import SwiftUI
 
@@ -6,6 +7,7 @@ struct AvatarView: View {
   @State var didLoad = false
   var scale: Double { didLoad ? 1.0 : 0.0 }
   var opactity: Double { didLoad ? 1.0 : 0.0 }
+  @Environment(AppThemeStore.self) var theme
 
   var body: some View {
     ZStack {
@@ -28,6 +30,6 @@ struct AvatarView: View {
 
     .background(Color.secondary.opacity(0.2))
     .clipShape(Circle())
-    .shadow(color: .appTint, radius: 10, x: 0, y: 0)
+    .shadow(color: theme.tintColor, radius: 10, x: 0, y: 0)
   }
 }

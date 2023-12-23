@@ -209,5 +209,5 @@ public struct ContactView: View {
       ContactReducer()
     })
   }
-  .tint(.appTint)
+  .appTheme(.preview)
 }
