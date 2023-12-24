@@ -1,51 +1,37 @@
 import Dependencies
+import DependenciesMacros
 import Foundation
 import XCTestDynamicOverlay
 
-public struct ContactProvider: Sendable {
-  public typealias Fetch = @Sendable () async throws -> Contact
+@DependencyClient
+struct ContactProvider: Sendable {
+  struct InvalidURLError: Error {}
 
-  public init(fetch: @escaping ContactProvider.Fetch) {
-    self.fetch = fetch
+  struct ResponseError: Error {
+    var statusCode: Int?
+    var data: Data
   }
 
-  public var fetch: Fetch
+  var fetch: @Sendable () async throws -> Contact
 }
 
 extension DependencyValues {
-  public var contactProvider: ContactProvider {
+  var contactProvider: ContactProvider {
     get { self[ContactProvider.self] }
     set { self[ContactProvider.self] = newValue }
   }
 }
 
 extension ContactProvider: TestDependencyKey {
-  public static let testValue = ContactProvider(
-    fetch: unimplemented("\(Self.self).fetch")
-  )
-
-  public static let previewValue = ContactProvider {
+  static let testValue = ContactProvider()
+  static let previewValue = ContactProvider {
     try await Task.sleep(for: .seconds(1))
     return .preview
   }
 }
 
 extension ContactProvider: DependencyKey {
-  public struct InvalidURLError: Error {
-    public init() {}
-  }
-
-  public struct ResponseError: Error {
-    public init(statusCode: Int?, data: Data) {
-      self.statusCode = statusCode
-      self.data = data
-    }
-
-    public var statusCode: Int?
-    public var data: Data
-  }
-
-  public static let liveValue = ContactProvider {
+  static let liveValue = ContactProvider {
     @Dependency(\.urlSession) var urlSession
 
     var urlComponents = URLComponents()

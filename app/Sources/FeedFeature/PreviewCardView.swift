@@ -4,30 +4,21 @@ import Mastodon
 import SwiftUI
 
 struct PreviewCardView: View {
-  struct State: Equatable {
-    init(_ card: PreviewCard) {
-      imageURL = card.image.flatMap(URL.init)
-      title = card.title
-      description = card.description
-      if !card.providerName.isEmpty {
-        footer = card.providerName
-      } else {
-        footer = URL(string: card.url)?.host()
-      }
+  init(_ card: PreviewCard) {
+    imageURL = card.image.flatMap(URL.init)
+    title = card.title
+    description = card.description
+    if !card.providerName.isEmpty {
+      footer = card.providerName
+    } else {
+      footer = URL(string: card.url)?.host()
     }
-
-    var imageURL: URL?
-    var title: String
-    var description: String
-    var footer: String?
   }
 
-  enum Layout: Equatable {
-    case horizontal
-    case vertical
-  }
-
-  var state: State
+  var imageURL: URL?
+  var title: String
+  var description: String
+  var footer: String?
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -50,7 +41,7 @@ struct PreviewCardView: View {
   @MainActor
   @ViewBuilder
   var image: some View {
-    if let imageURL = state.imageURL {
+    if let imageURL {
       KFImage(imageURL)
         .resizable()
         .placeholder {
@@ -81,19 +72,19 @@ struct PreviewCardView: View {
   @MainActor
   var details: some View {
     VStack(alignment: .leading, spacing: 8) {
-      Text(state.title)
+      Text(title)
         .foregroundStyle(.primary)
         .font(.headline)
 
-      Text(state.description)
+      Text(description)
         .foregroundStyle(.primary)
         .font(.subheadline)
 
-      if state.imageURL == nil {
+      if imageURL == nil {
         Spacer(minLength: 0)
       }
 
-      if let footer = state.footer {
+      if let footer {
         Text(footer)
           .foregroundStyle(.tint)
           .font(.subheadline)
@@ -105,9 +96,7 @@ struct PreviewCardView: View {
 }
 
 #Preview {
-  PreviewCardView(state: PreviewCardView.State(
-    [Status].preview.first!.reblog!.card!
-  ))
-  .padding()
-  .tint(.appTint)
+  PreviewCardView([Status].preview.first!.reblog!.card!)
+    .padding()
+    .tint(.appTint)
 }

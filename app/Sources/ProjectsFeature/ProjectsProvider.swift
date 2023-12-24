@@ -1,37 +1,36 @@
 import Dependencies
+import DependenciesMacros
 import Foundation
 import XCTestDynamicOverlay
 
-public struct ProjectsProvider: Sendable {
-  public typealias FetchInfo = @Sendable () async throws -> ProjectsInfo
-  public typealias FetchProjects = @Sendable () async throws -> [Project]
+@DependencyClient
+struct ProjectsProvider: Sendable {
+  struct InvalidURLError: Error {}
 
-  public init(
-    fetchInfo: @escaping FetchInfo,
-    fetchProjects: @escaping FetchProjects
-  ) {
-    self.fetchInfo = fetchInfo
-    self.fetchProjects = fetchProjects
+  struct ResponseError: Error {
+    var statusCode: Int?
+    var data: Data
   }
 
-  public var fetchInfo: FetchInfo
-  public var fetchProjects: FetchProjects
+  struct InvalidResponseError: Error {
+    var statusCode: Int
+    var data: Data
+  }
+
+  var fetchInfo: @Sendable () async throws -> ProjectsInfo
+  var fetchProjects: @Sendable () async throws -> [Project]
 }
 
 extension DependencyValues {
-  public var projectsProvider: ProjectsProvider {
+  var projectsProvider: ProjectsProvider {
     get { self[ProjectsProvider.self] }
     set { self[ProjectsProvider.self] = newValue }
   }
 }
 
 extension ProjectsProvider: TestDependencyKey {
-  public static let testValue = ProjectsProvider(
-    fetchInfo: unimplemented("\(Self.self).fetchInfo"),
-    fetchProjects: unimplemented("\(Self.self).fetchProjects")
-  )
-
-  public static let previewValue = ProjectsProvider(
+  static let testValue = ProjectsProvider()
+  static let previewValue = ProjectsProvider(
     fetchInfo: {
       try await Task.sleep(for: .seconds(0.5))
       return .preview
@@ -44,31 +43,7 @@ extension ProjectsProvider: TestDependencyKey {
 }
 
 extension ProjectsProvider: DependencyKey {
-  public struct InvalidURLError: Error {
-    public init() {}
-  }
-
-  public struct ResponseError: Error {
-    public init(statusCode: Int?, data: Data) {
-      self.statusCode = statusCode
-      self.data = data
-    }
-
-    public var statusCode: Int?
-    public var data: Data
-  }
-
-  public struct InvalidResponseError: Error {
-    public init(statusCode: Int, data: Data) {
-      self.statusCode = statusCode
-      self.data = data
-    }
-    
-    public var statusCode: Int
-    public var data: Data
-  }
-
-  public static let liveValue = ProjectsProvider(
+  static let liveValue = ProjectsProvider(
     fetchInfo: {
       @Dependency(\.urlSession) var urlSession
 

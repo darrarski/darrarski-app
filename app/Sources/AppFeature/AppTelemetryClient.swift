@@ -1,9 +1,11 @@
 import Dependencies
+import DependenciesMacros
 import Foundation
 import TelemetryClient
 import XCTestDynamicOverlay
 import OSLog
 
+@DependencyClient
 struct AppTelemetryClient: Sendable {
   var initialize: @Sendable () -> Void
   var send: @Sendable (AppTelemetrySignal) -> Void
@@ -13,23 +15,19 @@ struct AppTelemetryClient: Sendable {
   }
 }
 
-extension AppTelemetryClient: TestDependencyKey {
-  static let testValue = AppTelemetryClient(
-    initialize: unimplemented("\(Self.self).initialize"),
-    send: unimplemented("\(Self.self).send")
-  )
-
-  static let previewValue = AppTelemetryClient(
-    initialize: { log.debug("initialize") },
-    send: { log.debug("send \($0.type)\($0.payload.isEmpty ? "" : " \($0.payload)")") }
-  )
-}
-
 extension DependencyValues {
   var appTelemetry: AppTelemetryClient {
     get { self[AppTelemetryClient.self] }
     set { self[AppTelemetryClient.self] = newValue }
   }
+}
+
+extension AppTelemetryClient: TestDependencyKey {
+  static let testValue = AppTelemetryClient()
+  static let previewValue = AppTelemetryClient(
+    initialize: { log.debug("initialize") },
+    send: { log.debug("send \($0.type)\($0.payload.isEmpty ? "" : " \($0.payload)")") }
+  )
 }
 
 extension AppTelemetryClient: DependencyKey {

@@ -4,26 +4,22 @@ import Mastodon
 import SwiftUI
 
 struct StatusHeaderView: View {
-  struct State: Equatable {
-    init(_ status: Status) {
-      avatarURL = URL(string: status.account.avatar)
-      displayName = status.account.displayName
-      acct = status.account.acct
-      date = status.createdAt
-    }
-
-    var avatarURL: URL?
-    var displayName: String
-    var acct: String
-    var date: Date
+  init(_ status: Status) {
+    avatarURL = URL(string: status.account.avatar)
+    displayName = status.account.displayName
+    acct = status.account.acct
+    date = status.createdAt
   }
 
-  var state: State
+  var avatarURL: URL?
+  var displayName: String
+  var acct: String
+  var date: Date
   @ScaledMetric var avatarSize = 32
 
   var body: some View {
     HStack(alignment: .top) {
-      KFImage(state.avatarURL)
+      KFImage(avatarURL)
         .placeholder {
           Image(systemName: "person")
             .resizable()
@@ -38,18 +34,18 @@ struct StatusHeaderView: View {
         .frame(width: avatarSize)
 
       VStack(alignment: .leading) {
-        Text(state.displayName)
+        Text(displayName)
           .foregroundStyle(.primary)
           .font(.callout)
 
         HStack {
-          Text(state.acct)
+          Text(acct)
             .foregroundStyle(.secondary)
             .font(.caption)
 
           Spacer()
 
-          Text(state.date.formatted())
+          Text(date.formatted())
             .foregroundStyle(.secondary)
             .font(.caption)
         }
@@ -60,9 +56,7 @@ struct StatusHeaderView: View {
 }
 
 #Preview {
-  StatusHeaderView(state: StatusHeaderView.State(
-    [Status].preview.first!
-  ))
-  .padding()
-  .tint(.appTint)
+  StatusHeaderView([Status].preview.first!)
+    .padding()
+    .tint(.appTint)
 }
