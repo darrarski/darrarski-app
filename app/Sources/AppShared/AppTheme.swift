@@ -1,7 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
 
-@ObservableState
 public struct AppTheme: Sendable, Equatable {
   public enum ColorScheme: Sendable, Equatable, CaseIterable {
     case light
@@ -28,40 +27,6 @@ public struct AppTheme: Sendable, Equatable {
   public var colorScheme: ColorScheme
 }
 
-@Reducer
-public struct AppThemeReducer: Reducer {
-  public typealias State = AppTheme
-
-  public enum Action: BindableAction {
-    case binding(_ action: BindingAction<State>)
-    case reset
-  }
-
-  public init() {}
-
-  public var body: some ReducerOf<Self> {
-    BindingReducer()
-    Reduce { state, action in
-      switch action {
-      case .binding(_):
-        return .none
-
-      case .reset:
-        state = .default
-        return .none
-      }
-    }
-  }
-}
-
-public typealias AppThemeStore = StoreOf<AppThemeReducer>
-
-extension AppThemeStore {
-  public static let preview = AppThemeStore(initialState: .default) {
-    AppThemeReducer()
-  }
-}
-
 extension ColorScheme {
   public init?(_ scheme: AppTheme.ColorScheme) {
     switch scheme {
@@ -72,28 +37,22 @@ extension ColorScheme {
   }
 }
 
-struct AppThemeWrapper<Content: View>: View {
-  var content: Content
-  let store: AppThemeStore
-
-  var body: some View {
-    content
-      .tint(store.tintColor)
-      .preferredColorScheme(ColorScheme(store.colorScheme))
-      .environment(store)
-  }
+struct AppThemeEnvironmentKey: EnvironmentKey {
+  static let defaultValue = AppTheme.default
 }
 
-struct AppThemeViewModifier: ViewModifier {
-  let store: AppThemeStore
-
-  func body(content: Content) -> some View {
-    AppThemeWrapper(content: content, store: store)
+extension EnvironmentValues {
+  public var appTheme: AppTheme {
+    get { self[AppThemeEnvironmentKey.self] }
+    set { self[AppThemeEnvironmentKey.self] = newValue }
   }
 }
 
 extension View {
-  public func appTheme(_ store: AppThemeStore) -> some View {
-    modifier(AppThemeViewModifier(store: store))
+  public func appTheme(_ appTheme: AppTheme) -> some View {
+    self
+      .tint(appTheme.tintColor)
+      .preferredColorScheme(ColorScheme(appTheme.colorScheme))
+      .environment(\.appTheme, appTheme)
   }
 }

@@ -1,5 +1,6 @@
 import AppShared
 import ComposableArchitecture
+import struct SwiftUI.Color
 
 @Reducer
 public struct SettingsReducer: Reducer {
@@ -14,15 +15,34 @@ public struct SettingsReducer: Reducer {
     public internal(set) var theme: AppTheme
   }
 
-  public enum Action {
-    case theme(AppThemeReducer.Action)
+  public enum Action: ViewAction {
+    case view(View)
+
+    @CasePathable
+    public enum View {
+      case tintColorChanged(Color)
+      case colorSchemeChanged(AppTheme.ColorScheme)
+      case resetThemeTapped
+    }
   }
 
   public init() {}
 
   public var body: some ReducerOf<Self> {
-    Scope(state: \.theme, action: \.theme) {
-      AppThemeReducer()
+    Reduce { state, action in
+      switch action {
+      case .view(.tintColorChanged(let color)):
+        state.theme.tintColor = color
+        return .none
+
+      case .view(.colorSchemeChanged(let colorScheme)):
+        state.theme.colorScheme = colorScheme
+        return .none
+
+      case .view(.resetThemeTapped):
+        state.theme = .default
+        return .none
+      }
     }
   }
 }

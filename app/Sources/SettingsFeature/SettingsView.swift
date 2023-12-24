@@ -2,16 +2,53 @@ import AppShared
 import ComposableArchitecture
 import SwiftUI
 
+@ViewAction(for: SettingsReducer.self)
 public struct SettingsView: View {
   public init(store: StoreOf<SettingsReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<SettingsReducer>
+  public let store: StoreOf<SettingsReducer>
 
   public var body: some View {
     Form {
-      AppThemeSection(store: store.scope(state: \.theme, action: \.theme))
+      Section {
+        ColorPicker(selection: Binding(
+          get: { store.theme.tintColor },
+          set: { send(.tintColorChanged($0), transaction: $1) }
+        )) {
+          Text("Tint color")
+        }
+
+        Picker(selection: Binding(
+          get: { store.theme.colorScheme },
+          set: { send(.colorSchemeChanged($0), transaction: $1) }
+        )) {
+          ForEach(AppTheme.ColorScheme.allCases, id: \.self) { colorScheme in
+            Group {
+              switch colorScheme {
+              case .light:
+                Text("Light")
+              case .dark:
+                Text("Dark")
+              case .system:
+                Text("System")
+              }
+            }
+            .tag(colorScheme)
+          }
+        } label: {
+          Text("Color scheme")
+        }
+
+        Button(role: .destructive) {
+          send(.resetThemeTapped)
+        } label: {
+          Text("Reset")
+        }
+      } header: {
+        Text("App theme")
+      }
     }
   }
 
@@ -40,58 +77,19 @@ public struct SettingsView: View {
       }
     }
   }
-
-  struct AppThemeSection: View {
-    let store: AppThemeStore
-
-    var body: some View {
-      Section {
-        ColorPicker(selection: Binding(
-          get: { store.tintColor },
-          set: { store.send(.set(\.tintColor, $0), transaction: $1) }
-        )) {
-          Text("Tint color")
-        }
-
-        Picker(selection: Binding(
-          get: { store.colorScheme },
-          set: { store.send(.set(\.colorScheme, $0), transaction: $1) }
-        )) {
-          ForEach(AppTheme.ColorScheme.allCases, id: \.self) { colorScheme in
-            Group {
-              switch colorScheme {
-              case .light:
-                Text("Light")
-              case .dark:
-                Text("Dark")
-              case .system:
-                Text("System")
-              }
-            }
-            .tag(colorScheme)
-            .tint(store.tintColor)
-          }
-        } label: {
-          Text("Color scheme")
-        }
-
-        Button(role: .destructive) {
-          store.send(.reset)
-        } label: {
-          Text("Reset")
-        }
-      } header: {
-        Text("App theme")
-      }
-    }
-  }
 }
 
 #Preview {
-  let store = Store(initialState: SettingsReducer.State()) {
-    SettingsReducer()
+  struct Preview: SwiftUI.View {
+    let store = Store(initialState: SettingsReducer.State()) {
+      SettingsReducer()
+    }
+
+    var body: some View {
+      SettingsView(store: store)
+        .appTheme(store.theme)
+    }
   }
 
-  return SettingsView(store: store)
-    .appTheme(store.scope(state: \.theme, action: \.theme))
+  return Preview()
 }

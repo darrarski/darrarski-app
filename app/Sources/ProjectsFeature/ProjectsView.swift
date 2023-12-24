@@ -230,5 +230,5 @@ private extension IdentifiedArrayOf<ProjectsGroup> {
       ProjectsReducer()
     })
   }
-  .appTheme(.preview)
+  .appTheme(.default)
 }

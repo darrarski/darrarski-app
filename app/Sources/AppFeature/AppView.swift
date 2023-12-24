@@ -29,7 +29,7 @@ public struct AppView: View {
       }
 #endif
     }
-    .appTheme(store.scope(state: \.settings.theme, action: \.settings.theme))
+    .appTheme(store.settings.theme)
   }
 
   @MainActor

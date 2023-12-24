@@ -98,5 +98,5 @@ struct PreviewCardView: View {
 #Preview {
   PreviewCardView([Status].preview.first!.reblog!.card!)
     .padding()
-    .appTheme(.preview)
+    .appTheme(.default)
 }

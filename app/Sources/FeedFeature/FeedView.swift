@@ -104,5 +104,5 @@ public struct FeedView: View {
       FeedReducer()
     })
   }
-  .appTheme(.preview)
+  .appTheme(.default)
 }

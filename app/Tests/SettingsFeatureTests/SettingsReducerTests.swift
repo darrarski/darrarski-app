@@ -4,10 +4,18 @@ import XCTest
 
 @MainActor
 final class SettingsReducerTests: XCTestCase {
-  func testExample() async {
+  func testAppTheme() async {
     let store = TestStore(initialState: SettingsReducer.State()) {
       SettingsReducer()
     }
-    await store.finish()
+    await store.send(.view(.tintColorChanged(.red))) {
+      $0.theme.tintColor = .red
+    }
+    await store.send(.view(.colorSchemeChanged(.light))) {
+      $0.theme.colorScheme = .light
+    }
+    await store.send(.view(.resetThemeTapped)) {
+      $0.theme = .default
+    }
   }
 }

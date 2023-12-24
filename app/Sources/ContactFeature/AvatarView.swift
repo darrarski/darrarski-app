@@ -7,7 +7,7 @@ struct AvatarView: View {
   @State var didLoad = false
   var scale: Double { didLoad ? 1.0 : 0.0 }
   var opactity: Double { didLoad ? 1.0 : 0.0 }
-  @Environment(AppThemeStore.self) var theme
+  @Environment(\.appTheme) var theme
 
   var body: some View {
     ZStack {

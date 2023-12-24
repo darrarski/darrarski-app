@@ -48,8 +48,9 @@ struct App: SwiftUI.App {
       case .projects(.view(.refreshButtonTapped)): true
       case .projects(.view(.refreshTask)): true
       case .projects(.view(.task)): false
-      case .settings(.theme(.binding(_))): false // TODO:
-      case .settings(.theme(.reset)): true
+      case .settings(.view(.tintColorChanged(_))): true
+      case .settings(.view(.colorSchemeChanged(_))): true
+      case .settings(.view(.resetThemeTapped)): true
       case .view(.sectionSelected(_)): true
       }
     }

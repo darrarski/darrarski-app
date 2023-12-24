@@ -58,5 +58,5 @@ struct StatusHeaderView: View {
 #Preview {
   StatusHeaderView([Status].preview.first!)
     .padding()
-    .appTheme(.preview)
+    .appTheme(.default)
 }
