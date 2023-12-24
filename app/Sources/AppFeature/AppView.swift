@@ -3,14 +3,16 @@ import ComposableArchitecture
 import ContactFeature
 import FeedFeature
 import ProjectsFeature
+import SettingsFeature
 import SwiftUI
 
+@ViewAction(for: AppReducer.self)
 public struct AppView: View {
   public init(store: StoreOf<AppReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<AppReducer>
+  public let store: StoreOf<AppReducer>
   @Environment(\.horizontalSizeClass) var horizontalSizeClass
   @State var columnVisibility: NavigationSplitViewVisibility = .all
 
@@ -27,58 +29,52 @@ public struct AppView: View {
       }
 #endif
     }
-    .tint(.appTint)
+    .appTheme(store.settings.theme)
   }
 
   @MainActor
   var splitView: some View {
-    WithViewStore(store, observe: \.selectedSection) { viewStore in
-      let selectedSection = viewStore.state
-      
-      NavigationSplitView(columnVisibility: $columnVisibility) {
-        List(selection: Binding(
-          get: { selectedSection },
-          set: { viewStore.send(.view(.sectionSelected($0)), transaction: $1) }
-        )) {
-          Section {
-            ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
-              NavigationLink(value: section) {
-                sectionLabel(section)
-              }
+    NavigationSplitView(columnVisibility: $columnVisibility) {
+      List(selection: Binding(
+        get: { store.selectedSection },
+        set: { send(.sectionSelected($0), transaction: $1) }
+      )) {
+        Section {
+          ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
+            NavigationLink(value: section) {
+              sectionLabel(section)
             }
           }
         }
-        .listStyle(.sidebar)
-        .navigationSplitViewColumnWidth(220)
-#if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-#endif
-      } detail: {
-        sectionView(selectedSection)
-#if os(macOS)
-          .frame(minWidth: 640)
-#endif
       }
-      .navigationSplitViewStyle(.balanced)
+      .listStyle(.sidebar)
+      .navigationSplitViewColumnWidth(220)
+#if os(iOS)
+      .navigationBarTitleDisplayMode(.inline)
+#endif
+    } detail: {
+      sectionView(store.selectedSection)
+#if os(macOS)
+        .frame(minWidth: 640)
+#endif
     }
+    .navigationSplitViewStyle(.balanced)
   }
 
   @MainActor
   var tabsView: some View {
-    WithViewStore(store, observe: \.selectedSection) { viewStore in
-      TabView(selection: Binding(
-        get: { viewStore.state },
-        set: { viewStore.send(.view(.sectionSelected($0)), transaction: $1) }
-      )) {
-        ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
-          NavigationStack {
-            sectionView(section)
-          }
-          .tabItem {
-            sectionLabel(section)
-          }
-          .tag(section)
+    TabView(selection: Binding(
+      get: { store.selectedSection },
+      set: { send(.sectionSelected($0), transaction: $1) }
+    )) {
+      ForEach(AppReducer.State.Section.allCases, id: \.hashValue) { section in
+        NavigationStack {
+          sectionView(section)
         }
+        .tabItem {
+          sectionLabel(section)
+        }
+        .tag(section)
       }
     }
   }
@@ -92,19 +88,25 @@ public struct AppView: View {
     case .feed:
       FeedView(store: store.scope(
         state: \.feed,
-        action: { .feed($0) }
+        action: \.feed
       ))
 
     case .projects:
       ProjectsView(store: store.scope(
         state: \.projects,
-        action: { .projects($0) }
+        action: \.projects
       ))
 
     case .contact:
       ContactView(store: store.scope(
         state: \.contact,
-        action: { .contact($0) }
+        action: \.contact
+      ))
+
+    case .settings:
+      SettingsView(store: store.scope(
+        state: \.settings,
+        action: \.settings
       ))
     }
   }
@@ -131,6 +133,13 @@ public struct AppView: View {
         Text("Contact")
       } icon: {
         Image(systemName: "person.crop.circle.fill")
+      }
+
+    case .settings:
+      Label {
+        Text("Settings")
+      } icon: {
+        Image(systemName: "gearshape.fill")
       }
     }
   }

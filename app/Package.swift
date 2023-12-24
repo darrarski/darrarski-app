@@ -14,12 +14,13 @@ let package = Package(
     .library(name: "FeedFeature", targets: ["FeedFeature"]),
     .library(name: "Mastodon", targets: ["Mastodon"]),
     .library(name: "ProjectsFeature", targets: ["ProjectsFeature"]),
+    .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
   ],
   dependencies: [
     .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.1"),
     .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.0"),
     .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.10.1"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.5.5"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", branch: "observation-beta"),
   ],
   targets: [
     .target(
@@ -29,6 +30,7 @@ let package = Package(
         .target(name: "ContactFeature"),
         .target(name: "FeedFeature"),
         .target(name: "ProjectsFeature"),
+        .target(name: "SettingsFeature"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "TelemetryClient", package: "SwiftClient"),
       ],
@@ -120,6 +122,19 @@ let package = Package(
       name: "ProjectsFeatureTests",
       dependencies: [
         .target(name: "ProjectsFeature"),
+      ]
+    ),
+    .target(
+      name: "SettingsFeature",
+      dependencies: [
+        .target(name: "AppShared"),
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
+    ),
+    .testTarget(
+      name: "SettingsFeatureTests",
+      dependencies: [
+        .target(name: "SettingsFeature"),
       ]
     ),
   ]

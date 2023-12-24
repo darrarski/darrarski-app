@@ -1,14 +1,15 @@
+import AppShared
 import Kingfisher
 import SwiftUI
 
 struct AvatarView: View {
   var url: URL?
   @State var didLoad = false
+  var scale: Double { didLoad ? 1.0 : 0.0 }
+  var opactity: Double { didLoad ? 1.0 : 0.0 }
+  @Environment(\.appTheme) var theme
 
   var body: some View {
-    let scale = didLoad ? 1.0 : 0.0
-    let opactity = didLoad ? 1.0 : 0.0
-    
     ZStack {
       KFImage(url)
         .resizable()
@@ -29,6 +30,6 @@ struct AvatarView: View {
 
     .background(Color.secondary.opacity(0.2))
     .clipShape(Circle())
-    .shadow(color: .appTint, radius: 10, x: 0, y: 0)
+    .shadow(color: theme.tintColor, radius: 10, x: 0, y: 0)
   }
 }
