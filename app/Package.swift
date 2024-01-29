@@ -1,4 +1,5 @@
 // swift-tools-version: 5.9
+import CompilerPluginSupport
 import PackageDescription
 
 let package = Package(
@@ -18,8 +19,10 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.1"),
     .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.0"),
+    .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0"),
     .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.10.1"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", branch: "observation-beta"),
+    .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.2.0"),
     .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.15.2"),
   ],
   targets: [
@@ -94,6 +97,7 @@ let package = Package(
     .target(
       name: "Mastodon",
       dependencies: [
+        .target(name: "MastodonMacros"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ],
       resources: [
@@ -106,6 +110,20 @@ let package = Package(
         .target(name: "Mastodon"),
         .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
         .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+      ]
+    ),
+    .macro(
+      name: "MastodonMacros",
+      dependencies: [
+        .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+        .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
+      ]
+    ),
+    .testTarget(
+      name: "MastodonMacrosTests",
+      dependencies: [
+        .target(name: "MastodonMacros"),
+        .product(name: "MacroTesting", package: "swift-macro-testing"),
       ]
     ),
     .target(

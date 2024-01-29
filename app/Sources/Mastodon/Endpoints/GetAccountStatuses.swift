@@ -4,7 +4,8 @@ import Foundation
 /// Get account’s statuses
 ///
 /// [API documentation](https://docs.joinmastodon.org/methods/accounts/#statuses)
-public struct GetAccountStatuses: Sendable, Endpoint {
+@Endpoint
+public struct GetAccountStatuses: Sendable {
   public struct Request: Equatable, Sendable {
     public init(
       accountId: String,
@@ -22,21 +23,6 @@ public struct GetAccountStatuses: Sendable, Endpoint {
   }
 
   public typealias Response = [Status]
-
-  @DependencyEndpoint
-  public var send: @Sendable (Request) async throws -> Response
-
-  public func callAsFunction(
-    accountId: String,
-    limit: Int? = nil,
-    excludeReplies: Bool? = nil
-  ) async throws -> [Status] {
-    try await send(Request(
-      accountId: accountId,
-      limit: limit,
-      excludeReplies: excludeReplies
-    ))
-  }
 }
 
 extension GetAccountStatuses: HTTPEndpoint {
