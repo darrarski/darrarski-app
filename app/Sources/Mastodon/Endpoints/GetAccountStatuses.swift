@@ -1,34 +1,12 @@
+import DependenciesMacros
+import Foundation
+
 /// Get account’s statuses
 ///
 /// [API documentation](https://docs.joinmastodon.org/methods/accounts/#statuses)
+@Endpoint
 public struct GetAccountStatuses: Sendable {
-  public typealias Run = @Sendable (Query) async throws -> [Status]
-
-  public init(run: @escaping GetAccountStatuses.Run) {
-    self.run = run
-  }
-
-  public var run: Run
-
-  public func callAsFunction(_ query: Query) async throws -> [Status] {
-    try await run(query)
-  }
-
-  public func callAsFunction(
-    accountId: String,
-    limit: Int? = nil,
-    excludeReplies: Bool? = nil
-  ) async throws -> [Status] {
-    try await run(Query(
-      accountId: accountId,
-      limit: limit,
-      excludeReplies: excludeReplies
-    ))
-  }
-}
-
-extension GetAccountStatuses {
-  public struct Query: Equatable, Sendable {
+  public struct Request: Equatable, Sendable {
     public init(
       accountId: String,
       limit: Int? = nil,
@@ -42,5 +20,39 @@ extension GetAccountStatuses {
     public var accountId: String
     public var limit: Int?
     public var excludeReplies: Bool?
+  }
+
+  public typealias Response = [Status]
+}
+
+extension GetAccountStatuses: HTTPEndpoint {
+  static func urlRequest(for request: Request) throws -> URLRequest {
+    var urlComponents = URLComponents()
+    urlComponents.scheme = "https"
+    urlComponents.host = "mastodon.social"
+    urlComponents.path = "/api/v1/accounts/\(request.accountId)/statuses"
+    var queryItems: [URLQueryItem] = []
+    if let limit = request.limit {
+      queryItems.append(URLQueryItem(
+        name: "limit",
+        value: "\(limit)"
+      ))
+    }
+    if let excludeReplies = request.excludeReplies {
+      queryItems.append(URLQueryItem(
+        name: "exclude_replies",
+        value: "\(excludeReplies)"
+      ))
+    }
+    if !queryItems.isEmpty {
+      urlComponents.queryItems = queryItems
+    }
+    guard let url = urlComponents.url else {
+      throw RequestBuildingError()
+    }
+    var urlRequest = URLRequest(url: url)
+    urlRequest.cachePolicy = .reloadRevalidatingCacheData
+    urlRequest.httpMethod = "GET"
+    return urlRequest
   }
 }

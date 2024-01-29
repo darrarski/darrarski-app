@@ -7,14 +7,14 @@ import XCTest
 final class FeedReducerTests: XCTestCase {
   func testFetchStatuses() async {
     let clock = TestClock()
-    let didFetchWithQuery = ActorIsolated<[Mastodon.GetAccountStatuses.Query]>([])
+    let didFetch = ActorIsolated<[Mastodon.GetAccountStatuses.Request]>([])
     let statuses = [Status].preview
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
       $0.continuousClock = clock
-      $0.mastodon.getAccountStatuses.run = { query in
-        await didFetchWithQuery.withValue { $0.append(query) }
+      $0.mastodon.getAccountStatuses.send = { request in
+        await didFetch.withValue { $0.append(request) }
         return statuses
       }
     }
@@ -23,7 +23,7 @@ final class FeedReducerTests: XCTestCase {
       $0.isLoading = true
     }
     await clock.advance(by: .seconds(0.5))
-    await didFetchWithQuery.withValue {
+    await didFetch.withValue {
       XCTAssertNoDifference($0, [.init(
         accountId: FeedReducer.mastodonAccountId,
         limit: 40,
@@ -44,7 +44,7 @@ final class FeedReducerTests: XCTestCase {
       FeedReducer()
     } withDependencies: {
       $0.continuousClock = ImmediateClock()
-      $0.mastodon.getAccountStatuses.run = { _ in throw error }
+      $0.mastodon.getAccountStatuses.send = { _ in throw error }
     }
 
     await store.send(.fetchStatuses) {
@@ -60,7 +60,7 @@ final class FeedReducerTests: XCTestCase {
       FeedReducer()
     } withDependencies: {
       $0.continuousClock = ImmediateClock()
-      $0.mastodon.getAccountStatuses.run = { _ in [] }
+      $0.mastodon.getAccountStatuses.send = { _ in [] }
     }
     store.exhaustivity = .off
 
@@ -73,7 +73,7 @@ final class FeedReducerTests: XCTestCase {
       FeedReducer()
     } withDependencies: {
       $0.continuousClock = ImmediateClock()
-      $0.mastodon.getAccountStatuses.run = { _ in [] }
+      $0.mastodon.getAccountStatuses.send = { _ in [] }
     }
     store.exhaustivity = .off
 
@@ -86,7 +86,7 @@ final class FeedReducerTests: XCTestCase {
       FeedReducer()
     } withDependencies: {
       $0.continuousClock = ImmediateClock()
-      $0.mastodon.getAccountStatuses.run = { _ in [] }
+      $0.mastodon.getAccountStatuses.send = { _ in [] }
     }
     store.exhaustivity = .off
 

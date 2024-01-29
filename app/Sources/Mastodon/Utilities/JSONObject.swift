@@ -77,7 +77,29 @@ extension JSONObject: CustomDebugStringConvertible {
     case .array(let value):
       return "\(Self.self).array(\(value.debugDescription))"
     case .dict(let value):
-      return "\(Self.self).dict(\(value.debugDescription))"
+      var valueDebugDescription = ":"
+      if !value.isEmpty {
+        valueDebugDescription = value
+          .sorted { $0.key < $1.key }
+          .map { "\"\($0)\": \($1.debugDescription)" }
+          .joined(separator: ", ")
+      }
+      return "\(Self.self).dict([\(valueDebugDescription)])"
+    }
+  }
+}
+
+extension JSONObject: Encodable {
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.singleValueContainer()
+    switch self {
+    case .null: try container.encodeNil()
+    case .bool(let value): try container.encode(value)
+    case .int(let value): try container.encode(value)
+    case .double(let value): try container.encode(value)
+    case .string(let value): try container.encode(value)
+    case .array(let value): try container.encode(value)
+    case .dict(let value): try container.encode(value)
     }
   }
 }
@@ -104,21 +126,6 @@ extension JSONObject: Decodable {
         in: container,
         debugDescription: "Unexpected type"
       )
-    }
-  }
-}
-
-extension JSONObject: Encodable {
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    switch self {
-    case .null: try container.encodeNil()
-    case .bool(let value): try container.encode(value)
-    case .int(let value): try container.encode(value)
-    case .double(let value): try container.encode(value)
-    case .string(let value): try container.encode(value)
-    case .array(let value): try container.encode(value)
-    case .dict(let value): try container.encode(value)
     }
   }
 }

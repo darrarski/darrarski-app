@@ -1,6 +1,5 @@
 import Dependencies
 import Foundation
-import XCTestDynamicOverlay
 
 /// Mastodon API
 ///
@@ -15,18 +14,18 @@ public struct Client: Sendable {
   public var getAccountStatuses: GetAccountStatuses
 }
 
-extension Client: TestDependencyKey {
+extension Client: DependencyKey {
   public static let testValue = Client(
-    getAccountStatuses: GetAccountStatuses(
-      run: unimplemented("\(Self.self).getAccountStatuses.run")
-    )
+    getAccountStatuses: GetAccountStatuses()
   )
-
   public static let previewValue = Client(
     getAccountStatuses: .init { _ in
       try await Task.sleep(for: .seconds(1))
       return .preview
     }
+  )
+  public static let liveValue = Client(
+    getAccountStatuses: .live
   )
 }
 
