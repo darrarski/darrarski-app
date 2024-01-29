@@ -172,9 +172,12 @@ extension Status {
 extension Array<Status> {
   /// Source: [@darrarski@mastodon.social statuses](https://mastodon.social/api/v1/accounts/108131495937150285/statuses?limit=5&exclude_replies=true)
   public static let preview: [Status] = {
-    let url = Bundle.module.url(forResource: "statuses_preview", withExtension: "json")!
-    let data = try! Data(contentsOf: url)
     let decoder = JSONDecoder.mastodon
-    return try! decoder.decode([Status].self, from: data)
+    return try! decoder.decode([Status].self, from: [Status].previewJSON)
+  }()
+
+  public static let previewJSON: Data = {
+    let url = Bundle.module.url(forResource: "statuses_preview", withExtension: "json")!
+    return try! Data(contentsOf: url)
   }()
 }

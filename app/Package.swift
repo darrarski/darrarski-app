@@ -20,6 +20,7 @@ let package = Package(
     .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.0"),
     .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.10.1"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", branch: "observation-beta"),
+    .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.15.2"),
   ],
   targets: [
     .target(
@@ -103,6 +104,8 @@ let package = Package(
       name: "MastodonTests",
       dependencies: [
         .target(name: "Mastodon"),
+        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
+        .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
       ]
     ),
     .target(
