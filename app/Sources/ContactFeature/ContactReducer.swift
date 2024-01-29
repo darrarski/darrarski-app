@@ -3,6 +3,7 @@ import Foundation
 
 @Reducer
 public struct ContactReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public init(
       contact: Contact? = nil,
@@ -16,7 +17,7 @@ public struct ContactReducer: Reducer, Sendable {
     var isLoading: Bool
   }
 
-  public enum Action: Sendable {
+  public enum Action: Sendable, ViewAction {
     case fetchContact
     case fetchContactResult(Result<Contact, Error>)
     case view(View)

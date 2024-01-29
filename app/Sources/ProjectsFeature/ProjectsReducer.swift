@@ -2,6 +2,7 @@ import ComposableArchitecture
 
 @Reducer
 public struct ProjectsReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public init(
       info: ProjectsInfo? = nil,
@@ -21,7 +22,7 @@ public struct ProjectsReducer: Reducer, Sendable {
     }
   }
 
-  public enum Action: Sendable {
+  public enum Action: Sendable, ViewAction {
     case fetch
     case fetchFinished
     case fetchInfoResult(Result<ProjectsInfo, Error>)

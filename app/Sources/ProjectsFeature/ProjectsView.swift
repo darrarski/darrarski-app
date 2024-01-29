@@ -3,46 +3,35 @@ import ComposableArchitecture
 import OrderedCollections
 import SwiftUI
 
+@ViewAction(for: ProjectsReducer.self)
 public struct ProjectsView: View {
-  public init(store: StoreOf<ProjectsReducer>) {
-    self.store = store
-  }
-
-  let store: StoreOf<ProjectsReducer>
-  @State var isRefreshing = false
-  var placeholderScale: CGFloat = 0.9
-
-  struct ViewState: Equatable {
-    init(_ state: ProjectsReducer.State) {
-      info = state.info
-      groups = state.groups
-      showInfoPlaceholder = state.info == nil && state.isLoading
-      showGroupsPlaceholder = state.projects.isEmpty && state.isLoading
-    }
-
-    var info: ProjectsInfo?
-    var groups: IdentifiedArrayOf<ProjectsGroup>
-    var showInfoPlaceholder: Bool
-    var showGroupsPlaceholder: Bool
-    var infoAnimationValue: AnimationValue { .info(info, showInfoPlaceholder) }
-    var groupsAnimationValue: AnimationValue { .groups(groups, showGroupsPlaceholder) }
-  }
-
   enum AnimationValue: Equatable {
     case info(ProjectsInfo?, Bool)
     case groups(IdentifiedArrayOf<ProjectsGroup>, Bool)
   }
 
+  public init(store: StoreOf<ProjectsReducer>) {
+    self.store = store
+  }
+
+  public let store: StoreOf<ProjectsReducer>
+  @State var isRefreshing = false
+  var placeholderScale: CGFloat = 0.9
+  var showInfoPlaceholder: Bool { store.info == nil && store.isLoading }
+  var showGroupsPlaceholder: Bool { store.projects.isEmpty && store.isLoading }
+  var infoAnimationValue: AnimationValue { .info(store.info, showInfoPlaceholder) }
+  var groupsAnimationValue: AnimationValue { .groups(store.groups, showGroupsPlaceholder) }
+
   public var body: some View {
     ScrollView {
-      WithViewStore(store, observe: ViewState.init) { viewStore in
+      VStack {
         ZStack {
-          if viewStore.showInfoPlaceholder {
+          if showInfoPlaceholder {
             infoView(.preview)
               .disabled(true)
               .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
               .transition(.opacity)
-          } else if let info = viewStore.info {
+          } else if let info = store.info {
             infoView(info)
               .transition(
                 .scale(scale: placeholderScale, anchor: .center)
@@ -50,8 +39,8 @@ public struct ProjectsView: View {
               )
           }
         }
-        .redacted(reason: viewStore.showInfoPlaceholder ? .placeholder : [])
-        .animation(.bouncy, value: viewStore.infoAnimationValue)
+        .redacted(reason: showInfoPlaceholder ? .placeholder : [])
+        .animation(.bouncy, value: infoAnimationValue)
 
         LazyVGrid(
           columns: [
@@ -65,56 +54,48 @@ public struct ProjectsView: View {
           spacing: 16,
           pinnedViews: [.sectionHeaders]
         ) {
-          if viewStore.showGroupsPlaceholder {
+          if showGroupsPlaceholder {
             groupsView(.placeholder)
               .disabled(true)
               .scaleEffect(x: placeholderScale, y: placeholderScale, anchor: .center)
               .transition(.opacity)
           } else {
-            groupsView(viewStore.groups)
+            groupsView(store.groups)
               .transition(
                 .scale(scale: placeholderScale, anchor: .center)
                 .combined(with: .opacity)
               )
           }
         }
-        .redacted(reason: viewStore.showGroupsPlaceholder ? .placeholder : [])
-        .animation(.bouncy, value: viewStore.groupsAnimationValue)
+        .redacted(reason: showGroupsPlaceholder ? .placeholder : [])
+        .animation(.bouncy, value: groupsAnimationValue)
       }
       .frame(maxWidth: .infinity)
       .padding()
     }
     .task {
-      await store.send(.view(.task)).finish()
+      await send(.task).finish()
     }
     .refreshTask {
       isRefreshing = true
       defer { isRefreshing = false }
-      await store.send(.view(.refreshTask)).finish()
+      await send(.refreshTask).finish()
     }
     .navigationTitle("Projects")
     .toolbar {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
-        WithViewStore(store, observe: \.isLoading) { viewStore in
-          let isLoading = viewStore.state
-
-          Button {
-            store.send(.view(.refreshButtonTapped))
-          } label: {
-            Text("Refresh")
-          }
-          .disabled(isLoading)
+        Button {
+          send(.refreshButtonTapped)
+        } label: {
+          Text("Refresh")
         }
+        .disabled(store.isLoading)
       }
 #elseif os(iOS)
       ToolbarItem {
-        if !isRefreshing {
-          WithViewStore(store, observe: \.isLoading) { viewStore in
-            if viewStore.state {
-              ProgressView()
-            }
-          }
+        if !isRefreshing, store.isLoading {
+          ProgressView()
         }
       }
 #endif
@@ -131,7 +112,7 @@ public struct ProjectsView: View {
       Section {
         ForEach(group.projects) { project in
           Button {
-            store.send(.view(.projectCardTapped(project.id)))
+            send(.projectCardTapped(project.id))
           } label: {
             projectCardView(project)
           }

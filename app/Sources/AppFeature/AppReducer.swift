@@ -6,6 +6,7 @@ import ProjectsFeature
 
 @Reducer
 public struct AppReducer: Reducer, Sendable {
+  @ObservableState
   public struct State: Equatable {
     public enum Section: Equatable, CaseIterable {
       case contact
@@ -31,7 +32,7 @@ public struct AppReducer: Reducer, Sendable {
     var selectedSection: Section
   }
 
-  public enum Action {
+  public enum Action: ViewAction {
     case contact(ContactReducer.Action)
     case feed(FeedReducer.Action)
     case projects(ProjectsReducer.Action)

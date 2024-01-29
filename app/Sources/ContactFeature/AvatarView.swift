@@ -4,11 +4,10 @@ import SwiftUI
 struct AvatarView: View {
   var url: URL?
   @State var didLoad = false
+  var scale: Double { didLoad ? 1.0 : 0.0 }
+  var opactity: Double { didLoad ? 1.0 : 0.0 }
 
   var body: some View {
-    let scale = didLoad ? 1.0 : 0.0
-    let opactity = didLoad ? 1.0 : 0.0
-    
     ZStack {
       KFImage(url)
         .resizable()

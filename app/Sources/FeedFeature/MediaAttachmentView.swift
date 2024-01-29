@@ -4,30 +4,26 @@ import Mastodon
 import SwiftUI
 
 struct MediaAttachmentView: View {
-  struct State: Equatable {
-    init(_ attachemnt: MediaAttachment) {
-      type = attachemnt.type
-      previewURL = attachemnt.previewUrl.flatMap(URL.init)
-      if let ratio = attachemnt.meta.original?.aspect?.doubleValue {
-        aspectRatio = ratio
-      } else if let ratio = attachemnt.meta.small?.aspect?.doubleValue {
-        aspectRatio = ratio
-      } else {
-        aspectRatio = 16/9
-      }
-      url = URL(string: attachemnt.url)
+  init(_ attachment: MediaAttachment) {
+    type = attachment.type
+    previewURL = attachment.previewUrl.flatMap(URL.init)
+    if let ratio = attachment.meta.original?.aspect?.doubleValue {
+      aspectRatio = ratio
+    } else if let ratio = attachment.meta.small?.aspect?.doubleValue {
+      aspectRatio = ratio
+    } else {
+      aspectRatio = 16/9
     }
-
-    var type: MediaAttachment.MediaAttachmentType
-    var previewURL: URL?
-    var aspectRatio: CGFloat?
-    var url: URL?
+    url = URL(string: attachment.url)
   }
 
-  var state: State
+  var type: MediaAttachment.MediaAttachmentType
+  var previewURL: URL?
+  var aspectRatio: CGFloat?
+  var url: URL?
 
   var body: some View {
-    switch state.type {
+    switch type {
     case .unknown:
       cardView {
         Text("Attachment")
@@ -35,7 +31,7 @@ struct MediaAttachmentView: View {
 
     case .image:
       cardView {
-        KFImage(state.previewURL)
+        KFImage(previewURL)
           .resizable()
           .placeholder {
             Color.clear
@@ -43,7 +39,7 @@ struct MediaAttachmentView: View {
           .scaledToFit()
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .background {
-            KFImage(state.previewURL)
+            KFImage(previewURL)
               .resizable()
               .scaledToFill()
               .blur(radius: 10)
@@ -56,7 +52,7 @@ struct MediaAttachmentView: View {
       cardView {
         ZStack {
           Color.clear.background {
-            KFImage(state.previewURL)
+            KFImage(previewURL)
               .resizable()
               .placeholder {
                 Color.clear
@@ -67,7 +63,7 @@ struct MediaAttachmentView: View {
               .allowsHitTesting(false)
           }
 
-          VideoPreviewView(url: state.url)
+          VideoPreviewView(url: url)
             .scaledToFit()
         }
       }
@@ -119,7 +115,7 @@ struct MediaAttachmentView: View {
         .flatMap(\.mediaAttachments)
 
       ForEach(attachments) { attachment in
-        MediaAttachmentView(state: .init(attachment))
+        MediaAttachmentView(attachment)
           .aspectRatio(1, contentMode: .fill)
       }
     }

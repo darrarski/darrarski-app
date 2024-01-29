@@ -3,12 +3,13 @@ import ComposableArchitecture
 import Kingfisher
 import SwiftUI
 
+@ViewAction(for: ContactReducer.self)
 public struct ContactView: View {
   public init(store: StoreOf<ContactReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<ContactReducer>
+  public let store: StoreOf<ContactReducer>
   @State var isRefreshing = false
   let maxContentWidth: CGFloat = 500
 #if os(iOS)
@@ -29,36 +30,28 @@ public struct ContactView: View {
       .padding()
     }
     .task {
-      await store.send(.view(.task)).finish()
+      await send(.task).finish()
     }
     .refreshTask {
       isRefreshing = true
       defer { isRefreshing = false }
-      await store.send(.view(.refreshTask)).finish()
+      await send(.refreshTask).finish()
     }
     .navigationTitle("Darrarski")
     .toolbar {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
-        WithViewStore(store, observe: \.isLoading) { viewStore in
-          let isLoading = viewStore.state
-
-          Button {
-            store.send(.view(.refreshButtonTapped))
-          } label: {
-            Text("Refresh")
-          }
-          .disabled(isLoading)
+        Button {
+          send(.refreshButtonTapped)
+        } label: {
+          Text("Refresh")
         }
+        .disabled(store.isLoading)
       }
 #elseif os(iOS)
       ToolbarItem {
-        if !isRefreshing {
-          WithViewStore(store, observe: \.isLoading) { viewStore in
-            if viewStore.state {
-              ProgressView()
-            }
-          }
+        if !isRefreshing, store.isLoading {
+          ProgressView()
         }
       }
 #endif
@@ -68,9 +61,7 @@ public struct ContactView: View {
   @MainActor
   var header: some View {
     HStack(alignment: .top) {
-      WithViewStore(store, observe: \.contact?.avatarURL) { viewStore in
-        AvatarView(url: viewStore.state)
-      }
+      AvatarView(url: store.contact?.avatarURL)
       .containerRelativeFrame(.horizontal) { width, _ in
         min(width, maxContentWidth) / 3
       }
@@ -84,52 +75,42 @@ public struct ContactView: View {
   @MainActor
   var details: some View {
     VStack(alignment: .leading) {
-      WithViewStore(store, observe: \.contact?.name) { viewStore in
-        let value = viewStore.state
-        let placeholder = "Dariusz Rybicki"
-        let text = value ?? placeholder
+      let name = store.contact?.name ?? "Dariusz Rybicki"
 
-        Text(text)
-          .font(.title)
-          .redacted(reason: value == nil ? .placeholder : [])
-          .animation(.bouncy, value: text)
-      }
+      Text(name)
+        .font(.title)
+        .redacted(reason: store.contact?.name == nil ? .placeholder : [])
+        .animation(.bouncy, value: name)
 
-      WithViewStore(store, observe: \.contact?.description) { viewStore in
-        let value = viewStore.state
-        let placeholder = "Redacted Placeholder\nLorem ipsum\nPariatur ex aliqua ut"
-        let text = value ?? placeholder
+      let description = store.contact?.description ?? "Redacted Placeholder\nLorem ipsum\nPariatur ex aliqua ut"
 
-        Text(text)
-          .font(.headline)
-          .redacted(reason: value == nil ? .placeholder : [])
-          .animation(.bouncy, value: text)
-      }
+      Text(description)
+        .font(.headline)
+        .redacted(reason: store.contact?.description == nil ? .placeholder : [])
+        .animation(.bouncy, value: description)
     }
   }
 
   @MainActor
+  @ViewBuilder
   var content: some View {
-    WithViewStore(store, observe: \.contact?.content) { viewStore in
-      let value = viewStore.state
-      let placeholder = AttributedString("Aliquip in qui enim. Labore incididunt velit qui eu ad cillum culpa enim. In elit sit est officia aliquip consequat nisi incididunt reprehenderit labore consequat id qui est. Veniam velit voluptate occaecat. Aliquip ullamco irure sunt anim sit ad aliqua consectetur Lorem aliquip. Do ullamco nisi ex consequat cillum cupidatat ea commodo consectetur.")
-      let text = value ?? placeholder
+    let value = store.contact?.content
+    let placeholder = AttributedString("Aliquip in qui enim. Labore incididunt velit qui eu ad cillum culpa enim. In elit sit est officia aliquip consequat nisi incididunt reprehenderit labore consequat id qui est. Veniam velit voluptate occaecat. Aliquip ullamco irure sunt anim sit ad aliqua consectetur Lorem aliquip. Do ullamco nisi ex consequat cillum cupidatat ea commodo consectetur.")
+    let text = value ?? placeholder
 
-      Text(text)
-        .font(.body)
-        .redacted(reason: value == nil ? .placeholder : [])
-        .animation(.bouncy, value: text)
-    }
+    Text(text)
+      .font(.body)
+      .redacted(reason: value == nil ? .placeholder : [])
+      .animation(.bouncy, value: text)
   }
 
   @MainActor
   var buttons: some View {
-    WithViewStore(store, observe: { $0.contact?.links.map(\.id) ?? [] }) { viewStore in
 #if os(iOS)
       AdaptiveGridLayout(spacing: CGSize(width: 16, height: 16)) {
         buttonsGridContent
       }
-      .animation(.bouncy, value: viewStore.state)
+      .animation(.bouncy, value: (store.contact?.links.map(\.id) ?? []))
 #elseif os(macOS)
       LazyVGrid(
         columns: [
@@ -144,48 +125,46 @@ public struct ContactView: View {
         buttonsGridContent
       }
 #endif
-    }
   }
 
   @MainActor
+  @ViewBuilder
   var buttonsGridContent: some View {
-    WithViewStore(store, observe: { $0.contact?.links ?? [] }) { viewStore in
-      let links = viewStore.state
+    let links = store.contact?.links ?? []
 
-      if links.isEmpty {
-        let placeholders = [
-          "Blob 123",
-          "Culpa irure mag",
-          "Placeholder",
-          "Lorem Ipsum",
-          "Lorem",
-        ]
-        ForEach(0..<4) { index in
-          linkButton(link: .init(
-            id: "placeholder-\(index)",
-            title: placeholders[index % placeholders.count],
-            url: URL(filePath: ""),
-            iconURL: nil,
-            target: .system
+    if links.isEmpty {
+      let placeholders = [
+        "Blob 123",
+        "Culpa irure mag",
+        "Placeholder",
+        "Lorem Ipsum",
+        "Lorem",
+      ]
+      ForEach(0..<4) { index in
+        linkButton(link: .init(
+          id: "placeholder-\(index)",
+          title: placeholders[index % placeholders.count],
+          url: URL(filePath: ""),
+          iconURL: nil,
+          target: .system
+        ))
+      }
+      .disabled(true)
+      .redacted(reason: [.placeholder])
+    } else {
+      ForEach(links) { link in
+        linkButton(link: link)
+          .transition(.asymmetric(
+            insertion: .scale.combined(with: .opacity),
+            removal: .opacity
           ))
-        }
-        .disabled(true)
-        .redacted(reason: [.placeholder])
-      } else {
-        ForEach(links) { link in
-          linkButton(link: link)
-            .transition(.asymmetric(
-              insertion: .scale.combined(with: .opacity),
-              removal: .opacity
-            ))
-        }
       }
     }
   }
 
   func linkButton(link: Contact.Link) -> some View {
     Button {
-      store.send(.view(.linkButtonTapped(link)))
+      send(.linkButtonTapped(link))
     } label: {
       Label {
         Text(link.title)

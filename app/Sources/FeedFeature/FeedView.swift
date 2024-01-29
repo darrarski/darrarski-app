@@ -4,61 +4,46 @@ import Mastodon
 import OrderedCollections
 import SwiftUI
 
+@ViewAction(for: FeedReducer.self)
 public struct FeedView: View {
   public init(store: StoreOf<FeedReducer>) {
     self.store = store
   }
 
-  let store: StoreOf<FeedReducer>
+  public let store: StoreOf<FeedReducer>
   @State var isRefreshing = false
   var placeholderScale: CGFloat = 0.95
-
-  struct ViewState: Equatable {
-    init(_ state: FeedReducer.State) {
-      animationValue = state.statuses.ids
-      showPlaceholder = state.statuses.isEmpty && state.isLoading
-      showMoreButton = !state.statuses.isEmpty
-    }
-
-    var animationValue: OrderedSet<StatusReducer.State.ID>
-    var showPlaceholder: Bool
-    var showMoreButton: Bool
-  }
+  var showPlaceholder: Bool { store.statuses.isEmpty && store.isLoading }
+  var showMoreButton: Bool { !store.statuses.isEmpty }
 
   public var body: some View {
     ScrollView {
-      WithViewStore(store, observe: ViewState.init) { viewStore in
-        LazyVStack(spacing: 32) {
-          if viewStore.showPlaceholder {
-            placeholderView
-          } else {
-            ForEachStore(
-              store.scope(
-                state: \.statuses,
-                action: FeedReducer.Action.status
-              ),
-              content: StatusView.init(store:)
-            )
-            .transition(
-              .scale(scale: placeholderScale, anchor: .center)
-              .combined(with: .opacity)
-            )
+      LazyVStack(spacing: 32) {
+        if showPlaceholder {
+          placeholderView
+        } else {
+          ForEach(store.scope(state: \.statuses, action: \.status)) { statusStore in
+            StatusView(store: statusStore)
+          }
+          .transition(
+            .scale(scale: placeholderScale, anchor: .center)
+            .combined(with: .opacity)
+          )
 
-            if viewStore.showMoreButton {
-              Button {
-                viewStore.send(.view(.seeMoreButtonTapped))
-              } label: {
-                Text("See more on Mastodon")
-                  .padding(.horizontal)
-              }
-              .controlSize(.extraLarge)
-              .buttonStyle(.borderedProminent)
-              .transition(.opacity)
+          if showMoreButton {
+            Button {
+              send(.seeMoreButtonTapped)
+            } label: {
+              Text("See more on Mastodon")
+                .padding(.horizontal)
             }
+            .controlSize(.extraLarge)
+            .buttonStyle(.borderedProminent)
+            .transition(.opacity)
           }
         }
-        .animation(.bouncy, value: viewStore.animationValue)
       }
+      .animation(.bouncy, value: store.statuses.ids)
       .frame(maxWidth: .infinity)
       .padding(16)
     }
@@ -66,36 +51,28 @@ public struct FeedView: View {
     .toolbar {
 #if os(macOS)
       ToolbarItem(placement: .primaryAction) {
-        WithViewStore(store, observe: \.isLoading) { viewStore in
-          let isLoading = viewStore.state
-
-          Button {
-            store.send(.view(.refreshButtonTapped))
-          } label: {
-            Text("Refresh")
-          }
-          .disabled(isLoading)
+        Button {
+          send(.refreshButtonTapped)
+        } label: {
+          Text("Refresh")
         }
+        .disabled(store.isLoading)
       }
 #elseif os(iOS)
       ToolbarItem {
-        if !isRefreshing {
-          WithViewStore(store, observe: \.isLoading) { viewStore in
-            if viewStore.state {
-              ProgressView()
-            }
-          }
+        if !isRefreshing, store.isLoading {
+          ProgressView()
         }
       }
 #endif
     }
     .task {
-      await store.send(.view(.task)).finish()
+      await send(.task).finish()
     }
     .refreshTask {
       isRefreshing = true
       defer { isRefreshing = false }
-      await store.send(.view(.refreshTask)).finish()
+      await send(.refreshTask).finish()
     }
   }
 
