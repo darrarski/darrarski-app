@@ -1,6 +1,6 @@
 # <img src="project/DarrarskiApp/Assets.xcassets/AppIcon.appiconset/Mac 128pt 2x.png" height="128" align="right"> Darrarski.app
 
-![Swift v5.9](https://img.shields.io/badge/swift-v5.9-orange.svg)
+![Swift v5.10](https://img.shields.io/badge/swift-v5.9-orange.svg)
 ![platforms iOS, macOS](https://img.shields.io/badge/platforms-iOS,_macOS-blue.svg)
 
 Hello, my name is Dariusz and this is the iOS & macOS SwiftUI application about my work and services.
@@ -101,7 +101,7 @@ The project is integrated with [Xcode Cloud](https://developer.apple.com/xcode-c
 
 ## 🛠 Develop
 
-- Use Xcode (version ≥ 15.0).
+- Use Xcode (version ≥ 15.3).
 - Clone the repository or create a fork & clone it.
 - Open `DarrarskiApp.xcworkspace` in Xcode.
 - Use the `DarrarskiApp` scheme for building and running the app.
