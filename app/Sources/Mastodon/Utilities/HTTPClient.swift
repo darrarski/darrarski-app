@@ -13,7 +13,7 @@ public struct HTTPClient: Sendable {
 
 extension HTTPClient: DependencyKey {
   public static let testValue = HTTPClient()
-  public static var liveValue = HTTPClient(
+  public static let liveValue = HTTPClient(
     dataForRequest: { request in
       @Dependency(\.urlSession) var urlSession
       return try await urlSession.data(for: request)

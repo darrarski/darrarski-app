@@ -5,9 +5,8 @@ import ProjectsFeature
 import XCTest
 @testable import AppFeature
 
-@MainActor
 final class AppTelemetryReducerTests: XCTestCase {
-  func testActionSignals() async {
+  @MainActor func testActionSignals() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
@@ -93,7 +92,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testFailureActionSignals() async {
+  @MainActor func testFailureActionSignals() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
@@ -175,7 +174,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testActionWithContactLink() async {
+  @MainActor func testActionWithContactLink() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
@@ -219,7 +218,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testActionWithProject() async {
+  @MainActor func testActionWithProject() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
@@ -266,7 +265,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testActionWithMastodonStatus() async {
+  @MainActor func testActionWithMastodonStatus() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
@@ -305,7 +304,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testActionWithMastodonMediaAttachment() async {
+  @MainActor func testActionWithMastodonMediaAttachment() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 
@@ -344,7 +343,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testDisableByState() async {
+  @MainActor func testDisableByState() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {
         var isTelemetryEnabled: Bool
@@ -411,7 +410,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     signals.setValue([])
   }
 
-  func testDisableByAction() async {
+  @MainActor func testDisableByAction() async {
     struct ExampleReducer: Reducer {
       struct State: Equatable {}
 

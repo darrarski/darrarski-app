@@ -164,7 +164,7 @@ public struct ProjectsView: View {
         .foregroundStyle(.green)
         .opacity(0.03)
         .saturation(3)
-        .visualEffect(verticalScrollPositionHueRotation)
+        .visualEffect(Self.verticalScrollPositionHueRotation)
     }
 #if os(iOS)
     .background(.thickMaterial)
@@ -200,7 +200,7 @@ public struct ProjectsView: View {
   }
 
   @Sendable
-  func verticalScrollPositionHueRotation(
+  static func verticalScrollPositionHueRotation(
     content: EmptyVisualEffect,
     geometryProxy: GeometryProxy
   ) -> some VisualEffect {

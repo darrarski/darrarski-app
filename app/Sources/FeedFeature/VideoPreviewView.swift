@@ -1,4 +1,4 @@
-import AVFoundation
+@preconcurrency import AVFoundation
 import SwiftUI
 import Mastodon
 
@@ -44,7 +44,7 @@ struct VideoPreviewView: View {
     .task(id: url) { await loadImages() }
   }
 
-  func loadImages() async {
+  @MainActor func loadImages() async {
     startDate = nil
     images = [:]
     currentIndex = 0

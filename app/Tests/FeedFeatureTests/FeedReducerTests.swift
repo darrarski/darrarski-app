@@ -3,9 +3,8 @@ import Mastodon
 import XCTest
 @testable import FeedFeature
 
-@MainActor
 final class FeedReducerTests: XCTestCase {
-  func testFetchStatuses() async {
+  @MainActor func testFetchStatuses() async {
     let clock = TestClock()
     let didFetch = ActorIsolated<[Mastodon.GetAccountStatuses.Request]>([])
     let statuses = [Status].preview
@@ -38,7 +37,7 @@ final class FeedReducerTests: XCTestCase {
     }
   }
 
-  func testFetchStatusesFailure() async {
+  @MainActor func testFetchStatusesFailure() async {
     let error = NSError(domain: "test", code: 1234)
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
@@ -55,7 +54,7 @@ final class FeedReducerTests: XCTestCase {
     }
   }
 
-  func testViewTask() async {
+  @MainActor func testViewTask() async {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
@@ -68,7 +67,7 @@ final class FeedReducerTests: XCTestCase {
     await store.receive(\.fetchStatuses)
   }
 
-  func testViewRefreshTask() async {
+  @MainActor func testViewRefreshTask() async {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
@@ -81,7 +80,7 @@ final class FeedReducerTests: XCTestCase {
     await store.receive(\.fetchStatuses)
   }
 
-  func testViewRefreshButtonTapped() async {
+  @MainActor func testViewRefreshButtonTapped() async {
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
@@ -94,7 +93,7 @@ final class FeedReducerTests: XCTestCase {
     await store.receive(\.fetchStatuses)
   }
 
-  func testViewSeeMoreButtonTapped() async {
+  @MainActor func testViewSeeMoreButtonTapped() async {
     let didOpenURL = ActorIsolated<[URL]>([])
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()

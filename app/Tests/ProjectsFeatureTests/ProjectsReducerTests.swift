@@ -2,9 +2,8 @@ import ComposableArchitecture
 import XCTest
 @testable import ProjectsFeature
 
-@MainActor
 final class ProjectsReducerTests: XCTestCase {
-  func testFetch() async {
+  @MainActor func testFetch() async {
     let clock = TestClock()
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
@@ -29,7 +28,7 @@ final class ProjectsReducerTests: XCTestCase {
     }
   }
 
-  func testFetchInfoFailure() async {
+  @MainActor func testFetchInfoFailure() async {
     let error = NSError(domain: "test", code: 1234)
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
@@ -51,7 +50,7 @@ final class ProjectsReducerTests: XCTestCase {
     }
   }
 
-  func testFetchProjectsFailure() async {
+  @MainActor func testFetchProjectsFailure() async {
     let error = NSError(domain: "test", code: 1234)
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
@@ -73,7 +72,7 @@ final class ProjectsReducerTests: XCTestCase {
     }
   }
 
-  func testViewRefreshButtonTapped() async {
+  @MainActor func testViewRefreshButtonTapped() async {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
@@ -87,7 +86,7 @@ final class ProjectsReducerTests: XCTestCase {
     await store.receive(\.fetch)
   }
 
-  func testViewRefreshTask() async {
+  @MainActor func testViewRefreshTask() async {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
@@ -101,7 +100,7 @@ final class ProjectsReducerTests: XCTestCase {
     await store.receive(\.fetch)
   }
 
-  func testViewTask() async {
+  @MainActor func testViewTask() async {
     let store = TestStore(initialState: ProjectsReducer.State()) {
       ProjectsReducer()
     } withDependencies: {
@@ -115,7 +114,7 @@ final class ProjectsReducerTests: XCTestCase {
     await store.receive(\.fetch)
   }
 
-  func testViewProjectCardTapped() async {
+  @MainActor func testViewProjectCardTapped() async {
     let didOpenURL = ActorIsolated<[URL]>([])
     let projects = IdentifiedArray(uniqueElements: [Project].preview)
     let project = projects.first { $0.url != nil }!

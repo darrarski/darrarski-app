@@ -2,9 +2,8 @@ import ComposableArchitecture
 import XCTest
 @testable import AppFeature
 
-@MainActor
 final class AppReducerTests: XCTestCase {
-  func testSelectingSections() async {
+  @MainActor func testSelectingSections() async {
     let store = TestStore(initialState: AppReducer.State()) {
       AppReducer()
     }

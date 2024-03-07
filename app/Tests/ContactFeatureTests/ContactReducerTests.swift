@@ -2,9 +2,8 @@ import ComposableArchitecture
 import XCTest
 @testable import ContactFeature
 
-@MainActor
 final class ContactReducerTests: XCTestCase {
-  func testFetchContact() async {
+  @MainActor func testFetchContact() async {
     let clock = TestClock()
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
@@ -23,7 +22,7 @@ final class ContactReducerTests: XCTestCase {
     }
   }
 
-  func testFetchContactFailure() async {
+  @MainActor func testFetchContactFailure() async {
     let error = NSError(domain: "", code: 0)
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
@@ -40,7 +39,7 @@ final class ContactReducerTests: XCTestCase {
     }
   }
 
-  func testViewTask() async {
+  @MainActor func testViewTask() async {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
@@ -53,7 +52,7 @@ final class ContactReducerTests: XCTestCase {
     await store.receive(\.fetchContact)
   }
 
-  func testViewRefreshTask() async {
+  @MainActor func testViewRefreshTask() async {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
@@ -67,7 +66,7 @@ final class ContactReducerTests: XCTestCase {
 
   }
 
-  func testViewRefreshButtonTapped() async {
+  @MainActor func testViewRefreshButtonTapped() async {
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
@@ -80,7 +79,7 @@ final class ContactReducerTests: XCTestCase {
     await store.receive(\.fetchContact)
   }
 
-  func testViewLinkButtonTapped() async {
+  @MainActor func testViewLinkButtonTapped() async {
     let link = Contact.Link(
       id: "",
       title: "",
