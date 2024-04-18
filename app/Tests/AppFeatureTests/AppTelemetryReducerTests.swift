@@ -35,8 +35,10 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer()
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer()
+      }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
         signals.withValue { $0.append(signal) }
@@ -107,8 +109,10 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer()
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer()
+      }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
         signals.withValue { $0.append(signal) }
@@ -189,8 +193,10 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer()
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer()
+      }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
         signals.withValue { $0.append(signal) }
@@ -233,8 +239,10 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer()
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer()
+      }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
         signals.withValue { $0.append(signal) }
@@ -280,8 +288,10 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer()
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer()
+      }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
         signals.withValue { $0.append(signal) }
@@ -319,8 +329,10 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer()
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer()
+      }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
         signals.withValue { $0.append(signal) }
@@ -371,9 +383,11 @@ final class AppTelemetryReducerTests: XCTestCase {
     let store = TestStore(initialState: ExampleReducer.State(
       isTelemetryEnabled: false
     )) {
-      ExampleReducer()
-      AppTelemetryReducer { state, _ in
-        state.isTelemetryEnabled
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer { state, _ in
+          state.isTelemetryEnabled
+        }
       }
     } withDependencies: {
       $0.appTelemetry.send = { @Sendable signal in
@@ -425,11 +439,13 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
     let signals = LockIsolated<[AppTelemetrySignal]>([])
     let store = TestStore(initialState: ExampleReducer.State()) {
-      ExampleReducer()
-      AppTelemetryReducer { _, action in
-        switch action {
-        case .includedAction: true
-        case .excludedAction: false
+      CombineReducers {
+        ExampleReducer()
+        AppTelemetryReducer { _, action in
+          switch action {
+          case .includedAction: true
+          case .excludedAction: false
+          }
         }
       }
     } withDependencies: {
