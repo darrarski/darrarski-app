@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		310E44802A9E399A009A5B62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 310E447F2A9E399A009A5B62 /* Assets.xcassets */; };
 		310E448C2A9E3D76009A5B62 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 310E448B2A9E3D76009A5B62 /* AppFeature */; };
+		31A79D3B2BD12F7D00CA47D2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 31A79D3A2BD12F7D00CA47D2 /* PrivacyInfo.xcprivacy */; };
 		31D1DD242A9E41670067EDFF /* DarrarskiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1DD232A9E41670067EDFF /* DarrarskiApp.swift */; };
 /* End PBXBuildFile section */
 
@@ -17,6 +18,7 @@
 		310E447F2A9E399A009A5B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		310E44812A9E399A009A5B62 /* DarrarskiApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DarrarskiApp.entitlements; sourceTree = "<group>"; };
 		3179C9D02AAB450C007BA35C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		31A79D3A2BD12F7D00CA47D2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		31D1DD232A9E41670067EDFF /* DarrarskiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarrarskiApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +57,7 @@
 				310E44812A9E399A009A5B62 /* DarrarskiApp.entitlements */,
 				31D1DD232A9E41670067EDFF /* DarrarskiApp.swift */,
 				3179C9D02AAB450C007BA35C /* Info.plist */,
+				31A79D3A2BD12F7D00CA47D2 /* PrivacyInfo.xcprivacy */,
 			);
 			path = DarrarskiApp;
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A79D3B2BD12F7D00CA47D2 /* PrivacyInfo.xcprivacy in Resources */,
 				310E44802A9E399A009A5B62 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
