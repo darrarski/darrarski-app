@@ -23,7 +23,7 @@ struct Model: Codable, Equatable {
     let jsonData = try encoder.encode(model)
     let jsonString = String(data: jsonData, encoding: .utf8)
 
-    XCTAssertNoDifference(jsonString, #"{"id":1,"next":{"id":2,"next":{"id":3}}}"#)
+    expectNoDifference(jsonString, #"{"id":1,"next":{"id":2,"next":{"id":3}}}"#)
   }
 
   func testDecoding() throws {
@@ -32,7 +32,7 @@ struct Model: Codable, Equatable {
     let decoder = JSONDecoder()
     let model = try decoder.decode(Model.self, from: jsonData)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       model,
       Model(
         id: 1,

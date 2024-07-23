@@ -40,7 +40,7 @@ public struct StatusReducer: Reducer, Sendable {
   public enum Action: Sendable, ViewAction {
     case quickLookItem(PresentationAction<Never>)
     case renderText
-    case textRendered(Result<AttributedString, Error>)
+    case textRendered(Result<AttributedString, any Error>)
     case view(View)
 
     @CasePathable

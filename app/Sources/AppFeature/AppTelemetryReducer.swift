@@ -30,7 +30,7 @@ struct AppTelemetryReducer<State, Action>: Reducer, Sendable {
 
   private func describe(_ value: Any, abbreviated: Bool = false) -> String {
     let mirror = Mirror(reflecting: value)
-    let prefix = (abbreviated && !(value is Error)) ? "" : typeName(type(of: value))
+    let prefix = (abbreviated && !(value is any Error)) ? "" : typeName(type(of: value))
     switch mirror.displayStyle {
     case .enum:
       if let child = mirror.children.first {
@@ -74,13 +74,13 @@ struct AppTelemetryReducer<State, Action>: Reducer, Sendable {
 
   private func payload(for value: Any) -> [String: String] {
     var payload: [String: String] = [:]
-    if let error = value as? Error {
+    if let error = value as? any Error {
       payload["error.localizedDescription"] = error.localizedDescription
       let nsError = error as NSError
       payload["error.domain"] = nsError.domain
       payload["error.code"] = "\(nsError.code)"
     }
-    if let providedPayload = (value as? AppTelemetryPayloadProviding)?.appTelemetryPayload {
+    if let providedPayload = (value as? any AppTelemetryPayloadProviding)?.appTelemetryPayload {
       payload.addPayload(providedPayload)
     }
     let mirror = Mirror(reflecting: value)

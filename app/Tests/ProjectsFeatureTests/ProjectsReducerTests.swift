@@ -131,7 +131,7 @@ final class ProjectsReducerTests: XCTestCase {
 
     await store.send(.view(.projectCardTapped(project.id)))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [project.url!])
+      expectNoDifference($0, [project.url!])
     }
   }
 }

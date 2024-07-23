@@ -99,7 +99,7 @@ final class ContactReducerTests: XCTestCase {
 
     await store.send(.view(.linkButtonTapped(link)))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [link.url])
+      expectNoDifference($0, [link.url])
     }
   }
 }

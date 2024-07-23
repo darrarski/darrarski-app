@@ -48,7 +48,7 @@ extension Project {
 }
 
 extension Project.ProjectDate: Decodable {
-  public init(from decoder: Decoder) throws {
+  public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     let string = try container.decode(String.self)
     guard let date = Self.dateFormatter.date(from: string) else {

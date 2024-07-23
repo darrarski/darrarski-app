@@ -106,7 +106,7 @@ extension Status: Identifiable {
       self.rawValue = rawValue
     }
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
       let container = try decoder.singleValueContainer()
       self.rawValue = try container.decode(String.self)
     }

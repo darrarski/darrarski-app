@@ -25,8 +25,8 @@ public struct ProjectsReducer: Reducer, Sendable {
   public enum Action: Sendable, ViewAction {
     case fetch
     case fetchFinished
-    case fetchInfoResult(Result<ProjectsInfo, Error>)
-    case fetchProjectsResult(Result<[Project], Error>)
+    case fetchInfoResult(Result<ProjectsInfo, any Error>)
+    case fetchProjectsResult(Result<[Project], any Error>)
     case view(View)
 
     @CasePathable

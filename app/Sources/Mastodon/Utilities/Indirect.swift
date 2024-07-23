@@ -42,14 +42,14 @@ extension Indirect: Equatable where Value: Equatable {}
 extension Indirect: Sendable where Value: Sendable {}
 
 extension Indirect: Decodable where Value: Decodable {
-  public init(from decoder: Decoder) throws {
+  public init(from decoder: any Decoder) throws {
     let container = try decoder.singleValueContainer()
     self = .indirect(try container.decode(Value.self))
   }
 }
 
 extension Indirect: Encodable where Value: Encodable {
-  public func encode(to encoder: Encoder) throws {
+  public func encode(to encoder: any Encoder) throws {
     var container = encoder.singleValueContainer()
     switch self {
     case .indirect(let value):

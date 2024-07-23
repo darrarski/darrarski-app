@@ -35,7 +35,7 @@ final class GetAccountStatusesTests: XCTestCase {
         }
       }
     }
-    XCTAssertNoDifference(response, responseStub)
+    expectNoDifference(response, responseStub)
   }
 
   func testErrorResponse() async throws {
@@ -52,7 +52,7 @@ final class GetAccountStatusesTests: XCTestCase {
       }
       XCTFail("Expected to throw, but didn't")
     } catch {
-      XCTAssertNoDifference(
+      expectNoDifference(
         error as? ErrorResponse,
         ErrorResponse(
           statusCode: 500,

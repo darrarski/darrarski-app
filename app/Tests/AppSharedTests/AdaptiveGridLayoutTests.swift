@@ -11,7 +11,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
     let subviewsSizes: [CGSize] = []
     var cache = layout.makeCache(elementsSizes: subviewsSizes)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache,
       AdaptiveGridLayout.Cache(
         elements: [],
@@ -21,7 +21,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     layout.layoutElements(for: proposedSize.width, cache: &cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache,
       AdaptiveGridLayout.Cache(
         elements: [],
@@ -34,7 +34,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     let placements = layout.subviewsPlacements(in: bounds, cache: cache)
 
-    XCTAssertNoDifference(placements, [])
+    expectNoDifference(placements, [])
   }
 
   func testBasicLayout() {
@@ -51,7 +51,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
     ]
     var cache = layout.makeCache(elementsSizes: subviewsSizes)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache,
       AdaptiveGridLayout.Cache(
         elements: subviewsSizes.map { .init(size: $0, frame: .zero) },
@@ -61,7 +61,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     layout.layoutElements(for: proposedSize.width, cache: &cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache.size,
       CGSize(
         width: proposedSize.width,
@@ -70,7 +70,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     let placements = layout.subviewsPlacements(in: bounds, cache: cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       placements,
       [
         .init(
@@ -118,7 +118,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
     ]
     var cache = layout.makeCache(elementsSizes: subviewsSizes)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache,
       AdaptiveGridLayout.Cache(
         elements: subviewsSizes.map { .init(size: $0, frame: .zero) },
@@ -128,7 +128,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     layout.layoutElements(for: proposedSize.width, cache: &cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache.size,
       CGSize(
         width: proposedSize.width,
@@ -137,7 +137,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     let placements = layout.subviewsPlacements(in: bounds, cache: cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       placements,
       [
         .init(
@@ -191,7 +191,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
     ]
     var cache = layout.makeCache(elementsSizes: subviewsSizes)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache,
       AdaptiveGridLayout.Cache(
         elements: subviewsSizes.map { .init(size: $0, frame: .zero) },
@@ -201,7 +201,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     layout.layoutElements(for: proposedSize.width, cache: &cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache.size,
       CGSize(
         width: proposedSize.width,
@@ -210,7 +210,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     let placements = layout.subviewsPlacements(in: bounds, cache: cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       placements,
       [
         .init(
@@ -250,7 +250,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
     ]
     var cache = layout.makeCache(elementsSizes: subviewsSizes)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache,
       AdaptiveGridLayout.Cache(
         elements: subviewsSizes.map { .init(size: $0, frame: .zero) },
@@ -260,7 +260,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     layout.layoutElements(for: proposedSize.width, cache: &cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       cache.size,
       CGSize(
         width: proposedSize.width,
@@ -269,7 +269,7 @@ final class AdaptiveGridLayoutTests: XCTestCase {
 
     let placements = layout.subviewsPlacements(in: bounds, cache: cache)
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       placements,
       [
         .init(

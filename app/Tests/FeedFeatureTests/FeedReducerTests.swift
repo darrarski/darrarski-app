@@ -23,7 +23,7 @@ final class FeedReducerTests: XCTestCase {
     }
     await clock.advance(by: .seconds(0.5))
     await didFetch.withValue {
-      XCTAssertNoDifference($0, [.init(
+      expectNoDifference($0, [.init(
         accountId: FeedReducer.mastodonAccountId,
         limit: 40,
         excludeReplies: true
@@ -106,7 +106,7 @@ final class FeedReducerTests: XCTestCase {
 
     await store.send(.view(.seeMoreButtonTapped))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [
+      expectNoDifference($0, [
         FeedReducer.mastodonAccountURL
       ])
     }
