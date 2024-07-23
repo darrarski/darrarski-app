@@ -31,7 +31,7 @@ extension Contact: Decodable {
     case links
   }
 
-  public init(from decoder: Decoder) throws {
+  public init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.avatarURL = try container.decode(URL.self, forKey: .avatarURL)
     self.name = try container.decode(String.self, forKey: .name)
@@ -72,14 +72,14 @@ extension Contact.Link: Identifiable {
       self.rawValue = rawValue
     }
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
       let container = try decoder.singleValueContainer()
       self.rawValue = try container.decode(String.self)
     }
 
     public var rawValue: String
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
       var container = encoder.singleValueContainer()
       try container.encode(self.rawValue)
     }
@@ -90,7 +90,7 @@ extension Contact.Link {
   public enum Target: String, Equatable, Sendable, Decodable {
     case system
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
       let container = try decoder.singleValueContainer()
       let stringValue = try container.decode(String.self)
       guard let target = Target(rawValue: stringValue) else {

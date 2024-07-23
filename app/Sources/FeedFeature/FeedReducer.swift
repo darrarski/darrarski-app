@@ -20,7 +20,7 @@ public struct FeedReducer: Reducer, Sendable {
 
   public enum Action: Sendable, ViewAction {
     case fetchStatuses
-    case fetchStatusesResult(Result<[Mastodon.Status], Error>)
+    case fetchStatusesResult(Result<[Mastodon.Status], any Error>)
     case status(IdentifiedActionOf<StatusReducer>)
     case view(View)
 

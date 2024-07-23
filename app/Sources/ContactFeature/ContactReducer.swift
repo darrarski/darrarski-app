@@ -19,7 +19,7 @@ public struct ContactReducer: Reducer, Sendable {
 
   public enum Action: Sendable, ViewAction {
     case fetchContact
-    case fetchContactResult(Result<Contact, Error>)
+    case fetchContactResult(Result<Contact, any Error>)
     case view(View)
 
     @CasePathable
