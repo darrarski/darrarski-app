@@ -844,5 +844,15 @@
       "iOS"
     ],
     "type" : "Application"
+  },
+  {
+    "date" : "2024.07.20",
+    "name" : "SwiftShell",
+    "tags" : [
+      "Swift",
+      "macOS"
+    ],
+    "type" : "Library",
+    "url" : "http://github.com/darrarski/swift-shell"
   }
 ]
