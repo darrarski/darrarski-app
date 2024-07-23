@@ -18,12 +18,12 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.1"),
-    .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.0"),
-    .package(url: "https://github.com/apple/swift-syntax.git", from: "510.0.0"),
-    .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.10.1"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.7.1"),
-    .package(url: "https://github.com/pointfreeco/swift-macro-testing.git", from: "0.2.0"),
-    .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.15.2"),
+    .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.1"),
+    .package(url: "https://github.com/apple/swift-syntax.git", from: "510.0.2"),
+    .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.12.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.12.0"),
+    .package(url: "https://github.com/pointfreeco/swift-macro-testing.git", from: "0.5.1"),
+    .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.17.2"),
   ],
   targets: [
     .target(

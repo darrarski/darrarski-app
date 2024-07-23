@@ -10,7 +10,7 @@ let package = Package(
     .executable(name: "projects-csv2json", targets: ["projects-csv2json"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/swiftcsv/SwiftCSV.git", from: "0.8.1"),
+    .package(url: "https://github.com/swiftcsv/SwiftCSV.git", from: "0.10.0"),
   ],
   targets: [
     .executableTarget(
