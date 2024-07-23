@@ -1,13 +1,13 @@
 {
-  "originHash" : "8e259585f127cf26d3f3659936668078ce3737a9f8f073c221211042c1410c44",
+  "originHash" : "d7d3d3a3695228d1b2c5ad798276187e91202bd6f904beeb36a3377280216a77",
   "pins" : [
     {
       "identity" : "combine-schedulers",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/combine-schedulers",
       "state" : {
-        "revision" : "9dc9cbe4bc45c65164fa653a563d8d8db61b09bb",
-        "version" : "1.0.0"
+        "revision" : "487a4d151e795a5e076a7e7aedcd13c2ebff6c31",
+        "version" : "1.0.1"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "5b92f029fab2cce44386d28588098b5be0824ef5",
-        "version" : "7.11.0"
+        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
+        "version" : "7.12.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",
       "state" : {
-        "revision" : "79623dbe2c7672f5e450d8325613d231454390b3",
-        "version" : "1.3.2"
+        "revision" : "031704ba0634b45e02fe875b8ddddc7f30a07f49",
+        "version" : "1.5.3"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-clocks",
       "state" : {
-        "revision" : "a8421d68068d8f45fbceb418fbf22c5dad4afd33",
-        "version" : "1.0.2"
+        "revision" : "eb64eacfed55635a771e3410f9c91de46cf5c6a0",
+        "version" : "1.0.3"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "94cf62b3ba8d4bed62680a282d4c25f9c63c2efb",
-        "version" : "1.1.0"
+        "revision" : "3d2dc41a01f9e49d84f0a3925fb858bed64f702d",
+        "version" : "1.1.2"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture.git",
       "state" : {
-        "revision" : "899a68ce3c4eca42a42e6bad2c925b82dcab5187",
-        "version" : "1.9.3"
+        "revision" : "d65f3c1b9332255a40002905b6787f765585d7fb",
+        "version" : "1.12.0"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-custom-dump",
       "state" : {
-        "revision" : "f01efb26f3a192a0e88dcdb7c3c391ec2fc25d9c",
-        "version" : "1.3.0"
+        "revision" : "d237304f42af07f22563aa4cc2d7e2cfb25da82e",
+        "version" : "1.3.1"
       }
     },
     {
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-dependencies",
       "state" : {
-        "revision" : "d3a5af3038a09add4d7682f66555d6212058a3c0",
-        "version" : "1.2.2"
+        "revision" : "52018827ce21e482a36e3795bea2666b3898164c",
+        "version" : "1.3.4"
       }
     },
     {
@@ -87,8 +87,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-identified-collections",
       "state" : {
-        "revision" : "d1e45f3e1eee2c9193f5369fa9d70a6ddad635e8",
-        "version" : "1.0.0"
+        "revision" : "2f5ab6e091dd032b63dacbda052405756010dc3b",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swift-issue-reporting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-issue-reporting",
+      "state" : {
+        "revision" : "926f43898706eaa127db79ac42138e1ad7e85a3f",
+        "version" : "1.2.0"
       }
     },
     {
@@ -96,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-macro-testing.git",
       "state" : {
-        "revision" : "5c4a1b9d7c23cd5c08ea50677d8e89080365cb00",
-        "version" : "0.4.0"
+        "revision" : "a35257b7e9ce44e92636447003a8eeefb77b145c",
+        "version" : "0.5.1"
       }
     },
     {
@@ -105,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-perception",
       "state" : {
-        "revision" : "052bd30a2079d9eb2400f0bc66707cc93c015152",
-        "version" : "1.1.5"
+        "revision" : "2c75ce556a6fc106721b0dadc2c7327244ad3999",
+        "version" : "1.3.3"
       }
     },
     {
@@ -114,17 +123,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-snapshot-testing.git",
       "state" : {
-        "revision" : "625ccca8570773dd84a34ee51a81aa2bc5a4f97a",
-        "version" : "1.16.0"
+        "revision" : "c097f955b4e724690f0fc8ffb7a6d4b881c9c4e3",
+        "version" : "1.17.2"
       }
     },
     {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax",
+      "location" : "https://github.com/apple/swift-syntax.git",
       "state" : {
-        "revision" : "fa8f95c2d536d6620cc2f504ebe8a6167c9fc2dd",
-        "version" : "510.0.1"
+        "revision" : "303e5c5c36d6a558407d364878df131c3546fad8",
+        "version" : "510.0.2"
       }
     },
     {
@@ -141,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftcsv/SwiftCSV.git",
       "state" : {
-        "revision" : "b61dcd1b2b1120e751cee4cd64a16ff10364885d",
-        "version" : "0.9.1"
+        "revision" : "6ab5d0fe9b6ef3c79d717eefa70862df389e74d9",
+        "version" : "0.10.0"
       }
     },
     {
@@ -177,17 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",
       "state" : {
-        "revision" : "2ec6c3a15293efff6083966b38439a4004f25565",
-        "version" : "1.3.0"
-      }
-    },
-    {
-      "identity" : "xctest-dynamic-overlay",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
-      "state" : {
-        "revision" : "6f30bdba373bbd7fbfe241dddd732651f2fbd1e2",
-        "version" : "1.1.2"
+        "revision" : "97f854044356ac082e7e698f39264cc035544d77",
+        "version" : "1.5.2"
       }
     }
   ],
