@@ -5,82 +5,82 @@ import XCTest
 
 final class JSONObjectTests: XCTestCase {
   func testValue() {
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.null),
       Values(isNull: true)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.bool(true)),
       Values(boolValue: true)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.bool(false)),
       Values(boolValue: false)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.int(123)),
       Values(intValue: 123)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.double(1.5)),
       Values(doubleValue: 1.5)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.string("test")),
       Values(stringValue: "test")
     )
 
     let array: [JSONObject] = [.stub(), .stub()]
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.array(array)),
       Values(arrayValue: array)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       JSONObject.array(array)[0],
       array[0]
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       JSONObject.array(array)[1],
       array[1]
     )
 
     let dict: [String: JSONObject] = ["test1": .stub(), "test2": .stub()]
-    XCTAssertNoDifference(
+    expectNoDifference(
       Values(JSONObject.dict(dict)),
       Values(dictValue: dict)
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       JSONObject.dict(dict)["test1"],
       dict["test1"]
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       JSONObject.dict(dict).test2,
       dict["test2"]
     )
   }
 
   func testDebugDescription() {
-    XCTAssertNoDifference(
+    expectNoDifference(
       "\(JSONObject.null)",
       "JSONObject.null"
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       "\(JSONObject.bool(true))",
       "JSONObject.bool(true)"
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       "\(JSONObject.int(357))",
       "JSONObject.int(357)"
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       "\(JSONObject.double(1.5))",
       "JSONObject.double(1.5)"
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       "\(JSONObject.array([.int(42), .string("test")]))",
       "JSONObject.array([JSONObject.int(42), JSONObject.string(\"test\")])"
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       "\(JSONObject.dict(["test1": .int(42), "test2": .string("test")]))",
       "JSONObject.dict([\"test1\": JSONObject.int(42), \"test2\": JSONObject.string(\"test\")])"
     )
@@ -137,7 +137,7 @@ final class JSONObjectTests: XCTestCase {
       }
       """
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       try JSONDecoder().decode(
         JSONObject.self,
         from: jsonString.data(using: .utf8)!

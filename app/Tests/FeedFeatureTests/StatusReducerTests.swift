@@ -23,7 +23,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.previewCardTapped))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [cardURL])
+      expectNoDifference($0, [cardURL])
     }
   }
 
@@ -44,7 +44,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.previewCardTapped))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [URL(string: status.reblog!.card!.url)!])
+      expectNoDifference($0, [URL(string: status.reblog!.card!.url)!])
     }
   }
 
@@ -65,7 +65,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.linkTapped(url)))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [url])
+      expectNoDifference($0, [url])
     }
   }
 
@@ -96,7 +96,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.attachmentTapped(attachment.id)))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [attachmentURL])
+      expectNoDifference($0, [attachmentURL])
     }
   }
 
@@ -130,7 +130,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.attachmentTapped(attachment.id)))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [attachmentURL])
+      expectNoDifference($0, [attachmentURL])
     }
 #endif
   }
@@ -166,7 +166,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.headerTapped))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [statusURL])
+      expectNoDifference($0, [statusURL])
     }
   }
 
@@ -186,7 +186,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.headerTapped))
     await didOpenURL.withValue {
-      XCTAssertNoDifference($0, [statusURL])
+      expectNoDifference($0, [statusURL])
     }
   }
 
@@ -194,11 +194,11 @@ final class StatusReducerTests: XCTestCase {
     let statusWithReblog = [Status].preview.first { $0.reblog != nil }!
     let statusWithoutReblog = [Status].preview.first { $0.reblog == nil }!
 
-    XCTAssertNoDifference(
+    expectNoDifference(
       StatusReducer.State(status: statusWithReblog).displayStatus,
       statusWithReblog.reblog!.value
     )
-    XCTAssertNoDifference(
+    expectNoDifference(
       StatusReducer.State(status: statusWithoutReblog).displayStatus,
       statusWithoutReblog
     )
@@ -214,7 +214,7 @@ final class StatusReducerTests: XCTestCase {
     status.mediaAttachments = Array(allAttachments[0...2])
     status.reblog!.mediaAttachments = Array(allAttachments[1...3])
     
-    XCTAssertNoDifference(StatusReducer.State(status: status).attachments, [
+    expectNoDifference(StatusReducer.State(status: status).attachments, [
       allAttachments[0],
       allAttachments[1],
       allAttachments[2],
@@ -239,7 +239,7 @@ final class StatusReducerTests: XCTestCase {
 
     await store.send(.view(.textTask))
     await store.receive(\.renderText)
-    XCTAssertNoDifference(didRender.value, [status.content])
+    expectNoDifference(didRender.value, [status.content])
     await store.receive(\.textRendered.success) {
       $0.text = renderedText
     }

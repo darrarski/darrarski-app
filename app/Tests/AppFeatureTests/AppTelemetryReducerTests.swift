@@ -46,49 +46,49 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
 
     await store.send(.first)
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.first"
     )])
     signals.setValue([])
 
     await store.send(.second("test"))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.second(String)"
     )])
     signals.setValue([])
 
     await store.send(.third(7, "seven"))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.third(Int, String)"
     )])
     signals.setValue([])
 
     await store.send(.fourth(number: 7, text: "seven"))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.fourth(number: Int, text: String)"
     )])
     signals.setValue([])
 
     await store.send(.fifth("test"))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.fifth(.some(String))"
     )])
     signals.setValue([])
 
     await store.send(.fifth(nil))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.fifth(.none)"
     )])
     signals.setValue([])
 
     await store.send(.sixth(.seventh))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.sixth(.seventh)"
     )])
     signals.setValue([])
 
     await store.send(.eight([.ninth, .tenth]))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.eight(Array)"
     )])
     signals.setValue([])
@@ -121,7 +121,7 @@ final class AppTelemetryReducerTests: XCTestCase {
 
     let nsError = NSError(domain: "test", code: 1337)
     await store.send(.first(.failure(nsError)))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.first(.failure(NSError))",
       payload: [
         "error.localizedDescription": nsError.localizedDescription,
@@ -134,7 +134,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     struct StructError: Error { var value = 44 }
     let structError = StructError()
     await store.send(.first(.failure(structError)))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.first(.failure(\(Self.self).StructError))",
       payload: [
         "error.localizedDescription": structError.localizedDescription,
@@ -147,7 +147,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     enum EnumError: Error { case somethingWentWrong }
     let enumError = EnumError.somethingWentWrong
     await store.send(.first(.failure(enumError)))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.first(.failure(\(Self.self).EnumError.somethingWentWrong))",
       payload: [
         "error.localizedDescription": enumError.localizedDescription,
@@ -161,7 +161,7 @@ final class AppTelemetryReducerTests: XCTestCase {
     let nsError2 = NSError(domain: "test2", code: 2)
     let nsError3 = NSError(domain: "test3", code: 3)
     await store.send(.second(nsError1, nsError2, nsError3))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.second(NSError, NSError, NSError)",
       payload: [
         "error.localizedDescription": nsError1.localizedDescription,
@@ -210,14 +210,14 @@ final class AppTelemetryReducerTests: XCTestCase {
       iconURL: nil,
       target: .system
     )))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.link(Contact.Link)",
       payload: ["contact.link.id": "test-1"]
     )])
     signals.setValue([])
 
     await store.send(.linkID(.init(rawValue: "test-2")))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.linkID(Contact.Link.ID)",
       payload: ["contact.link.id": "test-2"]
     )])
@@ -256,7 +256,7 @@ final class AppTelemetryReducerTests: XCTestCase {
       tags: [],
       url: nil
     )))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.project(Project)",
       payload: ["project.id": "1970-01-01 Name"]
     )])
@@ -266,7 +266,7 @@ final class AppTelemetryReducerTests: XCTestCase {
       date: Date(timeIntervalSince1970: 0),
       name: "Name"
     )))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.projectID(Project.ID)",
       payload: ["project.id": "1970-01-01 Name"]
     )])
@@ -300,14 +300,14 @@ final class AppTelemetryReducerTests: XCTestCase {
     let status = [Status].preview.first!
 
     await store.send(.status(status))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.status(Status)",
       payload: ["mastodon.status.id": status.id.rawValue]
     )])
     signals.setValue([])
 
     await store.send(.statusID(status.id))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.statusID(Status.ID)",
       payload: ["mastodon.status.id": status.id.rawValue]
     )])
@@ -341,14 +341,14 @@ final class AppTelemetryReducerTests: XCTestCase {
     let attachment = [Status].preview.flatMap(\.mediaAttachments).first!
 
     await store.send(.attachment(attachment))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.attachment(MediaAttachment)",
       payload: ["mastodon.media-attachment.id": attachment.id.rawValue]
     )])
     signals.setValue([])
 
     await store.send(.attachmentID(attachment.id))
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.attachmentID(MediaAttachment.ID)",
       payload: ["mastodon.media-attachment.id": attachment.id.rawValue]
     )])
@@ -396,19 +396,19 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
 
     await store.send(.otherAction)
-    XCTAssertNoDifference(signals.value, [])
+    expectNoDifference(signals.value, [])
     signals.setValue([])
 
     await store.send(.enableTelemetry) {
       $0.isTelemetryEnabled = true
     }
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.enableTelemetry"
     )])
     signals.setValue([])
 
     await store.send(.otherAction)
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.otherAction"
     )])
     signals.setValue([])
@@ -416,11 +416,11 @@ final class AppTelemetryReducerTests: XCTestCase {
     await store.send(.disableTelemetry) {
       $0.isTelemetryEnabled = false
     }
-    XCTAssertNoDifference(signals.value, [])
+    expectNoDifference(signals.value, [])
     signals.setValue([])
 
     await store.send(.otherAction)
-    XCTAssertNoDifference(signals.value, [])
+    expectNoDifference(signals.value, [])
     signals.setValue([])
   }
 
@@ -455,13 +455,13 @@ final class AppTelemetryReducerTests: XCTestCase {
     }
 
     await store.send(.includedAction)
-    XCTAssertNoDifference(signals.value, [.init(
+    expectNoDifference(signals.value, [.init(
       type: "\(Self.self).ExampleReducer.Action.includedAction"
     )])
     signals.setValue([])
 
     await store.send(.excludedAction)
-    XCTAssertNoDifference(signals.value, [])
+    expectNoDifference(signals.value, [])
     signals.setValue([])
   }
 }
