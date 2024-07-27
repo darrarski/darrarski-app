@@ -24,5 +24,5 @@ for arg in "$@"; do
 done
 
 cd "$ROOT_DIR"
-setup_mise
-mise x -- tuist edit || exit $?
+setup_tuist
+tuist edit || exit $?

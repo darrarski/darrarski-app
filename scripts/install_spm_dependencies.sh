@@ -29,10 +29,10 @@ for arg in "$@"; do
 done
 
 cd "$ROOT_DIR"
-setup_mise
+setup_tuist
 
 if [[ $UPDATE -eq 1 ]]; then
-  mise x -- tuist install -u || exit $?
+  tuist install -u || exit $?
 else
-  mise x -- tuist install || exit $?
+  tuist install || exit $?
 fi

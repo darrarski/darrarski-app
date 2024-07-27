@@ -29,8 +29,8 @@ for arg in "$@"; do
 done
 
 cd "$ROOT_DIR"
-setup_mise
-mise x -- tuist generate --no-open || exit $?
+setup_tuist
+tuist generate --no-open || exit $?
 
 if [[ $OPEN -eq 1 ]]; then
   "$ROOT_DIR/scripts/open_workspace.sh" || exit $?
