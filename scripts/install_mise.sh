@@ -87,6 +87,7 @@ function install_mise {
 }
 
 if [[ $FORCE -eq 1 || ! $(is_mise_installed) -eq 1 ]]; then
+  echo "MISE_INSTALL_PATH=$MISE_INSTALL_PATH"
   if [[ $BINARY -eq 1 ]]; then
     download_mise_binary
   else

@@ -1,5 +1,5 @@
 ROOT_DIR="$(readlink -f $0 | xargs dirname | xargs dirname)"
-MISE_INSTALL_PATH="$HOME/.local/bin/mise"
+MISE_INSTALL_PATH=${MISE_INSTALL_PATH:-"$HOME/.local/bin/mise"}
 
 function setup_mise {
   sh "$ROOT_DIR/scripts/install_mise.sh" || exit $?
