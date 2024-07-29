@@ -4,8 +4,8 @@ import DependenciesMacros
 import XCTest
 @testable import Mastodon
 
-// NB: This is a basic test of Macro expansion. More versatile tests are included in `MastodonMacrosPluginTests` target.
-final class EndpointMacroTests: XCTestCase {
+// NB: This is a basic test of macro expansion. More versatile tests are included in `MastodonMacrosPluginTests` target.
+final class MastodonEndpointMacroTests: XCTestCase {
   func testMacroExpansion() async throws {
     let didSend = LockIsolated<[TestEndpoint.Request]>([])
     let responseStub = ["hello", "world"]
@@ -25,7 +25,7 @@ final class EndpointMacroTests: XCTestCase {
   }
 }
 
-@Endpoint
+@MastodonEndpoint
 private struct TestEndpoint: Sendable {
   struct Request: Equatable, Sendable {
     public init(paramA: Int, paramB: String, paramC: String = "default") {

@@ -78,9 +78,12 @@ let project = Project(
         .external(name: "SwiftSyntaxMacros"),
         .external(name: "SwiftCompilerPlugin"),
       ],
-      testTarget: true, // TODO: Fix compile issues in MastodonMacrosPluginTests
+      settings: {
+        $0.base.merge(.enableUserScriptSandboxing(false))
+      },
+      testTarget: false, // TODO: Fix issues in MastodonMacrosPluginTests.
       testDependencies: [
-        .target(name: "Mastodon"), // NB: We can't add dependency to MastodonMacrosPlugin here, so we depend on Mastodon, which depends on the plugin.
+        .target(name: "MastodonMacrosPlugin"),
         .external(name: "MacroTesting"),
       ]
     ),

@@ -1,6 +1,6 @@
 @attached(member, names: named(send), named(callAsFunction))
 @attached(extension, conformances: Endpoint)
-macro Endpoint() = #externalMacro(
+public macro MastodonEndpoint() = #externalMacro(
   module: "MastodonMacrosPlugin",
-  type: "EndpointMacro"
+  type: "MastodonEndpointMacro"
 )

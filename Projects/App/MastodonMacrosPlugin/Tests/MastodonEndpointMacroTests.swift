@@ -1,13 +1,13 @@
 import MacroTesting
+import Mastodon
+import MastodonMacrosPlugin
 import XCTest
-@testable import Mastodon
-@testable import MastodonMacrosPlugin
 
-final class EndpointMacroTests: XCTestCase {
+final class MastodonEndpointMacroTests: XCTestCase {
   override func invokeTest() {
     withMacroTesting(
       // isRecording: true,
-      macros: [EndpointMacro.self]
+      macros: [MastodonEndpointMacro.self]
     ) {
       super.invokeTest()
     }
@@ -16,7 +16,7 @@ final class EndpointMacroTests: XCTestCase {
   func testExpansion() {
     assertMacro {
       """
-      @Endpoint
+      @MastodonEndpoint
       struct GetUser {
         struct Request {
           init(id: Int, name: String? = nil) {
@@ -65,7 +65,7 @@ final class EndpointMacroTests: XCTestCase {
   func testExpansionWhenProtocolAlreadyApplied() {
     assertMacro {
       """
-      @Endpoint
+      @MastodonEndpoint
       struct GetUser: Endpoint {
         struct Request {
           init() {}
@@ -95,14 +95,14 @@ final class EndpointMacroTests: XCTestCase {
   func testApplyOnNonStructDiagnostics() {
     assertMacro {
       """
-      @Endpoint
+      @MastodonEndpoint
       class GetUser {}
       """
     } diagnostics: {
       """
       @Endpoint
       ┬────────
-      ╰─ 🛑 @Endpoint macro can only be applied on structs.
+      ╰─ 🛑 @MastodonEndpoint macro can only be applied on structs.
       class GetUser {}
       """
     }
@@ -111,7 +111,7 @@ final class EndpointMacroTests: XCTestCase {
   func testRequestNonStructDiagnostics() {
     assertMacro {
       """
-      @Endpoint
+      @MastodonEndpoint
       struct GetUser {
         class Request {}
       }
@@ -120,7 +120,7 @@ final class EndpointMacroTests: XCTestCase {
       """
       @Endpoint
       ┬────────
-      ╰─ 🛑 @Endpoint macro requires that GetUser.Request is a struct.
+      ╰─ 🛑 @MastodonEndpoint macro requires that GetUser.Request is a struct.
       struct GetUser {
         class Request {}
       }
@@ -131,7 +131,7 @@ final class EndpointMacroTests: XCTestCase {
   func testMissingRequestInitializerDiagnostics() {
     assertMacro {
       """
-      @Endpoint
+      @MastodonEndpoint
       struct GetUser {
         struct Request {
           var id: Int
@@ -144,9 +144,9 @@ final class EndpointMacroTests: XCTestCase {
       """
     } diagnostics: {
       """
-      @Endpoint
+      @MastodonEndpoint
       ┬────────
-      ╰─ 🛑 @Endpoint macro requires that GetUser.Request has explicite initializer defined.
+      ╰─ 🛑 @MastodonEndpoint macro requires that GetUser.Request has explicite initializer defined.
       struct GetUser {
         struct Request {
           var id: Int

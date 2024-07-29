@@ -4,7 +4,7 @@ import Foundation
 /// Get account’s statuses
 ///
 /// [API documentation](https://docs.joinmastodon.org/methods/accounts/#statuses)
-@Endpoint
+@MastodonEndpoint
 public struct GetAccountStatuses: Sendable {
   public struct Request: Equatable, Sendable {
     public init(
