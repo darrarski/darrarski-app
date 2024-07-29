@@ -71,14 +71,14 @@ let project = Project(
         .external(name: "SnapshotTesting"),
       ]
     ),
-    .macro(
+    .macros(
       name: "MastodonMacrosPlugin",
       deploymentTarget: "14.0",
       dependencies: [
         .external(name: "SwiftSyntaxMacros"),
         .external(name: "SwiftCompilerPlugin"),
       ],
-      testTarget: false, // TODO: Fix tests for MastodonMacrosPlugin
+      testTarget: false, // TODO: Fix compile issues in MastodonMacrosPluginTests
       testDependencies: [
         .external(name: "MacroTesting"),
       ]

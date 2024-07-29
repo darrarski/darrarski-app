@@ -17,6 +17,13 @@ let packageSettings = PackageSettings(
     "Kingfisher": .framework,
     "OrderedCollections": .framework,
     "XCTestDynamicOverlay": .framework,
+  ],
+  targetSettings: [
+    // NB: This fixes "XCTest not found" issues:
+    "SwiftSyntaxMacrosTestSupport": SettingsDictionary()
+      .merging(["ENABLE_TESTING_SEARCH_PATHS": true]),
+    "_SwiftSyntaxTestSupport": SettingsDictionary()
+      .merging(["ENABLE_TESTING_SEARCH_PATHS": true]),
   ]
 )
 #endif
