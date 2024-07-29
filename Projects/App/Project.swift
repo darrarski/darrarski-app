@@ -99,6 +99,6 @@ let project = Project(
     ),
   ],
   packages: [
-    .local(path: .relativeToRoot("Packages/app-secrets")),
+    .local(path: .relativeToManifest("app-secrets")),
   ]
 )

@@ -91,7 +91,7 @@ The fact that all events that can occur in the application are defined by the re
 ![Screenshot of Xcode console with telemetry logs](web/assets/xcode-telemetry-logs.png)
 
 > [!WARNING]  
-> The AppID key required to communicate with TelemetryDeck is **NOT** included in the repository. If you want to use telemetry, you need to set your own key in `Packages/app-secrets/Sources/AppSecrets/Secrets/TelemetryDeckAppID`.
+> The AppID key required to communicate with TelemetryDeck is **NOT** included in the repository. If you want to use telemetry, you need to set your own key in `Projects/App/app-secrets/Sources/AppSecrets/Secrets/TelemetryDeckAppID`.
 
 ### CI/CD
 
