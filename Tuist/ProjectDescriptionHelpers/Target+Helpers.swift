@@ -180,7 +180,7 @@ extension [Target] {
         deploymentTargets: .macOS(deploymentTarget),
         infoPlist: .extendingDefault(with: Target.infoPlistDefaults),
         sources: ["\(name)/Tests/**"],
-        dependencies: [.target(name: name)] + testDependencies,
+        dependencies: testDependencies,
         settings: .settings(
           base: SettingsDictionary()
             .otherSwiftFlags(["$(inherited)"]),

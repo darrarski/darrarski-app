@@ -1,6 +1,7 @@
 import MacroTesting
 import XCTest
-@testable import MastodonMacros
+@testable import Mastodon
+@testable import MastodonMacrosPlugin
 
 final class EndpointMacroTests: XCTestCase {
   override func invokeTest() {
