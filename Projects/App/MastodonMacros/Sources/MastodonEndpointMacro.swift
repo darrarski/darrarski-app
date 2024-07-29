@@ -3,10 +3,10 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-public enum MastodonEndpointMacro {}
+enum MastodonEndpointMacro {}
 
 extension MastodonEndpointMacro: ExtensionMacro {
-  public static func expansion(
+  static func expansion(
     of node: SwiftSyntax.AttributeSyntax,
     attachedTo declaration: some SwiftSyntax.DeclGroupSyntax,
     providingExtensionsOf type: some SwiftSyntax.TypeSyntaxProtocol,
@@ -15,7 +15,7 @@ extension MastodonEndpointMacro: ExtensionMacro {
   ) throws -> [SwiftSyntax.ExtensionDeclSyntax] {
     if let inheritanceClause = declaration.inheritanceClause,
        inheritanceClause.inheritedTypes.contains(where: {
-         ["Endpoint", "Mastodon.Endpoint"].contains($0.type.trimmedDescription)
+         ["Endpoint"].withQualified.contains($0.type.trimmedDescription)
        })
     {
       return []
@@ -26,7 +26,7 @@ extension MastodonEndpointMacro: ExtensionMacro {
 }
 
 extension MastodonEndpointMacro: MemberMacro {
-  public static func expansion<
+  static func expansion<
     Declaration: DeclGroupSyntax,
     Context: MacroExpansionContext
   >(
@@ -85,4 +85,8 @@ extension MastodonEndpointMacro: MemberMacro {
       """
     ]
   }
+}
+
+private extension Array where Element == String {
+  var withQualified: Self { flatMap { [$0, "Mastodon.\($0)"] } }
 }
