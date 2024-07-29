@@ -29,5 +29,5 @@ if [[ $CI_WORKFLOW == "Deploy" ]]; then
   cat "$WHAT_TO_TEST_PATH"
 
   # Use TelemetryDeckAppID secret from workflow environment variable
-  echo "${TelemetryDeckAppID}" >  "$ROOT_DIR/Projects/App/AppFeature/Secrets/TelemetryDeckAppID"
+  echo "${TelemetryDeckAppID}" > "$ROOT_DIR/Packages/app-secrets/Sources/AppSecrets/Secrets/TelemetryDeckAppID"
 fi

@@ -5,6 +5,7 @@ extension Project {
     name: String,
     version: (marketing: String, build: Int),
     targets: [[Target]],
+    packages: [Package] = [],
     settings customizeSettings: (inout Settings) -> Void = { _ in }
   ) {
     self.init(
@@ -26,6 +27,7 @@ extension Project {
           wrapsLines: false
         )
       ),
+      packages: packages,
       settings: .settings(
         base: SettingsDictionary()
           .currentProjectVersion("\(version.build)")

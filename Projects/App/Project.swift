@@ -14,17 +14,12 @@ let project = Project(
     ),
     .framework(
       name: "AppFeature",
-      resources: [
-        // TODO: Store TelemetryDeckAppID securely.
-        // Store in a dedicated swift package?
-        // In swift package we can add embedded-in-code resource to improve security a bit:
-        // .embedInCode("Secrets/TelemetryDeckAppID"),
-      ],
       dependencies: [
         .target(name: "AppShared"),
         .target(name: "ContactFeature"),
         .target(name: "FeedFeature"),
         .target(name: "ProjectsFeature"),
+        .package(product: "AppSecrets"),
         .external(name: "ComposableArchitecture"),
         .external(name: "TelemetryClient"),
       ]
@@ -98,5 +93,8 @@ let project = Project(
         .external(name: "ComposableArchitecture"),
       ]
     ),
+  ],
+  packages: [
+    .local(path: .relativeToRoot("Packages/app-secrets")),
   ]
 )

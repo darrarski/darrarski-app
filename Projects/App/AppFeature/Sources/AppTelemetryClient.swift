@@ -1,3 +1,4 @@
+import AppSecrets
 import Dependencies
 import DependenciesMacros
 import Foundation
@@ -55,18 +56,18 @@ extension AppTelemetryClient: DependencyKey {
   )
 
   private static func appID() -> String? {
-    // TODO: Get TelemetryDeckAppID from a secure storage.
-
-    // let data = Data(PackageResources.TelemetryDeckAppID)
-    // let string = String(data: data, encoding: .utf8)?
-    //   .trimmingCharacters(in: .whitespacesAndNewlines)
-    // guard let string, !string.isEmpty else {
-    //   log.value.fault("Missing TelemetryDeck AppID (app/Sources/AppFeature/Secrets/TelemetryDeckAppID)")
-    //   return nil
-    // }
-    // return string
-
-    log.value.fault("Missing TelemetryDeck AppID (unimplemented)")
-    return nil
+    @Dependency(AppSecrets.self) var appSecrets
+    let data = appSecrets.telemetryDeckAppID()
+    let string = String(data: data, encoding: .utf8)?
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+    guard let string, !string.isEmpty else {
+      log.value.fault("Missing TelemetryDeck AppID.")
+      return nil
+    }
+    guard UUID(uuidString: string) != nil else {
+      log.value.fault("Invalid TelemetryDeck AppID (expected UUID).")
+      return nil
+    }
+    return string
   }
 }
