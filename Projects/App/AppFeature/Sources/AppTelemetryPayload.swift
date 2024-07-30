@@ -3,42 +3,42 @@ import Foundation
 import Mastodon
 import ProjectsFeature
 
-protocol AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { get }
+protocol AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { get }
 }
 
-extension Contact.Link: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { id.appTelemetryPayload }
+extension Contact.Link: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { id.appTelemetryParameters }
 }
 
-extension Contact.Link.ID: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { ["contact.link.id": rawValue] }
+extension Contact.Link.ID: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { ["contact.link.id": rawValue] }
 }
 
-extension Project: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String : String] { id.appTelemetryPayload }
+extension Project: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String : String] { id.appTelemetryParameters }
 }
 
-extension Project.ID: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] {
+extension Project.ID: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] {
     ["project.id": "\(DateFormatter.yearMonthDay.string(from: date)) \(name)"]
   }
 }
 
-extension Mastodon.Status: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { id.appTelemetryPayload }
+extension Mastodon.Status: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { id.appTelemetryParameters }
 }
 
-extension Mastodon.Status.ID: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { ["mastodon.status.id": rawValue] }
+extension Mastodon.Status.ID: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { ["mastodon.status.id": rawValue] }
 }
 
-extension Mastodon.MediaAttachment: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { id.appTelemetryPayload }
+extension Mastodon.MediaAttachment: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { id.appTelemetryParameters }
 }
 
-extension Mastodon.MediaAttachment.ID: AppTelemetryPayloadProviding {
-  var appTelemetryPayload: [String: String] { ["mastodon.media-attachment.id": rawValue] }
+extension Mastodon.MediaAttachment.ID: AppTelemetryParametersProviding {
+  var appTelemetryParameters: [String: String] { ["mastodon.media-attachment.id": rawValue] }
 }
 
 private extension DateFormatter {

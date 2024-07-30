@@ -47,49 +47,49 @@ final class AppTelemetryReducerTests: XCTestCase {
 
     await store.send(.first)
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.first"
+      name: "\(Self.self).ExampleReducer.Action.first"
     )])
     signals.setValue([])
 
     await store.send(.second("test"))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.second(String)"
+      name: "\(Self.self).ExampleReducer.Action.second(String)"
     )])
     signals.setValue([])
 
     await store.send(.third(7, "seven"))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.third(Int, String)"
+      name: "\(Self.self).ExampleReducer.Action.third(Int, String)"
     )])
     signals.setValue([])
 
     await store.send(.fourth(number: 7, text: "seven"))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.fourth(number: Int, text: String)"
+      name: "\(Self.self).ExampleReducer.Action.fourth(number: Int, text: String)"
     )])
     signals.setValue([])
 
     await store.send(.fifth("test"))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.fifth(.some(String))"
+      name: "\(Self.self).ExampleReducer.Action.fifth(.some(String))"
     )])
     signals.setValue([])
 
     await store.send(.fifth(nil))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.fifth(.none)"
+      name: "\(Self.self).ExampleReducer.Action.fifth(.none)"
     )])
     signals.setValue([])
 
     await store.send(.sixth(.seventh))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.sixth(.seventh)"
+      name: "\(Self.self).ExampleReducer.Action.sixth(.seventh)"
     )])
     signals.setValue([])
 
     await store.send(.eight([.ninth, .tenth]))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.eight(Array)"
+      name: "\(Self.self).ExampleReducer.Action.eight(Array)"
     )])
     signals.setValue([])
   }
@@ -122,8 +122,8 @@ final class AppTelemetryReducerTests: XCTestCase {
     let nsError = NSError(domain: "test", code: 1337)
     await store.send(.first(.failure(nsError)))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.first(.failure(NSError))",
-      payload: [
+      name: "\(Self.self).ExampleReducer.Action.first(.failure(NSError))",
+      parameters: [
         "error.localizedDescription": nsError.localizedDescription,
         "error.domain": nsError.domain,
         "error.code": "\(nsError.code)",
@@ -135,8 +135,8 @@ final class AppTelemetryReducerTests: XCTestCase {
     let structError = StructError()
     await store.send(.first(.failure(structError)))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.first(.failure(\(Self.self).StructError))",
-      payload: [
+      name: "\(Self.self).ExampleReducer.Action.first(.failure(\(Self.self).StructError))",
+      parameters: [
         "error.localizedDescription": structError.localizedDescription,
         "error.domain": (structError as NSError).domain,
         "error.code": "\((structError as NSError).code)",
@@ -148,8 +148,8 @@ final class AppTelemetryReducerTests: XCTestCase {
     let enumError = EnumError.somethingWentWrong
     await store.send(.first(.failure(enumError)))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.first(.failure(\(Self.self).EnumError.somethingWentWrong))",
-      payload: [
+      name: "\(Self.self).ExampleReducer.Action.first(.failure(\(Self.self).EnumError.somethingWentWrong))",
+      parameters: [
         "error.localizedDescription": enumError.localizedDescription,
         "error.domain": (enumError as NSError).domain,
         "error.code": "\((enumError as NSError).code)",
@@ -162,8 +162,8 @@ final class AppTelemetryReducerTests: XCTestCase {
     let nsError3 = NSError(domain: "test3", code: 3)
     await store.send(.second(nsError1, nsError2, nsError3))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.second(NSError, NSError, NSError)",
-      payload: [
+      name: "\(Self.self).ExampleReducer.Action.second(NSError, NSError, NSError)",
+      parameters: [
         "error.localizedDescription": nsError1.localizedDescription,
         "error.domain": nsError1.domain,
         "error.code": "\(nsError1.code)",
@@ -211,15 +211,15 @@ final class AppTelemetryReducerTests: XCTestCase {
       target: .system
     )))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.link(Contact.Link)",
-      payload: ["contact.link.id": "test-1"]
+      name: "\(Self.self).ExampleReducer.Action.link(Contact.Link)",
+      parameters: ["contact.link.id": "test-1"]
     )])
     signals.setValue([])
 
     await store.send(.linkID(.init(rawValue: "test-2")))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.linkID(Contact.Link.ID)",
-      payload: ["contact.link.id": "test-2"]
+      name: "\(Self.self).ExampleReducer.Action.linkID(Contact.Link.ID)",
+      parameters: ["contact.link.id": "test-2"]
     )])
     signals.setValue([])
   }
@@ -257,8 +257,8 @@ final class AppTelemetryReducerTests: XCTestCase {
       url: nil
     )))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.project(Project)",
-      payload: ["project.id": "1970-01-01 Name"]
+      name: "\(Self.self).ExampleReducer.Action.project(Project)",
+      parameters: ["project.id": "1970-01-01 Name"]
     )])
     signals.setValue([])
 
@@ -267,8 +267,8 @@ final class AppTelemetryReducerTests: XCTestCase {
       name: "Name"
     )))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.projectID(Project.ID)",
-      payload: ["project.id": "1970-01-01 Name"]
+      name: "\(Self.self).ExampleReducer.Action.projectID(Project.ID)",
+      parameters: ["project.id": "1970-01-01 Name"]
     )])
     signals.setValue([])
   }
@@ -301,15 +301,15 @@ final class AppTelemetryReducerTests: XCTestCase {
 
     await store.send(.status(status))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.status(Status)",
-      payload: ["mastodon.status.id": status.id.rawValue]
+      name: "\(Self.self).ExampleReducer.Action.status(Status)",
+      parameters: ["mastodon.status.id": status.id.rawValue]
     )])
     signals.setValue([])
 
     await store.send(.statusID(status.id))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.statusID(Status.ID)",
-      payload: ["mastodon.status.id": status.id.rawValue]
+      name: "\(Self.self).ExampleReducer.Action.statusID(Status.ID)",
+      parameters: ["mastodon.status.id": status.id.rawValue]
     )])
     signals.setValue([])
   }
@@ -342,15 +342,15 @@ final class AppTelemetryReducerTests: XCTestCase {
 
     await store.send(.attachment(attachment))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.attachment(MediaAttachment)",
-      payload: ["mastodon.media-attachment.id": attachment.id.rawValue]
+      name: "\(Self.self).ExampleReducer.Action.attachment(MediaAttachment)",
+      parameters: ["mastodon.media-attachment.id": attachment.id.rawValue]
     )])
     signals.setValue([])
 
     await store.send(.attachmentID(attachment.id))
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.attachmentID(MediaAttachment.ID)",
-      payload: ["mastodon.media-attachment.id": attachment.id.rawValue]
+      name: "\(Self.self).ExampleReducer.Action.attachmentID(MediaAttachment.ID)",
+      parameters: ["mastodon.media-attachment.id": attachment.id.rawValue]
     )])
     signals.setValue([])
   }
@@ -403,13 +403,13 @@ final class AppTelemetryReducerTests: XCTestCase {
       $0.isTelemetryEnabled = true
     }
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.enableTelemetry"
+      name: "\(Self.self).ExampleReducer.Action.enableTelemetry"
     )])
     signals.setValue([])
 
     await store.send(.otherAction)
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.otherAction"
+      name: "\(Self.self).ExampleReducer.Action.otherAction"
     )])
     signals.setValue([])
 
@@ -456,7 +456,7 @@ final class AppTelemetryReducerTests: XCTestCase {
 
     await store.send(.includedAction)
     expectNoDifference(signals.value, [.init(
-      type: "\(Self.self).ExampleReducer.Action.includedAction"
+      name: "\(Self.self).ExampleReducer.Action.includedAction"
     )])
     signals.setValue([])
 

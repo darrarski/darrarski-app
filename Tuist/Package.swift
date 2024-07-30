@@ -39,6 +39,6 @@ let package = Package(
     .package(url: "https://github.com/pointfreeco/swift-macro-testing.git", from: "0.5.1"),
     .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.17.2"),
     .package(url: "https://github.com/swiftcsv/SwiftCSV.git", from: "0.10.0"),
-    .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "1.5.1"),
+    .package(url: "https://github.com/TelemetryDeck/SwiftClient.git", from: "2.2.4"),
   ]
 )

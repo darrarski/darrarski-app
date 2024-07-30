@@ -1,5 +1,5 @@
 {
-  "originHash" : "ae9cfc366eb9c71d0c311c29e3355080f5f766b87868365312d85b6f5ed0f44a",
+  "originHash" : "5da0d73b0ea4580bb137f06003c94ef460c17f839cc536d1a5d18e1b9bdbaa3e",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -132,8 +132,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TelemetryDeck/SwiftClient.git",
       "state" : {
-        "revision" : "d20ccc4b8266cf739eede58cdfc7e9c6ffb41cda",
-        "version" : "1.5.1"
+        "revision" : "743375e32be2aa55cfe7d7c4cee15c167596a8ad",
+        "version" : "2.2.4"
       }
     },
     {
