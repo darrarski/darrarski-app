@@ -2,15 +2,10 @@ import AppIcon
 import AppIconCreator
 import Foundation
 
-var exportURL = URL(fileURLWithPath: #file)
-exportURL.deleteLastPathComponent()
-exportURL.deleteLastPathComponent()
-exportURL.deleteLastPathComponent()
-exportURL.deleteLastPathComponent()
-exportURL.appendPathComponent("project")
-exportURL.appendPathComponent("DarrarskiApp")
-exportURL.appendPathComponent("Assets.xcassets")
-exportURL.appendPathComponent("AppIcon.appiconset")
+let exportURL = URL(
+  filePath: "../../../../Projects/App/DarrarskiApp/Resources/Assets.xcassets/AppIcon.appiconset",
+  relativeTo: URL(filePath: #filePath)
+)
 
 [IconImage]
   .images(for: AppIconView(.iOS), with: [.iOS_App_Store])
