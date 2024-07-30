@@ -14,24 +14,24 @@ Hello, my name is Dariusz and this is the iOS & macOS SwiftUI application about 
 
 Darrarski.app is as an example of a modular iOS & macOS application built with [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture) and [Tuist](https://tuist.io). 
 
-### Project structure
+### Workspace structure
 
 ![Darrarski.app workspace graph](web/assets/graph.png)
 
 The Xcode workspace and projects are generated from manfest files (like `Workspace.swift` and `Projects.swift`).
 
-### Modules
+### App modules
 
 Individual features of the application are implemented as frameworks.
 
 | Module | Description |
 |:--|:--|
-| [AppFeature](app/Sources/AppFeature) | Root feature of the application. Manages application state and presents split view or tabs navigation UI, depending on platform and device.
-| [AppShared](app/Sources/AppShared) | Contains source code shared between other libraries.
-| [ContactFeature](app/Sources/ContactFeature) | Contains contact screen UI, as well as the logic responsible for loading contact information from the backend.
-| [FeedFeature](app/Sources/FeedFeature) | Implements social feed screen, based on posts fetched from Mastodon. Presents statuses and boosts with attachments.
-| [Mastodon](app/Sources/Mastodon) | Provides models and API client for Mastodon network. Implements only a small subset of the API endpoints, that are needed by the app.
-| [ProjectFeature](app/Sources/ProjectsFeature) | Implements screen with a list of projects. Each project, with some basic information about it, is presented on a grid. The list is fetched from the backend.
+| [AppFeature](Projects/App/AppFeature) | Root feature of the application. Manages application state and presents split view or tabs navigation UI, depending on platform and device.
+| [AppShared](Projects/App/AppShared) | Contains source code shared between other libraries.
+| [ContactFeature](Projects/App/ContactFeature) | Contains contact screen UI, as well as the logic responsible for loading contact information from the backend.
+| [FeedFeature](Projects/App/FeedFeature) | Implements social feed screen, based on posts fetched from Mastodon. Presents statuses and boosts with attachments.
+| [Mastodon](Projects/App/Mastodon) | Provides models and API client for Mastodon network. Implements only a small subset of the API endpoints, that are needed by the app. Internally it uses swift macros for code generation (defined in [MastodonMacros](Projects/App/MastodonMacros) and [MastodonMacrosPlugin](Projects/App/MastodonMacrosPlugin)).
+| [ProjectFeature](Projects/App/ProjectsFeature) | Implements screen with a list of projects. Each project, with some basic information about it, is presented on a grid. The list is fetched from the backend.
 
 ### Architecture
 
