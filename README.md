@@ -107,6 +107,21 @@ The project is integrated with [Xcode Cloud](https://developer.apple.com/xcode-c
 - Use other schemes to build or test individual libraries in isolation.
 - If you want to contribute, create a pull request containing your changes or bug fixes. Make sure to include tests for new/updated code.
 
+### Development scripts
+
+The repository contains several scripts for ease of development. These are located inside [`scripts`](scripts) directory. You just need to run [`setup_for_development.sh`](scripts/setup_for_development.sh) once, and it should set everything up for development. Other scripts help to clean up the workspace, generate dependency graphs, etc. Each of the executable scripts accepts `--help` flag that prints info about the script and its usage.
+
+```sh
+$ scripts/setup_for_development.sh --help
+OVERVIEW: Prepares everything needed for development.
+
+USAGE: setup_for_development.sh [options]
+
+OPTIONS:
+  -o, --open      Open Xcode workspace.
+  -h, --help      Show help information.
+```
+
 ## ☕️ Do you like the project?
 
 I would love to hear if you like my work. I can help you apply any of the solutions used in this repository in your app too! Feel free to reach out to me, or if you just want to say "thanks", you can buy me a coffee.
