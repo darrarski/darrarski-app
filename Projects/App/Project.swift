@@ -7,7 +7,8 @@ let project = Project(
   targets: [
     .app(
       name: "DarrarskiApp",
-      appName: "DR",
+      productName: "Darrarski",
+      bundleDisplayName: "Darrarski",
       dependencies: [
         .target(name: "AppFeature"),
       ]

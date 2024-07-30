@@ -25,7 +25,8 @@ extension Target {
 extension [Target] {
   public static func app(
     name: String,
-    appName: String,
+    productName: String,
+    bundleDisplayName: String,
     destinations: Destinations = Target.defaultDestinations,
     deploymentTargets: DeploymentTargets = Target.defaultDeploymentTargets,
     dependencies: [TargetDependency] = [],
@@ -36,7 +37,7 @@ extension [Target] {
         name: name,
         destinations: destinations,
         product: .app,
-        productName: name, // NB: Makes the scheme name equal to target name
+        productName: name, // NB: Makes the scheme name equal to target name.
         bundleId: "\(Target.bundleIdPrefix).\(name)",
         deploymentTargets: deploymentTargets,
         infoPlist: .file(path: "\(name)/Info.plist"),
@@ -55,7 +56,8 @@ extension [Target] {
               "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
               "ENABLE_MODULE_VERIFIER": "YES",
               "MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS": "gnu11 gnu++14",
-              "PRODUCT_NAME": .string(appName), // NB: Makes the app name "\(appName).app"
+              "PRODUCT_NAME": .string(productName), // NB: The name of the app, user-visible on macOS.
+              "BUNDLE_DISPLAY_NAME": .string(bundleDisplayName), // NB: The user-visible name for the app, used by Siri and visible on the iOS Home screen.
             ]),
           defaultSettings: Target.defaultSettings
         ).customized(with: customizeSettings)
