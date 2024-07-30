@@ -2,7 +2,7 @@ import SwiftCompilerPlugin
 import SwiftSyntaxMacros
 
 @main
-struct MacrosPlugin: CompilerPlugin {
+struct Plugin: CompilerPlugin {
   let providingMacros: [any Macro.Type] = [
     MastodonEndpointMacro.self,
   ]

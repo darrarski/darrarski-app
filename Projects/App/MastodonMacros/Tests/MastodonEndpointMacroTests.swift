@@ -5,7 +5,7 @@ import XCTest
 final class MastodonEndpointMacroTests: XCTestCase {
   override func invokeTest() {
     withMacroTesting(
-      // isRecording: true,
+      //record: true,
       macros: [MastodonEndpointMacro.self]
     ) {
       super.invokeTest()
@@ -100,7 +100,7 @@ final class MastodonEndpointMacroTests: XCTestCase {
     } diagnostics: {
       """
       @MastodonEndpoint
-      ┬────────
+      ┬────────────────
       ╰─ 🛑 @MastodonEndpoint macro can only be applied on structs.
       class GetUser {}
       """
@@ -118,7 +118,7 @@ final class MastodonEndpointMacroTests: XCTestCase {
     } diagnostics: {
       """
       @MastodonEndpoint
-      ┬────────
+      ┬────────────────
       ╰─ 🛑 @MastodonEndpoint macro requires that GetUser.Request is a struct.
       struct GetUser {
         class Request {}
@@ -144,7 +144,7 @@ final class MastodonEndpointMacroTests: XCTestCase {
     } diagnostics: {
       """
       @MastodonEndpoint
-      ┬────────
+      ┬────────────────
       ╰─ 🛑 @MastodonEndpoint macro requires that GetUser.Request has explicite initializer defined.
       struct GetUser {
         struct Request {

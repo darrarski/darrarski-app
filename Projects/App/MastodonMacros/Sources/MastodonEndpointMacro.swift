@@ -1,12 +1,10 @@
-import SwiftCompilerPlugin
 import SwiftSyntax
-import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-enum MastodonEndpointMacro {}
+public enum MastodonEndpointMacro {}
 
 extension MastodonEndpointMacro: ExtensionMacro {
-  static func expansion(
+  public static func expansion(
     of node: SwiftSyntax.AttributeSyntax,
     attachedTo declaration: some SwiftSyntax.DeclGroupSyntax,
     providingExtensionsOf type: some SwiftSyntax.TypeSyntaxProtocol,
@@ -26,7 +24,7 @@ extension MastodonEndpointMacro: ExtensionMacro {
 }
 
 extension MastodonEndpointMacro: MemberMacro {
-  static func expansion<
+  public static func expansion<
     Declaration: DeclGroupSyntax,
     Context: MacroExpansionContext
   >(

@@ -69,6 +69,7 @@ extension [Target] {
     name: String,
     destinations: Destinations = Target.defaultDestinations,
     deploymentTargets: DeploymentTargets = Target.defaultDeploymentTargets,
+    dynamic: Bool = true,
     resources: ResourceFileElements? = nil,
     dependencies: [TargetDependency] = [],
     settings customizeSettings: (inout Settings) -> Void = { _ in },
@@ -81,7 +82,7 @@ extension [Target] {
       .target(
         name: name,
         destinations: destinations,
-        product: .framework,
+        product: dynamic ? .framework : .staticFramework,
         bundleId: "\(Target.bundleIdPrefix).\(name)",
         deploymentTargets: deploymentTargets,
         infoPlist: .extendingDefault(with: Target.infoPlistDefaults),
@@ -149,12 +150,9 @@ extension [Target] {
     name: String,
     deploymentTarget: String,
     dependencies: [TargetDependency] = [],
-    settings customizeSettings: (inout Settings) -> Void = { _ in },
-    testTarget: Bool = true,
-    testDependencies: [TargetDependency] = [],
-    testSettings customizeTestSettings: (inout Settings) -> Void = { _ in }
+    settings customizeSettings: (inout Settings) -> Void = { _ in }
   ) -> [Target] {
-    var targets: [Target] = [
+    [
       .target(
         name: name,
         destinations: .macOS,
@@ -171,23 +169,5 @@ extension [Target] {
         ).customized(with: customizeSettings)
       )
     ]
-    if testTarget {
-      targets.append(.target(
-        name: "\(name)Tests",
-        destinations: .macOS,
-        product: .unitTests,
-        bundleId: "\(Target.bundleIdPrefix).\(name)Tests",
-        deploymentTargets: .macOS(deploymentTarget),
-        infoPlist: .extendingDefault(with: Target.infoPlistDefaults),
-        sources: ["\(name)/Tests/**"],
-        dependencies: testDependencies,
-        settings: .settings(
-          base: SettingsDictionary()
-            .otherSwiftFlags(["$(inherited)"]),
-          defaultSettings: Target.defaultSettings
-        ).customized(with: customizeTestSettings)
-      ))
-    }
-    return targets
   }
 }

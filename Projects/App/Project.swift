@@ -60,7 +60,7 @@ let project = Project(
         "Mastodon/Resources/**",
       ],
       dependencies: [
-        .target(name: "MastodonMacros"),
+        .target(name: "MastodonMacrosPlugin"),
         .external(name: "ComposableArchitecture"),
       ],
       settings: {
@@ -71,20 +71,24 @@ let project = Project(
         .external(name: "SnapshotTesting"),
       ]
     ),
-    .macros(
+    .framework(
       name: "MastodonMacros",
-      deploymentTarget: "14.0",
+      destinations: .macOS,
+      deploymentTargets: .macOS("14.0"),
+      dynamic: false,
       dependencies: [
         .external(name: "SwiftSyntaxMacros"),
         .external(name: "SwiftCompilerPlugin"),
       ],
-      settings: {
-        $0.base.merge(.enableUserScriptSandboxing(false))
-      },
-      testTarget: false, // TODO: Fix issues in MastodonMacrosPluginTests.
       testDependencies: [
-        .target(name: "MastodonMacros"),
         .external(name: "MacroTesting"),
+      ]
+    ),
+    .macros(
+      name: "MastodonMacrosPlugin",
+      deploymentTarget: "14.0",
+      dependencies: [
+        .target(name: "MastodonMacros"),
       ]
     ),
     .framework(
