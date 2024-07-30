@@ -35,7 +35,7 @@ let package = Package(
     .package(url: "https://github.com/apple/swift-syntax.git", from: "510.0.2"),
     .package(url: "https://github.com/darrarski/swiftui-app-icon-creator.git", from: "1.2.0"),
     .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.12.0"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.12.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.12.1"),
     .package(url: "https://github.com/pointfreeco/swift-macro-testing.git", from: "0.5.1"),
     .package(url: "https://github.com/pointfreeco/swift-snapshot-testing.git", from: "1.17.2"),
     .package(url: "https://github.com/swiftcsv/SwiftCSV.git", from: "0.10.0"),
