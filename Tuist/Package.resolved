@@ -1,5 +1,5 @@
 {
-  "originHash" : "5e9531251238af9d5267e5e097785744536c262b351303e6104c00d6aefa97b6",
+  "originHash" : "ae9cfc366eb9c71d0c311c29e3355080f5f766b87868365312d85b6f5ed0f44a",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -134,6 +134,15 @@
       "state" : {
         "revision" : "d20ccc4b8266cf739eede58cdfc7e9c6ffb41cda",
         "version" : "1.5.1"
+      }
+    },
+    {
+      "identity" : "swiftcsv",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftcsv/SwiftCSV.git",
+      "state" : {
+        "revision" : "6ab5d0fe9b6ef3c79d717eefa70862df389e74d9",
+        "version" : "0.10.0"
       }
     },
     {

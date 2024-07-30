@@ -5,10 +5,12 @@ let workspace = Workspace(
   projects: [
     "./Projects/App",
     "./Projects/AppIcon",
+    "./Projects/Tools",
   ],
   additionalFiles: [
     "./README.md",
     "./LICENSE",
+    .folderReference(path: .relativeToRoot("web")),
   ],
   generationOptions: .options(
     enableAutomaticXcodeSchemes: true,
