@@ -35,6 +35,9 @@ OUTPUT_PATH="$OUTPUT_DIR/graph.png"
 OUTPUT_TESTS_PATH="$OUTPUT_DIR/graph-tests.png"
 OUTPUT_EXTERNAL_PATH="$OUTPUT_DIR/graph-external.png"
 
+echo "==> Generate graph..."
+stopwatch start
+
 tuist graph \
   --no-skip-test-targets \
   --skip-external-dependencies \
@@ -80,3 +83,6 @@ if [[ $OPEN == 1 ]]; then
   open "$OUTPUT_TESTS_PATH"
   open "$OUTPUT_PATH"
 fi
+
+echo "==> \"Generate graph\" finished in $(stopwatch print)"
+stopwatch stop

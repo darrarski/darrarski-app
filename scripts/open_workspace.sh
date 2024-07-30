@@ -23,4 +23,5 @@ for arg in "$@"; do
   esac
 done
 
+echo "==> Open workspace..."
 open "$ROOT_DIR/DarrarskiApp.xcworkspace" || exit $?

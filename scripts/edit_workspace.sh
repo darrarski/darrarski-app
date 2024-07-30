@@ -23,6 +23,12 @@ for arg in "$@"; do
   esac
 done
 
+echo "==> Edit workspace..."
+stopwatch start
+
 cd "$ROOT_DIR"
 setup_tuist
 tuist edit || exit $?
+
+echo "==> \"Edit workspace\" finished in $(stopwatch print)"
+stopwatch stop

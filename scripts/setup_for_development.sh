@@ -28,10 +28,15 @@ for arg in "$@"; do
   esac
 done
 
-setup_mise
+echo "==> Setup for development..."
+stopwatch start
 
+source "$ROOT_DIR/scripts/_setup_devtools.sh" || exit $?
 "$ROOT_DIR/scripts/install_spm_dependencies.sh" || exit $?
 "$ROOT_DIR/scripts/generate_workspace.sh" || exit $?
+
+echo "==> \"Setup for development\" finished in $(stopwatch print)"
+stopwatch stop
 
 if [[ $OPEN -eq 1 ]]; then
   "$ROOT_DIR/scripts/open_workspace.sh" || exit $?

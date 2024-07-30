@@ -28,6 +28,9 @@ for arg in "$@"; do
   esac
 done
 
+echo "==> Install SPM dependencies..."
+stopwatch start
+
 cd "$ROOT_DIR"
 setup_tuist
 
@@ -36,3 +39,6 @@ if [[ $UPDATE -eq 1 ]]; then
 else
   tuist install || exit $?
 fi
+
+echo "==> \"Install SPM dependencies\" finished in $(stopwatch print)"
+stopwatch stop
