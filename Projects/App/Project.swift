@@ -9,6 +9,7 @@ let project = Project(
       name: "DarrarskiApp",
       productName: "Darrarski",
       bundleDisplayName: "Darrarski",
+      appCategory: "public.app-category.business",
       dependencies: [
         .target(name: "AppFeature"),
       ]
