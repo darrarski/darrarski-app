@@ -16,7 +16,26 @@ Darrarski.app is as an example of a modular iOS & macOS application built with [
 
 ### Workspace structure
 
-![Darrarski.app workspace graph](web/assets/graph.png)
+<details open>
+<summary>Dependency graph</summary>
+
+![Darrarski.app dependency graph](web/assets/graph.png)
+
+</details>
+
+<details>
+<summary>Dependency graph with tests</summary>
+
+![Darrarski.app dependency graph with tests](web/assets/graph-tests.png)
+
+</details>
+
+<details>
+<summary>Dependency graph with external dependencies</summary>
+
+![Darrarski.app dependency graph with external dependencies](web/assets/graph-external.png)
+
+</details>
 
 The Xcode workspace and projects are generated from manfest files (like `Workspace.swift` and `Projects.swift`).
 
