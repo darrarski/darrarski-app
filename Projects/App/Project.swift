@@ -73,6 +73,8 @@ let project = Project(
     ),
     .framework(
       name: "MastodonMacros",
+      destinations: .macOS,
+      deploymentTargets: .macOS("14.0"),
       dynamic: false,
       dependencies: [
         .external(name: "SwiftSyntaxMacros"),
