@@ -146,7 +146,7 @@ extension [Target] {
 }
 
 extension [Target] {
-  public static func macros(
+  public static func macrosPlugin(
     name: String,
     deploymentTarget: String,
     dependencies: [TargetDependency] = [],
