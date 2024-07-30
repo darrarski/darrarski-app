@@ -11,8 +11,8 @@ struct AppTelemetryClient: Sendable {
   var initialize: @Sendable () -> Void
   var send: @Sendable (AppTelemetrySignal) -> Void
 
-  func send(_ signalType: String) {
-    send(AppTelemetrySignal(name: signalType))
+  func send(_ signalName: String) {
+    send(AppTelemetrySignal(name: signalName))
   }
 }
 
