@@ -1,10 +1,24 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Xcode
 xcuserdata/
+*.xcodeproj
+*.xcworkspace
 
-# Ignore individual Package.resolved files. The main Package.resolved is already contained in the workspace. Use the workspace for development, instead of opening Package.swift directly in Xcode.
-/app/Package.resolved
-/app-icon/Package.resolved
-/scripts/Package.resolved
+# Tuist
+graph.dot
+Derived/
+Tuist/.build
 
-# Ignore WhatToTest files used by Xcode Cloud when deploying to TestFlight & App Store.
+# WhatToTest files used by Xcode Cloud when deploying to TestFlight & App Store.
 TestFlight/WhatToTest.*.txt
