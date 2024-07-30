@@ -28,6 +28,9 @@ for arg in "$@"; do
   esac
 done
 
+echo "==> Generate workspace..."
+stopwatch start
+
 cd "$ROOT_DIR"
 setup_tuist
 tuist generate --no-open || exit $?
@@ -35,3 +38,6 @@ tuist generate --no-open || exit $?
 if [[ $OPEN -eq 1 ]]; then
   "$ROOT_DIR/scripts/open_workspace.sh" || exit $?
 fi
+
+echo "==> \"Generate workspace\" finished in $(stopwatch print)"
+stopwatch stop

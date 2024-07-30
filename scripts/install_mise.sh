@@ -87,9 +87,15 @@ function install_mise {
 }
 
 if [[ $FORCE -eq 1 || ! $(is_mise_installed) -eq 1 ]]; then
+  echo "==> Install mise..."
+  stopwatch start
+
   if [[ $BINARY -eq 1 ]]; then
     download_mise_binary
   else
     install_mise
   fi
+
+  echo "==> \"Install mise\" finished in $(stopwatch print)"
+  stopwatch stop
 fi

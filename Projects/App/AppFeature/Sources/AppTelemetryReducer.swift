@@ -22,8 +22,8 @@ struct AppTelemetryReducer<State, Action>: Reducer, Sendable {
     let action = UncheckedSendable(action)
     return .run(priority: .low) { send in
       appTelemetry.send(.init(
-        type: describe(action.wrappedValue),
-        payload: payload(for: action.wrappedValue)
+        name: describe(action.wrappedValue),
+        parameters: self.parameters(for: action.wrappedValue)
       ))
     }
   }
@@ -72,37 +72,37 @@ struct AppTelemetryReducer<State, Action>: Reducer, Sendable {
     return sanitizedName
   }
 
-  private func payload(for value: Any) -> [String: String] {
-    var payload: [String: String] = [:]
+  private func parameters(for value: Any) -> [String: String] {
+    var parameters: [String: String] = [:]
     if let error = value as? any Error {
-      payload["error.localizedDescription"] = error.localizedDescription
+      parameters["error.localizedDescription"] = error.localizedDescription
       let nsError = error as NSError
-      payload["error.domain"] = nsError.domain
-      payload["error.code"] = "\(nsError.code)"
+      parameters["error.domain"] = nsError.domain
+      parameters["error.code"] = "\(nsError.code)"
     }
-    if let providedPayload = (value as? any AppTelemetryPayloadProviding)?.appTelemetryPayload {
-      payload.addPayload(providedPayload)
+    if let providedParameters = (value as? any AppTelemetryParametersProviding)?.appTelemetryParameters {
+      parameters.addParameters(providedParameters)
     }
     let mirror = Mirror(reflecting: value)
     switch mirror.displayStyle {
     case .enum:
       if let child = mirror.children.first {
-        let childPayload = self.payload(for: child.value)
-        payload.addPayload(childPayload)
+        let childParameters = self.parameters(for: child.value)
+        parameters.addParameters(childParameters)
       }
     case .optional:
       if let child = mirror.children.first {
-        payload = self.payload(for: child.value)
+        parameters = self.parameters(for: child.value)
       }
     case .tuple:
       for (_, value) in mirror.children {
-        let childPayload = self.payload(for: value)
-        payload.addPayload(childPayload)
+        let childParameters = self.parameters(for: value)
+        parameters.addParameters(childParameters)
       }
     default:
       break
     }
-    return payload
+    return parameters
   }
 
   private func toupleChildLabel(_ label: String?) -> String? {
@@ -117,21 +117,21 @@ private extension Collection {
 }
 
 private extension [String: String] {
-  mutating func addPayload(_ payload: [String: String]) {
-    for (key, value) in payload {
-      addPayload(key, value)
+  mutating func addParameters(_ parameters: [String: String]) {
+    for (key, value) in parameters {
+      addParameter(key, value)
     }
   }
 
-  mutating func addPayload(_ key: String, _ value: String) {
+  mutating func addParameter(_ key: String, _ value: String) {
     if self[key] == nil {
       self[key] = value
     } else if let match = key.matches(of: #/^(?<key>.*)_(?<number>[0-9]+)$/#).first {
       let duplicateKey = match.output.key
       let nextNumber = (Int(match.output.number) ?? 0) + 1
-      addPayload("\(duplicateKey)_\(nextNumber)", value)
+      addParameter("\(duplicateKey)_\(nextNumber)", value)
     } else {
-      addPayload("\(key)_1", value)
+      addParameter("\(key)_1", value)
     }
   }
 }

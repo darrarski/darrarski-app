@@ -55,8 +55,8 @@ struct App: SwiftUI.App {
     $0.openURL = .init { [dependencies = $0] url in
       defer {
         dependencies.appTelemetry.send(.init(
-          type: "OpenURL",
-          payload: ["url": url.absoluteString]
+          name: "OpenURL",
+          parameters: ["url": url.absoluteString]
         ))
       }
       return await dependencies.openURL(url)

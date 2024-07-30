@@ -11,8 +11,8 @@ struct AppTelemetryClient: Sendable {
   var initialize: @Sendable () -> Void
   var send: @Sendable (AppTelemetrySignal) -> Void
 
-  func send(_ signalType: String) {
-    send(AppTelemetrySignal(type: signalType))
+  func send(_ signalName: String) {
+    send(AppTelemetrySignal(name: signalName))
   }
 }
 
@@ -27,23 +27,24 @@ extension AppTelemetryClient: TestDependencyKey {
   static let testValue = AppTelemetryClient()
   static let previewValue = AppTelemetryClient(
     initialize: { log.value.debug("initialize") },
-    send: { log.value.debug("send \($0.type)\($0.payload.isEmpty ? "" : " \($0.payload)")") }
+    send: { log.value.debug("send \($0.name)\($0.parameters.isEmpty ? "" : " \($0.parameters)")") }
   )
 }
 
 extension AppTelemetryClient: DependencyKey {
   static let liveValue = AppTelemetryClient(
     initialize: {
-      guard !TelemetryManager.isInitialized, let appID = Self.appID() else { return }
-      TelemetryManager.initialize(with: .init(appID: appID))
+      guard !TelemetryManager.isInitialized,
+            let appID = Self.appID() else { return }
+      TelemetryDeck.initialize(config: .init(appID: appID))
     },
     send: { signal in
       guard TelemetryManager.isInitialized else { return }
-      TelemetryManager.send(
-        signal.type,
-        for: signal.clientUser,
+      TelemetryDeck.signal(
+        signal.name,
+        parameters: signal.parameters,
         floatValue: signal.floatValue,
-        with: signal.payload
+        customUserID: signal.customUserID
       )
     }
   )

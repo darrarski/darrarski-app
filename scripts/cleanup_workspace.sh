@@ -53,6 +53,9 @@ function git_clean {
   eval "$command $@" || exit $?
 }
 
+echo "==> Clean up workspace..."
+stopwatch start
+
 if [[ ! $FORCE -eq 1 ]]; then
   echo "Dry-run. Run again with --force flag to perform clean up."
 fi
@@ -67,4 +70,11 @@ if [[ $ALL -eq 1 || $TUIST -eq 1 ]]; then
   echo "==> Tuist..."
   cd "$ROOT_DIR"
   git_clean "./Tuist"
+fi
+
+echo "==> \"Clean up workspace\" finished in $(stopwatch print)"
+stopwatch stop
+
+if [[ ! $FORCE -eq 1 ]]; then
+  echo "Dry-run. Run again with --force flag to perform clean up."
 fi
