@@ -30,10 +30,6 @@ let project = Project(
       name: "AppShared",
       resources: [
         "AppShared/Resources/**",
-      ],
-      dependencies: [
-        .target(name: "Mastodon"),
-        .external(name: "SwiftHTMLtoMarkdown"),
       ]
     ),
     .framework(

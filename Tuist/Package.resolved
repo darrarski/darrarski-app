@@ -1,5 +1,5 @@
 {
-  "originHash" : "5da0d73b0ea4580bb137f06003c94ef460c17f839cc536d1a5d18e1b9bdbaa3e",
+  "originHash" : "1b7777963b3deee1191d09f602e0273f6a1db78e84056024649871b9f82d31f8",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -143,24 +143,6 @@
       "state" : {
         "revision" : "6ab5d0fe9b6ef3c79d717eefa70862df389e74d9",
         "version" : "0.10.0"
-      }
-    },
-    {
-      "identity" : "swifthtmltomarkdown",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git",
-      "state" : {
-        "revision" : "d533b9cb47a8defaa8d9432fad20ecf5964c0668",
-        "version" : "1.1.1"
-      }
-    },
-    {
-      "identity" : "swiftsoup",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/scinfu/SwiftSoup.git",
-      "state" : {
-        "revision" : "e2d11208519549c2e5798d70190472045633f22f",
-        "version" : "2.7.3"
       }
     },
     {
