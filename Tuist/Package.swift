@@ -31,6 +31,7 @@ let packageSettings = PackageSettings(
 let package = Package(
   name: "",
   dependencies: [
+    .package(url: "https://github.com/ActuallyTaylor/SwiftHTMLToMarkdown.git", from: "1.1.1"),
     .package(url: "https://github.com/apple/swift-syntax.git", from: "510.0.2"),
     .package(url: "https://github.com/darrarski/swiftui-app-icon-creator.git", from: "1.2.0"),
     .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.12.0"),

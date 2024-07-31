@@ -30,6 +30,9 @@ let project = Project(
       name: "AppShared",
       resources: [
         "AppShared/Resources/**",
+      ],
+      testDependencies: [
+        .external(name: "CustomDump"),
       ]
     ),
     .framework(
@@ -50,6 +53,7 @@ let project = Project(
         .target(name: "Mastodon"),
         .external(name: "ComposableArchitecture"),
         .external(name: "Kingfisher"),
+        .external(name: "SwiftHTMLtoMarkdown"),
       ]
     ),
     .framework(
