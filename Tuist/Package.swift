@@ -1,5 +1,5 @@
 // swift-tools-version: 5.10
-import PackageDescription
+@preconcurrency import PackageDescription
 
 #if TUIST
 import ProjectDescription
