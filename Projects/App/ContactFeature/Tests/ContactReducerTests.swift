@@ -87,19 +87,17 @@ final class ContactReducerTests: XCTestCase {
       iconURL: nil,
       target: .system
     )
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
     let store = TestStore(initialState: ContactReducer.State()) {
       ContactReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.linkButtonTapped(link)))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [link.url])
-    }
+    expectNoDifference(didOpenURL.value, [link.url])
   }
 }

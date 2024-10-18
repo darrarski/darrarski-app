@@ -115,7 +115,7 @@ final class ProjectsReducerTests: XCTestCase {
   }
 
   @MainActor func testViewProjectCardTapped() async {
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
     let projects = IdentifiedArray(uniqueElements: [Project].preview)
     let project = projects.first { $0.url != nil }!
     let store = TestStore(initialState: ProjectsReducer.State(
@@ -124,14 +124,12 @@ final class ProjectsReducerTests: XCTestCase {
       ProjectsReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.projectCardTapped(project.id)))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [project.url!])
-    }
+    expectNoDifference(didOpenURL.value, [project.url!])
   }
 }

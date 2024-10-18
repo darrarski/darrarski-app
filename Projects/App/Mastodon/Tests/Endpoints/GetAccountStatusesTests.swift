@@ -7,11 +7,11 @@ import XCTest
 
 final class GetAccountStatusesTests: XCTestCase {
   func testRequest() async throws {
-    let urlRequests = ActorIsolated<[URLRequest]>([])
+    let urlRequests = LockIsolated<[URLRequest]>([])
     let responseStub = GetAccountStatuses.Response.preview
     let response = try await withDependencies {
       $0.httpClient.dataForRequest = { urlRequest in
-        await urlRequests.withValue { $0.append(urlRequest) }
+        urlRequests.withValue { $0.append(urlRequest) }
         return (
           GetAccountStatuses.Response.previewJSON,
           HTTPURLResponse.stub(200)
@@ -25,14 +25,12 @@ final class GetAccountStatusesTests: XCTestCase {
       )
     }
 
-    await urlRequests.withValue {
-      XCTAssertEqual($0.count, 1)
-      if let urlRequest = $0.first {
-        assertInlineSnapshot(of: urlRequest, as: .raw) {
+    XCTAssertEqual(urlRequests.value.count, 1)
+    if let urlRequest = urlRequests.first {
+      assertInlineSnapshot(of: urlRequest, as: .raw) {
           """
           GET https://mastodon.social/api/v1/accounts/account%20id/statuses?exclude_replies=true&limit=1337
           """
-        }
       }
     }
     expectNoDifference(response, responseStub)
