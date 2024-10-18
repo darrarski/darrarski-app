@@ -49,9 +49,6 @@ public enum OtherSwiftFlags {
 #if !hasFeature(DisableOutwardActorInference)
     components.append(contentsOf: [enableUpcomingFeature, "DisableOutwardActorInference"])
 #endif
-#if !hasFeature(InternalImportsByDefault)
-    components.append(contentsOf: [enableUpcomingFeature, "InternalImportsByDefault"])
-#endif
 #if !hasFeature(IsolatedDefaultValues)
     components.append(contentsOf: [enableUpcomingFeature, "IsolatedDefaultValues"])
 #endif

@@ -8,7 +8,7 @@ final class StatusReducerTests: XCTestCase {
     let status = [Status].preview.first { $0.card != nil }!
     let card = status.card!
     let cardURL = URL(string: card.url)!
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
 
     let store = TestStore(initialState: StatusReducer.State(
       status: status
@@ -16,20 +16,18 @@ final class StatusReducerTests: XCTestCase {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.previewCardTapped))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [cardURL])
-    }
+    expectNoDifference(didOpenURL.value, [cardURL])
   }
 
   @MainActor func testViewPreviewCardTappedOnRebloggedStatus() async {
     let status = [Status].preview.first { $0.reblog?.card != nil }!
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
 
     let store = TestStore(initialState: StatusReducer.State(
       status: status
@@ -37,20 +35,18 @@ final class StatusReducerTests: XCTestCase {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.previewCardTapped))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [URL(string: status.reblog!.card!.url)!])
-    }
+    expectNoDifference(didOpenURL.value, [URL(string: status.reblog!.card!.url)!])
   }
 
   @MainActor func testViewLinkTapped() async {
     let url = URL(string: "https://darrarski.pl")!
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
 
     let store = TestStore(initialState: StatusReducer.State(
       status: [Status].preview.first!
@@ -58,15 +54,13 @@ final class StatusReducerTests: XCTestCase {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.linkTapped(url)))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [url])
-    }
+    expectNoDifference(didOpenURL.value, [url])
   }
 
   @MainActor func testViewAttachmentTapped_Invalid() async {
@@ -84,20 +78,18 @@ final class StatusReducerTests: XCTestCase {
     let attachment = status.reblog!.mediaAttachments
       .first { $0.type == .video }!
     let attachmentURL = URL(string: attachment.url)!
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.attachmentTapped(attachment.id)))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [attachmentURL])
-    }
+    expectNoDifference(didOpenURL.value, [attachmentURL])
   }
 
   @MainActor func testViewAttachmentTapped_Image() async {
@@ -118,20 +110,18 @@ final class StatusReducerTests: XCTestCase {
       $0.quickLookItem = nil
     }
 #else
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.attachmentTapped(attachment.id)))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [attachmentURL])
-    }
+    expectNoDifference(didOpenURL.value, [attachmentURL])
 #endif
   }
 
@@ -153,41 +143,37 @@ final class StatusReducerTests: XCTestCase {
   @MainActor func testViewHeaderTapped() async {
     let status = [Status].preview.first { $0.reblog == nil }!
     let statusURL = URL(string: status.url!)!
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
 
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.headerTapped))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [statusURL])
-    }
+    expectNoDifference(didOpenURL.value, [statusURL])
   }
 
   @MainActor func testViewReblogHeaderTapped() async {
     let status = [Status].preview.first { $0.reblog != nil }!
     let statusURL = URL(string: status.reblog!.url!)!
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
 
     let store = TestStore(initialState: StatusReducer.State(status: status)) {
       StatusReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.headerTapped))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [statusURL])
-    }
+    expectNoDifference(didOpenURL.value, [statusURL])
   }
 
   @MainActor func testStateDisplayStatus() {

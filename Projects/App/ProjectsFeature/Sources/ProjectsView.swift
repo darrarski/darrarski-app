@@ -200,6 +200,7 @@ public struct ProjectsView: View {
   }
 
   @Sendable
+  nonisolated
   static func verticalScrollPositionHueRotation(
     content: EmptyVisualEffect,
     geometryProxy: GeometryProxy

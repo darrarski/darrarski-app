@@ -6,14 +6,14 @@ import XCTest
 final class FeedReducerTests: XCTestCase {
   @MainActor func testFetchStatuses() async {
     let clock = TestClock()
-    let didFetch = ActorIsolated<[Mastodon.GetAccountStatuses.Request]>([])
+    let didFetch = LockIsolated<[Mastodon.GetAccountStatuses.Request]>([])
     let statuses = [Status].preview
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
       $0.continuousClock = clock
       $0.mastodon.getAccountStatuses.send = { request in
-        await didFetch.withValue { $0.append(request) }
+        didFetch.withValue { $0.append(request) }
         return statuses
       }
     }
@@ -22,13 +22,11 @@ final class FeedReducerTests: XCTestCase {
       $0.isLoading = true
     }
     await clock.advance(by: .seconds(0.5))
-    await didFetch.withValue {
-      expectNoDifference($0, [.init(
-        accountId: FeedReducer.mastodonAccountId,
-        limit: 40,
-        excludeReplies: true
-      )])
-    }
+    expectNoDifference(didFetch.value, [.init(
+      accountId: FeedReducer.mastodonAccountId,
+      limit: 40,
+      excludeReplies: true
+    )])
     await store.receive(\.fetchStatusesResult.success) {
       $0.isLoading = false
       $0.statuses = .init(
@@ -94,21 +92,19 @@ final class FeedReducerTests: XCTestCase {
   }
 
   @MainActor func testViewSeeMoreButtonTapped() async {
-    let didOpenURL = ActorIsolated<[URL]>([])
+    let didOpenURL = LockIsolated<[URL]>([])
     let store = TestStore(initialState: FeedReducer.State()) {
       FeedReducer()
     } withDependencies: {
       $0.openURL = .init { url in
-        await didOpenURL.withValue { $0.append(url) }
+        didOpenURL.withValue { $0.append(url) }
         return true
       }
     }
 
     await store.send(.view(.seeMoreButtonTapped))
-    await didOpenURL.withValue {
-      expectNoDifference($0, [
-        FeedReducer.mastodonAccountURL
-      ])
-    }
+    expectNoDifference(didOpenURL.value, [
+      FeedReducer.mastodonAccountURL
+    ])
   }
 }
