@@ -22,7 +22,7 @@ public struct FeedView: View {
         if showPlaceholder {
           placeholderView
         } else {
-          ForEach(store.scope(state: \.statuses, action: \.status)) { statusStore in
+          ForEach(Array(store.scope(state: \.statuses, action: \.status))) { statusStore in
             StatusView(store: statusStore)
           }
           .transition(
