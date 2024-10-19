@@ -10,19 +10,25 @@ assignees: ''
 
 <!-- A clear and concise description of what the bug is. -->
 
+## Environment
+
+- <!-- App version, platform. -->
+- <!-- OS version. -->
+- <!-- Other info. -->
+
 ## Steps to reproduce
 
 1. <!-- e.g. Go to ... -->
 2. <!-- e.g. Click on ... -->
 3. <!-- e.g. Scroll down to ... -->
 
-## Expected behavior
+### Expected behavior
 
 <!-- A clear and concise description of what you expected to happen. -->
 
 4. <!-- e.g. Expected to see ... -->
 
-## Actual behavior
+### Actual behavior
 
 <!-- What actually happened - describe the unexpected behavior. -->
 
