@@ -43,8 +43,6 @@ public struct StatusReducer: Reducer, Sendable {
 
   public enum Action: Sendable, ViewAction {
     case quickLookItem(PresentationAction<Never>)
-    case renderText
-    case textRendered(Result<AttributedString, any Error>)
     case view(View)
 
     @CasePathable
@@ -54,34 +52,17 @@ public struct StatusReducer: Reducer, Sendable {
       case linkTapped(URL)
       case previewCardTapped
       case quickLookItemChanged(URL?)
-      case textSourceChanged
     }
   }
 
   public init() {}
 
   @Dependency(\.openURL) var openURL
-  @Dependency(\.statusTextRenderer) var render
 
   public var body: some ReducerOf<Self> {
     Reduce<State, Action> { state, action in
       switch action {
       case .quickLookItem(_):
-        return .none
-
-      case .renderText:
-        let html = state.textSource
-        return .run { send in
-          let result = Result { try render(html) }
-          await send(.textRendered(result))
-        }
-
-      case .textRendered(.failure(_)):
-        state.text = AttributedString(state.textSource)
-        return .none
-
-      case .textRendered(.success(let text)):
-        state.text = text
         return .none
 
       case .view(.attachmentTapped(let id)):
@@ -121,9 +102,6 @@ public struct StatusReducer: Reducer, Sendable {
       case .view(.quickLookItemChanged(let url)):
         state.quickLookItem = url
         return .none
-
-      case .view(.textSourceChanged):
-        return .send(.renderText)
       }
     }
     .ifLet(\.$quickLookItem, action: \.quickLookItem) {
