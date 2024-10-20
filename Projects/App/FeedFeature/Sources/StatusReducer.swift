@@ -25,6 +25,10 @@ public struct StatusReducer: Reducer, Sendable {
       status.reblog?.value ?? status
     }
 
+    var textSource: String {
+      displayStatus.content
+    }
+
     var attachments: IdentifiedArrayOf<MediaAttachment> {
       var attachments = IdentifiedArrayOf<MediaAttachment>()
       attachments.append(contentsOf: status.mediaAttachments)
@@ -50,7 +54,7 @@ public struct StatusReducer: Reducer, Sendable {
       case linkTapped(URL)
       case previewCardTapped
       case quickLookItemChanged(URL?)
-      case textTask
+      case textSourceChanged
     }
   }
 
@@ -66,14 +70,14 @@ public struct StatusReducer: Reducer, Sendable {
         return .none
 
       case .renderText:
-        let html = state.displayStatus.content
+        let html = state.textSource
         return .run { send in
           let result = Result { try render(html) }
           await send(.textRendered(result))
         }
 
       case .textRendered(.failure(_)):
-        state.text = AttributedString(state.displayStatus.content)
+        state.text = AttributedString(state.textSource)
         return .none
 
       case .textRendered(.success(let text)):
@@ -118,11 +122,8 @@ public struct StatusReducer: Reducer, Sendable {
         state.quickLookItem = url
         return .none
 
-      case .view(.textTask):
-        if state.text == nil {
-          return .send(.renderText)
-        }
-        return .none
+      case .view(.textSourceChanged):
+        return .send(.renderText)
       }
     }
     .ifLet(\.$quickLookItem, action: \.quickLookItem) {

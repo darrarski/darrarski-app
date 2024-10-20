@@ -65,8 +65,12 @@ public struct FeedReducer: Reducer, Sendable {
         state.isLoading = false
         switch result {
         case .success(let statuses):
-          state.statuses = .init(
-            uniqueElements: statuses.map { StatusReducer.State(status:$0) }
+          state.statuses = IdentifiedArray(
+            uniqueElements: statuses.map { status in
+              var state = state.statuses[id: status.id] ?? StatusReducer.State(status: status)
+              state.status = status
+              return state
+            }
           )
 
         case .failure(_):

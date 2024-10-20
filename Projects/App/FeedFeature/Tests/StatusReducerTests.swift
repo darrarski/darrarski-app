@@ -223,14 +223,12 @@ final class StatusReducerTests: XCTestCase {
       }
     }
 
-    await store.send(.view(.textTask))
+    await store.send(.view(.textSourceChanged))
     await store.receive(\.renderText)
     expectNoDifference(didRender.value, [status.content])
     await store.receive(\.textRendered.success) {
       $0.text = renderedText
     }
-
-    await store.send(.view(.textTask))
   }
 
   @MainActor func testTextRenderingFailure() async {
@@ -245,7 +243,7 @@ final class StatusReducerTests: XCTestCase {
       $0.statusTextRenderer.render = { _ in throw failure }
     }
 
-    await store.send(.view(.textTask))
+    await store.send(.view(.textSourceChanged))
     await store.receive(\.renderText)
     await store.receive(\.textRendered.failure) {
       $0.text = AttributedString(status.content)

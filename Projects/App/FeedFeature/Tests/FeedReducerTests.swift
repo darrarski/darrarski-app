@@ -107,4 +107,34 @@ final class FeedReducerTests: XCTestCase {
       FeedReducer.mastodonAccountURL
     ])
   }
+
+  @MainActor func testReloadStatusesPreservesTheirStates() async {
+    let statuses = Array([Status].preview[0...2])
+    let store = TestStore(initialState: FeedReducer.State(
+      statuses: [
+        StatusReducer.State(
+          status: statuses[0],
+          text: "Status 0 text"
+        ),
+        StatusReducer.State(
+          status: statuses[1],
+          text: "Status 1 text"
+        ),
+        StatusReducer.State(
+          status: statuses[2],
+          text: "Status 2 text"
+        ),
+      ],
+      isLoading: true
+    )) {
+      FeedReducer()
+    } withDependencies: {
+      $0.continuousClock = ImmediateClock()
+      $0.mastodon.getAccountStatuses.send = { _ in [] }
+    }
+
+    await store.send(.fetchStatusesResult(.success(statuses))) {
+      $0.isLoading = false
+    }
+  }
 }

@@ -97,7 +97,7 @@ The project is integrated with [Xcode Cloud](https://developer.apple.com/xcode-c
 
 ## 🛠 Develop
 
-- Use Xcode (version ≥ 15.4).
+- Use Xcode (version ≥ 16.0).
 - Clone the repository or create a fork & clone it.
 - Run `setup_for_development.sh` script to generate Xcode workspace and set everything up for development:
     ```sh

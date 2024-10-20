@@ -33,7 +33,7 @@ struct App: SwiftUI.App {
       case .feed(.status(.element(_, .view(.linkTapped(_))))): true
       case .feed(.status(.element(_, .view(.previewCardTapped)))): true
       case .feed(.status(.element(_, .view(.quickLookItemChanged(_))))): true
-      case .feed(.status(.element(_, .view(.textTask)))): false
+      case .feed(.status(.element(_, .view(.textSourceChanged)))): false
       case .feed(.view(.refreshButtonTapped)): true
       case .feed(.view(.refreshTask)): true
       case .feed(.view(.seeMoreButtonTapped)): true
