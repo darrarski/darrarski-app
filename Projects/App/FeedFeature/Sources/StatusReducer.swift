@@ -65,6 +65,8 @@ public struct StatusReducer: Reducer, Sendable {
 
   public var body: some ReducerOf<Self> {
     Reduce<State, Action> { state, action in
+      enum CancelId: Hashable { case renderText(String) }
+
       switch action {
       case .quickLookItem(_):
         return .none
@@ -72,9 +74,11 @@ public struct StatusReducer: Reducer, Sendable {
       case .renderText:
         let html = state.textSource
         return .run { send in
+          try Task.checkCancellation()
           let result = Result { try render(html) }
           await send(.textRendered(result))
         }
+        .cancellable(id: CancelId.renderText(html), cancelInFlight: true)
 
       case .textRendered(.failure(_)):
         state.text = AttributedString(state.textSource)
