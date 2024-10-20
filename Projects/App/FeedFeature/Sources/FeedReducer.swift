@@ -72,11 +72,15 @@ public struct FeedReducer: Reducer, Sendable {
               return state
             }
           )
+          return .merge(
+            state.statuses
+              .filter { $0.text == nil }
+              .map { .send(.status(.element(id: $0.id, action: .renderText))) }
+          )
 
         case .failure(_):
-          break
+          return .none
         }
-        return .none
 
       case .status(_):
         return .none
