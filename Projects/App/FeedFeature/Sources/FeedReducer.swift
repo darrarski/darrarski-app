@@ -20,7 +20,8 @@ public struct FeedReducer: Reducer, Sendable {
 
   public enum Action: Sendable, ViewAction {
     case fetchStatuses
-    case fetchStatusesResult(Result<[Mastodon.Status], any Error>)
+    case fetchStatusesResult(Result<IdentifiedArrayOf<StatusReducer.State>, any Error>)
+    case statusRenderingFailed(Status.ID, any Error)
     case status(IdentifiedActionOf<StatusReducer>)
     case view(View)
 
@@ -38,6 +39,7 @@ public struct FeedReducer: Reducer, Sendable {
   @Dependency(\.continuousClock) var clock
   @Dependency(\.mastodon) var mastodon
   @Dependency(\.openURL) var openURL
+  @Dependency(\.statusTextRenderer) var render
   static let mastodonAccountId = "108131495937150285"
   static let mastodonAccountURL = URL(string: "https://mastodon.social/@darrarski")!
 
@@ -48,16 +50,35 @@ public struct FeedReducer: Reducer, Sendable {
       switch action {
       case .fetchStatuses:
         state.isLoading = true
+        let oldStates = state.statuses
         return .run { send in
           try await clock.sleep(for: .seconds(0.5))
-          let result = await Result {
-            try await mastodon.getAccountStatuses(
+          let statuses: [Mastodon.Status]
+          do {
+            statuses = try await mastodon.getAccountStatuses(
               accountId: Self.mastodonAccountId,
               limit: 40,
               excludeReplies: true
             )
+          } catch {
+            await send(.fetchStatusesResult(.failure(error)))
+            return
           }
-          await send(.fetchStatusesResult(result))
+          var newStates: IdentifiedArrayOf<StatusReducer.State> = []
+          for status in statuses {
+            let oldState = oldStates[id: status.id]
+            var newState = oldState ?? StatusReducer.State(status: status)
+            newState.status = status
+            if newState.text == nil || newState.textSource != oldState?.textSource {
+              do {
+                newState.text = try render(newState.textSource)
+              } catch {
+                await send(.statusRenderingFailed(status.id, error))
+              }
+            }
+            newStates.append(newState)
+          }
+          await send(.fetchStatusesResult(.success(newStates)))
         }
         .cancellable(id: CancelId.fetchStatuses, cancelInFlight: true)
 
@@ -65,18 +86,14 @@ public struct FeedReducer: Reducer, Sendable {
         state.isLoading = false
         switch result {
         case .success(let statuses):
-          state.statuses = IdentifiedArray(
-            uniqueElements: statuses.map { status in
-              var state = state.statuses[id: status.id] ?? StatusReducer.State(status: status)
-              state.status = status
-              return state
-            }
-          )
-          return .none
-
+          state.statuses = statuses
         case .failure(_):
-          return .none
+          break
         }
+        return .none
+
+      case .statusRenderingFailed(_, _):
+        return .none
 
       case .status(_):
         return .none

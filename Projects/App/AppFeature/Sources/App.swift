@@ -23,6 +23,7 @@ struct App: SwiftUI.App {
       case .feed(.fetchStatuses): false
       case .feed(.fetchStatusesResult(.failure(_))): true
       case .feed(.fetchStatusesResult(.success(_))): false
+      case .feed(.statusRenderingFailed(_, _)): true
       case .feed(.status(.element(_, .quickLookItem(.dismiss)))): true
       case .feed(.status(.element(_, .quickLookItem(.presented(_))))): false
       case .feed(.status(.element(_, .view(.attachmentTapped(_))))): true
