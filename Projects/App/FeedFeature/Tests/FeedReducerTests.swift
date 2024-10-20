@@ -96,7 +96,7 @@ final class FeedReducerTests: XCTestCase {
     }
     await clock.advance(by: .seconds(0.5))
     await store.receive { action in
-      guard case .statusRenderingFailed(let id, let error) = action,
+      guard case .statusTextRenderingFailed(let id, let error) = action,
             let error = error as? Failure else {
         return false
       }

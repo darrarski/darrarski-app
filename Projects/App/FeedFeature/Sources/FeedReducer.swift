@@ -21,7 +21,7 @@ public struct FeedReducer: Reducer, Sendable {
   public enum Action: Sendable, ViewAction {
     case fetchStatuses
     case fetchStatusesResult(Result<IdentifiedArrayOf<StatusReducer.State>, any Error>)
-    case statusRenderingFailed(Status.ID, any Error)
+    case statusTextRenderingFailed(Status.ID, any Error)
     case status(IdentifiedActionOf<StatusReducer>)
     case view(View)
 
@@ -73,7 +73,7 @@ public struct FeedReducer: Reducer, Sendable {
               do {
                 newState.text = try render(newState.textSource)
               } catch {
-                await send(.statusRenderingFailed(status.id, error))
+                await send(.statusTextRenderingFailed(status.id, error))
               }
             }
             newStates.append(newState)
@@ -92,7 +92,7 @@ public struct FeedReducer: Reducer, Sendable {
         }
         return .none
 
-      case .statusRenderingFailed(_, _):
+      case .statusTextRenderingFailed(_, _):
         return .none
 
       case .status(_):
