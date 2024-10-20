@@ -16,7 +16,6 @@ final class FeedReducerTests: XCTestCase {
         didFetch.withValue { $0.append(request) }
         return statuses
       }
-      $0.statusTextRenderer.render = { AttributedString($0) }
     }
 
     await store.send(.fetchStatuses) {
@@ -33,14 +32,6 @@ final class FeedReducerTests: XCTestCase {
       $0.statuses = .init(
         uniqueElements: statuses.map { StatusReducer.State(status: $0) }
       )
-    }
-    for status in statuses {
-      await store.receive(\.status[id: status.id].renderText)
-    }
-    for status in statuses {
-      await store.receive(\.status[id: status.id].textRendered.success) {
-        $0.statuses[id: status.id]!.text = AttributedString($0.statuses[id: status.id]!.textSource)
-      }
     }
   }
 

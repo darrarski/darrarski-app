@@ -42,10 +42,6 @@ public struct StatusView: View {
     Text(text)
       .redacted(reason: isPlaceholder ? .placeholder : [])
       .disabled(isPlaceholder)
-      .onChange(of: store.textSource, initial: true) { old, new in
-        guard old != new || store.text == nil else { return }
-        send(.textSourceChanged)
-      }
       .environment(\.openURL, OpenURLAction { url in
         send(.linkTapped(url))
         return .discarded
