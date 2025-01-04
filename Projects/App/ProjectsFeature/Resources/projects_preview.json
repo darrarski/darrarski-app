@@ -846,6 +846,20 @@
     "type" : "Application"
   },
   {
+    "date" : "2024.04.01",
+    "name" : "IKO iOS (PKO BP)",
+    "tags" : [
+      "Objective-C",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "UIKit",
+      "iOS"
+    ],
+    "type" : "Application",
+    "url" : "https://iko.pkobp.pl/"
+  },
+  {
     "date" : "2024.07.20",
     "name" : "SwiftShell",
     "tags" : [
