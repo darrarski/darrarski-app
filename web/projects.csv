@@ -2,7 +2,7 @@
 2011.05.20,Application,Photo Denoiser iOS,"Objective-C, UIKit, iOS",https://wp.darrarski.pl/2011/05/photodenoiser/
 2013.04.02,Application,ShapeFlick,"Objective-C, SpriteKit, iOS",
 2013.04.08,Application,Znany Lekarz iOS,"Objective-C, UIKit, iOS",https://apps.apple.com/app/id610303915
-2013.04.10,Application,http://Charged.fm iOS app,"Objective-C, UIKit, iOS",https://www.behance.net/gallery/20162709/chargedfm
+2013.04.10,Application,Charged.fm iOS app,"Objective-C, UIKit, iOS",https://www.behance.net/gallery/20162709/chargedfm
 2013.05.13,Application,QC One Horti iOS app,"Objective-C, UIKit, iOS",https://qcone.com
 2013.07.01,Application,SmartPass SVA Convergence,"Objective-C, UIKit, iOS",https://wp.darrarski.pl/2014/09/vodafone-smartpass-ios/
 2013.10.24,Application,Positionly iOS,"Objective-C, UIKit, iOS",https://positionly.com
@@ -35,14 +35,14 @@
 2018.06.21,Application,Lovelooks,"Swift, iOS",https://lovelooks.com/
 2018.09.04,Library,ScrollViewLayout,"Swift, UIKit, iOS",https://github.com/darrarski/ScrollViewLayout
 2018.09.26,Other,JiraPlayground,Swift,
-2019.02.26,Application,ReadingListCalendarApp,"AppKit, Swift, macOS",https://github.com/elpassion/ReadingListCalendarApp
+2019.02.26,Application,Reading List Calendar app,"AppKit, Swift, macOS",https://darrarski.gumroad.com/l/reading-list-calendar-app
 2019.03.05,Application,Lifeness,"Swift, SwiftUI, iOS",https://apps.apple.com/app/id1458097934
 2019.04.09,Application,eDirham,"Swift, UIKit, iOS",https://www.mof.gov.ae/En/About/programsProjects/Pages/EDirham.aspx
 2019.07.11,Other,StateRestoration,"Swift, UIKit, iOS",https://github.com/darrarski/iOS-State-Restoration
 2019.08.21,Library,GoogleSignIn-Swift,Swift,https://github.com/darrarski/GoogleSignIn-Swift
 2019.12.18,Application,ELHub,"Swift, SwiftUI, iOS",
 2020.02.08,Library,SwiftEndpoint,Swift,https://github.com/darrarski/SwiftEndpoint
-2020.04.15,Application,http://XX.Network Messenger,"Swift, UIKit, iOS",https://xx.network/messenger/
+2020.04.15,Application,xx.network Messenger,"Swift, UIKit, iOS",https://xx.network/messenger/
 2020.05.05,Application,Vooom iOS app,"Swift, UIKit, iOS",https://en.vooom.pl
 2020.06.12,Application,GitHubBarApp,"AppKit, Swift, macOS",https://github.com/darrarski/github-status-bar
 2020.08.17,Application,Spark,"Swift, SwiftUI, TCA, iOS",
@@ -51,7 +51,7 @@
 2020.11.06,Library,SideMenuTransition-iOS,"Swift, UIKit, iOS",https://github.com/darrarski/SideMenuTransition-iOS
 2020.12.05,Other,Router-PoC,"Swift, UIKit, iOS",https://github.com/darrarski/Router-PoC
 2020.12.11,Library,swiftui-app-icon-creator,"Swift, SwiftUI, iOS",https://github.com/darrarski/swiftui-app-icon-creator
-2021.02.20,Application,TotalHours,"Swift, SwiftUI, TCA, iOS, macOS",https://github.com/darrarski/TotalHours-app
+2021.02.20,Application,Total Hours,"Swift, SwiftUI, TCA, iOS, macOS",http://totalhours.darrarski.pl
 2021.03.01,Application,x-kom iOS,"Swift, UIKit, iOS",https://apps.apple.com/app/id1193315738
 2021.04.27,Application,SwimCam,"Swift, SwiftUI, TCA, iOS",https://www.athlee.com
 2021.06.07,Application,TV2 Play iOS & tvOS app,"Swift, UIKit, iOS, tvOS",https://apps.apple.com/app/id675096718
@@ -60,13 +60,14 @@
 2021.09.02,Library,Swift Composable Presentation,"Swift, TCA",https://github.com/darrarski/swift-composable-presentation
 2021.10.29,Application,IDFire,"Swift, SwiftUI, TCA, iOS",
 2021.12.06,Application,Location Tracker,"Swift, SwiftUI, TCA, iOS",
-2021.12.21,Library,SortSwiftImports,"Swift, SwiftUI, iOS",https://github.com/darrarski/sort-swift-imports
+2021.12.21,Application,Soft Swift Imports app,"Swift, SwiftUI, TCA, iOS, macOS",https://sort-swift-imports.darrarski.pl
+2021.12.21,Library,Sort Swift Imports,"Swift, SwiftUI, iOS",https://github.com/darrarski/sort-swift-imports
 2022.01.01,Application,MultiCam,"AVFoundation, Swift, SwiftUI, TCA, iOS",
 2022.01.09,Library,SwiftUIMKMapView,"Swift, SwiftUI, iOS",https://github.com/darrarski/SwiftUIMKMapView
 2022.01.13,Library,swiftui-tabs-view,"Swift, SwiftUI, iOS",https://github.com/darrarski/swiftui-tabs-view
 2022.05.12,Library,Elixxir Messenger DB,"GRDB, Swift, iOS, macOS",https://git.xx.network/elixxir/client-ios-db
 2022.05.31,Library,Elixxir dApps SDK,"Swift, iOS, macOS",https://git.xx.network/elixxir/elixxir-dapps-sdk-swift
-2022.09.27,Application,Swifty Ledger,"Swift, SwiftUI, TCA, iOS, macOS",
+2022.09.27,Application,Swifty Ledger,"Swift, SwiftUI, TCA, iOS, macOS",https://swifty-ledger.darrarski.pl
 2022.11.14,Library,Store Navigation Controller,"Swift, TCA, UIKit, iOS",https://github.com/darrarski/store-navigation-controller
 2022.12.21,Application,Haven iOS,"Swift, SwiftUI, TCA, iOS",
 2023.01.19,Library,SwiftUI Simple Table,"SwiftUI, iOS, macOS",https://github.com/darrarski/swiftui-simple-table

@@ -33,7 +33,7 @@
   },
   {
     "date" : "2013.04.10",
-    "name" : "http://Charged.fm iOS app",
+    "name" : "Charged.fm iOS app",
     "tags" : [
       "Objective-C",
       "UIKit",
@@ -391,14 +391,14 @@
   },
   {
     "date" : "2019.02.26",
-    "name" : "ReadingListCalendarApp",
+    "name" : "Reading List Calendar app",
     "tags" : [
       "AppKit",
       "Swift",
       "macOS"
     ],
     "type" : "Application",
-    "url" : "https://github.com/elpassion/ReadingListCalendarApp"
+    "url" : "https://darrarski.gumroad.com/l/reading-list-calendar-app"
   },
   {
     "date" : "2019.03.05",
@@ -463,7 +463,7 @@
   },
   {
     "date" : "2020.04.15",
-    "name" : "http://XX.Network Messenger",
+    "name" : "xx.network Messenger",
     "tags" : [
       "Swift",
       "UIKit",
@@ -565,7 +565,7 @@
   },
   {
     "date" : "2021.02.20",
-    "name" : "TotalHours",
+    "name" : "Total Hours",
     "tags" : [
       "Swift",
       "SwiftUI",
@@ -574,7 +574,7 @@
       "macOS"
     ],
     "type" : "Application",
-    "url" : "https://github.com/darrarski/TotalHours-app"
+    "url" : "http://totalhours.darrarski.pl"
   },
   {
     "date" : "2021.03.01",
@@ -665,7 +665,20 @@
   },
   {
     "date" : "2021.12.21",
-    "name" : "SortSwiftImports",
+    "name" : "Soft Swift Imports app",
+    "tags" : [
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://sort-swift-imports.darrarski.pl"
+  },
+  {
+    "date" : "2021.12.21",
+    "name" : "Sort Swift Imports",
     "tags" : [
       "Swift",
       "SwiftUI",
@@ -741,7 +754,8 @@
       "iOS",
       "macOS"
     ],
-    "type" : "Application"
+    "type" : "Application",
+    "url" : "https://swifty-ledger.darrarski.pl"
   },
   {
     "date" : "2022.11.14",
