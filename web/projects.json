@@ -882,5 +882,18 @@
     ],
     "type" : "Library",
     "url" : "http://github.com/darrarski/swift-shell"
+  },
+  {
+    "date" : "2025.01.15",
+    "name" : "Recorder.app",
+    "tags" : [
+      "AVFoundation",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://macrecorder.app"
   }
 ]
