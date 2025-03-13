@@ -882,5 +882,33 @@
     ],
     "type" : "Library",
     "url" : "http://github.com/darrarski/swift-shell"
+  },
+  {
+    "date" : "2025.01.15",
+    "name" : "Recorder.app",
+    "tags" : [
+      "AVFoundation",
+      "ScreenCaptureKit",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://macrecorder.app"
+  },
+  {
+    "date" : "2025.03.03",
+    "name" : "AudioRecorder.app",
+    "tags" : [
+      "AVFoundation",
+      "ScreenCaptureKit",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://audio.macrecorder.app"
   }
 ]

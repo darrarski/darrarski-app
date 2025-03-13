@@ -79,4 +79,5 @@
 2023.11.05,Application,Interfungible Assets PoC app,"Swift, SwiftUI, TCA, iOS",
 2024.04.01,Application,IKO iOS (PKO BP),"Objective-C, Swift, SwiftUI, TCA, UIKit, iOS",https://iko.pkobp.pl/
 2024.07.20,Library,SwiftShell,"Swift, macOS",http://github.com/darrarski/swift-shell
-2025.01.15,Application,Recorder.app,"AVFoundation, Swift, SwiftUI, TCA, macOS",https://macrecorder.app
+2025.01.15,Application,Recorder.app,"AVFoundation, ScreenCaptureKit, Swift, SwiftUI, TCA, macOS",https://macrecorder.app
+2025.03.03,Application,AudioRecorder.app,"AVFoundation, ScreenCaptureKit, Swift, SwiftUI, TCA, macOS",https://audio.macrecorder.app
