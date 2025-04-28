@@ -881,7 +881,7 @@
       "macOS"
     ],
     "type" : "Library",
-    "url" : "http://github.com/darrarski/swift-shell"
+    "url" : "https://github.com/darrarski/swift-shell"
   },
   {
     "date" : "2025.01.15",
@@ -910,5 +910,19 @@
     ],
     "type" : "Application",
     "url" : "https://audio.macrecorder.app"
+  },
+  {
+    "date" : "2025.03.13",
+    "name" : "Linkmarks.app",
+    "tags" : [
+      "GRDB",
+      "Swift",
+      "SwiftUI",
+      "TCA",
+      "iOS",
+      "macOS"
+    ],
+    "type" : "Application",
+    "url" : "https://linkmarks.darrarski.pl"
   }
 ]
